@@ -48,7 +48,7 @@
         DataGridView.HitTestInfo hti = this.dgv_DnsRequests.HitTest(e.X, e.Y);
         if (hti.RowIndex >= 0)
         {
-          this.cms_DNSRequests.Show(this.dgv_DnsRequests, e.Location);
+          this.cms_DnsRequests.Show(this.dgv_DnsRequests, e.Location);
         }
       }
       catch (Exception ex)

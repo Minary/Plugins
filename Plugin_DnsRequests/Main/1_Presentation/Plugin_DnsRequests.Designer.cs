@@ -35,13 +35,13 @@
       this.bt_Set = new System.Windows.Forms.Button();
       this.tb_Filter = new System.Windows.Forms.TextBox();
       this.l_RequestFilter = new System.Windows.Forms.Label();
-      this.cms_DNSRequests = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.cms_DnsRequests = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
       this.copyHostNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DnsRequests)).BeginInit();
-      this.cms_DNSRequests.SuspendLayout();
+      this.cms_DnsRequests.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_DnsRequests
@@ -111,14 +111,14 @@
       this.l_RequestFilter.TabIndex = 0;
       this.l_RequestFilter.Text = "Request filter";
       // 
-      // cms_DNSRequests
+      // cms_DnsRequests
       // 
-      this.cms_DNSRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.cms_DnsRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
             this.copyHostNameToolStripMenuItem});
-      this.cms_DNSRequests.Name = "cms_DNSRequests";
-      this.cms_DNSRequests.Size = new System.Drawing.Size(162, 70);
+      this.cms_DnsRequests.Name = "cms_DNSRequests";
+      this.cms_DnsRequests.Size = new System.Drawing.Size(162, 92);
       // 
       // deleteEntryToolStripMenuItem
       // 
@@ -146,7 +146,7 @@
       this.t_GuiUpdate.Interval = 500;
       this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
       // 
-      // PluginDnsRequestsUC
+      // Plugin_DnsRequests
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,10 +155,10 @@
       this.Controls.Add(this.tb_Filter);
       this.Controls.Add(this.l_RequestFilter);
       this.Controls.Add(this.dgv_DnsRequests);
-      this.Name = "PluginDnsRequestsUC";
+      this.Name = "Plugin_DnsRequests";
       this.Size = new System.Drawing.Size(996, 368);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DnsRequests)).EndInit();
-      this.cms_DNSRequests.ResumeLayout(false);
+      this.cms_DnsRequests.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Button bt_Set;
         private System.Windows.Forms.TextBox tb_Filter;
         private System.Windows.Forms.Label l_RequestFilter;
-        private System.Windows.Forms.ContextMenuStrip cms_DNSRequests;
+        private System.Windows.Forms.ContextMenuStrip cms_DnsRequests;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Clear;
         private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyHostNameToolStripMenuItem;

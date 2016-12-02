@@ -4,7 +4,7 @@
   using System;
   using System.Text.RegularExpressions;
 
-  
+ 
   public partial class Plugin_DnsPoisoning
   {
 
@@ -115,7 +115,7 @@
 
         if (this.dgv_Spoofing.CurrentCell != null)
         {
-          selectedIndex = dgv_Spoofing.CurrentCell.RowIndex;
+          selectedIndex = this.dgv_Spoofing.CurrentCell.RowIndex;
         }
 
         this.dgv_Spoofing.SuspendLayout();

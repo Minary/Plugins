@@ -76,7 +76,7 @@
       this.dgv_HTTPRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_HTTPRequests.Size = new System.Drawing.Size(933, 313);
       this.dgv_HTTPRequests.TabIndex = 3;
-      this.dgv_HTTPRequests.DoubleClick += new System.EventHandler(this.DGV_HTTPRequests_DoubleClick);
+      this.dgv_HTTPRequests.DoubleClick += new System.EventHandler(this.DGV_HttpRequests_DoubleClick);
       this.dgv_HTTPRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseDown);
       this.dgv_HTTPRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseUp);
       // 

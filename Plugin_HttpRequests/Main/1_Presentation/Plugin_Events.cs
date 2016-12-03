@@ -82,7 +82,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_HTTPRequests_DoubleClick(object sender, EventArgs e)
+    private void DGV_HttpRequests_DoubleClick(object sender, EventArgs e)
     {
       try
       {

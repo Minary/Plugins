@@ -178,12 +178,12 @@
       }
       catch (FileNotFoundException fnfex)
       {
-        pluginProperties.HostApplication.LogMessage("Form_ManageSystems() : {0}", fnfex.Message);
+        pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", fnfex.Message);
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems() : {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
       }
 
       // Configure pattern files file System Watcher
@@ -196,7 +196,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems() : {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
       }
     }
 
@@ -238,7 +238,7 @@
       catch (Exception ex)
       {
         MessageBox.Show(string.Format("Error occurred while deleting pattern file: {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Presentation.ManageSystem() : {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage("Presentation.ManageSystem(): {0}", ex.Message);
       }
     }
 
@@ -325,7 +325,7 @@
         catch (Exception ex)
         {
           MessageBox.Show("Error occurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications() : {0}", ex.Message);
+          this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
         }
       }
     }

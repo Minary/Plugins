@@ -103,7 +103,7 @@
       this.pluginProperties = pluginProperties;
 
       this.pluginProperties.PluginName = "HTTP host mapping";
-      this.pluginProperties.PluginType = "Intrusive";
+      this.pluginProperties.PluginType = "Active";
       this.pluginProperties.PluginDescription = "Map HTTP request to an other server";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
       //this.dataBatch = new List<string>();
@@ -152,5 +152,6 @@
     }
 
     #endregion
+
   }
 }

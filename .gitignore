@@ -53,7 +53,11 @@ ipch/
 **/Release/
 **/x64/
 BUILDS/
-
+packages/
+obj/
+bin/
+Debug/
+Release/
 
 
 !Plugin**/app.config

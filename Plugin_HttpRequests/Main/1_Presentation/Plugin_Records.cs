@@ -4,6 +4,7 @@
   using System;
   using System.Collections.Generic;
 
+
   public partial class Plugin_HttpRequests
   {
 
@@ -42,7 +43,7 @@
 
           while (this.httpRequests.Count > MaxTableRows)
           {
-            this.httpRequests.RemoveAt(dgv_HTTPRequests.Rows.Count - 1);
+            this.httpRequests.RemoveAt(this.dgv_HTTPRequests.Rows.Count - 1);
           }
 
           if (firstVisibleRowTop >= 0)
@@ -73,7 +74,6 @@
 
       int firstVisibleRowTop = -1;
       int lastRowIndex = -1;
-
 
       lock (this)
       {
@@ -118,7 +118,6 @@
         this.BeginInvoke(new ClearRecordListDelegate(this.ClearRecordList), new object[] { });
         return;
       }
-
 
       lock (this)
       {

@@ -87,7 +87,7 @@
       columnRemFileName.Name = "RemoteFile";
       columnRemFileName.HeaderText = "File name";
       columnRemFileName.ReadOnly = true;
-      columnRemFileName.Width = 216; ////173;
+      columnRemFileName.Width = 216;
       columnRemFileName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_HTTPRequests.Columns.Add(columnRemFileName);
 

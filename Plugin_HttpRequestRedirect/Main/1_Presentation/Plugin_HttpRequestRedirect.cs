@@ -101,9 +101,9 @@
           pluginProperties.HostApplication.AttackServiceList == null ||
           !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
           pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.InjectPayload") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].ConfigFilePath))
+          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.RequestRedirect") ||
+          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].WorkingDirectory) ||
+          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].ConfigFilePath))
       {
         throw new Exception("Attack services parameters are invalid");
       }
@@ -118,8 +118,8 @@
 
       // Set inject payload config file path
       this.requestRedirectConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].ConfigFilePath);
+                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].WorkingDirectory,
+                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].ConfigFilePath);
 
       this.requestRedirectConfig = new RequestRedirectConfig()
       {

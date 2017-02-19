@@ -107,9 +107,6 @@
       string sslStripConfigurationFileData = string.Empty;
       foreach (SslStripRecord tmpRecord in recordList)
       {
-        string hostName = tmpRecord.HostName;
-        string contentType = tmpRecord.ContentType;
-
         sslStripConfigurationFileData += string.Format("{0}:{1}\r\n", tmpRecord.HostName, contentType);
       }
 

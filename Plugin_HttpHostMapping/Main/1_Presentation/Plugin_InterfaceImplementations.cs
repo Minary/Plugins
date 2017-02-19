@@ -10,6 +10,7 @@
   using System.IO;
   using System.Linq;
 
+
   public partial class Plugin_HttpHostMapping
   {
 
@@ -52,8 +53,6 @@
         this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
         return;
       }
-
-      this.pluginProperties.HostApplication.LogMessage("{0}: Downloading new pattern file(s)", Config.PluginName);
     }
 
 

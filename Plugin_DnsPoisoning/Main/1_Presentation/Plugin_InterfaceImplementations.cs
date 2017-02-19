@@ -52,15 +52,6 @@
         this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
         return;
       }
-
-      this.pluginProperties.HostApplication.LogMessage("{0}: Searching for pattern file update", this.Config.PluginName);
-
-      // Stop update procedure if updates were already requested before.
-      if (this.isUpToDate)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: The update procedure is stopped because the plugin was already updated before.", this.Config.PluginName);
-        return;
-      }
     }
 
 

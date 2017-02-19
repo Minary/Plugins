@@ -8,6 +8,7 @@
   using System.Collections.Generic;
   using System.Linq;
 
+
   public partial class Plugin_Firewall
   {
 
@@ -30,9 +31,6 @@
         return;
       }
 
-      //this.infrastructureLayer.OnInit();
-      //this.SetGuiActive();
-
       // Plugin initialisation
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
@@ -48,15 +46,6 @@
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
-        return;
-      }
-
-      this.pluginProperties.HostApplication.LogMessage("{0}: Downloading new pattern file(s)", Config.PluginName);
-
-      // Stop update procedure if updates were already requested before.
-      if (this.isUpToDate)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: The update procedure is stopped because the plugin was already updated before.", Config.PluginName);
         return;
       }
     }

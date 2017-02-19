@@ -88,7 +88,7 @@
     {
       if (recordList == null || recordList.Count <= 0)
       {
-        throw new MinaryWarningException("No ssl stripping rules defined");
+        throw new MinaryWarningException("No payload injection rules defined");
       }
 
       // Write configuration file
@@ -126,7 +126,7 @@
         throw new Exception(string.Format("Errorr occurred while writing Inject Payload configuration data: {0}", ex.Message));
       }
     }
-    
+ 
 
     /// <summary>
     ///

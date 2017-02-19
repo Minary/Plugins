@@ -10,7 +10,7 @@
   using System.Linq;
 
 
-  public partial class Plugin_InjectPayload
+  public partial class Plugin_HttpInjectPayload
   {
 
     #region IPlugin Member

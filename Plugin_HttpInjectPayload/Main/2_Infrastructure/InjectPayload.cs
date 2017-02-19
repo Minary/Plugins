@@ -110,9 +110,8 @@
         string requestedHost = tmpRecord.RequestedHost;
         string requestedPath = tmpRecord.RequestedPath;
         string replacementResource = tmpRecord.ReplacementResource;
-        string replacementType = tmpRecord.ReplacementType;
 
-        injectPayloadConfigurationFileData += string.Format("{0}:{1}:{2}:{3}\r\n", tmpRecord.ReplacementType, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        injectPayloadConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
       }
 
       injectPayloadConfigurationFileData = injectPayloadConfigurationFileData.Trim();
@@ -187,7 +186,7 @@
       List<InjectPayloadRecord> genericObjectList = new List<InjectPayloadRecord>();
       foreach (InjectPayloadRecord tmpRecord in injectPayloadRecords)
       {
-        genericObjectList.Add(new InjectPayloadRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource, tmpRecord.ReplacementType));
+        genericObjectList.Add(new InjectPayloadRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource));
       }
 
       // Serialize the list

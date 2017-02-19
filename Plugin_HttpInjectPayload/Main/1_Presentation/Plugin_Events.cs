@@ -4,7 +4,7 @@
   using System.IO;
   using System.Windows.Forms;
 
-  public partial class Plugin_InjectPayload
+  public partial class Plugin_HttpInjectPayload
   {
 
     #region EVENTS
@@ -13,8 +13,7 @@
     {
       try
       {
-        string replacementType = this.rb_InjectFile.Checked ? "File" : "URL";
-        this.AddRecord(replacementType, this.tb_RequestedURLRegex.Text, this.tb_ReplacementResource.Text);
+        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_ReplacementResource.Text);
       }
       catch (Exception ex)
       {
@@ -125,20 +124,7 @@
       this.BT_Add_Click(sender, e);
     }
 
-
-    private void RB_Redirect_CheckedChanged(object sender, EventArgs e)
-    {
-
-      if (this.rb_InjectFile.Checked)
-      {
-        this.ActivateFileInjectionSettings();
-      }
-      else
-      {
-        this.ActivateUrlInjectionSettings();
-      }
-    }
-
+    
     private void BT_AddFile_Click(object sender, EventArgs e)
     {
       this.ofd_FileToInject.InitialDirectory = Directory.GetCurrentDirectory();

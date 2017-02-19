@@ -14,7 +14,6 @@
     private string requestedHost;
     private string requestedPath;
     private string replacementResource;
-    private string replacementType;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -30,17 +29,15 @@
       this.requestedHost = string.Empty;
       this.requestedPath = string.Empty;
       this.replacementResource = string.Empty;
-      this.replacementType = string.Empty;
     }
 
 
-    public InjectPayloadRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource, string replacementType)
+    public InjectPayloadRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource)
     {
       this.requestedScheme = requestedScheme;
       this.requestedHost = requestedHost;
       this.requestedPath = requestedPath;
       this.replacementResource = replacementResource;
-      this.replacementType = replacementType;
     }
 
     #endregion
@@ -108,22 +105,6 @@
       {
         this.replacementResource = value;
         this.NotifyPropertyChanged("ReplacementResource");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string ReplacementType
-    {
-      get
-      {
-        return this.replacementType;
-      }
-
-      set
-      {
-        this.replacementType = value;
-        this.NotifyPropertyChanged("ReplacementType");
       }
     }
 

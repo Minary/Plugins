@@ -11,17 +11,16 @@
   using System.Windows.Forms;
 
 
-  public partial class Plugin_InjectPayload : UserControl, IPlugin
+  public partial class Plugin_HttpInjectPayload : UserControl, IPlugin
   {
 
     #region MEMBERS
 
-    private const string Label_File = "Inject file";
-    private const string Label_URL = "Redirect to URL";
+private const string Label_File = "Inject file";
+private const string Label_URL = "Redirect to URL";
     private string cacheFile;
     private string cacheUrl;
     private List<Tuple<string, string, string>> targetList;
-    private List<string> dataBatch;
     private BindingList<InjectPayloadRecord> injectPayloadRecords;
     private InjectPayload.Infrastructure.InjectPayload infrastructureLayer;
     private InjectPayloadConfig injectPayloadConfig;
@@ -41,7 +40,7 @@
 
     #region PUBLIC
 
-    public Plugin_InjectPayload(PluginProperties pluginProperties)
+    public Plugin_HttpInjectPayload(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
 
@@ -87,7 +86,7 @@
       columnReplacementType.Width = 120;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnReplacementType);
 
-      this.injectPayloadRecords = new BindingList<Plugin.Main.InjectPayload.DataTypes.InjectPayloadRecord>();
+      this.injectPayloadRecords = new BindingList<InjectPayloadRecord>();
       this.dgv_InjectionTriggerURLs.DataSource = this.injectPayloadRecords;
 
       // Verify passed parameter(s)
@@ -125,14 +124,11 @@
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
-      this.pluginProperties.PluginName = "Inject payload";
+      this.pluginProperties.PluginName = "HTTP inject payload";
       this.pluginProperties.PluginType = "Intrusive";
-      this.pluginProperties.PluginDescription = "Answer a HTTP request with a custom replacement URL/file";
+      this.pluginProperties.PluginDescription = "Answer an HTTP request by injecting a custom replacement file";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
-      this.dataBatch = new List<string>();
-
-      // Enable URL radio button
-      this.ActivateUrlInjectionSettings();
+      
 
       // Set inject payload config file path
       this.injectPayloadConfigFilePath = Path.Combine(
@@ -162,8 +158,6 @@
     {
       this.tb_RequestedURLRegex.Enabled = true;
       this.tb_ReplacementResource.Enabled = true;
-      this.rb_InjectFile.Enabled = true;
-      this.rb_Redirect.Enabled = true;
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cms_InjectPayload.Enabled = true;
@@ -176,40 +170,26 @@
     {
       this.tb_RequestedURLRegex.Enabled = false;
       this.tb_ReplacementResource.Enabled = false;
-      this.rb_InjectFile.Enabled = false;
-      this.rb_Redirect.Enabled = false;
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cms_InjectPayload.Enabled = false;
     }
 
 
-    private void ActivateFileInjectionSettings()
-    {
-      this.cacheUrl = this.tb_ReplacementResource.Text;
-      this.tb_ReplacementResource.Text = this.cacheFile;
-      this.tb_ReplacementResource.Select(this.tb_ReplacementResource.Text.Length, 0);
-      this.tb_ReplacementResource.RightToLeft = RightToLeft.No;
 
-      this.l_ReplacementResource.Text = Label_File;
-      this.tb_ReplacementResource.Width = this.tb_ReplacementResource.Width - 40;
-      this.bt_AddFile.Visible = true;
-    }
+private void ActivateUrlInjectionSettings()
+{
+  this.cacheFile = this.tb_ReplacementResource.Text;
+  this.tb_ReplacementResource.Text = this.cacheUrl;
+  this.tb_ReplacementResource.Select(0, 0);
+  this.tb_ReplacementResource.RightToLeft = RightToLeft.No;
 
-
-    private void ActivateUrlInjectionSettings()
-    {
-      this.cacheFile = this.tb_ReplacementResource.Text;
-      this.tb_ReplacementResource.Text = this.cacheUrl;
-      this.tb_ReplacementResource.Select(0, 0);
-      this.tb_ReplacementResource.RightToLeft = RightToLeft.No;
-
-      this.l_ReplacementResource.Text = Label_URL;
-      this.tb_ReplacementResource.Width = this.tb_ReplacementResource.Width + 40;
-      this.bt_AddFile.Visible = false;
-    }
+  this.l_ReplacementResource.Text = Label_URL;
+  this.tb_ReplacementResource.Width = this.tb_ReplacementResource.Width + 40;
+  this.bt_AddFile.Visible = false;
+}
 
     #endregion
-    
+
   }
 }

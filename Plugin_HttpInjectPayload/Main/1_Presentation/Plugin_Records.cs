@@ -5,7 +5,8 @@
   using System.IO;
   using System.Text.RegularExpressions;
 
-  public partial class Plugin_InjectPayload
+
+  public partial class Plugin_HttpInjectPayload
   {
 
     #region GUI RECORDS METHODS
@@ -14,25 +15,18 @@
     ///
     /// </summary>
     /// <param name="pRecord"></param>
-    private delegate void AddRecordDelegate(string replacementType, string requestedResource, string replacementResource);
-    private void AddRecord(string replacementType, string requestedResource, string replacementResource)
+    private delegate void AddRecordDelegate(string requestedResource, string replacementResource);
+    private void AddRecord(string requestedResource, string replacementResource)
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new AddRecordDelegate(this.AddRecord), new object[] { replacementType, requestedResource, replacementResource });
+        this.BeginInvoke(new AddRecordDelegate(this.AddRecord), new object[] { requestedResource, replacementResource });
         return;
       }
 
       string requestedScheme = string.Empty;
       string requestedHost = string.Empty;
       string requestedPath = string.Empty;
-
-      // Verify if replacement resource type is valid
-      if (string.IsNullOrEmpty(replacementType) || string.IsNullOrWhiteSpace(replacementType) ||
-          (replacementType != "File" && replacementType != "URL"))
-      {
-        throw new Exception(string.Format("Something is wrong with the replacement resource type {0}", replacementType));
-      }
 
       // Verify if requested URL resource is valid
       Uri requestedUri;
@@ -62,40 +56,10 @@
       requestedHost = requestedUri.Host;
       requestedPath = requestedUri.PathAndQuery;
 
-      // Verify if replacement URL resource is valid
-      if (replacementType == "URL")
+      // Verify if replacement file resource is valid
+      if (!File.Exists(replacementResource))
       {
-        Uri uri;
-        bool isValidReplUri = Uri.TryCreate(replacementResource, UriKind.Absolute, out uri);
-
-        if (!isValidReplUri)
-        {
-          throw new Exception("The replacement resource URL is invalid");
-        }
-
-        if (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps)
-        {
-          throw new Exception("The replacement URL scheme is invalid.");
-        }
-
-        if (string.IsNullOrEmpty(uri.Host) || string.IsNullOrWhiteSpace((uri.Host)))
-        {
-          throw new Exception("The replacement URL host is invalid.");
-        }
-
-        if (string.IsNullOrEmpty(uri.PathAndQuery) || string.IsNullOrWhiteSpace((uri.PathAndQuery)))
-        {
-          throw new Exception("The replacement URL path is invalid.");
-        }
-
-        // Verify if replacement file resource is valid
-      }
-      else if (replacementResource == "File")
-      {
-        if (!File.Exists(replacementResource))
-        {
-          throw new Exception("The injection file does not exist.");
-        }
+        throw new Exception("The injection file does not exist.");
       }
 
       // Verify if record already exists
@@ -121,7 +85,7 @@
 
       lock (this)
       {
-        InjectPayloadRecord newRecord = new InjectPayloadRecord(requestedScheme, requestedHost, requestedPath, replacementResource, replacementType);
+        InjectPayloadRecord newRecord = new InjectPayloadRecord(requestedScheme, requestedHost, requestedPath, replacementResource);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
         this.injectPayloadRecords.Insert(0, newRecord);

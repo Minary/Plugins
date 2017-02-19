@@ -27,10 +27,10 @@
     #region PUBLIC
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InjectPayload"/> class.
-    ///
+    /// 
     /// </summary>
     /// <param name="plugin"></param>
+    /// <param name="requestRedirectdConfig"></param>
     private RequestRedirect(IPlugin plugin, RequestRedirectConfig requestRedirectdConfig)
     {
       this.plugin = plugin;
@@ -59,9 +59,9 @@
     /// <param name="plugin"></param>
     /// <param name="sslStripConfig"></param>
     /// <returns></returns>
-    public static RequestRedirect GetInstance(IPlugin plugin, RequestRedirectConfig injectPayloadConfig)
+    public static RequestRedirect GetInstance(IPlugin plugin, RequestRedirectConfig requestRedirectConfig)
     {
-      return instance ?? (instance = new RequestRedirect(plugin, injectPayloadConfig));
+      return instance ?? (instance = new RequestRedirect(plugin, requestRedirectConfig));
     }
 
 
@@ -86,6 +86,45 @@
     /// </summary>
     public void OnStart(List<RequestRedirectRecord> recordList)
     {
+      if (recordList == null || recordList.Count <= 0)
+      {
+        throw new MinaryWarningException("No request redirection rules defined");
+      }
+
+      // Write configuration file
+      try
+      {
+        if (!File.Exists(this.requestRedirectConfig.RequestRedirectConfigFilePath))
+        {
+          File.Delete(this.requestRedirectConfig.RequestRedirectConfigFilePath);
+        }
+      }
+      catch (Exception ex)
+      {
+        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(3) : {1}", this.plugin.Config.PluginName, ex.Message);
+      }
+      
+      string requestRedirectConfigurationFileData = string.Empty;
+      foreach (RequestRedirectRecord tmpRecord in recordList)
+      {
+        string requestedHost = tmpRecord.RequestedHost;
+        string requestedPath = tmpRecord.RequestedPath;
+        string replacementResource = tmpRecord.ReplacementResource;
+
+        requestRedirectConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+      }
+
+      requestRedirectConfigurationFileData = requestRedirectConfigurationFileData.Trim();
+
+      try
+      {
+        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.requestRedirectConfig.RequestRedirectConfigFilePath);
+        File.WriteAllText(this.requestRedirectConfig.RequestRedirectConfigFilePath, requestRedirectConfigurationFileData, Encoding.ASCII);
+      }
+      catch (Exception ex)
+      {
+        throw new Exception(string.Format("Errorr occurred while writing Redirect Request configuration data: {0}", ex.Message));
+      }
     }
 
 

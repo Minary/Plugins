@@ -1,13 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
   using System;
-  using System.Collections.Generic;
-  using System.ComponentModel;
-  using System.Drawing;
-  using System.Data;
-  using System.Linq;
-  using System.Text;
-  using System.Threading.Tasks;
   using System.Windows.Forms;
 
 
@@ -20,7 +13,10 @@
     {
       try
       {
-        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_RedirectURL.Text);
+        string[] splitter = this.cb_RedirectType.Text.Split('/');
+        string redirectType = splitter[0];
+        string redirectDescription = splitter[1];
+        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_RedirectURL.Text, redirectType, redirectDescription);
       }
       catch (Exception ex)
       {

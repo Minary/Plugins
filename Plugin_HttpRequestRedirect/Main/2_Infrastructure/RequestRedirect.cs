@@ -107,11 +107,7 @@
       string requestRedirectConfigurationFileData = string.Empty;
       foreach (RequestRedirectRecord tmpRecord in recordList)
       {
-        string requestedHost = tmpRecord.RequestedHost;
-        string requestedPath = tmpRecord.RequestedPath;
-        string replacementResource = tmpRecord.ReplacementResource;
-
-        requestRedirectConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        requestRedirectConfigurationFileData += string.Format("{0}:{1}:{2}:{3}:{4}\r\n", tmpRecord.RedirectType, tmpRecord.RedirectDescription, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
       }
 
       requestRedirectConfigurationFileData = requestRedirectConfigurationFileData.Trim();
@@ -186,7 +182,7 @@
       List<RequestRedirectRecord> genericObjectList = new List<RequestRedirectRecord>();
       foreach (RequestRedirectRecord tmpRecord in requestRedirectRecords)
       {
-        genericObjectList.Add(new RequestRedirectRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource));
+        genericObjectList.Add(new RequestRedirectRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource, tmpRecord.RedirectType, tmpRecord.RedirectDescription));
       }
 
       // Serialize the list

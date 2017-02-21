@@ -73,6 +73,14 @@
       columnReplacementResource.Width = 350;
       this.dgv_RequestRedirectURLs.Columns.Add(columnReplacementResource);
 
+      DataGridViewTextBoxColumn columnRedirectType = new DataGridViewTextBoxColumn();
+      columnRedirectType.DataPropertyName = "RedirectType";
+      columnRedirectType.Name = "RedirectType";
+      columnRedirectType.HeaderText = "Redirect type";
+      columnRedirectType.ReadOnly = true;
+      columnRedirectType.Width = 200;
+      this.dgv_RequestRedirectURLs.Columns.Add(columnRedirectType);
+
       this.requestRedirectRecords = new BindingList<RequestRedirectRecord>();
       this.dgv_RequestRedirectURLs.DataSource = this.requestRedirectRecords;
 
@@ -130,6 +138,13 @@
 
       // Instantiate infrastructureLayer layer
       this.infrastructureLayer = RequestRedirect.Infrastructure.RequestRedirect.GetInstance(this, this.requestRedirectConfig);
+
+      // Populate redirect type combobox
+      this.cb_RedirectType.Items.Add("301/Moved Permanently");
+      this.cb_RedirectType.Items.Add("302/Found");
+      this.cb_RedirectType.Items.Add("307/Temporary Redirect");
+      this.cb_RedirectType.Items.Add("308/Permanent Redirect");
+      this.cb_RedirectType.SelectedIndex = 1;
     }
 
     #endregion

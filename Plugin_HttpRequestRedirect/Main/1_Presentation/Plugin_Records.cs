@@ -15,12 +15,12 @@
     ///
     /// </summary>
     /// <param name="pRecord"></param>
-    private delegate void AddRecordDelegate(string requestedResource, string replacementResource);
-    private void AddRecord(string requestedResource, string replacementResource)
+    private delegate void AddRecordDelegate(string requestedResource, string replacementResource, string redirectType, string redirectDescription);
+    private void AddRecord(string requestedResource, string replacementResource, string redirectType, string redirectDescription)
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new AddRecordDelegate(this.AddRecord), new object[] { requestedResource, replacementResource });
+        this.BeginInvoke(new AddRecordDelegate(this.AddRecord), new object[] { requestedResource, replacementResource, redirectType, redirectDescription });
         return;
       }
 
@@ -104,7 +104,7 @@
 
       lock (this)
       {
-        RequestRedirectRecord newRecord = new RequestRedirectRecord(requestedScheme, requestedHost, requestedPath, replacementResource);
+        RequestRedirectRecord newRecord = new RequestRedirectRecord(requestedScheme, requestedHost, requestedPath, replacementResource, redirectType, redirectDescription);
 
         this.dgv_RequestRedirectURLs.SuspendLayout();
         this.requestRedirectRecords.Insert(0, newRecord);

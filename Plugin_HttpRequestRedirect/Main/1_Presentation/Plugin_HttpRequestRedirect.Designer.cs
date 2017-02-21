@@ -35,6 +35,7 @@
       this.l_RequestedURL = new System.Windows.Forms.Label();
       this.l_RedirectURL = new System.Windows.Forms.Label();
       this.bt_AddRecord = new System.Windows.Forms.Button();
+      this.cb_RedirectType = new System.Windows.Forms.ComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_RequestRedirectURLs)).BeginInit();
       this.SuspendLayout();
       // 
@@ -68,7 +69,7 @@
       this.dgv_RequestRedirectURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_RequestRedirectURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_RequestRedirectURLs.Size = new System.Drawing.Size(933, 313);
-      this.dgv_RequestRedirectURLs.TabIndex = 7;
+      this.dgv_RequestRedirectURLs.TabIndex = 5;
       this.dgv_RequestRedirectURLs.TabStop = false;
       // 
       // tb_RequestedURLRegex
@@ -101,18 +102,28 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(745, 14);
+      this.bt_AddRecord.Location = new System.Drawing.Point(897, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
-      this.bt_AddRecord.TabIndex = 3;
+      this.bt_AddRecord.TabIndex = 4;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
       this.bt_AddRecord.Click += new System.EventHandler(this.BT_Add_Click);
+      // 
+      // cb_RedirectType
+      // 
+      this.cb_RedirectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cb_RedirectType.FormattingEnabled = true;
+      this.cb_RedirectType.Location = new System.Drawing.Point(753, 14);
+      this.cb_RedirectType.Name = "cb_RedirectType";
+      this.cb_RedirectType.Size = new System.Drawing.Size(121, 21);
+      this.cb_RedirectType.TabIndex = 3;
       // 
       // Plugin_HttpRequestRedirect
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.cb_RedirectType);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RedirectURL);
       this.Controls.Add(this.tb_RedirectURL);
@@ -134,5 +145,6 @@
     private System.Windows.Forms.Label l_RequestedURL;
     private System.Windows.Forms.Label l_RedirectURL;
     private System.Windows.Forms.Button bt_AddRecord;
+    private System.Windows.Forms.ComboBox cb_RedirectType;
   }
 }

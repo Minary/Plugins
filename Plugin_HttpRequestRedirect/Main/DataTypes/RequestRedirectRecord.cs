@@ -14,6 +14,8 @@
     private string requestedHost;
     private string requestedPath;
     private string replacementResource;
+    private string redirectType;
+    private string redirectDescription;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -29,15 +31,19 @@
       this.requestedHost = string.Empty;
       this.requestedPath = string.Empty;
       this.replacementResource = string.Empty;
+      this.redirectType = string.Empty;
+      this.redirectDescription = string.Empty;
     }
 
 
-    public RequestRedirectRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource)
+    public RequestRedirectRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource, string redirectType, string redirectDescription)
     {
       this.requestedScheme = requestedScheme;
       this.requestedHost = requestedHost;
       this.requestedPath = requestedPath;
       this.replacementResource = replacementResource;
+      this.redirectType = redirectType;
+      this.redirectDescription = redirectDescription;
     }
 
     #endregion
@@ -108,6 +114,38 @@
       }
     }
 
+
+    [Browsable(true)]
+    public string RedirectType
+    {
+      get
+      {
+        return this.redirectType;
+      }
+
+      set
+      {
+        this.redirectType = value;
+        this.NotifyPropertyChanged("RedirectType");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string RedirectDescription
+    {
+      get
+      {
+        return this.redirectDescription;
+      }
+
+      set
+      {
+        this.redirectDescription = value;
+        this.NotifyPropertyChanged("RedirectDescription");
+      }
+    }
+    
     #endregion
 
 

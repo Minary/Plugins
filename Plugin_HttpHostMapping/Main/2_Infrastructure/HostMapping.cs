@@ -170,6 +170,14 @@
     /// </summary>
     public void OnStop()
     {
+      // Remove plugin configuration file
+      try
+      {
+        File.Delete(this.hostMappingConfig.HostMappingConfigFilePath);
+      }
+      catch
+      {
+      }
     }
 
     #endregion

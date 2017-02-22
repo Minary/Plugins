@@ -129,6 +129,14 @@
     /// </summary>
     public void OnStop()
     {
+      // Remove plugin configuration file
+      try
+      {
+        File.Delete(this.requestRedirectConfig.RequestRedirectConfigFilePath);
+      }
+      catch
+      {
+      }
     }
 
     #endregion

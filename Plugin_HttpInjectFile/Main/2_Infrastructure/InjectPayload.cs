@@ -134,6 +134,14 @@
     /// </summary>
     public void OnStop()
     {
+      // Remove plugin configuration file
+      try
+      {
+        File.Delete(this.injectFileConfig.InjectFileConfigFilePath);
+      }
+      catch
+      {
+      }
     }
 
     #endregion

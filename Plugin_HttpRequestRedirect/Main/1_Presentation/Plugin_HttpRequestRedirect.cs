@@ -124,7 +124,7 @@
       this.pluginProperties.PluginDescription = "Redirect an HTTP request to new URL";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
-      // Set inject payload config file path
+      // Set inject file config file path
       this.requestRedirectConfigFilePath = Path.Combine(
                                                  pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].WorkingDirectory,
                                                  pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].ConfigFilePath);

@@ -184,10 +184,10 @@
 
       this.requestRedirectRecords.Clear();
 
-      List<RequestRedirectRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpInjectPayloadRecords != null && tmpInjectPayloadRecords.Count > 0)
+      List<RequestRedirectRecord> tmpRequestRedirectRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
+      if (tmpRequestRedirectRecords != null && tmpRequestRedirectRecords.Count > 0)
       {
-        tmpInjectPayloadRecords.ToList().ForEach(elem => this.requestRedirectRecords.Add(elem));
+        tmpRequestRedirectRecords.ToList().ForEach(elem => this.requestRedirectRecords.Add(elem));
       }
     }
 

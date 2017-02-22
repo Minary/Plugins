@@ -1,12 +1,12 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.InjectPayload.DataTypes;
+  using Minary.Plugin.Main.InjectFile.DataTypes;
   using System;
   using System.IO;
   using System.Text.RegularExpressions;
 
 
-  public partial class Plugin_HttpInjectPayload
+  public partial class Plugin_HttpInjectFile
   {
 
     #region GUI RECORDS METHODS
@@ -63,7 +63,7 @@
       }
 
       // Verify if record already exists
-      foreach (InjectPayloadRecord tmpRecord in this.injectPayloadRecords)
+      foreach (InjectFileRecord tmpRecord in this.injectFileecords)
       {
         if (tmpRecord.RequestedHost == requestedHost && tmpRecord.RequestedPath == requestedPath)
         {
@@ -85,10 +85,10 @@
 
       lock (this)
       {
-        InjectPayloadRecord newRecord = new InjectPayloadRecord(requestedScheme, requestedHost, requestedPath, replacementResource);
+        InjectFileRecord newRecord = new InjectFileRecord(requestedScheme, requestedHost, requestedPath, replacementResource);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
-        this.injectPayloadRecords.Insert(0, newRecord);
+        this.injectFileecords.Insert(0, newRecord);
         this.dgv_InjectionTriggerURLs.ResumeLayout();
       }
     }
@@ -135,7 +135,7 @@
         try
         {
           int currentIndex = this.dgv_InjectionTriggerURLs.CurrentCell.RowIndex;
-          this.injectPayloadRecords.RemoveAt(currentIndex);
+          this.injectFileecords.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
@@ -186,7 +186,7 @@
 
         try
         {
-          this.injectPayloadRecords.RemoveAt(index);
+          this.injectFileecords.RemoveAt(index);
         }
         catch (Exception)
         {
@@ -215,7 +215,7 @@
 
         try
         {
-          this.injectPayloadRecords.Clear();
+          this.injectFileecords.Clear();
         }
         catch (Exception)
         {

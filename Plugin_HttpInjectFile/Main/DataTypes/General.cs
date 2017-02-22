@@ -1,4 +1,4 @@
-﻿namespace Minary.Plugin.Main.InjectPayload.DataTypes
+﻿namespace Minary.Plugin.Main.InjectFile.DataTypes
 {
   public class General
   {
@@ -13,6 +13,7 @@
     #endregion
 
   }
+
 
   #region TYPE DEFINITION
 

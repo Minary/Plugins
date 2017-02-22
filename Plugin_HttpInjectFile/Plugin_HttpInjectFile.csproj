@@ -7,8 +7,8 @@
     <ProjectGuid>{F9BD58B9-646E-4AD1-B072-9D8BEB876E93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plugin_HttpInjectPayload</RootNamespace>
-    <AssemblyName>Plugin_HttpInjectPayload</AssemblyName>
+    <RootNamespace>Plugin_HttpInjectFile</RootNamespace>
+    <AssemblyName>Plugin_HttpInjectFile</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -50,11 +50,11 @@
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_HttpInjectPayload.cs">
+    <Compile Include="Main\1_Presentation\Plugin_HttpInjectFile.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_HttpInjectPayload.Designer.cs">
-      <DependentUpon>Plugin_HttpInjectPayload.cs</DependentUpon>
+    <Compile Include="Main\1_Presentation\Plugin_HttpInjectFile.Designer.cs">
+      <DependentUpon>Plugin_HttpInjectFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\1_Presentation\Plugin_InterfaceImplementations.cs">
       <SubType>UserControl</SubType>
@@ -67,8 +67,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpInjectPayload.resx">
-      <DependentUpon>Plugin_HttpInjectPayload.cs</DependentUpon>
+    <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpInjectFile.resx">
+      <DependentUpon>Plugin_HttpInjectFile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

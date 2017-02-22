@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.InjectPayload.DataTypes;
+  using Minary.Plugin.Main.InjectFile.DataTypes;
   using MinaryLib;
   using MinaryLib.DataTypes;
   using MinaryLib.Exceptions;
@@ -10,7 +10,7 @@
   using System.Linq;
 
 
-  public partial class Plugin_HttpInjectPayload
+  public partial class Plugin_HttpInjectFile
   {
 
     #region IPlugin Member
@@ -60,14 +60,14 @@
         return;
       }
 
-      if (this.injectPayloadRecords != null && this.injectPayloadRecords.Count > 0)
+      if (this.injectFileecords != null && this.injectFileecords.Count > 0)
       {
         try
         {
           this.SetGuiInactive();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
-          this.injectPayloadConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
-          this.infrastructureLayer.OnStart(this.injectPayloadRecords.ToList());
+          this.injectFileConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
+          this.infrastructureLayer.OnStart(this.injectFileecords.ToList());
         }
         catch (MinaryWarningException ex)
         {
@@ -169,7 +169,7 @@
         return null;
       }
 
-      return this.infrastructureLayer.OnGetTemplateData(this.injectPayloadRecords);
+      return this.infrastructureLayer.OnGetTemplateData(this.injectFileecords);
     }
 
 
@@ -182,12 +182,12 @@
         return;
       }
 
-      this.injectPayloadRecords.Clear();
+      this.injectFileecords.Clear();
 
-      List<InjectPayloadRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
+      List<InjectFileRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
       if (tmpInjectPayloadRecords != null && tmpInjectPayloadRecords.Count > 0)
       {
-        tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectPayloadRecords.Add(elem));
+        tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectFileecords.Add(elem));
       }
     }
 

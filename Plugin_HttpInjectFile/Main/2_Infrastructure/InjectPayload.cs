@@ -1,6 +1,6 @@
-﻿namespace Minary.Plugin.Main.InjectPayload.Infrastructure
+﻿namespace Minary.Plugin.Main.InjectFile.Infrastructure
 {
-  using Minary.Plugin.Main.InjectPayload.DataTypes;
+  using Minary.Plugin.Main.InjectFile.DataTypes;
   using MinaryLib.DataTypes;
   using MinaryLib.Exceptions;
   using MinaryLib.Plugin;
@@ -12,14 +12,14 @@
   using System.Runtime.Serialization.Formatters.Binary;
 
 
-  public class InjectPayload
+  public class HttpInjectFile
   {
 
     #region MEMBERS
 
-    private static InjectPayload instance;
+    private static HttpInjectFile instance;
     private IPlugin plugin;
-    private InjectPayloadConfig injectPayloadConfig;
+    private InjectFileConfig injectFileConfig;
 
     #endregion
 
@@ -27,14 +27,14 @@
     #region PUBLIC
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InjectPayload"/> class.
+    /// Initializes a new instance of the <see cref="HttpInjectFile"/> class.
     ///
     /// </summary>
     /// <param name="plugin"></param>
-    private InjectPayload(IPlugin plugin, InjectPayloadConfig injectPayloadConfig)
+    private HttpInjectFile(IPlugin plugin, InjectFileConfig injectFileConfig)
     {
       this.plugin = plugin;
-      this.injectPayloadConfig = injectPayloadConfig;
+      this.injectFileConfig = injectFileConfig;
 
       // Verifying plugin parameters
       if (plugin == null)
@@ -59,9 +59,9 @@
     /// <param name="plugin"></param>
     /// <param name="sslStripConfig"></param>
     /// <returns></returns>
-    public static InjectPayload GetInstance(IPlugin plugin, InjectPayloadConfig injectPayloadConfig)
+    public static HttpInjectFile GetInstance(IPlugin plugin, InjectFileConfig injectFileConfig)
     {
-      return instance ?? (instance = new InjectPayload(plugin, injectPayloadConfig));
+      return instance ?? (instance = new HttpInjectFile(plugin, injectFileConfig));
     }
 
 
@@ -82,21 +82,22 @@
 
 
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    public void OnStart(List<InjectPayloadRecord> recordList)
+    /// <param name="recordList"></param>
+    public void OnStart(List<InjectFileRecord> recordList)
     {
       if (recordList == null || recordList.Count <= 0)
       {
-        throw new MinaryWarningException("No payload injection rules defined");
+        throw new MinaryWarningException("No file injection rules defined");
       }
 
       // Write configuration file
       try
       {
-        if (!File.Exists(this.injectPayloadConfig.InjectPayloadConfigFilePath))
+        if (!File.Exists(this.injectFileConfig.InjectFileConfigFilePath))
         {
-          File.Delete(this.injectPayloadConfig.InjectPayloadConfigFilePath);
+          File.Delete(this.injectFileConfig.InjectFileConfigFilePath);
         }
       }
       catch (Exception ex)
@@ -104,26 +105,26 @@
         this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0) : {1}", this.plugin.Config.PluginName, ex.Message);
       }
 
-      string injectPayloadConfigurationFileData = string.Empty;
-      foreach (InjectPayloadRecord tmpRecord in recordList)
+      string injectFileConfigurationFileData = string.Empty;
+      foreach (InjectFileRecord tmpRecord in recordList)
       {
         string requestedHost = tmpRecord.RequestedHost;
         string requestedPath = tmpRecord.RequestedPath;
         string replacementResource = tmpRecord.ReplacementResource;
 
-        injectPayloadConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        injectFileConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
       }
 
-      injectPayloadConfigurationFileData = injectPayloadConfigurationFileData.Trim();
+      injectFileConfigurationFileData = injectFileConfigurationFileData.Trim();
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.injectPayloadConfig.InjectPayloadConfigFilePath);
-        File.WriteAllText(this.injectPayloadConfig.InjectPayloadConfigFilePath, injectPayloadConfigurationFileData, Encoding.ASCII);
+        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.injectFileConfig.InjectFileConfigFilePath);
+        File.WriteAllText(this.injectFileConfig.InjectFileConfigFilePath, injectFileConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception(string.Format("Errorr occurred while writing Inject Payload configuration data: {0}", ex.Message));
+        throw new Exception(string.Format("Errorr occurred while writing Inject File configuration data: {0}", ex.Message));
       }
     }
  
@@ -149,14 +150,14 @@
                                         this.plugin.Config.ApplicationBaseDir,
                                         this.plugin.Config.PluginBaseDir,
                                         this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.InjectPayload.DataTypes.General.PATTERN_DIR_TEMPLATE);
+                                        Plugin.Main.InjectFile.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
         return;
       }
 
-      string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.InjectPayload.DataTypes.General.PATTERN_FILE_PATTERN);
+      string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.InjectFile.DataTypes.General.PATTERN_FILE_PATTERN);
 
       foreach (string tmpFile in patternFiles)
       {
@@ -180,13 +181,13 @@
     ///
     /// </summary>
     /// <returns></returns>
-    public TemplatePluginData OnGetTemplateData(BindingList<InjectPayloadRecord> injectPayloadRecords)
+    public TemplatePluginData OnGetTemplateData(BindingList<InjectFileRecord> injectFileRecords)
     {
       TemplatePluginData templateData = new TemplatePluginData();
-      List<InjectPayloadRecord> genericObjectList = new List<InjectPayloadRecord>();
-      foreach (InjectPayloadRecord tmpRecord in injectPayloadRecords)
+      List<InjectFileRecord> genericObjectList = new List<InjectFileRecord>();
+      foreach (InjectFileRecord tmpRecord in injectFileRecords)
       {
-        genericObjectList.Add(new InjectPayloadRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource));
+        genericObjectList.Add(new InjectFileRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource));
       }
 
       // Serialize the list
@@ -206,9 +207,9 @@
     ///
     /// </summary>
     /// <param name="pluginData"></param>
-    public List<InjectPayloadRecord> OnLoadTemplateData(TemplatePluginData templateData)
+    public List<InjectFileRecord> OnLoadTemplateData(TemplatePluginData templateData)
     {
-      List<InjectPayloadRecord> poisoningRecords = null;
+      List<InjectFileRecord> poisoningRecords = null;
 
       if (templateData == null)
       {
@@ -221,7 +222,7 @@
       stream.Seek(0, SeekOrigin.Begin);
 
       BinaryFormatter formatter = new BinaryFormatter();
-      poisoningRecords = (List<InjectPayloadRecord>)formatter.Deserialize(stream);
+      poisoningRecords = (List<InjectFileRecord>)formatter.Deserialize(stream);
 
       return poisoningRecords;
     }

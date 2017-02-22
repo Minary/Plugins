@@ -4,7 +4,8 @@
   using System.IO;
   using System.Windows.Forms;
 
-  public partial class Plugin_HttpInjectPayload
+
+  public partial class Plugin_HttpInjectFile
   {
 
     #region EVENTS
@@ -17,7 +18,7 @@
       }
       catch (Exception ex)
       {
-        string msg = string.Format("Error occurred while adding inject payload record: \r\n\r\n{0}", ex.Message);
+        string msg = string.Format("Error occurred while adding inject file record: \r\n\r\n{0}", ex.Message);
         this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
         MessageBox.Show(msg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
@@ -58,7 +59,7 @@
         DataGridView.HitTestInfo hti = this.dgv_InjectionTriggerURLs.HitTest(e.X, e.Y);
         if (hti.RowIndex >= 0)
         {
-          this.cms_InjectPayload.Show(this.dgv_InjectionTriggerURLs, e.Location);
+          this.cms_InjectFile.Show(this.dgv_InjectionTriggerURLs, e.Location);
         }
       }
       catch (Exception ex)

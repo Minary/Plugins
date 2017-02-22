@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  public partial class Plugin_HttpInjectPayload
+  public partial class Plugin_HttpInjectFile
   {
     /// <summary> 
     /// Required designer variable.
@@ -39,11 +39,11 @@
       this.l_ReplacementResource = new System.Windows.Forms.Label();
       this.ofd_FileToInject = new System.Windows.Forms.OpenFileDialog();
       this.bt_AddFile = new System.Windows.Forms.Button();
-      this.cms_InjectPayload = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.cms_InjectFile = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).BeginInit();
-      this.cms_InjectPayload.SuspendLayout();
+      this.cms_InjectFile.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_InjectionTriggerURLs
@@ -138,11 +138,11 @@
       // 
       // cms_InjectPayload
       // 
-      this.cms_InjectPayload.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.cms_InjectFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
-      this.cms_InjectPayload.Name = "cms_InjectPayload";
-      this.cms_InjectPayload.Size = new System.Drawing.Size(138, 48);
+      this.cms_InjectFile.Name = "cms_InjectPayload";
+      this.cms_InjectFile.Size = new System.Drawing.Size(138, 48);
       // 
       // deleteEntryToolStripMenuItem
       // 
@@ -173,7 +173,7 @@
       this.Size = new System.Drawing.Size(996, 368);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).EndInit();
-      this.cms_InjectPayload.ResumeLayout(false);
+      this.cms_InjectFile.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -188,7 +188,7 @@
     private System.Windows.Forms.Label l_ReplacementResource;
     private System.Windows.Forms.OpenFileDialog ofd_FileToInject;
     private System.Windows.Forms.Button bt_AddFile;
-    private System.Windows.Forms.ContextMenuStrip cms_InjectPayload;
+    private System.Windows.Forms.ContextMenuStrip cms_InjectFile;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
   }

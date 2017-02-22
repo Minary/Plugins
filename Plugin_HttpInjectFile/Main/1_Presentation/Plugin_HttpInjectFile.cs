@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.InjectPayload.DataTypes;
+  using Minary.Plugin.Main.InjectFile.DataTypes;
   using MinaryLib;
   using MinaryLib.DataTypes;
   using MinaryLib.Plugin;
@@ -11,7 +11,7 @@
   using System.Windows.Forms;
 
 
-  public partial class Plugin_HttpInjectPayload : UserControl, IPlugin
+  public partial class Plugin_HttpInjectFile : UserControl, IPlugin
   {
 
     #region MEMBERS
@@ -21,26 +21,26 @@ private const string Label_URL = "Redirect to URL";
     private string cacheFile;
     private string cacheUrl;
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<InjectPayloadRecord> injectPayloadRecords;
-    private InjectPayload.Infrastructure.InjectPayload infrastructureLayer;
-    private InjectPayloadConfig injectPayloadConfig;
+    private BindingList<InjectFileRecord> injectFileecords;
+    private InjectFile.Infrastructure.HttpInjectFile infrastructureLayer;
+    private InjectFileConfig injectFileConfig;
     private bool isUpToDate = false;
     private PluginProperties pluginProperties;
-    private string injectPayloadConfigFilePath;
+    private string injectFileConfigFilePath;
 
     #endregion
 
 
     #region PROPERTIES
 
-    public Control PluginControl { get { return (this); } }
+    public Control PluginControl { get { return this; } }
 
     #endregion
 
 
     #region PUBLIC
 
-    public Plugin_HttpInjectPayload(PluginProperties pluginProperties)
+    public Plugin_HttpInjectFile(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
 
@@ -78,8 +78,8 @@ private const string Label_URL = "Redirect to URL";
       columnReplacementResource.Width = 350;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnReplacementResource);
 
-      this.injectPayloadRecords = new BindingList<InjectPayloadRecord>();
-      this.dgv_InjectionTriggerURLs.DataSource = this.injectPayloadRecords;
+      this.injectFileecords = new BindingList<InjectFileRecord>();
+      this.dgv_InjectionTriggerURLs.DataSource = this.injectFileecords;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -106,9 +106,9 @@ private const string Label_URL = "Redirect to URL";
           pluginProperties.HostApplication.AttackServiceList == null ||
           !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
           pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.InjectPayload") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].ConfigFilePath))
+          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.InjectFile") ||
+          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectFile"].WorkingDirectory) ||
+          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectFile"].ConfigFilePath))
       {
         throw new Exception("Attack services parameters are invalid");
       }
@@ -116,25 +116,25 @@ private const string Label_URL = "Redirect to URL";
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
-      this.pluginProperties.PluginName = "HTTP inject payload";
+      this.pluginProperties.PluginName = "HTTP inject file";
       this.pluginProperties.PluginType = "Intrusive";
       this.pluginProperties.PluginDescription = "Answer an HTTP request by injecting a custom replacement file";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
-      // Set inject payload config file path
-      this.injectPayloadConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectPayload"].ConfigFilePath);
+      // Set inject file config file path
+      this.injectFileConfigFilePath = Path.Combine(
+                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectFile"].WorkingDirectory,
+                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectFile"].ConfigFilePath);
 
-      this.injectPayloadConfig = new InjectPayloadConfig()
+      this.injectFileConfig = new InjectFileConfig()
       {
-         InjectPayloadConfigFilePath = this.injectPayloadConfigFilePath,
+         InjectFileConfigFilePath = this.injectFileConfigFilePath,
          IsDebuggingOn = this.Config.HostApplication.IsDebuggingOn,
          BasisDirectory = this.Config.PluginBaseDir
       };
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = InjectPayload.Infrastructure.InjectPayload.GetInstance(this, this.injectPayloadConfig);
+      this.infrastructureLayer = InjectFile.Infrastructure.HttpInjectFile.GetInstance(this, this.injectFileConfig);
     }
 
     #endregion
@@ -151,7 +151,7 @@ private const string Label_URL = "Redirect to URL";
       this.tb_ReplacementResource.Enabled = true;
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
-      this.cms_InjectPayload.Enabled = true;
+      this.cms_InjectFile.Enabled = true;
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ private const string Label_URL = "Redirect to URL";
       this.tb_ReplacementResource.Enabled = false;
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;
-      this.cms_InjectPayload.Enabled = false;
+      this.cms_InjectFile.Enabled = false;
     }
 
     #endregion

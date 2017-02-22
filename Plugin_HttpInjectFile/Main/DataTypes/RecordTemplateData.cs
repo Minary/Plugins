@@ -1,4 +1,4 @@
-﻿namespace Minary.Plugin.Main.InjectPayload.DataTypes
+﻿namespace Minary.Plugin.Main.InjectFile.DataTypes
 {
   using System.ComponentModel;
   
@@ -7,8 +7,8 @@
   {
 
     #region PROPERTIES
-    
-    public BindingList<Minary.Plugin.Main.InjectPayload.DataTypes.InjectPayloadRecord> InjectPayloadRecords
+
+    public BindingList<Minary.Plugin.Main.InjectFile.DataTypes.InjectFileRecord> InjectPayloadRecords
     {
       get;
       set;

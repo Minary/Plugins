@@ -1,11 +1,11 @@
-﻿namespace Minary.Plugin.Main.InjectPayload.DataTypes
+﻿namespace Minary.Plugin.Main.InjectFile.DataTypes
 {
   using System;
   using System.ComponentModel;
 
 
   [Serializable]
-  public class InjectPayloadRecord : INotifyPropertyChanged
+  public class InjectFileRecord : INotifyPropertyChanged
   {
 
     #region MEMBERS
@@ -23,7 +23,7 @@
 
     #region PUBLIC
 
-    public InjectPayloadRecord()
+    public InjectFileRecord()
     {
       this.requestedScheme = string.Empty;
       this.requestedHost = string.Empty;
@@ -32,7 +32,7 @@
     }
 
 
-    public InjectPayloadRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource)
+    public InjectFileRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource)
     {
       this.requestedScheme = requestedScheme;
       this.requestedHost = requestedHost;

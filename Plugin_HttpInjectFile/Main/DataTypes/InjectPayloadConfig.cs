@@ -1,6 +1,7 @@
-﻿namespace Minary.Plugin.Main.InjectPayload.DataTypes
+﻿namespace Minary.Plugin.Main.InjectFile.DataTypes
 {
-  public class InjectPayloadConfig
+
+  public class InjectFileConfig
   {
 
     #region MEMBERS
@@ -18,7 +19,7 @@
 
     public string BasisDirectory { get { return this.basisDirectory; } set { this.basisDirectory = value; } }
 
-    public string InjectPayloadConfigFilePath { get { return this.injectPayloadConfigFilePath; } set { this.injectPayloadConfigFilePath = value; } }
+    public string InjectFileConfigFilePath { get { return this.injectPayloadConfigFilePath; } set { this.injectPayloadConfigFilePath = value; } }
 
     #endregion
 

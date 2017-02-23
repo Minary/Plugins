@@ -160,6 +160,7 @@
       this.tb_RequestedURLRegex.Enabled = true;
       this.tb_RedirectURL.Enabled = true;
       this.bt_AddRecord.Enabled = true;
+      this.cb_RedirectType.Enabled = true;
     }
 
     /// <summary>
@@ -170,6 +171,7 @@
       this.tb_RequestedURLRegex.Enabled = false;
       this.tb_RedirectURL.Enabled = false;
       this.bt_AddRecord.Enabled = false;
+      this.cb_RedirectType.Enabled = false;
     }
 
     #endregion

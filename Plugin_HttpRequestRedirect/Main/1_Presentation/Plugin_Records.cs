@@ -58,25 +58,25 @@
       requestedPath = requestedUri.PathAndQuery;
 
       // Verify if replacement URL resource is valid
-      Uri uri;
-      bool isValidReplUri = Uri.TryCreate(replacementResource, UriKind.Absolute, out uri);
+      Uri replacementUri;
+      bool isValidReplUri = Uri.TryCreate(replacementResource, UriKind.Absolute, out replacementUri);
 
       if (!isValidReplUri)
       {
         throw new Exception("The replacement resource URL is invalid");
       }
 
-      if (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps)
+      if (replacementUri.Scheme != Uri.UriSchemeHttp && replacementUri.Scheme != Uri.UriSchemeHttps)
       {
         throw new Exception("The replacement URL scheme is invalid.");
       }
 
-      if (string.IsNullOrEmpty(uri.Host) || string.IsNullOrWhiteSpace((uri.Host)))
+      if (string.IsNullOrEmpty(replacementUri.Host) || string.IsNullOrWhiteSpace((replacementUri.Host)))
       {
         throw new Exception("The replacement URL host is invalid.");
       }
 
-      if (string.IsNullOrEmpty(uri.PathAndQuery) || string.IsNullOrWhiteSpace((uri.PathAndQuery)))
+      if (string.IsNullOrEmpty(replacementUri.PathAndQuery) || string.IsNullOrWhiteSpace((replacementUri.PathAndQuery)))
       {
         throw new Exception("The replacement URL path is invalid.");
       }

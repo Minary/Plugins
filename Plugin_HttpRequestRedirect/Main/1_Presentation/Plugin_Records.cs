@@ -2,7 +2,6 @@
 {
   using Minary.Plugin.Main.RequestRedirect.DataTypes;
   using System;
-  using System.IO;
   using System.Text.RegularExpressions;
 
 

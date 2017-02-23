@@ -28,7 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_RedirectURL = new System.Windows.Forms.TextBox();
       this.dgv_RequestRedirectURLs = new System.Windows.Forms.DataGridView();
       this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
       this.tb_RedirectURL.Name = "tb_RedirectURL";
       this.tb_RedirectURL.Size = new System.Drawing.Size(232, 20);
       this.tb_RedirectURL.TabIndex = 2;
+      this.tb_RedirectURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
       // dgv_RequestRedirectURLs
       // 
@@ -64,8 +65,8 @@
       this.dgv_RequestRedirectURLs.MultiSelect = false;
       this.dgv_RequestRedirectURLs.Name = "dgv_RequestRedirectURLs";
       this.dgv_RequestRedirectURLs.RowHeadersVisible = false;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_RequestRedirectURLs.RowsDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_RequestRedirectURLs.RowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_RequestRedirectURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_RequestRedirectURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_RequestRedirectURLs.Size = new System.Drawing.Size(933, 313);
@@ -79,6 +80,7 @@
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
       this.tb_RequestedURLRegex.Size = new System.Drawing.Size(231, 20);
       this.tb_RequestedURLRegex.TabIndex = 1;
+      this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
       // l_RequestedURL
       // 

@@ -26,6 +26,23 @@
       }
     }
 
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TB_Host_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode != Keys.Enter)
+      {
+        return;
+      }
+
+      e.SuppressKeyPress = true;
+      this.BT_Add_Click(null, null);
+    }
+
     #endregion
 
   }

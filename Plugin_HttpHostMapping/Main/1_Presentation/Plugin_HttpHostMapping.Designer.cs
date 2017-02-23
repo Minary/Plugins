@@ -30,7 +30,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_MappedHost = new System.Windows.Forms.TextBox();
       this.l_MappedHost = new System.Windows.Forms.Label();
       this.dgv_HostMapping = new System.Windows.Forms.DataGridView();
@@ -40,8 +40,6 @@
       this.cms_HostMapping = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.rb_Https = new System.Windows.Forms.RadioButton();
-      this.rb_Http = new System.Windows.Forms.RadioButton();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HostMapping)).BeginInit();
       this.cms_HostMapping.SuspendLayout();
       this.SuspendLayout();
@@ -82,8 +80,8 @@
       this.dgv_HostMapping.MultiSelect = false;
       this.dgv_HostMapping.Name = "dgv_HostMapping";
       this.dgv_HostMapping.RowHeadersVisible = false;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HostMapping.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HostMapping.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_HostMapping.Size = new System.Drawing.Size(933, 313);
@@ -103,7 +101,7 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(858, 14);
+      this.bt_AddRecord.Location = new System.Drawing.Point(642, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
       this.bt_AddRecord.TabIndex = 11;
@@ -121,7 +119,7 @@
       this.l_RequestedHost.TabIndex = 8;
       this.l_RequestedHost.Text = "Requested host";
       // 
-      // CMS_HostMapping
+      // cms_HostMapping
       // 
       this.cms_HostMapping.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
@@ -143,43 +141,17 @@
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
-      // rb_Https
-      // 
-      this.rb_Https.AutoSize = true;
-      this.rb_Https.Location = new System.Drawing.Point(665, 16);
-      this.rb_Https.Name = "rb_Https";
-      this.rb_Https.Size = new System.Drawing.Size(48, 17);
-      this.rb_Https.TabIndex = 13;
-      this.rb_Https.TabStop = true;
-      this.rb_Https.Text = "https";
-      this.rb_Https.UseVisualStyleBackColor = true;
-      // 
-      // rb_Http
-      // 
-      this.rb_Http.AutoSize = true;
-      this.rb_Http.Checked = true;
-      this.rb_Http.Location = new System.Drawing.Point(616, 16);
-      this.rb_Http.Name = "rb_Http";
-      this.rb_Http.Size = new System.Drawing.Size(43, 17);
-      this.rb_Http.TabIndex = 12;
-      this.rb_Http.TabStop = true;
-      this.rb_Http.Text = "http";
-      this.rb_Http.UseVisualStyleBackColor = true;
-      this.rb_Http.CheckedChanged += new System.EventHandler(this.RB_Http_CheckedChanged);
-      // 
-      // PluginHttpHostMappingUC
+      // Plugin_HttpHostMapping
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.rb_Https);
-      this.Controls.Add(this.rb_Http);
       this.Controls.Add(this.tb_MappedHost);
       this.Controls.Add(this.l_MappedHost);
       this.Controls.Add(this.dgv_HostMapping);
       this.Controls.Add(this.tb_RequestedHost);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedHost);
-      this.Name = "PluginHttpHostMappingUC";
+      this.Name = "Plugin_HttpHostMapping";
       this.Size = new System.Drawing.Size(996, 368);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HostMapping)).EndInit();
       this.cms_HostMapping.ResumeLayout(false);
@@ -199,7 +171,5 @@
     private System.Windows.Forms.ContextMenuStrip cms_HostMapping;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
-    private System.Windows.Forms.RadioButton rb_Https;
-    private System.Windows.Forms.RadioButton rb_Http;
   }
 }

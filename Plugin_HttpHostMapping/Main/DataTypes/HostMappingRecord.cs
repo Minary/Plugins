@@ -11,7 +11,6 @@
     #region MEMBERS
 
     private string requestedHost;
-    private string mappedHostScheme;
     private string mappedHost;
 
     [field: NonSerialized]
@@ -25,15 +24,13 @@
     public HostMappingRecord()
     {
       this.requestedHost = string.Empty;
-      this.mappedHostScheme = string.Empty;
       this.mappedHost = string.Empty;
     }
 
 
-    public HostMappingRecord(string requestedHost, string mappedHostScheme, string mappedHost)
+    public HostMappingRecord(string requestedHost, string mappedHost)
     {
       this.requestedHost = requestedHost;
-      this.mappedHostScheme = mappedHostScheme;
       this.mappedHost = mappedHost;
     }
 
@@ -54,22 +51,6 @@
       {
         this.requestedHost = value;
         this.NotifyPropertyChanged("RequestedHost");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string MappedHostScheme
-    {
-      get
-      {
-        return this.mappedHostScheme;
-      }
-
-      set
-      {
-        this.mappedHostScheme = value;
-        this.NotifyPropertyChanged("MappedHostScheme");
       }
     }
 

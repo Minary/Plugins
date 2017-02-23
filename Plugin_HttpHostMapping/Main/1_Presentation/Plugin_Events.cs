@@ -18,8 +18,7 @@
     {
       try
       {
-        string scheme = this.rb_Http.Checked ? "http" : "https";
-        this.AddRecord(this.tb_RequestedHost.Text, scheme, this.tb_MappedHost.Text);
+        this.AddRecord(this.tb_RequestedHost.Text, this.tb_MappedHost.Text);
       }
       catch (Exception ex)
       {
@@ -112,12 +111,6 @@
       }
 
       this.BT_AddRecord_Click(sender, e);
-    }
-
-
-    private void RB_Http_CheckedChanged(object sender, EventArgs e)
-    {
-
     }
 
     #endregion

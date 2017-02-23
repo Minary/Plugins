@@ -96,7 +96,7 @@
         string requestedHost = tmpRecord.RequestedHost;
         string mappedHost = tmpRecord.MappedHost;
 
-        hostMappingConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.MappedHostScheme, tmpRecord.MappedHost);
+        hostMappingConfigurationFileData += string.Format("{0}:{1}\r\n", tmpRecord.RequestedHost, tmpRecord.MappedHost);
       }
 
       hostMappingConfigurationFileData = hostMappingConfigurationFileData.Trim();
@@ -229,7 +229,7 @@
       // Replace current configuration parameter with placeholder values
       foreach (HostMappingRecord tmpRecord in hostMappingRecords)
       {
-        genericObjectList.Add(new HostMappingRecord(tmpRecord.RequestedHost, tmpRecord.MappedHostScheme, tmpRecord.MappedHost));
+        genericObjectList.Add(new HostMappingRecord(tmpRecord.RequestedHost, tmpRecord.MappedHost));
       }
 
       // Serialize the list

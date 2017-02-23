@@ -15,8 +15,8 @@
     ///
     /// </summary>
     /// <param name="pRecord"></param>
-    private delegate void AddRecordDelegate(string requestedHost, string mappedHost, string scheme);
-    private void AddRecord(string requestedHost, string scheme, string mappedHost)
+    private delegate void AddRecordDelegate(string requestedHost, string mappedHost);
+    private void AddRecord(string requestedHost, string mappedHost)
     {
       if (this.InvokeRequired)
       {
@@ -36,25 +36,6 @@
         throw new Exception("Mapped host is invalid");
       }
 
-      // Verify if scheme is correct
-      if (string.IsNullOrEmpty(scheme) || !Regex.Match("^(http|https)$", scheme).Success)
-      {
-        throw new Exception("Mapped host scheme is invalid");
-      }
-
-      // Verify if mapped host has a valid URL structure
-      //string requestedResource = mappedHost;
-      //Uri requestedUri;
-      //if (!requestedResource.StartsWith("http"))
-      //{
-      //  requestedResource = "http://" + requestedResource;
-      //}
-
-      //if (Uri.TryCreate(requestedResource, UriKind.Absolute, out requestedUri) == false)
-      //{
-      //  throw new Exception("The mapping address is invalid");
-      //}
-
       // Verify if requested host does not exist yet
       foreach (HostMappingRecord tmpRecord in this.hostMappingRecords)
       {
@@ -69,7 +50,7 @@
       {
         requestedHost = requestedHost.Trim();
         mappedHost = mappedHost.Trim();
-        HostMappingRecord newRecord = new HostMappingRecord(requestedHost, scheme, mappedHost);
+        HostMappingRecord newRecord = new HostMappingRecord(requestedHost, mappedHost);
 
         this.dgv_HostMapping.SuspendLayout();
         this.hostMappingRecords.Insert(0, newRecord);

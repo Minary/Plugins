@@ -42,12 +42,12 @@
         throw new Exception("The requested URL scheme is invalid.");
       }
 
-      if (string.IsNullOrEmpty(requestedUri.Host) || string.IsNullOrWhiteSpace((requestedUri.Host)))
+      if (string.IsNullOrEmpty(requestedUri.Host) || string.IsNullOrWhiteSpace(requestedUri.Host))
       {
         throw new Exception("The requested URL host is invalid.");
       }
 
-      if (string.IsNullOrEmpty(requestedUri.PathAndQuery) || string.IsNullOrWhiteSpace((requestedUri.PathAndQuery)))
+      if (string.IsNullOrEmpty(requestedUri.PathAndQuery) || string.IsNullOrWhiteSpace(requestedUri.PathAndQuery))
       {
         throw new Exception("The requested URL path is invalid.");
       }

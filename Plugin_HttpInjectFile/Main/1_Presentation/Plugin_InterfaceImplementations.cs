@@ -184,10 +184,10 @@
 
       this.injectFileRecords.Clear();
 
-      List<InjectFileRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpInjectPayloadRecords != null && tmpInjectPayloadRecords.Count > 0)
+      List<InjectFileRecord> tmpInjectFileRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
+      if (tmpInjectFileRecords != null && tmpInjectFileRecords.Count > 0)
       {
-        tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectFileRecords.Add(elem));
+        tmpInjectFileRecords.ToList().ForEach(elem => this.injectFileRecords.Add(elem));
       }
     }
 

@@ -3,12 +3,12 @@
   using System.ComponentModel;
   
 
-  public class TemplateInjectPayload
+  public class TemplateInjectFile
   {
 
     #region PROPERTIES
 
-    public BindingList<Minary.Plugin.Main.InjectFile.DataTypes.InjectFileRecord> InjectPayloadRecords
+    public BindingList<Minary.Plugin.Main.InjectFile.DataTypes.InjectFileRecord> InjectFileRecords
     {
       get;
       set;
@@ -20,10 +20,10 @@
     #region PUBLIC
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TemplateInjectPayload"/> class.
+    /// Initializes a new instance of the <see cref="TemplateInjectFile"/> class.
     ///
     /// </summary>
-    public TemplateInjectPayload()
+    public TemplateInjectFile()
     {
     }
 

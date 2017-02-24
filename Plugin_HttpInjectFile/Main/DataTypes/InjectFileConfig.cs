@@ -8,7 +8,7 @@
 
     private bool isDebuggingOn;
     private string basisDirectory;
-    private string injectPayloadConfigFilePath;
+    private string injectFileConfigFilePath;
 
     #endregion
 
@@ -19,7 +19,7 @@
 
     public string BasisDirectory { get { return this.basisDirectory; } set { this.basisDirectory = value; } }
 
-    public string InjectFileConfigFilePath { get { return this.injectPayloadConfigFilePath; } set { this.injectPayloadConfigFilePath = value; } }
+    public string InjectFileConfigFilePath { get { return this.injectFileConfigFilePath; } set { this.injectFileConfigFilePath = value; } }
 
     #endregion
 

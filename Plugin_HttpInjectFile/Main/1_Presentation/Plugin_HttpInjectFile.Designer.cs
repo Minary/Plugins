@@ -136,12 +136,12 @@
       this.bt_AddFile.UseVisualStyleBackColor = true;
       this.bt_AddFile.Click += new System.EventHandler(this.BT_AddFile_Click);
       // 
-      // cms_InjectPayload
+      // cms_InjectFile
       // 
       this.cms_InjectFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
-      this.cms_InjectFile.Name = "cms_InjectPayload";
+      this.cms_InjectFile.Name = "cms_InjectFile";
       this.cms_InjectFile.Size = new System.Drawing.Size(138, 48);
       // 
       // deleteEntryToolStripMenuItem
@@ -158,7 +158,7 @@
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
-      // Plugin_HttpInjectPayload
+      // Plugin_HttpInjectFile
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,7 +169,7 @@
       this.Controls.Add(this.tb_RequestedURLRegex);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedURL);
-      this.Name = "Plugin_HttpInjectPayload";
+      this.Name = "Plugin_HttpInjectFile";
       this.Size = new System.Drawing.Size(996, 368);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).EndInit();

@@ -26,7 +26,7 @@
     #region PUBLIC
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="InjectPayload"/> class.
+    /// Initializes a new instance of the <see cref="InjectFile"/> class.
     ///
     /// </summary>
     /// <param name="plugin"></param>

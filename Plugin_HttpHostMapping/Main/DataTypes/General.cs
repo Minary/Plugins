@@ -16,7 +16,7 @@
 
   #region TYPE DEFINITION
 
-  public delegate void OnInjectPayloadExitDelegate();
+  public delegate void OnHostMappingExitDelegate();
 
   #endregion
 

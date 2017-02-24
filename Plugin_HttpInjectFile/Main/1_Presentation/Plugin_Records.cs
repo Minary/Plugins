@@ -63,7 +63,7 @@
       }
 
       // Verify if record already exists
-      foreach (InjectFileRecord tmpRecord in this.injectFileecords)
+      foreach (InjectFileRecord tmpRecord in this.injectFileRecords)
       {
         if (tmpRecord.RequestedHost == requestedHost && tmpRecord.RequestedPath == requestedPath)
         {
@@ -88,7 +88,7 @@
         InjectFileRecord newRecord = new InjectFileRecord(requestedScheme, requestedHost, requestedPath, replacementResource);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
-        this.injectFileecords.Insert(0, newRecord);
+        this.injectFileRecords.Insert(0, newRecord);
         this.dgv_InjectionTriggerURLs.ResumeLayout();
       }
     }
@@ -135,7 +135,7 @@
         try
         {
           int currentIndex = this.dgv_InjectionTriggerURLs.CurrentCell.RowIndex;
-          this.injectFileecords.RemoveAt(currentIndex);
+          this.injectFileRecords.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
@@ -186,7 +186,7 @@
 
         try
         {
-          this.injectFileecords.RemoveAt(index);
+          this.injectFileRecords.RemoveAt(index);
         }
         catch (Exception)
         {
@@ -215,7 +215,7 @@
 
         try
         {
-          this.injectFileecords.Clear();
+          this.injectFileRecords.Clear();
         }
         catch (Exception)
         {

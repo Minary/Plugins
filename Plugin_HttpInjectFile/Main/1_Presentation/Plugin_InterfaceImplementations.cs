@@ -60,14 +60,14 @@
         return;
       }
 
-      if (this.injectFileecords != null && this.injectFileecords.Count > 0)
+      if (this.injectFileRecords != null && this.injectFileRecords.Count > 0)
       {
         try
         {
           this.SetGuiInactive();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
           this.injectFileConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
-          this.infrastructureLayer.OnStart(this.injectFileecords.ToList());
+          this.infrastructureLayer.OnStart(this.injectFileRecords.ToList());
         }
         catch (MinaryWarningException ex)
         {
@@ -169,7 +169,7 @@
         return null;
       }
 
-      return this.infrastructureLayer.OnGetTemplateData(this.injectFileecords);
+      return this.infrastructureLayer.OnGetTemplateData(this.injectFileRecords);
     }
 
 
@@ -182,12 +182,12 @@
         return;
       }
 
-      this.injectFileecords.Clear();
+      this.injectFileRecords.Clear();
 
       List<InjectFileRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
       if (tmpInjectPayloadRecords != null && tmpInjectPayloadRecords.Count > 0)
       {
-        tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectFileecords.Add(elem));
+        tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectFileRecords.Add(elem));
       }
     }
 

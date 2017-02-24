@@ -21,7 +21,7 @@ private const string Label_URL = "Redirect to URL";
     private string cacheFile;
     private string cacheUrl;
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<InjectFileRecord> injectFileecords;
+    private BindingList<InjectFileRecord> injectFileRecords;
     private InjectFile.Infrastructure.HttpInjectFile infrastructureLayer;
     private InjectFileConfig injectFileConfig;
     private bool isUpToDate = false;
@@ -78,8 +78,8 @@ private const string Label_URL = "Redirect to URL";
       columnReplacementResource.Width = 350;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnReplacementResource);
 
-      this.injectFileecords = new BindingList<InjectFileRecord>();
-      this.dgv_InjectionTriggerURLs.DataSource = this.injectFileecords;
+      this.injectFileRecords = new BindingList<InjectFileRecord>();
+      this.dgv_InjectionTriggerURLs.DataSource = this.injectFileRecords;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)

@@ -4,27 +4,28 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9BD58B9-646E-4AD1-B072-9D8BEB876E93}</ProjectGuid>
+    <ProjectGuid>{C85DD621-0742-4774-80DA-C1912BCFFA8E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plugin_HttpInjectFile</RootNamespace>
-    <AssemblyName>Plugin_HttpInjectFile</AssemblyName>
+    <RootNamespace>Plugin_HttpInjectCode</RootNamespace>
+    <AssemblyName>Plugin_HttpInjectCode</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,25 +54,25 @@
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_HttpInjectFile.cs">
+    <Compile Include="Main\1_Presentation\Plugin_HttpInjectCode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_HttpInjectFile.Designer.cs">
-      <DependentUpon>Plugin_HttpInjectFile.cs</DependentUpon>
+    <Compile Include="Main\1_Presentation\Plugin_HttpInjectCode.Designer.cs">
+      <DependentUpon>Plugin_HttpInjectCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\1_Presentation\Plugin_InterfaceImplementations.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\2_Infrastructure\InjectFile.cs" />
+    <Compile Include="Main\2_Infrastructure\InjectCode.cs" />
     <Compile Include="Main\DataTypes\General.cs" />
-    <Compile Include="Main\DataTypes\InjectFileConfig.cs" />
-    <Compile Include="Main\DataTypes\InjectFileRecord.cs" />
+    <Compile Include="Main\DataTypes\InjectCodeConfig.cs" />
+    <Compile Include="Main\DataTypes\InjectCodeRecord.cs" />
     <Compile Include="Main\DataTypes\RecordTemplateData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpInjectFile.resx">
-      <DependentUpon>Plugin_HttpInjectFile.cs</DependentUpon>
+    <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpInjectCode.resx">
+      <DependentUpon>Plugin_HttpInjectCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

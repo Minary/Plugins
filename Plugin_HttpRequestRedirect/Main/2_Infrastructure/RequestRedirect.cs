@@ -53,6 +53,7 @@
       }
     }
 
+
     /// <summary>
     ///
     /// </summary>
@@ -107,7 +108,7 @@
       string requestRedirectConfigurationFileData = string.Empty;
       foreach (RequestRedirectRecord tmpRecord in recordList)
       {
-        requestRedirectConfigurationFileData += string.Format("{0}:{1}:{2}:{3}:{4}\r\n", tmpRecord.RedirectType, tmpRecord.RedirectDescription, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        requestRedirectConfigurationFileData += string.Format("{0}||{1}||{2}||{3}||{4}\r\n", tmpRecord.RedirectType, tmpRecord.RedirectDescription, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
       }
 
       requestRedirectConfigurationFileData = requestRedirectConfigurationFileData.Trim();

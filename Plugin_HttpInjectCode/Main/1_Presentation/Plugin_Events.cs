@@ -127,7 +127,7 @@
       this.BT_Add_Click(sender, e);
     }
 
-    
+ 
     private void BT_AddFile_Click(object sender, EventArgs e)
     {
       this.ofd_FileToInject.InitialDirectory = Directory.GetCurrentDirectory();

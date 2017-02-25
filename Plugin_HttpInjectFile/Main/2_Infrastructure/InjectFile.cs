@@ -53,6 +53,7 @@
       }
     }
 
+
     /// <summary>
     ///
     /// </summary>
@@ -112,7 +113,7 @@
         string requestedPath = tmpRecord.RequestedPath;
         string replacementResource = tmpRecord.ReplacementResource;
 
-        injectFileConfigurationFileData += string.Format("{0}:{1}:{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        injectFileConfigurationFileData += string.Format("{0}||{1}||{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
       }
 
       injectFileConfigurationFileData = injectFileConfigurationFileData.Trim();

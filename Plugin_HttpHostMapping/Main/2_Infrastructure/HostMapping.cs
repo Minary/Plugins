@@ -11,6 +11,7 @@
   using System.Runtime.Serialization.Formatters.Binary;
   using System.Text;
 
+
   public class HostMapping
   {
 
@@ -96,7 +97,7 @@
         string requestedHost = tmpRecord.RequestedHost;
         string mappedHost = tmpRecord.MappedHost;
 
-        hostMappingConfigurationFileData += string.Format("{0}:{1}\r\n", tmpRecord.RequestedHost, tmpRecord.MappedHost);
+        hostMappingConfigurationFileData += string.Format("{0}||{1}\r\n", tmpRecord.RequestedHost, tmpRecord.MappedHost);
       }
 
       hostMappingConfigurationFileData = hostMappingConfigurationFileData.Trim();

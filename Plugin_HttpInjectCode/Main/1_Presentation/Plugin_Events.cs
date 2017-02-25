@@ -14,7 +14,7 @@
     {
       try
       {
-        string tag = this.cb_injectPisition.Text;
+        string tag = this.cb_injectPosition.Text;
         string position = this.rb_Before.Checked?"before":"after";
         this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_InjectioinContentFile.Text, tag, position);
       }

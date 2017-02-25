@@ -43,7 +43,7 @@
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.l_Tag = new System.Windows.Forms.Label();
-      this.cb_injectPisition = new System.Windows.Forms.ComboBox();
+      this.cb_injectPosition = new System.Windows.Forms.ComboBox();
       this.rb_Before = new System.Windows.Forms.RadioButton();
       this.rb_After = new System.Windows.Forms.RadioButton();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).BeginInit();
@@ -174,12 +174,12 @@
       // 
       // cb_injectPisition
       // 
-      this.cb_injectPisition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.cb_injectPisition.FormattingEnabled = true;
-      this.cb_injectPisition.Location = new System.Drawing.Point(617, 13);
-      this.cb_injectPisition.Name = "cb_injectPisition";
-      this.cb_injectPisition.Size = new System.Drawing.Size(89, 21);
-      this.cb_injectPisition.TabIndex = 4;
+      this.cb_injectPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.cb_injectPosition.FormattingEnabled = true;
+      this.cb_injectPosition.Location = new System.Drawing.Point(617, 13);
+      this.cb_injectPosition.Name = "cb_injectPisition";
+      this.cb_injectPosition.Size = new System.Drawing.Size(89, 21);
+      this.cb_injectPosition.TabIndex = 4;
       // 
       // rb_Before
       // 
@@ -210,7 +210,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.rb_After);
       this.Controls.Add(this.rb_Before);
-      this.Controls.Add(this.cb_injectPisition);
+      this.Controls.Add(this.cb_injectPosition);
       this.Controls.Add(this.l_Tag);
       this.Controls.Add(this.bt_AddFile);
       this.Controls.Add(this.tb_InjectioinContentFile);
@@ -242,7 +242,7 @@
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
     private System.Windows.Forms.Label l_Tag;
-    private System.Windows.Forms.ComboBox cb_injectPisition;
+    private System.Windows.Forms.ComboBox cb_injectPosition;
     private System.Windows.Forms.RadioButton rb_Before;
     private System.Windows.Forms.RadioButton rb_After;
   }

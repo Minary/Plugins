@@ -149,13 +149,13 @@ private const string Label_URL = "Redirect to URL";
       };
 
       // Populate position combobox
-      this.cb_injectPisition.Items.Add("<html>");
-      this.cb_injectPisition.Items.Add("</html>");
-      this.cb_injectPisition.Items.Add("<head>");
-      this.cb_injectPisition.Items.Add("</head>");
-      this.cb_injectPisition.Items.Add("<body>");
-      this.cb_injectPisition.Items.Add("</body>");
-      this.cb_injectPisition.SelectedIndex = 0;
+      this.cb_injectPosition.Items.Add("<html>");
+      this.cb_injectPosition.Items.Add("</html>");
+      this.cb_injectPosition.Items.Add("<head>");
+      this.cb_injectPosition.Items.Add("</head>");
+      this.cb_injectPosition.Items.Add("<body>");
+      this.cb_injectPosition.Items.Add("</body>");
+      this.cb_injectPosition.SelectedIndex = 0;
 
       // Instantiate infrastructureLayer layer
       this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.InjectCodeConfig);
@@ -178,6 +178,9 @@ private const string Label_URL = "Redirect to URL";
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cms_InjectCode.Enabled = true;
+      this.cb_injectPosition.Enabled = true;
+      this.rb_After.Enabled = true;
+      this.rb_Before.Enabled = true;
     }
 
     /// <summary>
@@ -190,6 +193,9 @@ private const string Label_URL = "Redirect to URL";
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cms_InjectCode.Enabled = false;
+      this.cb_injectPosition.Enabled = false;
+      this.rb_After.Enabled = false;
+      this.rb_Before.Enabled = false;
     }
 
     #endregion

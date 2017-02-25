@@ -139,11 +139,11 @@
 
       this.tb_InjectioinContentFile.Text = this.ofd_FileToInject.FileName;
       this.tb_InjectioinContentFile.TextAlign = HorizontalAlignment.Right;
+      this.tb_InjectioinContentFile.SelectionStart = this.tb_InjectioinContentFile.Text.Length + 1;
     }
 
 
-
-    private void rb_Position_CheckedChanged(object sender, EventArgs e)
+    private void RB_Position_CheckedChanged(object sender, EventArgs e)
     {
       this.rb_After.Checked = !this.rb_Before.Checked == true;
     }

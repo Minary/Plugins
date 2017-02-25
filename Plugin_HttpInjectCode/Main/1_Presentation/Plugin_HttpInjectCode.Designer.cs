@@ -190,7 +190,7 @@
       this.rb_Before.TabIndex = 6;
       this.rb_Before.Text = "Before";
       this.rb_Before.UseVisualStyleBackColor = true;
-      this.rb_Before.CheckedChanged += new System.EventHandler(this.rb_Position_CheckedChanged);
+      this.rb_Before.CheckedChanged += new System.EventHandler(this.RB_Position_CheckedChanged);
       // 
       // rb_After
       // 

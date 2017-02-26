@@ -149,17 +149,16 @@ private const string Label_URL = "Redirect to URL";
       };
 
       // Populate position combobox
-      this.cb_injectPosition.Items.Add("<html>");
-      this.cb_injectPosition.Items.Add("</html>");
-      this.cb_injectPosition.Items.Add("<head>");
-      this.cb_injectPosition.Items.Add("</head>");
-      this.cb_injectPosition.Items.Add("<body>");
-      this.cb_injectPosition.Items.Add("</body>");
+      this.cb_injectPosition.Items.Add("html");
+      this.cb_injectPosition.Items.Add("/html");
+      this.cb_injectPosition.Items.Add("head");
+      this.cb_injectPosition.Items.Add("/head");
+      this.cb_injectPosition.Items.Add("body");
+      this.cb_injectPosition.Items.Add("/body");
       this.cb_injectPosition.SelectedIndex = 0;
 
       // Instantiate infrastructureLayer layer
       this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.InjectCodeConfig);
-
 
     }
 

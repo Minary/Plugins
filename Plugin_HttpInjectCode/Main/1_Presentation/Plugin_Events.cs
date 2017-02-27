@@ -1,5 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
+  using Minary.Plugin.Main.InjectCode.DataTypes;
   using System;
   using System.IO;
   using System.Windows.Forms;
@@ -14,9 +15,12 @@
     {
       try
       {
-        string tag = this.cb_injectPosition.Text;
+        string selectedTag = (this.cb_injectPosition.SelectedItem as ComboboxItem).Value.ToString();
         string position = this.rb_Before.Checked?"before":"after";
-        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_InjectioinContentFile.Text, tag, position);
+        string url = string.Format("http://{0}", this.tb_RequestedURLRegex.Text);
+        string path = this.tb_InjectioinContentFile.Text;
+
+        this.AddRecord(url, path, selectedTag, position);
       }
       catch (Exception ex)
       {

@@ -46,6 +46,7 @@
       this.cb_injectPosition = new System.Windows.Forms.ComboBox();
       this.rb_Before = new System.Windows.Forms.RadioButton();
       this.rb_After = new System.Windows.Forms.RadioButton();
+      this.l_Scheme = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).BeginInit();
       this.cms_InjectCode.SuspendLayout();
       this.SuspendLayout();
@@ -80,9 +81,9 @@
       // tb_RequestedURLRegex
       // 
       this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(90, 16);
+      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(131, 16);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(218, 20);
+      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(172, 20);
       this.tb_RequestedURLRegex.TabIndex = 1;
       this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
@@ -91,7 +92,7 @@
       this.bt_AddRecord.Location = new System.Drawing.Point(882, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
-      this.bt_AddRecord.TabIndex = 5;
+      this.bt_AddRecord.TabIndex = 7;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
       this.bt_AddRecord.Click += new System.EventHandler(this.BT_Add_Click);
@@ -101,7 +102,7 @@
       // 
       this.l_RequestedURL.AutoSize = true;
       this.l_RequestedURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestedURL.Location = new System.Drawing.Point(23, 19);
+      this.l_RequestedURL.Location = new System.Drawing.Point(21, 19);
       this.l_RequestedURL.Name = "l_RequestedURL";
       this.l_RequestedURL.Size = new System.Drawing.Size(63, 13);
       this.l_RequestedURL.TabIndex = 0;
@@ -132,7 +133,7 @@
       // 
       // bt_AddFile
       // 
-      this.bt_AddFile.Location = new System.Drawing.Point(539, 13);
+      this.bt_AddFile.Location = new System.Drawing.Point(533, 13);
       this.bt_AddFile.Name = "bt_AddFile";
       this.bt_AddFile.Size = new System.Drawing.Size(23, 21);
       this.bt_AddFile.TabIndex = 3;
@@ -166,28 +167,29 @@
       // 
       this.l_Tag.AutoSize = true;
       this.l_Tag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Tag.Location = new System.Drawing.Point(582, 17);
+      this.l_Tag.Location = new System.Drawing.Point(584, 16);
       this.l_Tag.Name = "l_Tag";
       this.l_Tag.Size = new System.Drawing.Size(29, 13);
       this.l_Tag.TabIndex = 0;
       this.l_Tag.Text = "Tag";
       // 
-      // cb_injectPisition
+      // cb_injectPosition
       // 
       this.cb_injectPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_injectPosition.FormattingEnabled = true;
       this.cb_injectPosition.Location = new System.Drawing.Point(617, 13);
-      this.cb_injectPosition.Name = "cb_injectPisition";
+      this.cb_injectPosition.Name = "cb_injectPosition";
       this.cb_injectPosition.Size = new System.Drawing.Size(89, 21);
       this.cb_injectPosition.TabIndex = 4;
       // 
       // rb_Before
       // 
       this.rb_Before.AutoSize = true;
-      this.rb_Before.Location = new System.Drawing.Point(734, 13);
+      this.rb_Before.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.rb_Before.Location = new System.Drawing.Point(741, 13);
       this.rb_Before.Name = "rb_Before";
-      this.rb_Before.Size = new System.Drawing.Size(56, 17);
-      this.rb_Before.TabIndex = 6;
+      this.rb_Before.Size = new System.Drawing.Size(62, 17);
+      this.rb_Before.TabIndex = 5;
       this.rb_Before.Text = "Before";
       this.rb_Before.UseVisualStyleBackColor = true;
       this.rb_Before.CheckedChanged += new System.EventHandler(this.RB_Position_CheckedChanged);
@@ -196,18 +198,31 @@
       // 
       this.rb_After.AutoSize = true;
       this.rb_After.Checked = true;
+      this.rb_After.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.rb_After.Location = new System.Drawing.Point(796, 13);
       this.rb_After.Name = "rb_After";
-      this.rb_After.Size = new System.Drawing.Size(47, 17);
-      this.rb_After.TabIndex = 7;
+      this.rb_After.Size = new System.Drawing.Size(52, 17);
+      this.rb_After.TabIndex = 6;
       this.rb_After.TabStop = true;
       this.rb_After.Text = "After";
       this.rb_After.UseVisualStyleBackColor = true;
+      // 
+      // l_Scheme
+      // 
+      this.l_Scheme.AutoSize = true;
+      this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.l_Scheme.Location = new System.Drawing.Point(92, 18);
+      this.l_Scheme.Name = "l_Scheme";
+      this.l_Scheme.Size = new System.Drawing.Size(49, 13);
+      this.l_Scheme.TabIndex = 0;
+      this.l_Scheme.Text = "http(s)://";
       // 
       // Plugin_HttpInjectCode
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.tb_RequestedURLRegex);
+      this.Controls.Add(this.l_Scheme);
       this.Controls.Add(this.rb_After);
       this.Controls.Add(this.rb_Before);
       this.Controls.Add(this.cb_injectPosition);
@@ -216,7 +231,6 @@
       this.Controls.Add(this.tb_InjectioinContentFile);
       this.Controls.Add(this.l_ReplacementResource);
       this.Controls.Add(this.dgv_InjectionTriggerURLs);
-      this.Controls.Add(this.tb_RequestedURLRegex);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedURL);
       this.Name = "Plugin_HttpInjectCode";
@@ -245,5 +259,6 @@
     private System.Windows.Forms.ComboBox cb_injectPosition;
     private System.Windows.Forms.RadioButton rb_Before;
     private System.Windows.Forms.RadioButton rb_After;
+    private System.Windows.Forms.Label l_Scheme;
   }
 }

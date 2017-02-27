@@ -66,9 +66,11 @@
       }
 
       // Verify if record already exists
-      foreach (InjectCodeRecord tmpRecord in this.InjectCodeRecords)
+      foreach (InjectCodeRecord tmpRecord in this.injectCodeRecords)
       {
-        if (tmpRecord.RequestedHost == requestedHost && tmpRecord.RequestedPath == requestedPath)
+        if (tmpRecord.RequestedHost == requestedHost &&
+            tmpRecord.RequestedPath == requestedPath &&
+            tmpRecord.Tag == tag)
         {
           throw new Exception("A record with this host name already exists.");
         }
@@ -91,7 +93,7 @@
         InjectCodeRecord newRecord = new InjectCodeRecord(requestedScheme, requestedHost, requestedPath, replacementResource, tag, position);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
-        this.InjectCodeRecords.Insert(0, newRecord);
+        this.injectCodeRecords.Insert(0, newRecord);
         this.dgv_InjectionTriggerURLs.ResumeLayout();
       }
     }
@@ -138,7 +140,7 @@
         try
         {
           int currentIndex = this.dgv_InjectionTriggerURLs.CurrentCell.RowIndex;
-          this.InjectCodeRecords.RemoveAt(currentIndex);
+          this.injectCodeRecords.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
@@ -189,7 +191,7 @@
 
         try
         {
-          this.InjectCodeRecords.RemoveAt(index);
+          this.injectCodeRecords.RemoveAt(index);
         }
         catch (Exception)
         {
@@ -218,7 +220,7 @@
 
         try
         {
-          this.InjectCodeRecords.Clear();
+          this.injectCodeRecords.Clear();
         }
         catch (Exception)
         {

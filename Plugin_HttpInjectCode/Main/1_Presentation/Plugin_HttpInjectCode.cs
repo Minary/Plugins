@@ -16,16 +16,12 @@
 
     #region MEMBERS
 
-private const string Label_File = "Inject code";
-private const string Label_URL = "Redirect to URL";
-    private string cacheFile;
-    private string cacheUrl;
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<InjectCodeRecord> InjectCodeRecords;
+    private BindingList<InjectCodeRecord> injectCodeRecords;
     private InjectCode.Infrastructure.HttpInjectCode infrastructureLayer;
-    private InjectCodeConfig InjectCodeConfig;
+    private InjectCodeConfig injectCodeConfig;
     private PluginProperties pluginProperties;
-    private string InjectCodeConfigFilePath;
+    private string injectCodeConfigFilePath;
 
     #endregion
 
@@ -50,7 +46,8 @@ private const string Label_URL = "Redirect to URL";
       columnRequestedScheme.Name = "RequestedScheme";
       columnRequestedScheme.HeaderText = "Scheme";
       columnRequestedScheme.ReadOnly = true;
-      columnRequestedScheme.Width = 50;
+      columnRequestedScheme.Visible = false;
+      columnRequestedScheme.Width = 0;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedScheme);
 
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
@@ -66,7 +63,7 @@ private const string Label_URL = "Redirect to URL";
       columnRequestedPath.Name = "RequestedPath";
       columnRequestedPath.HeaderText = "Requested path";
       columnRequestedPath.ReadOnly = true;
-      columnRequestedPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      columnRequestedPath.Width = 150;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedPath);
 
       DataGridViewTextBoxColumn columnTag = new DataGridViewTextBoxColumn();
@@ -91,10 +88,11 @@ private const string Label_URL = "Redirect to URL";
       columnReplacementResource.HeaderText = "Injection code file";
       columnReplacementResource.ReadOnly = true;
       columnReplacementResource.Width = 350;
+      columnReplacementResource.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnReplacementResource);
 
-      this.InjectCodeRecords = new BindingList<InjectCodeRecord>();
-      this.dgv_InjectionTriggerURLs.DataSource = this.InjectCodeRecords;
+      this.injectCodeRecords = new BindingList<InjectCodeRecord>();
+      this.dgv_InjectionTriggerURLs.DataSource = this.injectCodeRecords;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -137,28 +135,28 @@ private const string Label_URL = "Redirect to URL";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
       // Set inject code config file path
-      this.InjectCodeConfigFilePath = Path.Combine(
+      this.injectCodeConfigFilePath = Path.Combine(
                                                  pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].WorkingDirectory,
                                                  pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].ConfigFilePath);
 
-      this.InjectCodeConfig = new InjectCodeConfig()
+      this.injectCodeConfig = new InjectCodeConfig()
       {
-         InjectCodeConfigFilePath = this.InjectCodeConfigFilePath,
+         InjectCodeConfigFilePath = this.injectCodeConfigFilePath,
          IsDebuggingOn = this.Config.HostApplication.IsDebuggingOn,
          BasisDirectory = this.Config.PluginBaseDir
       };
 
       // Populate position combobox
-      this.cb_injectPosition.Items.Add("html");
-      this.cb_injectPosition.Items.Add("/html");
-      this.cb_injectPosition.Items.Add("head");
-      this.cb_injectPosition.Items.Add("/head");
-      this.cb_injectPosition.Items.Add("body");
-      this.cb_injectPosition.Items.Add("/body");
+      this.cb_injectPosition.Items.Add(new ComboboxItem("<html>", "html"));
+      this.cb_injectPosition.Items.Add(new ComboboxItem("</html>", "/html"));
+      this.cb_injectPosition.Items.Add(new ComboboxItem("<head>", "head"));
+      this.cb_injectPosition.Items.Add(new ComboboxItem("</head>", "/head"));
+      this.cb_injectPosition.Items.Add(new ComboboxItem("<body>", "body"));
+      this.cb_injectPosition.Items.Add(new ComboboxItem("</body>", "/body"));
       this.cb_injectPosition.SelectedIndex = 0;
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.InjectCodeConfig);
+      this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.injectCodeConfig);
 
     }
 

@@ -37,11 +37,6 @@
         throw new Exception("The requested resource URL is invalid");
       }
 
-      if (requestedUri.Scheme != Uri.UriSchemeHttp && requestedUri.Scheme != Uri.UriSchemeHttps)
-      {
-        throw new Exception("The requested URL scheme is invalid.");
-      }
-
       if (string.IsNullOrEmpty(requestedUri.Host) || string.IsNullOrWhiteSpace(requestedUri.Host))
       {
         throw new Exception("The requested URL host is invalid.");
@@ -65,7 +60,8 @@
       // Verify if record already exists
       foreach (InjectFileRecord tmpRecord in this.injectFileRecords)
       {
-        if (tmpRecord.RequestedHost == requestedHost && tmpRecord.RequestedPath == requestedPath)
+        if (tmpRecord.RequestedHost == requestedHost &&
+            tmpRecord.RequestedPath == requestedPath)
         {
           throw new Exception("A record with this host name already exists.");
         }

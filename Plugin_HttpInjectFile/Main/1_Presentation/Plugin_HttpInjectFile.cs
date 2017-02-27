@@ -51,7 +51,8 @@ private const string Label_URL = "Redirect to URL";
       columnRequestedScheme.Name = "RequestedScheme";
       columnRequestedScheme.HeaderText = "Scheme";
       columnRequestedScheme.ReadOnly = true;
-      columnRequestedScheme.Width = 50;
+      columnRequestedScheme.Visible = true;
+      columnRequestedScheme.Width = 0;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedScheme);
 
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
@@ -67,7 +68,7 @@ private const string Label_URL = "Redirect to URL";
       columnRequestedPath.Name = "RequestedPath";
       columnRequestedPath.HeaderText = "Requested path";
       columnRequestedPath.ReadOnly = true;
-      columnRequestedPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      columnRequestedPath.Width = 200;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedPath);
 
       DataGridViewTextBoxColumn columnReplacementResource = new DataGridViewTextBoxColumn();
@@ -75,7 +76,7 @@ private const string Label_URL = "Redirect to URL";
       columnReplacementResource.Name = "ReplacementResource";
       columnReplacementResource.HeaderText = "Replacement resource";
       columnReplacementResource.ReadOnly = true;
-      columnReplacementResource.Width = 350;
+      columnReplacementResource.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnReplacementResource);
 
       this.injectFileRecords = new BindingList<InjectFileRecord>();

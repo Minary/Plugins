@@ -30,7 +30,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_InjectionTriggerURLs = new System.Windows.Forms.DataGridView();
       this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
       this.bt_AddRecord = new System.Windows.Forms.Button();
@@ -42,6 +42,7 @@
       this.cms_InjectFile = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.l_Scheme = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).BeginInit();
       this.cms_InjectFile.SuspendLayout();
       this.SuspendLayout();
@@ -63,8 +64,8 @@
       this.dgv_InjectionTriggerURLs.MultiSelect = false;
       this.dgv_InjectionTriggerURLs.Name = "dgv_InjectionTriggerURLs";
       this.dgv_InjectionTriggerURLs.RowHeadersVisible = false;
-      dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle7;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_InjectionTriggerURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_InjectionTriggerURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(933, 313);
@@ -76,7 +77,7 @@
       // tb_RequestedURLRegex
       // 
       this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(126, 16);
+      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(171, 16);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
       this.tb_RequestedURLRegex.Size = new System.Drawing.Size(231, 20);
       this.tb_RequestedURLRegex.TabIndex = 1;
@@ -87,7 +88,7 @@
       this.bt_AddRecord.Location = new System.Drawing.Point(858, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
-      this.bt_AddRecord.TabIndex = 5;
+      this.bt_AddRecord.TabIndex = 4;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
       this.bt_AddRecord.Click += new System.EventHandler(this.BT_Add_Click);
@@ -116,7 +117,7 @@
       // 
       this.l_ReplacementResource.AutoSize = true;
       this.l_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ReplacementResource.Location = new System.Drawing.Point(424, 18);
+      this.l_ReplacementResource.Location = new System.Drawing.Point(430, 18);
       this.l_ReplacementResource.Name = "l_ReplacementResource";
       this.l_ReplacementResource.Size = new System.Drawing.Size(60, 13);
       this.l_ReplacementResource.TabIndex = 0;
@@ -128,10 +129,10 @@
       // 
       // bt_AddFile
       // 
-      this.bt_AddFile.Location = new System.Drawing.Point(745, 14);
+      this.bt_AddFile.Location = new System.Drawing.Point(736, 14);
       this.bt_AddFile.Name = "bt_AddFile";
       this.bt_AddFile.Size = new System.Drawing.Size(23, 21);
-      this.bt_AddFile.TabIndex = 6;
+      this.bt_AddFile.TabIndex = 3;
       this.bt_AddFile.Text = "...";
       this.bt_AddFile.UseVisualStyleBackColor = true;
       this.bt_AddFile.Click += new System.EventHandler(this.BT_AddFile_Click);
@@ -158,15 +159,26 @@
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
+      // l_Scheme
+      // 
+      this.l_Scheme.AutoSize = true;
+      this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.l_Scheme.Location = new System.Drawing.Point(127, 20);
+      this.l_Scheme.Name = "l_Scheme";
+      this.l_Scheme.Size = new System.Drawing.Size(49, 13);
+      this.l_Scheme.TabIndex = 0;
+      this.l_Scheme.Text = "http(s)://";
+      // 
       // Plugin_HttpInjectFile
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.tb_RequestedURLRegex);
+      this.Controls.Add(this.l_Scheme);
       this.Controls.Add(this.bt_AddFile);
       this.Controls.Add(this.tb_ReplacementResource);
       this.Controls.Add(this.l_ReplacementResource);
       this.Controls.Add(this.dgv_InjectionTriggerURLs);
-      this.Controls.Add(this.tb_RequestedURLRegex);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedURL);
       this.Name = "Plugin_HttpInjectFile";
@@ -191,5 +203,6 @@
     private System.Windows.Forms.ContextMenuStrip cms_InjectFile;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
+    private System.Windows.Forms.Label l_Scheme;
   }
 }

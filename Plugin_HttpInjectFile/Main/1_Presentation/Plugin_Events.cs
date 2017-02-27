@@ -1,5 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
+  using Minary.Plugin.Main.InjectFile.DataTypes;
   using System;
   using System.IO;
   using System.Windows.Forms;
@@ -14,7 +15,10 @@
     {
       try
       {
-        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_ReplacementResource.Text);
+        string url = string.Format("http://{0}", this.tb_RequestedURLRegex.Text);
+        string replacementResource = this.tb_ReplacementResource.Text;
+
+        this.AddRecord(url, replacementResource);
       }
       catch (Exception ex)
       {
@@ -128,7 +132,9 @@
     
     private void BT_AddFile_Click(object sender, EventArgs e)
     {
-      this.ofd_FileToInject.InitialDirectory = Directory.GetCurrentDirectory();
+      // Set the basic directory of the open file dialog.
+      // If it exists jump into the "payload" dicrectory
+      this.ofd_FileToInject.InitialDirectory = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, General.PAYLOADS_DIR);
 
       if (this.ofd_FileToInject.ShowDialog() != DialogResult.OK)
       {
@@ -137,6 +143,7 @@
 
       this.tb_ReplacementResource.Text = this.ofd_FileToInject.FileName;
       this.tb_ReplacementResource.TextAlign = HorizontalAlignment.Right;
+      this.tb_ReplacementResource.SelectionStart = this.tb_ReplacementResource.Text.Length + 1;
     }
 
     #endregion

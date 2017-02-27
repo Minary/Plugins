@@ -157,7 +157,6 @@
 
       // Instantiate infrastructureLayer layer
       this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.injectCodeConfig);
-
     }
 
     #endregion

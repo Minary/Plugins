@@ -40,11 +40,6 @@
         throw new Exception("The requested resource URL is invalid");
       }
 
-      if (requestedUri.Scheme != Uri.UriSchemeHttp && requestedUri.Scheme != Uri.UriSchemeHttps)
-      {
-        throw new Exception("The requested URL scheme is invalid.");
-      }
-
       if (string.IsNullOrEmpty(requestedUri.Host) || string.IsNullOrWhiteSpace(requestedUri.Host))
       {
         throw new Exception("The requested URL host is invalid.");

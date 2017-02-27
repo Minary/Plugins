@@ -29,8 +29,7 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_InjectionTriggerURLs = new System.Windows.Forms.DataGridView();
       this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
       this.bt_AddRecord = new System.Windows.Forms.Button();
@@ -39,7 +38,7 @@
       this.l_ReplacementResource = new System.Windows.Forms.Label();
       this.ofd_FileToInject = new System.Windows.Forms.OpenFileDialog();
       this.bt_AddFile = new System.Windows.Forms.Button();
-      this.cms_InjectCode = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.cms_InjectCode = new System.Windows.Forms.ContextMenuStrip();
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.l_Tag = new System.Windows.Forms.Label();
@@ -68,8 +67,8 @@
       this.dgv_InjectionTriggerURLs.MultiSelect = false;
       this.dgv_InjectionTriggerURLs.Name = "dgv_InjectionTriggerURLs";
       this.dgv_InjectionTriggerURLs.RowHeadersVisible = false;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_InjectionTriggerURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_InjectionTriggerURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(933, 313);
@@ -211,7 +210,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(92, 18);
+      this.l_Scheme.Location = new System.Drawing.Point(92, 20);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(49, 13);
       this.l_Scheme.TabIndex = 0;

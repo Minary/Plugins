@@ -134,7 +134,9 @@
  
     private void BT_AddFile_Click(object sender, EventArgs e)
     {
-      this.ofd_FileToInject.InitialDirectory = Directory.GetCurrentDirectory();
+      // Set the basic directory of the open file dialog.
+      // If it exists jump into the "payload" dicrectory
+      this.ofd_FileToInject.InitialDirectory = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, General.PAYLOADS_DIR);
 
       if (this.ofd_FileToInject.ShowDialog() != DialogResult.OK)
       {

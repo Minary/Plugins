@@ -9,6 +9,7 @@
     public static readonly string PATTERN_DIR_REMOTE = "remote";
     public static readonly string PATTERN_DIR_TEMPLATE = "template";
     public static readonly string PATTERN_FILE_PATTERN = "*.spa";
+    public static readonly string PAYLOADS_DIR = "payloads";
 
     #endregion
 

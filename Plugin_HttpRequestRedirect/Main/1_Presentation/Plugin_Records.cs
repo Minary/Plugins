@@ -111,6 +111,138 @@
       }
     }
 
+
+    /// <summary>
+    ///
+    /// </summary>
+    private delegate void DeleteSelectedRecordDelegate();
+    private void DeleteSelectedRecord()
+    {
+      if(this.InvokeRequired)
+      {
+        this.BeginInvoke(new DeleteSelectedRecordDelegate(this.DeleteSelectedRecord), new object[] { });
+        return;
+      }
+
+      bool isLastLine = false;
+      int firstVisibleRowTopRow = -1;
+      int lastRowIndex = -1;
+      int selectedIndex = -1;
+
+      lock(this)
+      {
+
+        if(this.dgv_RequestRedirectURLs.CurrentRow != null &&
+            this.dgv_RequestRedirectURLs.CurrentRow == this.dgv_RequestRedirectURLs.Rows[this.dgv_RequestRedirectURLs.Rows.Count - 1])
+        {
+          isLastLine = true;
+        }
+
+        firstVisibleRowTopRow = this.dgv_RequestRedirectURLs.FirstDisplayedScrollingRowIndex;
+        lastRowIndex = this.dgv_RequestRedirectURLs.Rows.Count - 1;
+
+        if(this.dgv_RequestRedirectURLs.CurrentCell != null)
+        {
+          selectedIndex = this.dgv_RequestRedirectURLs.CurrentCell.RowIndex;
+        }
+
+        this.dgv_RequestRedirectURLs.SuspendLayout();
+        this.dgv_RequestRedirectURLs.BeginEdit(true);
+        this.dgv_RequestRedirectURLs.RefreshEdit();
+
+        try
+        {
+          int currentIndex = this.dgv_RequestRedirectURLs.CurrentCell.RowIndex;
+          this.requestRedirectRecords.RemoveAt(currentIndex);
+        }
+        catch(Exception ex)
+        {
+          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        }
+
+        // Selected cell/row
+        try
+        {
+          if(selectedIndex >= 0)
+          {
+            this.dgv_RequestRedirectURLs.CurrentCell = this.dgv_RequestRedirectURLs.Rows[selectedIndex].Cells[0];
+          }
+        }
+        catch(Exception)
+        {
+        }
+
+        // Reset position
+        try
+        {
+          if(firstVisibleRowTopRow >= 0)
+          {
+            this.dgv_RequestRedirectURLs.FirstDisplayedScrollingRowIndex = firstVisibleRowTopRow;
+          }
+        }
+        catch(Exception)
+        {
+        }
+
+        this.dgv_RequestRedirectURLs.ResumeLayout();
+      }
+    }
+
+
+    private delegate void RemoveRecordAtDelegate(int index);
+    private void RemoveRecordAt(int index)
+    {
+      if(this.InvokeRequired)
+      {
+        this.BeginInvoke(new RemoveRecordAtDelegate(this.RemoveRecordAt), new object[] { index });
+        return;
+      }
+
+      lock(this)
+      {
+        this.dgv_RequestRedirectURLs.SuspendLayout();
+
+        try
+        {
+          this.requestRedirectRecords.RemoveAt(index);
+        }
+        catch(Exception)
+        {
+        }
+
+        this.dgv_RequestRedirectURLs.ResumeLayout();
+      }
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    private delegate void ClearRecordListDelegate();
+    private void ClearRecordList()
+    {
+      if(this.InvokeRequired)
+      {
+        this.BeginInvoke(new ClearRecordListDelegate(this.ClearRecordList), new object[] { });
+        return;
+      }
+
+      lock(this)
+      {
+        this.dgv_RequestRedirectURLs.SuspendLayout();
+
+        try
+        {
+          this.requestRedirectRecords.Clear();
+        }
+        catch(Exception)
+        {
+        }
+
+        this.dgv_RequestRedirectURLs.ResumeLayout();
+      }
+    }
+
     #endregion
 
   }

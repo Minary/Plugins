@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_RedirectURL = new System.Windows.Forms.TextBox();
       this.dgv_RequestRedirectURLs = new System.Windows.Forms.DataGridView();
@@ -36,7 +37,11 @@
       this.l_RedirectURL = new System.Windows.Forms.Label();
       this.bt_AddRecord = new System.Windows.Forms.Button();
       this.cb_RedirectType = new System.Windows.Forms.ComboBox();
+      this.cms_RequestRedirect = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_RequestRedirectURLs)).BeginInit();
+      this.cms_RequestRedirect.SuspendLayout();
       this.SuspendLayout();
       // 
       // tb_RedirectURL
@@ -72,6 +77,8 @@
       this.dgv_RequestRedirectURLs.Size = new System.Drawing.Size(933, 313);
       this.dgv_RequestRedirectURLs.TabIndex = 5;
       this.dgv_RequestRedirectURLs.TabStop = false;
+      this.dgv_RequestRedirectURLs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_RequestRedirect_MouseDown);
+      this.dgv_RequestRedirectURLs.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
       // tb_RequestedURLRegex
       // 
@@ -121,6 +128,28 @@
       this.cb_RedirectType.Size = new System.Drawing.Size(121, 21);
       this.cb_RedirectType.TabIndex = 3;
       // 
+      // cms_RequestRedirect
+      // 
+      this.cms_RequestRedirect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteEntryToolStripMenuItem,
+            this.clearListToolStripMenuItem});
+      this.cms_RequestRedirect.Name = "cms_RequestRedirect";
+      this.cms_RequestRedirect.Size = new System.Drawing.Size(138, 48);
+      // 
+      // deleteEntryToolStripMenuItem
+      // 
+      this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+      this.deleteEntryToolStripMenuItem.Text = "Delete entry";
+      this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Delete_Click);
+      // 
+      // clearListToolStripMenuItem
+      // 
+      this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
+      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+      this.clearListToolStripMenuItem.Text = "Clear list";
+      this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
+      // 
       // Plugin_HttpRequestRedirect
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,6 +164,7 @@
       this.Name = "Plugin_HttpRequestRedirect";
       this.Size = new System.Drawing.Size(996, 368);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_RequestRedirectURLs)).EndInit();
+      this.cms_RequestRedirect.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -148,5 +178,8 @@
     private System.Windows.Forms.Label l_RedirectURL;
     private System.Windows.Forms.Button bt_AddRecord;
     private System.Windows.Forms.ComboBox cb_RedirectType;
+    private System.Windows.Forms.ContextMenuStrip cms_RequestRedirect;
+    private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
   }
 }

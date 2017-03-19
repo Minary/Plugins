@@ -16,8 +16,8 @@
       try
       {
         string selectedTag = (this.cb_injectPosition.SelectedItem as ComboboxItem).Value.ToString();
-        string position = this.rb_Before.Checked?"before":"after";
-        string url = string.Format("http://{0}", this.tb_RequestedURLRegex.Text);
+        string position = this.rb_Before.Checked?"before" : "after";
+        string url = this.tb_RequestedURLRegex.Text;
         string path = this.tb_InjectioinContentFile.Text;
 
         this.AddRecord(url, path, selectedTag, position);

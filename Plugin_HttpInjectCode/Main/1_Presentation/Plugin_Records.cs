@@ -2,6 +2,7 @@
 {
   using Minary.Plugin.Main.InjectCode.DataTypes;
   using System;
+  using System.Linq;
   using System.IO;
   using System.Text.RegularExpressions;
 
@@ -27,32 +28,8 @@
         return;
       }
 
-      string requestedScheme = string.Empty;
-      string requestedHost = string.Empty;
-      string requestedPath = string.Empty;
-
-      // Verify if requested URL resource is valid
-      Uri requestedUri;
-      bool isValidUri = Uri.TryCreate(requestedResource, UriKind.Absolute, out requestedUri);
-
-      if (!isValidUri)
-      {
-        throw new Exception("The requested resource URL is invalid");
-      }
-
-      if (string.IsNullOrEmpty(requestedUri.Host) || string.IsNullOrWhiteSpace(requestedUri.Host))
-      {
-        throw new Exception("The requested URL host is invalid.");
-      }
-
-      if (string.IsNullOrEmpty(requestedUri.PathAndQuery) || string.IsNullOrWhiteSpace(requestedUri.PathAndQuery))
-      {
-        throw new Exception("The requested URL path is invalid.");
-      }
-
-      requestedScheme = requestedUri.Scheme;
-      requestedHost = requestedUri.Host;
-      requestedPath = requestedUri.PathAndQuery;
+      RequestURL requestUrl = this.ParseRequestedURLRegex(requestedResource);
+      string scheme = "http://";
 
       // Verify if replacement file resource is valid
       if (!File.Exists(replacementResource))
@@ -63,8 +40,8 @@
       // Verify if record already exists
       foreach (InjectCodeRecord tmpRecord in this.injectCodeRecords)
       {
-        if (tmpRecord.RequestedHost == requestedHost &&
-            tmpRecord.RequestedPath == requestedPath &&
+        if (tmpRecord.RequestedHostRegex == requestUrl.HostRegex &&
+            tmpRecord.RequestedPathRegex == requestUrl.PathRegex &&
             tmpRecord.Tag == tag)
         {
           throw new Exception("A record with this host name already exists.");
@@ -72,20 +49,20 @@
       }
 
       // Verify if host name is correct
-      if (!Regex.Match(requestedHost, @"^[\w\d\-_\.]+\.[a-z]{2,10}$", RegexOptions.IgnoreCase).Success)
+      if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
       {
-        throw new Exception("Something is wrong with the host name.");
+        this.pluginProperties.HostApplication.LogMessage("{0}: Invalid host name regex: {1}", this.Config.PluginName, requestUrl.HostRegex);
+        throw new Exception("The host name regex is invalid");
       }
 
-      // Verify if path is correct
-      if (!Regex.Match(requestedPath, @"^/[^\s]*$", RegexOptions.IgnoreCase).Success)
+      if (this.IsRegexPatternValid(requestUrl.PathRegex) == false)
       {
-        throw new Exception("Something is wrong with the path.");
+        throw new Exception("The request path regex is invalid");
       }
 
       lock (this)
       {
-        InjectCodeRecord newRecord = new InjectCodeRecord(requestedScheme, requestedHost, requestedPath, replacementResource, tag, position);
+        InjectCodeRecord newRecord = new InjectCodeRecord(scheme, requestUrl.HostRegex, requestUrl.PathRegex, replacementResource, tag, position);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
         this.injectCodeRecords.Insert(0, newRecord);
@@ -223,6 +200,58 @@
 
         this.dgv_InjectionTriggerURLs.ResumeLayout();
       }
+    }
+
+
+    public bool IsRegexPatternValid(string pattern)
+    {
+      bool isValid = false;
+
+      try
+      {
+        new Regex(pattern);
+        isValid = true;
+      }
+      catch
+      {
+      }
+
+      return isValid;
+    }
+
+
+    private RequestURL ParseRequestedURLRegex(string url)
+    {
+      RequestURL requestedUrl;
+      char pathDelimiter = '/';
+
+      if (string.IsNullOrEmpty(url) == true || string.IsNullOrWhiteSpace(url) == true)
+      {
+        throw new Exception("The URL is invalid");
+      }
+
+      url = url.Trim();
+      if (url.StartsWith("http://") == true || url.StartsWith("https://") == true)
+      {
+        throw new Exception("The URL must not contain a scheme definition");
+      }
+
+      if (url.Contains(pathDelimiter) == false)
+      {
+        throw new Exception("The URL must contain a root path slash");
+      }
+
+      string[] splitter = url.Split(new char[] { pathDelimiter }, 2);
+
+      if (splitter == null || splitter.Count() != 2)
+      {
+        throw new Exception("The URL is invalid");
+      }
+
+      string urlPath = string.Format("{0}{1}", pathDelimiter, splitter[1]);
+      requestedUrl = new RequestURL(splitter[0], urlPath);
+
+      return requestedUrl;
     }
 
     #endregion

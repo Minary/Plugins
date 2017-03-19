@@ -11,8 +11,8 @@
     #region MEMBERS
 
     private string requestedScheme;
-    private string requestedHost;
-    private string requestedPath;
+    private string requestedHostRegex;
+    private string requestedPathRegex;
     private string injectionCodeFile;
     private string tag;
     private string position;
@@ -28,19 +28,19 @@
     public InjectCodeRecord()
     {
       this.requestedScheme = string.Empty;
-      this.requestedHost = string.Empty;
-      this.requestedPath = string.Empty;
+      this.requestedHostRegex = string.Empty;
+      this.requestedPathRegex = string.Empty;
       this.injectionCodeFile = string.Empty;
       this.tag = string.Empty;
       this.position = string.Empty;
     }
 
 
-    public InjectCodeRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource, string tag, string position)
+    public InjectCodeRecord(string requestedScheme, string requestedHostRegex, string requestedPathRegex, string replacementResource, string tag, string position)
     {
       this.requestedScheme = requestedScheme;
-      this.requestedHost = requestedHost;
-      this.requestedPath = requestedPath;
+      this.requestedHostRegex = requestedHostRegex;
+      this.requestedPathRegex = requestedPathRegex;
       this.injectionCodeFile = replacementResource;
       this.tag = tag;
       this.position = position;
@@ -68,33 +68,33 @@
 
 
     [Browsable(true)]
-    public string RequestedHost
+    public string RequestedHostRegex
     {
       get
       {
-        return this.requestedHost;
+        return this.requestedHostRegex;
       }
 
       set
       {
-        this.requestedHost = value;
-        this.NotifyPropertyChanged("RequestedHost");
+        this.requestedHostRegex = value;
+        this.NotifyPropertyChanged("RequestedHostRegex");
       }
     }
 
 
     [Browsable(true)]
-    public string RequestedPath
+    public string RequestedPathRegex
     {
       get
       {
-        return this.requestedPath;
+        return this.requestedPathRegex;
       }
 
       set
       {
-        this.requestedPath = value;
-        this.NotifyPropertyChanged("RequestedPath");
+        this.requestedPathRegex = value;
+        this.NotifyPropertyChanged("RequestedPathRegex");
       }
     }
 

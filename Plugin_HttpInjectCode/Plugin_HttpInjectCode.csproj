@@ -69,6 +69,7 @@
     <Compile Include="Main\DataTypes\InjectCodeConfig.cs" />
     <Compile Include="Main\DataTypes\InjectCodeRecord.cs" />
     <Compile Include="Main\DataTypes\RecordTemplateData.cs" />
+    <Compile Include="Main\DataTypes\RequestURL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

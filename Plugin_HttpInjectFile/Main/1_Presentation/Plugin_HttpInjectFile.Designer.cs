@@ -30,7 +30,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_InjectionTriggerURLs = new System.Windows.Forms.DataGridView();
       this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
       this.bt_AddRecord = new System.Windows.Forms.Button();
@@ -64,8 +64,8 @@
       this.dgv_InjectionTriggerURLs.MultiSelect = false;
       this.dgv_InjectionTriggerURLs.Name = "dgv_InjectionTriggerURLs";
       this.dgv_InjectionTriggerURLs.RowHeadersVisible = false;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle3;
       this.dgv_InjectionTriggerURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_InjectionTriggerURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(933, 313);
@@ -77,9 +77,9 @@
       // tb_RequestedURLRegex
       // 
       this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(171, 16);
+      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(201, 16);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(231, 20);
+      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(259, 20);
       this.tb_RequestedURLRegex.TabIndex = 1;
       this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
@@ -98,16 +98,16 @@
       // 
       this.l_RequestedURL.AutoSize = true;
       this.l_RequestedURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestedURL.Location = new System.Drawing.Point(23, 19);
+      this.l_RequestedURL.Location = new System.Drawing.Point(21, 19);
       this.l_RequestedURL.Name = "l_RequestedURL";
-      this.l_RequestedURL.Size = new System.Drawing.Size(97, 13);
+      this.l_RequestedURL.Size = new System.Drawing.Size(132, 13);
       this.l_RequestedURL.TabIndex = 0;
-      this.l_RequestedURL.Text = "Requested URL";
+      this.l_RequestedURL.Text = "Requested URL regex";
       // 
       // tb_ReplacementResource
       // 
       this.tb_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_ReplacementResource.Location = new System.Drawing.Point(493, 14);
+      this.tb_ReplacementResource.Location = new System.Drawing.Point(556, 14);
       this.tb_ReplacementResource.Name = "tb_ReplacementResource";
       this.tb_ReplacementResource.Size = new System.Drawing.Size(232, 20);
       this.tb_ReplacementResource.TabIndex = 2;
@@ -117,7 +117,7 @@
       // 
       this.l_ReplacementResource.AutoSize = true;
       this.l_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ReplacementResource.Location = new System.Drawing.Point(430, 18);
+      this.l_ReplacementResource.Location = new System.Drawing.Point(493, 18);
       this.l_ReplacementResource.Name = "l_ReplacementResource";
       this.l_ReplacementResource.Size = new System.Drawing.Size(60, 13);
       this.l_ReplacementResource.TabIndex = 0;
@@ -129,7 +129,7 @@
       // 
       // bt_AddFile
       // 
-      this.bt_AddFile.Location = new System.Drawing.Point(736, 14);
+      this.bt_AddFile.Location = new System.Drawing.Point(799, 14);
       this.bt_AddFile.Name = "bt_AddFile";
       this.bt_AddFile.Size = new System.Drawing.Size(23, 21);
       this.bt_AddFile.TabIndex = 3;
@@ -163,7 +163,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(127, 20);
+      this.l_Scheme.Location = new System.Drawing.Point(157, 20);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(49, 13);
       this.l_Scheme.TabIndex = 0;

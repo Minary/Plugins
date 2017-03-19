@@ -108,11 +108,11 @@
       string injectCodeConfigurationFileData = string.Empty;
       foreach (InjectCodeRecord tmpRecord in recordList)
       {
-        string requestedHost = tmpRecord.RequestedHost;
-        string requestedPath = tmpRecord.RequestedPath;
+        string requestedHost = tmpRecord.RequestedHostRegex;
+        string requestedPath = tmpRecord.RequestedPathRegex;
         string replacementResource = tmpRecord.InjectionCodeFile;
 
-        injectCodeConfigurationFileData += string.Format("{0}||{1}||{2}||{3}||{4}\r\n", tmpRecord.Tag, tmpRecord.Position, tmpRecord.InjectionCodeFile, tmpRecord.RequestedHost, tmpRecord.RequestedPath);
+        injectCodeConfigurationFileData += string.Format("{0}||{1}||{2}||{3}||{4}\r\n", tmpRecord.Tag, tmpRecord.Position, tmpRecord.InjectionCodeFile, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex);
       }
 
       injectCodeConfigurationFileData = injectCodeConfigurationFileData.Trim();
@@ -196,7 +196,7 @@
       List<InjectCodeRecord> genericObjectList = new List<InjectCodeRecord>();
       foreach (InjectCodeRecord tmpRecord in InjectCodeRecords)
       {
-        genericObjectList.Add(new InjectCodeRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.InjectionCodeFile, tmpRecord.Tag, tmpRecord.Position));
+        genericObjectList.Add(new InjectCodeRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.InjectionCodeFile, tmpRecord.Tag, tmpRecord.Position));
       }
 
       // Serialize the list

@@ -41,25 +41,17 @@
 
       this.dgv_RequestRedirectURLs.AutoGenerateColumns = false;
 
-      DataGridViewTextBoxColumn columnRequestedScheme = new DataGridViewTextBoxColumn();
-      columnRequestedScheme.DataPropertyName = "RequestedScheme";
-      columnRequestedScheme.Name = "RequestedScheme";
-      columnRequestedScheme.HeaderText = "Scheme";
-      columnRequestedScheme.ReadOnly = true;
-      columnRequestedScheme.Width = 50;
-      this.dgv_RequestRedirectURLs.Columns.Add(columnRequestedScheme);
-
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
-      columnRequestedHost.DataPropertyName = "RequestedHost";
-      columnRequestedHost.Name = "RequestedHost";
+      columnRequestedHost.DataPropertyName = "RequestedHostRegex";
+      columnRequestedHost.Name = "RequestedHostRegex";
       columnRequestedHost.HeaderText = "Requested host";
       columnRequestedHost.ReadOnly = true;
       columnRequestedHost.Width = 200;
       this.dgv_RequestRedirectURLs.Columns.Add(columnRequestedHost);
 
       DataGridViewTextBoxColumn columnRequestedPath = new DataGridViewTextBoxColumn();
-      columnRequestedPath.DataPropertyName = "RequestedPath";
-      columnRequestedPath.Name = "RequestedPath";
+      columnRequestedPath.DataPropertyName = "RequestedPathRegex";
+      columnRequestedPath.Name = "RequestedPathRegex";
       columnRequestedPath.HeaderText = "Requested path";
       columnRequestedPath.ReadOnly = true;
       columnRequestedPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

@@ -63,6 +63,7 @@
     <Compile Include="Main\DataTypes\General.cs" />
     <Compile Include="Main\DataTypes\RequestRedirectConfig.cs" />
     <Compile Include="Main\DataTypes\RequestRedirectRecord.cs" />
+    <Compile Include="Main\DataTypes\RequestURL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

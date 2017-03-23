@@ -16,7 +16,8 @@
         string[] splitter = this.cb_RedirectType.Text.Split('/');
         string redirectType = splitter[0];
         string redirectDescription = splitter[1];
-        this.AddRecord(this.tb_RequestedURLRegex.Text, this.tb_RedirectURL.Text, redirectType, redirectDescription);
+
+        this.AddRecord(redirectType, redirectDescription, this.tb_RequestedURLRegex.Text, this.tb_RedirectURL.Text);
       }
       catch (Exception ex)
       {

@@ -10,12 +10,11 @@
 
     #region MEMBERS
 
-    private string requestedScheme;
-    private string requestedHost;
-    private string requestedPath;
-    private string replacementResource;
     private string redirectType;
     private string redirectDescription;
+    private string requestedHostRegex;
+    private string requestedPathRegex;
+    private string replacementResource;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -27,93 +26,27 @@
 
     public RequestRedirectRecord()
     {
-      this.requestedScheme = string.Empty;
-      this.requestedHost = string.Empty;
-      this.requestedPath = string.Empty;
-      this.replacementResource = string.Empty;
       this.redirectType = string.Empty;
       this.redirectDescription = string.Empty;
+      this.requestedHostRegex = string.Empty;
+      this.requestedPathRegex = string.Empty;
+      this.replacementResource = string.Empty;
     }
 
 
-    public RequestRedirectRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource, string redirectType, string redirectDescription)
+    public RequestRedirectRecord(string redirectType, string redirectDescription, string requestedHostRegex, string requestedPathRegex, string replacementResource)
     {
-      this.requestedScheme = requestedScheme;
-      this.requestedHost = requestedHost;
-      this.requestedPath = requestedPath;
-      this.replacementResource = replacementResource;
       this.redirectType = redirectType;
       this.redirectDescription = redirectDescription;
+      this.requestedHostRegex = requestedHostRegex;
+      this.requestedPathRegex = requestedPathRegex;
+      this.replacementResource = replacementResource;
     }
 
     #endregion
 
 
     #region PROPERTIES
-
-    [Browsable(true)]
-    public string RequestedScheme
-    {
-      get
-      {
-        return this.requestedScheme;
-      }
-
-      set
-      {
-        this.requestedScheme = value;
-        this.NotifyPropertyChanged("RequestedScheme");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string RequestedHost
-    {
-      get
-      {
-        return this.requestedHost;
-      }
-
-      set
-      {
-        this.requestedHost = value;
-        this.NotifyPropertyChanged("RequestedHost");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string RequestedPath
-    {
-      get
-      {
-        return this.requestedPath;
-      }
-
-      set
-      {
-        this.requestedPath = value;
-        this.NotifyPropertyChanged("RequestedPath");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string ReplacementResource
-    {
-      get
-      {
-        return this.replacementResource;
-      }
-
-      set
-      {
-        this.replacementResource = value;
-        this.NotifyPropertyChanged("ReplacementResource");
-      }
-    }
-
 
     [Browsable(true)]
     public string RedirectType
@@ -143,6 +76,54 @@
       {
         this.redirectDescription = value;
         this.NotifyPropertyChanged("RedirectDescription");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string RequestedHostRegex
+    {
+      get
+      {
+        return this.requestedHostRegex;
+      }
+
+      set
+      {
+        this.requestedHostRegex = value;
+        this.NotifyPropertyChanged("RequestedHostRegex");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string RequestedPathRegex
+    {
+      get
+      {
+        return this.requestedPathRegex;
+      }
+
+      set
+      {
+        this.requestedPathRegex = value;
+        this.NotifyPropertyChanged("RequestedPathRegex");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string ReplacementResource
+    {
+      get
+      {
+        return this.replacementResource;
+      }
+
+      set
+      {
+        this.replacementResource = value;
+        this.NotifyPropertyChanged("ReplacementResource");
       }
     }
     

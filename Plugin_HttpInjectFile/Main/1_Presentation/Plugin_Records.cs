@@ -27,7 +27,6 @@
       }
 
       RequestURL requestUrl = this.ParseRequestedURLRegex(requestedResource);
-      string scheme = "http://";
 
       // Verify if replacement file resource is valid
       if (!File.Exists(replacementResource))
@@ -59,7 +58,7 @@
 
       lock (this)
       {
-        InjectFileRecord newRecord = new InjectFileRecord(scheme, requestUrl.HostRegex, requestUrl.PathRegex, replacementResource);
+        InjectFileRecord newRecord = new InjectFileRecord(requestUrl.HostRegex, requestUrl.PathRegex, replacementResource);
 
         this.dgv_InjectionTriggerURLs.SuspendLayout();
         this.injectFileRecords.Insert(0, newRecord);

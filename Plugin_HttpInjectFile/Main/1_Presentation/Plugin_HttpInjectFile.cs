@@ -46,15 +46,6 @@ private const string Label_URL = "Redirect to URL";
 
       this.dgv_InjectionTriggerURLs.AutoGenerateColumns = false;
 
-      DataGridViewTextBoxColumn columnRequestedScheme = new DataGridViewTextBoxColumn();
-      columnRequestedScheme.DataPropertyName = "RequestedScheme";
-      columnRequestedScheme.Name = "RequestedScheme";
-      columnRequestedScheme.HeaderText = "Scheme";
-      columnRequestedScheme.ReadOnly = true;
-      columnRequestedScheme.Visible = false;
-      columnRequestedScheme.Width = 0;
-      this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedScheme);
-
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
       columnRequestedHost.DataPropertyName = "RequestedHostRegex";
       columnRequestedHost.Name = "RequestedHostRegex";

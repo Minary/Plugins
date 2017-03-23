@@ -15,7 +15,7 @@
     {
       try
       {
-        string url = string.Format("http://{0}", this.tb_RequestedURLRegex.Text);
+        string url = this.tb_RequestedURLRegex.Text;
         string replacementResource = this.tb_ReplacementResource.Text;
 
         this.AddRecord(url, replacementResource);

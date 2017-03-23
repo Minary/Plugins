@@ -51,21 +51,21 @@ private const string Label_URL = "Redirect to URL";
       columnRequestedScheme.Name = "RequestedScheme";
       columnRequestedScheme.HeaderText = "Scheme";
       columnRequestedScheme.ReadOnly = true;
-      columnRequestedScheme.Visible = true;
+      columnRequestedScheme.Visible = false;
       columnRequestedScheme.Width = 0;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedScheme);
 
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
-      columnRequestedHost.DataPropertyName = "RequestedHost";
-      columnRequestedHost.Name = "RequestedHost";
+      columnRequestedHost.DataPropertyName = "RequestedHostRegex";
+      columnRequestedHost.Name = "RequestedHostRegex";
       columnRequestedHost.HeaderText = "Requested host";
       columnRequestedHost.ReadOnly = true;
       columnRequestedHost.Width = 200;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedHost);
 
       DataGridViewTextBoxColumn columnRequestedPath = new DataGridViewTextBoxColumn();
-      columnRequestedPath.DataPropertyName = "RequestedPath";
-      columnRequestedPath.Name = "RequestedPath";
+      columnRequestedPath.DataPropertyName = "RequestedPathRegex";
+      columnRequestedPath.Name = "RequestedPathRegex";
       columnRequestedPath.HeaderText = "Requested path";
       columnRequestedPath.ReadOnly = true;
       columnRequestedPath.Width = 200;

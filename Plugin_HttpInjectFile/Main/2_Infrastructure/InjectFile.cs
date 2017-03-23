@@ -109,11 +109,11 @@
       string injectFileConfigurationFileData = string.Empty;
       foreach (InjectFileRecord tmpRecord in recordList)
       {
-        string requestedHost = tmpRecord.RequestedHost;
-        string requestedPath = tmpRecord.RequestedPath;
+        string requestedHost = tmpRecord.RequestedHostRegex;
+        string requestedPath = tmpRecord.RequestedPathRegex;
         string replacementResource = tmpRecord.ReplacementResource;
 
-        injectFileConfigurationFileData += string.Format("{0}||{1}||{2}\r\n", tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource);
+        injectFileConfigurationFileData += string.Format("{0}||{1}||{2}\r\n", tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource);
       }
 
       injectFileConfigurationFileData = injectFileConfigurationFileData.Trim();
@@ -196,7 +196,7 @@
       List<InjectFileRecord> genericObjectList = new List<InjectFileRecord>();
       foreach (InjectFileRecord tmpRecord in injectFileRecords)
       {
-        genericObjectList.Add(new InjectFileRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHost, tmpRecord.RequestedPath, tmpRecord.ReplacementResource));
+        genericObjectList.Add(new InjectFileRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource));
       }
 
       // Serialize the list

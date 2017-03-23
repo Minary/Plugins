@@ -10,7 +10,6 @@
 
     #region MEMBERS
 
-    private string requestedScheme;
     private string requestedHostRegex;
     private string requestedPathRegex;
     private string replacementResource;
@@ -25,16 +24,14 @@
 
     public InjectFileRecord()
     {
-      this.requestedScheme = string.Empty;
       this.requestedHostRegex = string.Empty;
       this.requestedPathRegex = string.Empty;
       this.replacementResource = string.Empty;
     }
 
 
-    public InjectFileRecord(string requestedScheme, string requestedHost, string requestedPath, string replacementResource)
+    public InjectFileRecord(string requestedHost, string requestedPath, string replacementResource)
     {
-      this.requestedScheme = requestedScheme;
       this.requestedHostRegex = requestedHost;
       this.requestedPathRegex = requestedPath;
       this.replacementResource = replacementResource;
@@ -44,22 +41,6 @@
 
 
     #region PROPERTIES
-
-    [Browsable(true)]
-    public string RequestedScheme
-    {
-      get
-      {
-        return this.requestedScheme;
-      }
-
-      set
-      {
-        this.requestedScheme = value;
-        this.NotifyPropertyChanged("RequestedScheme");
-      }
-    }
-
 
     [Browsable(true)]
     public string RequestedHostRegex

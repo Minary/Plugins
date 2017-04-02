@@ -227,7 +227,7 @@
         retVal = true;
       }
 
-      return (retVal);
+      return retVal;
     }
 
 
@@ -236,6 +236,11 @@
     /// </summary>
     private void UseFilter()
     {
+      if (this.dgv_DnsRequests.Rows.Count <= 0)
+      {
+        return;
+      }
+
       // TODO: Without this line we will get an exception :/ FIX IT!
       this.dgv_DnsRequests.CurrentCell = null;
       for (int i = 0; i < this.dgv_DnsRequests.Rows.Count; i++)
@@ -264,8 +269,6 @@
           }
         }
       }
-
-      this.dgv_DnsRequests.Refresh();
     }
 
     #endregion

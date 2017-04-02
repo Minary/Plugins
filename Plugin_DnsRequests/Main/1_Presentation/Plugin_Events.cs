@@ -3,6 +3,7 @@
   using System;
   using System.Windows.Forms;
 
+
   public partial class Plugin_DnsRequests
   {
 
@@ -16,6 +17,7 @@
     private void BT_Set_Click(object sender, EventArgs e)
     {
       this.UseFilter();
+      this.dgv_DnsRequests.Refresh();
     }
 
 
@@ -68,6 +70,7 @@
       if (e.KeyCode == Keys.Enter)
       {
         this.UseFilter();
+        this.dgv_DnsRequests.Refresh();
       }
     }
 
@@ -79,7 +82,6 @@
     /// <param name="e"></param>
     private void DeleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
     {
-
       try
       {
         int currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;

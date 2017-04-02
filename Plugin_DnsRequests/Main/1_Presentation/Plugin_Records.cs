@@ -80,7 +80,9 @@
           {
           }
 
-          this.dgv_DnsRequests.ResumeLayout();
+          this.UseFilter();
+          this.dgv_DnsRequests.Refresh();
+//          this.dgv_DnsRequests.ResumeLayout();
         }
       }
     }

@@ -7,6 +7,7 @@
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
+
   public partial class Plugin_HttpRequests
   {
 
@@ -23,7 +24,6 @@
     }
 
 
-
     /// <summary>
     ///
     /// </summary>
@@ -35,10 +35,10 @@
       {
         try
         {
-          DataGridView.HitTestInfo hti = this.dgv_HTTPRequests.HitTest(e.X, e.Y);
+          DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
           if (hti.RowIndex >= 0)
           {
-            this.cms_HTTPRequests.Show(this.dgv_HTTPRequests, e.Location);
+            this.cms_HTTPRequests.Show(this.dgv_HttpRequests, e.Location);
           }
         }
         catch (Exception ex)
@@ -49,7 +49,6 @@
     }
 
 
-
     /// <summary>
     ///
     /// </summary>
@@ -58,8 +57,9 @@
     private void BT_Set_Click(object sender, EventArgs e)
     {
       this.UseFilter();
-    }
+      this.dgv_HttpRequests.Refresh();
 
+    }
 
 
     /// <summary>
@@ -71,10 +71,10 @@
     {
       if (e.KeyCode == Keys.Enter)
       {
-        UseFilter();
+        this.UseFilter();
+        this.dgv_HttpRequests.Refresh();
       }
     }
-
 
 
     /// <summary>
@@ -87,10 +87,10 @@
       try
       {
         BindingList<HTTPRequests> tmpHosts = new BindingList<HTTPRequests>();
-        int currentIndex = this.dgv_HTTPRequests.CurrentCell.RowIndex;
+        int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
 
         this.pluginProperties.HostApplication.LogMessage("{0}: currentIndex:{1}", this.Config.PluginName, currentIndex);
-        string request = this.dgv_HTTPRequests.Rows[currentIndex].Cells["Request"].Value.ToString();
+        string request = this.dgv_HttpRequests.Rows[currentIndex].Cells["Request"].Value.ToString();
 
         request = Regex.Replace(request, @"\.\.", "\r\n");
         ShowRequest requestDetails = new ShowRequest(request);
@@ -114,7 +114,6 @@
     }
 
 
-
     /// <summary>
     ///
     /// </summary>
@@ -124,7 +123,7 @@
     {
       try
       {
-        int currentIndex = this.dgv_HTTPRequests.CurrentCell.RowIndex;
+        int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
         this.RemoveRecordAt(currentIndex);
       }
       catch (Exception ex)
@@ -143,12 +142,12 @@
     {
       try
       {
-        DataGridView.HitTestInfo hti = this.dgv_HTTPRequests.HitTest(e.X, e.Y);
+        DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
 
         if (hti.RowIndex >= 0)
         {
-          this.dgv_HTTPRequests.ClearSelection();
-          this.dgv_HTTPRequests.Rows[hti.RowIndex].Selected = true;
+          this.dgv_HttpRequests.ClearSelection();
+          this.dgv_HttpRequests.Rows[hti.RowIndex].Selected = true;
 ////pluginProperties.HostApplication.LogMessage("{0}: 4", Config.PluginName));
 ////          dgv_HTTPRequests.currentr.CurrentCell = dgv_HTTPRequests.Rows[hti.RowIndex].Cells[2];
         }
@@ -156,10 +155,9 @@
       catch (Exception ex)
       {
         this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        this.dgv_HTTPRequests.ClearSelection();
+        this.dgv_HttpRequests.ClearSelection();
       }
     }
-
 
 
     /// <summary>
@@ -176,10 +174,10 @@
 
       try
       {
-        url = this.dgv_HTTPRequests.SelectedRows[0].Cells["URL"].Value.ToString();
-        cookie = this.dgv_HTTPRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
-        srcIp = this.dgv_HTTPRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
-        userAgent = string.Empty; //// dgv_HTTPRequests.SelectedRows[0].Cells[1].Value.ToString();
+        url = this.dgv_HttpRequests.SelectedRows[0].Cells["URL"].Value.ToString();
+        cookie = this.dgv_HttpRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
+        srcIp = this.dgv_HttpRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
+        userAgent = string.Empty;
       }
       catch (ArgumentOutOfRangeException aoorex)
       {
@@ -190,7 +188,6 @@
       {
         this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
       }
-
 
       try
       {

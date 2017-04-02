@@ -46,7 +46,7 @@
       columnMacAddr.HeaderText = "MAC address";
       columnMacAddr.ReadOnly = true;
       columnMacAddr.Width = 140;
-      this.dgv_HTTPRequests.Columns.Add(columnMacAddr);
+      this.dgv_HttpRequests.Columns.Add(columnMacAddr);
 
       DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();
       columnSrcIp.DataPropertyName = "SrcIP";
@@ -54,7 +54,7 @@
       columnSrcIp.HeaderText = "Source IP";
       columnSrcIp.ReadOnly = true;
       columnSrcIp.Width = 120;
-      this.dgv_HTTPRequests.Columns.Add(columnSrcIp);
+      this.dgv_HttpRequests.Columns.Add(columnSrcIp);
 
       DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
       columnTimestamp.DataPropertyName = "Timestamp";
@@ -63,7 +63,7 @@
       columnTimestamp.ReadOnly = true;
       columnTimestamp.Visible = false;
       columnTimestamp.Width = 120;
-      this.dgv_HTTPRequests.Columns.Add(columnTimestamp);
+      this.dgv_HttpRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnRequestMethod = new DataGridViewTextBoxColumn();
       columnRequestMethod.DataPropertyName = "Method";
@@ -72,7 +72,7 @@
       columnRequestMethod.ReadOnly = true;
       columnRequestMethod.Visible = true;
       columnRequestMethod.Width = 60;
-      this.dgv_HTTPRequests.Columns.Add(columnRequestMethod);
+      this.dgv_HttpRequests.Columns.Add(columnRequestMethod);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "RemoteHost";
@@ -80,7 +80,7 @@
       columnRemHost.HeaderText = "Server";
       columnRemHost.ReadOnly = true;
       columnRemHost.Width = 150;
-      this.dgv_HTTPRequests.Columns.Add(columnRemHost);
+      this.dgv_HttpRequests.Columns.Add(columnRemHost);
 
       DataGridViewTextBoxColumn columnRemFileName = new DataGridViewTextBoxColumn();
       columnRemFileName.DataPropertyName = "RemoteFile";
@@ -89,31 +89,31 @@
       columnRemFileName.ReadOnly = true;
       columnRemFileName.Width = 216;
       columnRemFileName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_HTTPRequests.Columns.Add(columnRemFileName);
+      this.dgv_HttpRequests.Columns.Add(columnRemFileName);
 
       DataGridViewTextBoxColumn columnUrl = new DataGridViewTextBoxColumn();
       columnUrl.DataPropertyName = "URL";
       columnUrl.Name = "URL";
       columnUrl.HeaderText = "URL";
       columnUrl.Visible = false;
-      this.dgv_HTTPRequests.Columns.Add(columnUrl);
+      this.dgv_HttpRequests.Columns.Add(columnUrl);
 
       DataGridViewTextBoxColumn columnCookies = new DataGridViewTextBoxColumn();
       columnCookies.DataPropertyName = "SessionCookies";
       columnCookies.Name = "SessionCookies";
       columnCookies.HeaderText = "Cookies";
       columnCookies.Visible = false;
-      this.dgv_HTTPRequests.Columns.Add(columnCookies);
+      this.dgv_HttpRequests.Columns.Add(columnCookies);
 
       DataGridViewTextBoxColumn columnRequest = new DataGridViewTextBoxColumn();
       columnRequest.DataPropertyName = "Request";
       columnRequest.Name = "Request";
       columnRequest.HeaderText = "Request";
       columnRequest.Visible = false;
-      this.dgv_HTTPRequests.Columns.Add(columnRequest);
+      this.dgv_HttpRequests.Columns.Add(columnRequest);
 
       this.httpRequests = new BindingList<HTTPRequests>();
-      this.dgv_HTTPRequests.DataSource = this.httpRequests;
+      this.dgv_HttpRequests.DataSource = this.httpRequests;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -288,45 +288,39 @@
     /// </summary>
     private void UseFilter()
     {
-      //// TODO: Without this line we will get an exception. FIX IT!
-
-      this.dgv_HTTPRequests.CurrentCell = null;
-      for (int i = 0; i < this.dgv_HTTPRequests.RowCount; i++)
+      if (this.dgv_HttpRequests.Rows.Count <= 0)
       {
-        try
-        {
-          if (this.tb_Filter.Text.Length <= 0)
-          {
-            this.dgv_HTTPRequests.Rows[i].Visible = true;
-          }
-          else
-          {
-            try
-            {
-              string cellData = this.dgv_HTTPRequests.Rows[i].Cells["URL"].Value.ToString();
-
-              if (!Regex.Match(cellData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
-              {
-                this.dgv_HTTPRequests.Rows[i].Visible = false;
-              }
-              else
-              {
-                this.dgv_HTTPRequests.Rows[i].Visible = true;
-              }
-            }
-            catch (Exception ex)
-            {
-              this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-            }
-          }
-        }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        }
+        return;
       }
 
-      this.dgv_HTTPRequests.Refresh();
+      // TODO: Without this line we will get an exception. FIX IT!
+      this.dgv_HttpRequests.CurrentCell = null;
+      for (int i = 0; i < this.dgv_HttpRequests.RowCount; i++)
+      {
+        if (this.tb_Filter.Text.Length <= 0)
+        {
+          this.dgv_HttpRequests.Rows[i].Visible = true;
+        }
+        else
+        {
+          try
+          {
+            string cellData = this.dgv_HttpRequests.Rows[i].Cells["URL"].Value.ToString();
+            if (!Regex.Match(cellData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
+            {
+              this.dgv_HttpRequests.Rows[i].Visible = false;
+            }
+            else
+            {
+              this.dgv_HttpRequests.Rows[i].Visible = true;
+            }
+          }
+          catch (Exception ex)
+          {
+            this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          }
+        }
+      }
     }
 
 
@@ -338,7 +332,7 @@
     {
       lock (this)
       {
-        this.dgv_HTTPRequests.SuspendLayout();
+        this.dgv_HttpRequests.SuspendLayout();
 
         try
         {
@@ -348,7 +342,7 @@
         {
         }
 
-        this.dgv_HTTPRequests.ResumeLayout();
+        this.dgv_HttpRequests.ResumeLayout();
       }
     }
 

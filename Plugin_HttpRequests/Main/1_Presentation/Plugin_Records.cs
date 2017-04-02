@@ -29,10 +29,10 @@
       lock (this)
       {
         // Memorize DataGridView position and selection
-        firstVisibleRowTop = this.dgv_HTTPRequests.FirstDisplayedScrollingRowIndex;
+        firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
 
         // Update DataGridView
-        this.dgv_HTTPRequests.SuspendLayout();
+        this.dgv_HttpRequests.SuspendLayout();
 
         try
         {
@@ -43,19 +43,21 @@
 
           while (this.httpRequests.Count > MaxTableRows)
           {
-            this.httpRequests.RemoveAt(this.dgv_HTTPRequests.Rows.Count - 1);
+            this.httpRequests.RemoveAt(this.dgv_HttpRequests.Rows.Count - 1);
           }
 
           if (firstVisibleRowTop >= 0)
           {
-            this.dgv_HTTPRequests.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
+            this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
           }
         }
         catch (Exception)
         {
         }
 
-        this.dgv_HTTPRequests.ResumeLayout();
+        this.UseFilter();
+        this.dgv_HttpRequests.ResumeLayout();
+        this.dgv_HttpRequests.Refresh();
       }
     }
 
@@ -77,14 +79,14 @@
 
       lock (this)
       {
-        firstVisibleRowTop = this.dgv_HTTPRequests.FirstDisplayedScrollingRowIndex;
-        lastRowIndex = this.dgv_HTTPRequests.Rows.Count - 1;
+        firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
+        lastRowIndex = this.dgv_HttpRequests.Rows.Count - 1;
 
-        this.dgv_HTTPRequests.SuspendLayout();
+        this.dgv_HttpRequests.SuspendLayout();
 
         try
         {
-          int currentIndex = this.dgv_HTTPRequests.CurrentCell.RowIndex;
+          int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
           //// string lHostName = DGV_Spoofing.Rows[currentIndex].Cells["HostName"].Value.ToString();
           //// httpRequests.RemoveAt(currentIndex);
         }
@@ -102,7 +104,7 @@
           this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
         }
 
-        this.dgv_HTTPRequests.ResumeLayout();
+        this.dgv_HttpRequests.ResumeLayout();
       }
     }
 
@@ -121,7 +123,7 @@
 
       lock (this)
       {
-        this.dgv_HTTPRequests.SuspendLayout();
+        this.dgv_HttpRequests.SuspendLayout();
 
         try
         {
@@ -131,7 +133,7 @@
         {
         }
 
-        this.dgv_HTTPRequests.ResumeLayout();
+        this.dgv_HttpRequests.ResumeLayout();
       }
     }
 

@@ -134,7 +134,7 @@
     public delegate void OnNewDataDelegate(string data);
     public void OnNewData(string data)
     {
-      if (this.dgv_HTTPRequests.InvokeRequired)
+      if (this.dgv_HttpRequests.InvokeRequired)
       {
         this.BeginInvoke(new OnNewDataDelegate(this.OnNewData), new object[] { data });
         return;

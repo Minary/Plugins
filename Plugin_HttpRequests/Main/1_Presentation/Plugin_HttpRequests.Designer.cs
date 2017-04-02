@@ -31,7 +31,7 @@
         {
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      this.dgv_HTTPRequests = new System.Windows.Forms.DataGridView();
+      this.dgv_HttpRequests = new System.Windows.Forms.DataGridView();
       this.cms_HTTPRequests = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,22 +40,22 @@
       this.tb_Filter = new System.Windows.Forms.TextBox();
       this.bt_Set = new System.Windows.Forms.Button();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
-      ((System.ComponentModel.ISupportInitialize)(this.dgv_HTTPRequests)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpRequests)).BeginInit();
       this.cms_HTTPRequests.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_HTTPRequests
       // 
-      this.dgv_HTTPRequests.AllowUserToAddRows = false;
-      this.dgv_HTTPRequests.AllowUserToDeleteRows = false;
-      this.dgv_HTTPRequests.AllowUserToResizeColumns = false;
-      this.dgv_HTTPRequests.AllowUserToResizeRows = false;
-      this.dgv_HTTPRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.dgv_HttpRequests.AllowUserToAddRows = false;
+      this.dgv_HttpRequests.AllowUserToDeleteRows = false;
+      this.dgv_HttpRequests.AllowUserToResizeColumns = false;
+      this.dgv_HttpRequests.AllowUserToResizeRows = false;
+      this.dgv_HttpRequests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.dgv_HTTPRequests.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.dgv_HTTPRequests.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-      this.dgv_HTTPRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+      this.dgv_HttpRequests.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.dgv_HttpRequests.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+      this.dgv_HttpRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,22 +63,22 @@
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HTTPRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-      this.dgv_HTTPRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_HTTPRequests.Location = new System.Drawing.Point(17, 44);
-      this.dgv_HTTPRequests.MultiSelect = false;
-      this.dgv_HTTPRequests.Name = "dgv_HTTPRequests";
-      this.dgv_HTTPRequests.ReadOnly = true;
-      this.dgv_HTTPRequests.RowHeadersVisible = false;
-      this.dgv_HTTPRequests.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_HTTPRequests.RowTemplate.Height = 20;
-      this.dgv_HTTPRequests.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.dgv_HTTPRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_HTTPRequests.Size = new System.Drawing.Size(933, 313);
-      this.dgv_HTTPRequests.TabIndex = 3;
-      this.dgv_HTTPRequests.DoubleClick += new System.EventHandler(this.DGV_HttpRequests_DoubleClick);
-      this.dgv_HTTPRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseDown);
-      this.dgv_HTTPRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseUp);
+      this.dgv_HttpRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      this.dgv_HttpRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_HttpRequests.Location = new System.Drawing.Point(17, 44);
+      this.dgv_HttpRequests.MultiSelect = false;
+      this.dgv_HttpRequests.Name = "dgv_HTTPRequests";
+      this.dgv_HttpRequests.ReadOnly = true;
+      this.dgv_HttpRequests.RowHeadersVisible = false;
+      this.dgv_HttpRequests.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dgv_HttpRequests.RowTemplate.Height = 20;
+      this.dgv_HttpRequests.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+      this.dgv_HttpRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgv_HttpRequests.Size = new System.Drawing.Size(933, 313);
+      this.dgv_HttpRequests.TabIndex = 3;
+      this.dgv_HttpRequests.DoubleClick += new System.EventHandler(this.DGV_HttpRequests_DoubleClick);
+      this.dgv_HttpRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseDown);
+      this.dgv_HttpRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseUp);
       // 
       // cms_HTTPRequests
       // 
@@ -152,11 +152,11 @@
       this.Controls.Add(this.bt_Set);
       this.Controls.Add(this.tb_Filter);
       this.Controls.Add(this.l_UrlFilter);
-      this.Controls.Add(this.dgv_HTTPRequests);
+      this.Controls.Add(this.dgv_HttpRequests);
       this.DoubleBuffered = true;
       this.Name = "PluginHttpRequestsUC";
       this.Size = new System.Drawing.Size(996, 368);
-      ((System.ComponentModel.ISupportInitialize)(this.dgv_HTTPRequests)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpRequests)).EndInit();
       this.cms_HTTPRequests.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -165,7 +165,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_HTTPRequests;
+        private System.Windows.Forms.DataGridView dgv_HttpRequests;
         private System.Windows.Forms.ContextMenuStrip cms_HTTPRequests;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Clear;
         private System.Windows.Forms.Label l_UrlFilter;

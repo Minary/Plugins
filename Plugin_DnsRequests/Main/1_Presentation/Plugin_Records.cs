@@ -10,9 +10,9 @@
     #region GUI RECORDS METHODS
 
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    /// <param name="pRecord"></param>
+    /// <param name="dnsRequests"></param>
     private delegate void AddRecordDelegate(List<DnsRequestRecord> dnsRequests);
     private void AddRecordsToDgv(List<DnsRequestRecord> dnsRequests)
     {
@@ -81,8 +81,8 @@
           }
 
           this.UseFilter();
+          this.dgv_DnsRequests.ResumeLayout();
           this.dgv_DnsRequests.Refresh();
-//          this.dgv_DnsRequests.ResumeLayout();
         }
       }
     }
@@ -120,15 +120,15 @@
 
 
     /// <summary>
-    ///
+    /// 
     /// </summary>
     /// <param name="index"></param>
-    public delegate void RemoveRecordAtDelegate(int pIndex);
+    public delegate void RemoveRecordAtDelegate(int index);
     public void RemoveRecordAt(int index)
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new RemoveRecordAtDelegate(RemoveRecordAt), new object[] { index });
+        this.BeginInvoke(new RemoveRecordAtDelegate(this.RemoveRecordAt), new object[] { index });
         return;
       }
 

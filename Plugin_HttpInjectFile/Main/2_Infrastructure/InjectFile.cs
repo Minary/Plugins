@@ -196,7 +196,7 @@
       List<InjectFileRecord> genericObjectList = new List<InjectFileRecord>();
       foreach (InjectFileRecord tmpRecord in injectFileRecords)
       {
-        genericObjectList.Add(new InjectFileRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource));
+        genericObjectList.Add(new InjectFileRecord(tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource));
       }
 
       // Serialize the list

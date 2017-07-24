@@ -25,6 +25,18 @@
       Full
     }
 
+    struct DataPacket
+    {
+      public string Proto;
+      public string SrcMacAddress;
+      public string SrcIpAddress;
+      public string SrcPort;
+      public string DstIpAddress;
+      public string DstPort;
+      public string Data;
+      public EntryType EntryType;
+    }
+
     #endregion
 
 
@@ -232,138 +244,59 @@
 
 
     #region PRIVATE
+    
 
     /// <summary>
     ///
     /// </summary>
     public void ProcessEntries()
     {
-      if (this.dataBatch != null && this.dataBatch.Count > 0)
+      if (this.dataBatch == null || this.dataBatch.Count <= 0)
       {
-        List<SystemRecord> newRecords = new List<SystemRecord>();
-        List<string> newData;
-        Match matchUserAgent;
-        EntryType entryType;
-        DataGridViewRow tabelRow;
-        string[] splitter;
-        string proto;
-        string srcMacAddress;
-        string srcIpAddress;
-        string srcPort;
-        string dstIpAddress;
-        string dstPort;
-        string data;
-        string operatingSystem = string.Empty;
-        string userAgent = string.Empty;
+        return;
+      }
 
-        lock (this)
+      List<SystemRecord> newRecords = new List<SystemRecord>();
+      List<string> newData;
+      Match matchUserAgent;
+      DataPacket dataPacket;
+
+      lock (this)
+      {
+        newData = new List<string>(this.dataBatch);
+        this.dataBatch.Clear();
+      }
+
+      foreach (string tmpNewData in newData)
+      {
+        try
         {
-          newData = new List<string>(this.dataBatch);
-          this.dataBatch.Clear();
+          dataPacket = this.GetDataPacket(tmpNewData);
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.ToString()));
+          continue;
         }
 
-        foreach (string tmpNewData in newData)
+        // Determine the operating system due to the HTTP User-Agent string.
+        if ((matchUserAgent = Regex.Match(dataPacket.Data, @"\.\.User-Agent\s*:\s*(.+?)\.\.", RegexOptions.IgnoreCase)).Success)
         {
-          try
+          this.DetermineAndSetOS(dataPacket, matchUserAgent);
+
+          // The operating system cant be determined.
+        }
+        else if (dataPacket.EntryType == EntryType.Empty && dataPacket.SrcIpAddress.Length > 0 && dataPacket.SrcMacAddress.Length > 0)
+        {
+          this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, string.Empty, string.Empty, string.Empty, string.Empty));
+        }
+
+        // Updating LastSeen column.
+        using (DataGridViewRow tmpRow = this.ListEntryExists(dataPacket.SrcMacAddress))
+        {
+          if (tmpRow != null && tmpRow.Cells["LastSeen"] != null)
           {
-            if (!string.IsNullOrEmpty(tmpNewData))
-            {
-              if ((splitter = Regex.Split(tmpNewData, @"\|\|")).Length == 7)
-              {
-                proto = splitter[0];
-                srcMacAddress = splitter[1];
-                srcIpAddress = splitter[2];
-                srcPort = splitter[3];
-                dstIpAddress = splitter[4];
-                dstPort = splitter[5];
-                data = splitter[6];
-
-                srcMacAddress = Regex.Replace(srcMacAddress, @"-", ":");
-                entryType = this.FullEntryExists(srcMacAddress, srcIpAddress);
-
-                // Determine the operating system due to the HTTP User-Agent string.
-                if (((matchUserAgent = Regex.Match(data, @"\.\.User-Agent\s*:\s*(.+?)\.\.", RegexOptions.IgnoreCase))).Success)
-                {
-                  try
-                  {
-                    userAgent = matchUserAgent.Groups[1].Value.ToString();
-                    operatingSystem = this.GetOperatingSystem(userAgent);
-                  }
-                  catch (Exception ex)
-                  {
-                    this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-                  }
-
-                  //
-                  try
-                  {
-                    if (entryType != EntryType.Full && operatingSystem.Length > 0)
-                    {
-                      if (entryType == EntryType.Empty)
-                      {
-                        this.AddRecord(new SystemRecord(srcMacAddress, srcIpAddress, userAgent, string.Empty, operatingSystem, string.Empty));
-                      }
-                      else if (entryType == EntryType.Half)
-                      {
-                        this.SetOS(srcMacAddress, srcIpAddress, operatingSystem);
-                      }
-
-                      if ((tabelRow = this.GetRowByMac(srcMacAddress)) != null)
-                      {
-                        tabelRow.Cells["OperatingSystem"].ToolTipText = userAgent;
-                      }
-                    }
-                    else if (srcIpAddress.Length > 0 && srcMacAddress.Length > 0)
-                      this.AddRecord(new SystemRecord(srcMacAddress, srcIpAddress, userAgent, string.Empty, string.Empty, string.Empty));
-                  }
-                  catch (RecordException rex)
-                  {
-                    this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, rex.Message);
-                  }
-                  catch (RecordExistsException)
-                  {
-                  }
-                  catch (Exception ex)
-                  {
-                    this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-                  }
-
-                  // The operating system cant be determined.
-                }
-                else if (entryType == EntryType.Empty && srcIpAddress.Length > 0 && srcMacAddress.Length > 0)
-                {
-                  try
-                  {
-                    this.AddRecord(new SystemRecord(srcMacAddress, srcIpAddress, string.Empty, userAgent, string.Empty, string.Empty));
-                  }
-                  catch (RecordException rex)
-                  {
-                    this.pluginProperties.HostApplication.LogMessage("{0} 0: {1}", this.Config.PluginName, rex.Message);
-                  }
-                  catch (RecordExistsException)
-                  {
-                  }
-                  catch (Exception ex)
-                  {
-                    this.pluginProperties.HostApplication.LogMessage("{0} 2: {1}", this.Config.PluginName, ex.Message);
-                  }
-                }
-
-                // Updating LastSeen column.
-                using (DataGridViewRow tmpRow = this.ListEntryExists(srcMacAddress))
-                {
-                  if (tmpRow != null && tmpRow.Cells["LastSeen"] != null)
-                  {
-                    tmpRow.Cells["LastSeen"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                  }
-                }
-
-              }
-            }
-          }
-          catch (Exception ex)
-          {
-            MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.ToString()));
+            tmpRow.Cells["LastSeen"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
           }
         }
       }
@@ -383,7 +316,7 @@
       {
         return retVal;
       }
-      
+
       foreach (DataGridViewRow tmpRow in this.dgv_Systems.Rows)
       {
         if (tmpRow.Cells["SrcMac"].Value.ToString() == macAddress)
@@ -431,7 +364,7 @@
 
       return retVal;
     }
-    
+
 
     /// <summary>
     ///
@@ -507,6 +440,99 @@
       }
 
       return retVal;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    private DataPacket GetDataPacket(string data)
+    {
+      DataPacket dataPacket = new DataPacket();
+      string[] splitter;
+
+      if (string.IsNullOrEmpty(data) ||
+          (splitter = Regex.Split(data, @"\|\|")).Length != 7)
+      {
+        throw new Exception("The record structure is invalid");
+      }
+
+      dataPacket.Proto = splitter[0];
+      dataPacket.SrcMacAddress = splitter[1];
+      dataPacket.SrcIpAddress = splitter[2];
+      dataPacket.SrcPort = splitter[3];
+      dataPacket.DstIpAddress = splitter[4];
+      dataPacket.DstPort = splitter[5];
+      dataPacket.Data = splitter[6];
+      dataPacket.SrcMacAddress = Regex.Replace(dataPacket.SrcMacAddress, @"-", ":");
+      dataPacket.EntryType = this.FullEntryExists(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress);
+
+      return dataPacket;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void TryAddRecord(SystemRecord newRecord)
+    {
+      try
+      {
+        this.AddRecord(newRecord);
+      }
+      catch (RecordException rex)
+      {
+        this.pluginProperties.HostApplication.LogMessage("{0} 0: {1}", this.Config.PluginName, rex.Message);
+      }
+      catch (RecordExistsException)
+      {
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage("{0} 2: {1}", this.Config.PluginName, ex.Message);
+      }
+    }
+
+
+
+    private void DetermineAndSetOS(DataPacket dataPacket, Match matchUserAgent)
+    {
+      string operatingSystem = string.Empty;
+      string userAgent = string.Empty; ;
+      DataGridViewRow tabelRow;
+
+      try
+      {
+        userAgent = matchUserAgent.Groups[1].Value.ToString();
+        operatingSystem = this.GetOperatingSystem(userAgent);
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+      }
+
+      if (dataPacket.EntryType != EntryType.Full && operatingSystem.Length > 0)
+      {
+        if (dataPacket.EntryType == EntryType.Empty)
+        {
+          this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, userAgent, string.Empty, operatingSystem, string.Empty));
+        }
+        else if (dataPacket.EntryType == EntryType.Half)
+        {
+          this.SetOS(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, operatingSystem);
+        }
+
+        if ((tabelRow = this.GetRowByMac(dataPacket.SrcMacAddress)) != null)
+        {
+          tabelRow.Cells["OperatingSystem"].ToolTipText = userAgent;
+        }
+      }
+      else if (dataPacket.SrcIpAddress.Length > 0 && dataPacket.SrcMacAddress.Length > 0)
+      {
+        this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, userAgent, string.Empty, string.Empty, string.Empty));
+      }
     }
 
     #endregion

@@ -267,10 +267,12 @@
 
         this.systemRecords.Clear();
         if (recordList != null)
+        {
           foreach (SystemRecord tmpRecord in recordList)
           {
             this.systemRecords.Add(new SystemRecord(tmpRecord.SrcMac, tmpRecord.SrcIp, tmpRecord.UserAgent, tmpRecord.HWVendor, tmpRecord.OperatingSystem, tmpRecord.LastSeen));
           }
+        }
 
         // Selected cell/row
         try

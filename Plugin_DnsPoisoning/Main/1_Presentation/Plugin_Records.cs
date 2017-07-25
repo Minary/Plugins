@@ -15,7 +15,7 @@
     /// </summary>
     /// <param name="newRecord"></param>
     private delegate void AddRecordDelegate(RecordDnsPoison newRecord);
-    private void AddRecord(Minary.Plugin.Main.DnsPoison.DataTypes.RecordDnsPoison newRecord)
+    private void AddRecord(RecordDnsPoison newRecord)
     {
       if (this.InvokeRequired)
       {
@@ -24,25 +24,22 @@
       }
 
       int firstVisibleRowTop = -1;
-      string hostNamePattern = @"[\d\w\.-_]+\.[\w]{2,3}$";
-      string ipAddressPattern = @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$";
 
       // Verify if Hostname and IPaddress for correctness.
-      if (string.IsNullOrEmpty(newRecord.HostName))
-      {
-        throw new Exception("You didn't define a host name");
-      }
-      else if (string.IsNullOrEmpty(newRecord.IpAddress))
-      {
-        throw new Exception("You didn't define a IP address");
-      }
-      else if (!Regex.Match(newRecord.HostName, hostNamePattern, RegexOptions.IgnoreCase).Success)
+      if (this.VerifyHostNameStructure(newRecord.HostName) == false)
       {
         throw new Exception("Something is wrong with the host name");
       }
-      else if (!Regex.Match(newRecord.IpAddress, ipAddressPattern, RegexOptions.IgnoreCase).Success)
+
+      if (this.VerifyIpAddressStructure(newRecord.IpAddress) == false)
       {
         throw new Exception("Something is wrong with the IP address");
+      }
+
+      if (newRecord.ResponseType == DnsResponseType.CNAME &&
+          this.VerifyCNameStructure(newRecord.CName) == false)
+      {
+        throw new Exception("Something is wrong with the CName host name");
       }
 
       // Ensure if host/ip combination does not exist.
@@ -50,7 +47,7 @@
       {
         if (tmpRecord.HostName.ToLower() == newRecord.HostName.ToLower())
         {
-          throw new Exception(string.Format("An entry with this hostname already exists"));
+          throw new Exception(string.Format("An entry for this hostname already exists"));
         }
       }
 
@@ -173,7 +170,6 @@
         return;
       }
 
-
       lock (this)
       {
         this.dgv_Spoofing.SuspendLayout();
@@ -189,6 +185,67 @@
         this.dgv_Spoofing.ResumeLayout();
       }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="hostName"></param>
+    /// <returns></returns>
+    private bool VerifyHostNameStructure(string hostName)
+    {
+      string validHostNamePattern = @"[\d\w\.-_]+\.[\w]{2,3}$";
+
+      if (string.IsNullOrEmpty(hostName))
+      {
+        throw new Exception("You didn't define a host name");
+      }
+      else if (!Regex.Match(hostName, validHostNamePattern, RegexOptions.IgnoreCase).Success)
+      {
+        throw new Exception("Something is wrong with the host name");
+      }
+
+      return true;
+    }
+
+
+    private bool VerifyCNameStructure(string hostName)
+    {
+      string validHostNamePattern = @"[\d\w\.-_]+\.[\w]{2,3}$";
+
+      if (string.IsNullOrEmpty(hostName))
+      {
+        throw new Exception("You didn't define a CNAME host name ");
+      }
+      else if (!Regex.Match(hostName, validHostNamePattern, RegexOptions.IgnoreCase).Success)
+      {
+        throw new Exception("Something is wrong with the CNAME host name");
+      }
+
+      return true;
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ipAddress"></param>
+    /// <returns></returns>
+    private bool VerifyIpAddressStructure(string ipAddress)
+    {
+      string ipAddressPattern = @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$";
+
+      if (string.IsNullOrEmpty(ipAddress))
+      {
+        throw new Exception("You didn't define a IP address");
+      }
+      else if (!Regex.Match(ipAddress, ipAddressPattern, RegexOptions.IgnoreCase).Success)
+      {
+        throw new Exception("Something is wrong with the IP address");
+      }
+
+      return true;
+    }
+    
 
     #endregion
 

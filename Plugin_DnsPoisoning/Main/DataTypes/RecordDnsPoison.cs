@@ -12,6 +12,8 @@
 
     private string hostName;
     private string ipAddress;
+    private DnsResponseType responseType;
+    private string cname;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -52,6 +54,38 @@
       }
     }
 
+
+    [Browsable(true)]
+    public DnsResponseType ResponseType
+    {
+      get
+      {
+        return this.responseType;
+      }
+
+      set
+      {
+        this.responseType = value;
+        this.NotifyPropertyChanged("ResponseType");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string CName
+    {
+      get
+      {
+        return this.cname;
+      }
+
+      set
+      {
+        this.cname = value;
+        this.NotifyPropertyChanged("CName");
+      }
+    }
+
     #endregion
 
 
@@ -64,10 +98,12 @@
     }
 
 
-    public RecordDnsPoison(string hostName, string ipAddress)
+    public RecordDnsPoison(string hostName, string ipAddress, DnsResponseType responseType, string cname)
     {
       this.hostName = hostName;
       this.ipAddress = ipAddress;
+      this.responseType = responseType;
+      this.cname = cname;
     }
 
     #endregion

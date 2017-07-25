@@ -58,6 +58,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\2_Infrastructure\DnsPoisoning.cs" />
+    <Compile Include="Main\DataTypes\DnsTypeEnum.cs" />
     <Compile Include="Main\DataTypes\General.cs" />
     <Compile Include="Main\1_Presentation\Plugin_DnsPoisoning.cs">
       <SubType>UserControl</SubType>

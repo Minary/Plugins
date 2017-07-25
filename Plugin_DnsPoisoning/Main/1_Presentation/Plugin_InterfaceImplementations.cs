@@ -145,7 +145,14 @@
 
           foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
           {
-            dnsPoisoningHosts += string.Format("{0},{1}\r\n", tmpRecord.HostName, tmpRecord.IpAddress);
+            if (tmpRecord.ResponseType == DnsResponseType.A)
+            {
+              dnsPoisoningHosts += string.Format("{0},{1},{2}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.IpAddress);
+            }
+            else
+            {
+              dnsPoisoningHosts += string.Format("{0},{1},{2},{3}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.IpAddress, tmpRecord.CName);
+            }
           }
 
           using (StreamWriter outfile = new StreamWriter(poisoningHostsPath))

@@ -22,7 +22,6 @@
     private BindingList<RecordDnsPoison> dnsPoisonRecords;
     private DnsPoison.Infrastructure.DnsPoisoning infrastructureLayer;
     private PluginProperties pluginProperties;
-    private bool isUpToDate = false;
 
     #endregion
 
@@ -55,6 +54,22 @@
       columnIpAddress.ReadOnly = true;
       columnIpAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_Spoofing.Columns.Add(columnIpAddress);
+
+      DataGridViewTextBoxColumn columnCName = new DataGridViewTextBoxColumn();
+      columnCName.DataPropertyName = "CName";
+      columnCName.Name = "CName";
+      columnCName.HeaderText = "Canonical name";
+      columnCName.ReadOnly = true;
+      columnCName.Width = 296;
+      this.dgv_Spoofing.Columns.Add(columnCName);
+
+      DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
+      columnType.DataPropertyName = "ResponseType";
+      columnType.Name = "ResponseType";
+      columnType.HeaderText = "Resp. type";
+      columnType.ReadOnly = true;
+      columnType.Width = 130;
+      this.dgv_Spoofing.Columns.Add(columnType);
 
       this.dnsPoisonRecords = new BindingList<RecordDnsPoison>();
       this.dgv_Spoofing.DataSource = this.dnsPoisonRecords;
@@ -129,7 +144,9 @@
 
       this.tb_Address.Enabled = false;
       this.tb_Host.Enabled = false;
+      this.tb_Cname.Enabled = false;
       this.bt_Add.Enabled = false;
+      this.cb_Cname.Enabled = false;
       this.cms_DnsPoison.Enabled = false;
       this.tsmi_Delete.Enabled = false;
       this.tsmi_ClearList.Enabled = false;
@@ -149,8 +166,10 @@
       }
 
       this.tb_Address.Enabled = true;
+      this.tb_Cname.Enabled = false;
       this.tb_Host.Enabled = true;
       this.bt_Add.Enabled = true;
+      this.cb_Cname.Enabled = true;
       this.cms_DnsPoison.Enabled = true;
       this.tsmi_Delete.Enabled = true;
       this.tsmi_ClearList.Enabled = true;
@@ -168,6 +187,6 @@
     }
 
     #endregion
-
+    
   }
 }

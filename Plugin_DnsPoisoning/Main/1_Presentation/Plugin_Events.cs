@@ -19,10 +19,12 @@
     {
       string hostName = this.tb_Host.Text.Trim();
       string ipAddress = this.tb_Address.Text.Trim();
+      DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
+      string cname = this.tb_Cname.Text.Trim();
 
       try
       {
-        this.AddRecord(new RecordDnsPoison(hostName, ipAddress));
+        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname));
       }
       catch (Exception ex)
       {
@@ -130,14 +132,14 @@
         this.tb_Address.Text = this.pluginProperties.HostApplication.CurrentIP;
       }
     }
-
+    
 
     /// <summary>
     ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void TB_Host_KeyDown(object sender, KeyEventArgs e)
+    private void OnEnterAddRecord(object sender, KeyEventArgs e)
     {
       if (e.KeyCode != Keys.Enter)
       {
@@ -148,10 +150,12 @@
 
       string hostName = this.tb_Host.Text.Trim();
       string ipAddress = this.tb_Address.Text.Trim();
+      DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
+      string cname = this.tb_Cname.Text.Trim();
 
       try
       {
-        this.AddRecord(new RecordDnsPoison(hostName, ipAddress));
+        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname));
       }
       catch (Exception ex)
       {
@@ -161,31 +165,15 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void TB_Address_KeyDown(object sender, KeyEventArgs e)
+    private void CB_Cname_CheckedChanged(object sender, EventArgs e)
     {
-      if (e.KeyCode != Keys.Enter)
+      if (this.cb_Cname.Checked)
       {
-        return;
+        this.tb_Cname.Enabled = true;
       }
-
-      e.SuppressKeyPress = true;
-
-      string hostName = this.tb_Host.Text.Trim();
-      string ipAddress = this.tb_Address.Text.Trim();
-
-      try
+      else
       {
-        this.AddRecord(new RecordDnsPoison(hostName, ipAddress));
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show(string.Format("{0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.tb_Cname.Enabled = false;
       }
     }
 

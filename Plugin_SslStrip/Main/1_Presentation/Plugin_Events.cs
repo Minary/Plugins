@@ -67,7 +67,7 @@
     /// <param name="e"></param>
     private void TSMI_Clear_Click(object sender, EventArgs e)
     {
-      ClearRecordList();
+      this.ClearRecordList();
     }
 
 

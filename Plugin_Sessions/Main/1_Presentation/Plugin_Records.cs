@@ -6,9 +6,7 @@
   {
 
     #region GUI RECORDS METHODS
-
-
-
+    
     /// <summary>
     ///
     /// </summary>
@@ -35,7 +33,6 @@
       {
         // Memorize DataGridView position and selection
         firstVisibleRowTop = this.dgv_Sessions.FirstDisplayedScrollingRowIndex;
-
         this.dgv_Sessions.SuspendLayout();
 
         try

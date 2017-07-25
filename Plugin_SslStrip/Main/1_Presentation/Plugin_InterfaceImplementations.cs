@@ -66,7 +66,6 @@
         this.SetGuiInactive();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
         this.sslStripConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
-
         this.infrastructureLayer.OnStart(this.sslStripRecords.ToList());
       }
       catch (MinaryWarningException ex)

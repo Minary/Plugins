@@ -73,7 +73,6 @@
         return;
       }
 
-
       lock (this)
       {
         this.dgv_SslStrippingTargets.SuspendLayout();

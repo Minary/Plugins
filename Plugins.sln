@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_BrowserExploitKit", "Plugin_BrowserExploitKit\Plugin_BrowserExploitKit.csproj", "{8FF31C47-6E0D-4C28-9569-1251475C02CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_DNSPoisoning", "Plugin_DnsPoisoning\Plugin_DNSPoisoning.csproj", "{38988610-F24B-4D5D-A51C-883629D197EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_DnsPoisoning", "Plugin_DnsPoisoning\Plugin_DnsPoisoning.csproj", "{38988610-F24B-4D5D-A51C-883629D197EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_DNSRequests", "Plugin_DnsRequests\Plugin_DNSRequests.csproj", "{ED75AD9C-F1D0-40A9-A909-8CF696DE0410}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_DnsRequests", "Plugin_DnsRequests\Plugin_DnsRequests.csproj", "{ED75AD9C-F1D0-40A9-A909-8CF696DE0410}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Firewall", "Plugin_Firewall\Plugin_Firewall.csproj", "{C8587602-0BE2-4D57-8A1D-1EBCDD5878B6}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpRequests", "Plug
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Sessions", "Plugin_Sessions\Plugin_Sessions.csproj", "{6119FBE1-E922-48F5-AAD2-B2E6B577C227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_SSLStrip", "Plugin_SslStrip\Plugin_SSLStrip.csproj", "{3639690A-4D81-4085-BD25-27EBB4CB33A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_SslStrip", "Plugin_SslStrip\Plugin_SslStrip.csproj", "{3639690A-4D81-4085-BD25-27EBB4CB33A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Systems", "Plugin_Systems\Plugin_Systems.csproj", "{32D8CB30-CA97-4516-9114-121667C06013}"
 EndProject

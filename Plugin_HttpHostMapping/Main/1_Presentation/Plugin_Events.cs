@@ -92,6 +92,7 @@
       }
     }
 
+
     private void DeleteRuleToolStripMenuItem_Click(object sender, EventArgs e)
     {
       this.DeleteSelectedRecord();

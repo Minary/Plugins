@@ -168,8 +168,7 @@
       {
         return this.password;
       }
-
-
+      
       set
       {
         this.password = value;

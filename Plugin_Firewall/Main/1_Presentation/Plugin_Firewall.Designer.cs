@@ -67,7 +67,8 @@
       this.dgv_FWRules.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_FWRules.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       this.dgv_FWRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_FWRules.Location = new System.Drawing.Point(17, 44);
+      this.dgv_FWRules.Location = new System.Drawing.Point(26, 68);
+      this.dgv_FWRules.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_FWRules.MultiSelect = false;
       this.dgv_FWRules.Name = "dgv_FWRules";
       this.dgv_FWRules.ReadOnly = true;
@@ -77,7 +78,7 @@
       this.dgv_FWRules.RowTemplate.ReadOnly = true;
       this.dgv_FWRules.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_FWRules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_FWRules.Size = new System.Drawing.Size(933, 313);
+      this.dgv_FWRules.Size = new System.Drawing.Size(1400, 482);
       this.dgv_FWRules.TabIndex = 9;
       this.dgv_FWRules.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_FirewallRules_MouseUp);
       // 
@@ -85,18 +86,19 @@
       // 
       this.l_SrcIp.AutoSize = true;
       this.l_SrcIp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_SrcIp.Location = new System.Drawing.Point(97, 18);
+      this.l_SrcIp.Location = new System.Drawing.Point(146, 28);
+      this.l_SrcIp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_SrcIp.Name = "l_SrcIp";
-      this.l_SrcIp.Size = new System.Drawing.Size(42, 13);
+      this.l_SrcIp.Size = new System.Drawing.Size(61, 20);
       this.l_SrcIp.TabIndex = 0;
       this.l_SrcIp.Text = "Src IP";
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(634, 15);
+      this.bt_Add.Location = new System.Drawing.Point(951, 23);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
-      this.bt_Add.Size = new System.Drawing.Size(20, 21);
+      this.bt_Add.Size = new System.Drawing.Size(30, 32);
       this.bt_Add.TabIndex = 8;
       this.bt_Add.Text = "+";
       this.bt_Add.UseVisualStyleBackColor = true;
@@ -106,101 +108,111 @@
       // 
       this.l_DstIp.AutoSize = true;
       this.l_DstIp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_DstIp.Location = new System.Drawing.Point(378, 18);
+      this.l_DstIp.Location = new System.Drawing.Point(567, 28);
+      this.l_DstIp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_DstIp.Name = "l_DstIp";
-      this.l_DstIp.Size = new System.Drawing.Size(42, 13);
+      this.l_DstIp.Size = new System.Drawing.Size(62, 20);
       this.l_DstIp.TabIndex = 0;
       this.l_DstIp.Text = "Dst IP";
       // 
       // tb_SrcPortLower
       // 
       this.tb_SrcPortLower.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_SrcPortLower.Location = new System.Drawing.Point(257, 14);
+      this.tb_SrcPortLower.Location = new System.Drawing.Point(386, 22);
+      this.tb_SrcPortLower.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_SrcPortLower.Name = "tb_SrcPortLower";
-      this.tb_SrcPortLower.Size = new System.Drawing.Size(38, 20);
+      this.tb_SrcPortLower.Size = new System.Drawing.Size(55, 26);
       this.tb_SrcPortLower.TabIndex = 3;
       // 
       // l_SrcPort
       // 
       this.l_SrcPort.AutoSize = true;
       this.l_SrcPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_SrcPort.Location = new System.Drawing.Point(245, 17);
+      this.l_SrcPort.Location = new System.Drawing.Point(368, 26);
+      this.l_SrcPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_SrcPort.Name = "l_SrcPort";
-      this.l_SrcPort.Size = new System.Drawing.Size(11, 13);
+      this.l_SrcPort.Size = new System.Drawing.Size(15, 20);
       this.l_SrcPort.TabIndex = 0;
       this.l_SrcPort.Text = ":";
       // 
       // l_Dash
       // 
       this.l_Dash.AutoSize = true;
-      this.l_Dash.Location = new System.Drawing.Point(579, 18);
+      this.l_Dash.Location = new System.Drawing.Point(868, 28);
+      this.l_Dash.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Dash.Name = "l_Dash";
-      this.l_Dash.Size = new System.Drawing.Size(10, 13);
+      this.l_Dash.Size = new System.Drawing.Size(14, 20);
       this.l_Dash.TabIndex = 0;
       this.l_Dash.Text = "-";
       // 
       // tb_SrcPortUpper
       // 
       this.tb_SrcPortUpper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_SrcPortUpper.Location = new System.Drawing.Point(306, 14);
+      this.tb_SrcPortUpper.Location = new System.Drawing.Point(459, 22);
+      this.tb_SrcPortUpper.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_SrcPortUpper.Name = "tb_SrcPortUpper";
-      this.tb_SrcPortUpper.Size = new System.Drawing.Size(38, 20);
+      this.tb_SrcPortUpper.Size = new System.Drawing.Size(55, 26);
       this.tb_SrcPortUpper.TabIndex = 4;
       // 
       // tb_DstPortUpper
       // 
       this.tb_DstPortUpper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_DstPortUpper.Location = new System.Drawing.Point(590, 15);
+      this.tb_DstPortUpper.Location = new System.Drawing.Point(885, 23);
+      this.tb_DstPortUpper.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_DstPortUpper.Name = "tb_DstPortUpper";
-      this.tb_DstPortUpper.Size = new System.Drawing.Size(38, 20);
+      this.tb_DstPortUpper.Size = new System.Drawing.Size(55, 26);
       this.tb_DstPortUpper.TabIndex = 7;
       // 
       // l_DstPort
       // 
       this.l_DstPort.AutoSize = true;
       this.l_DstPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_DstPort.Location = new System.Drawing.Point(528, 18);
+      this.l_DstPort.Location = new System.Drawing.Point(792, 28);
+      this.l_DstPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_DstPort.Name = "l_DstPort";
-      this.l_DstPort.Size = new System.Drawing.Size(11, 13);
+      this.l_DstPort.Size = new System.Drawing.Size(15, 20);
       this.l_DstPort.TabIndex = 0;
       this.l_DstPort.Text = ":";
       // 
       // tb_DstPortLower
       // 
       this.tb_DstPortLower.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_DstPortLower.Location = new System.Drawing.Point(540, 15);
+      this.tb_DstPortLower.Location = new System.Drawing.Point(810, 23);
+      this.tb_DstPortLower.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_DstPortLower.Name = "tb_DstPortLower";
-      this.tb_DstPortLower.Size = new System.Drawing.Size(38, 20);
+      this.tb_DstPortLower.Size = new System.Drawing.Size(55, 26);
       this.tb_DstPortLower.TabIndex = 6;
       // 
       // cb_Protocol
       // 
       this.cb_Protocol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_Protocol.FormattingEnabled = true;
-      this.cb_Protocol.Location = new System.Drawing.Point(17, 13);
+      this.cb_Protocol.Location = new System.Drawing.Point(26, 20);
+      this.cb_Protocol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cb_Protocol.Name = "cb_Protocol";
-      this.cb_Protocol.Size = new System.Drawing.Size(58, 21);
+      this.cb_Protocol.Size = new System.Drawing.Size(85, 28);
       this.cb_Protocol.TabIndex = 1;
       // 
       // cms_DataGrid_RightMouseButton
       // 
+      this.cms_DataGrid_RightMouseButton.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_DataGrid_RightMouseButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteRuleToolStripMenuItem,
             this.deleteAllToolStripMenuItem});
       this.cms_DataGrid_RightMouseButton.Name = "cms_DataGrid_RightMouseButton";
-      this.cms_DataGrid_RightMouseButton.Size = new System.Drawing.Size(131, 48);
+      this.cms_DataGrid_RightMouseButton.Size = new System.Drawing.Size(169, 64);
       // 
       // deleteRuleToolStripMenuItem
       // 
       this.deleteRuleToolStripMenuItem.Name = "deleteRuleToolStripMenuItem";
-      this.deleteRuleToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+      this.deleteRuleToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
       this.deleteRuleToolStripMenuItem.Text = "Delete rule";
       this.deleteRuleToolStripMenuItem.Click += new System.EventHandler(this.DeleteRuleToolStripMenuItem_Click);
       // 
       // deleteAllToolStripMenuItem
       // 
       this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
-      this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+      this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(168, 30);
       this.deleteAllToolStripMenuItem.Text = "Delete all";
       this.deleteAllToolStripMenuItem.Click += new System.EventHandler(this.DeleteAllToolStripMenuItem_Click);
       // 
@@ -208,25 +220,27 @@
       // 
       this.cb_SrcIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cb_SrcIP.FormattingEnabled = true;
-      this.cb_SrcIP.Location = new System.Drawing.Point(141, 14);
+      this.cb_SrcIP.Location = new System.Drawing.Point(212, 22);
+      this.cb_SrcIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cb_SrcIP.Name = "cb_SrcIP";
-      this.cb_SrcIP.Size = new System.Drawing.Size(103, 21);
+      this.cb_SrcIP.Size = new System.Drawing.Size(152, 28);
       this.cb_SrcIP.TabIndex = 2;
       // 
       // cb_DstIP
       // 
       this.cb_DstIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cb_DstIP.FormattingEnabled = true;
-      this.cb_DstIP.Location = new System.Drawing.Point(424, 14);
+      this.cb_DstIP.Location = new System.Drawing.Point(636, 22);
+      this.cb_DstIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cb_DstIP.Name = "cb_DstIP";
-      this.cb_DstIP.Size = new System.Drawing.Size(103, 21);
+      this.cb_DstIP.Size = new System.Drawing.Size(152, 28);
       this.cb_DstIP.TabIndex = 5;
       // 
-      // PluginFirewallUC
+      // Plugin_Firewall
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.cb_DstIP);
       this.Controls.Add(this.cb_SrcIP);
       this.Controls.Add(this.cb_Protocol);
@@ -241,8 +255,9 @@
       this.Controls.Add(this.bt_Add);
       this.Controls.Add(this.l_SrcIp);
       this.Controls.Add(this.dgv_FWRules);
-      this.Name = "PluginFirewallUC";
-      this.Size = new System.Drawing.Size(996, 368);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.Name = "Plugin_Firewall";
+      this.Size = new System.Drawing.Size(1494, 566);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_FWRules)).EndInit();
       this.cms_DataGrid_RightMouseButton.ResumeLayout(false);
       this.ResumeLayout(false);

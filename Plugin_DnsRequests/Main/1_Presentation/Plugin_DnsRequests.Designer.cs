@@ -65,7 +65,8 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_DnsRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_DnsRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_DnsRequests.Location = new System.Drawing.Point(17, 44);
+      this.dgv_DnsRequests.Location = new System.Drawing.Point(26, 68);
+      this.dgv_DnsRequests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_DnsRequests.MultiSelect = false;
       this.dgv_DnsRequests.Name = "dgv_DnsRequests";
       this.dgv_DnsRequests.ReadOnly = true;
@@ -74,7 +75,7 @@
       this.dgv_DnsRequests.RowTemplate.Height = 20;
       this.dgv_DnsRequests.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_DnsRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_DnsRequests.Size = new System.Drawing.Size(933, 313);
+      this.dgv_DnsRequests.Size = new System.Drawing.Size(1400, 482);
       this.dgv_DnsRequests.TabIndex = 0;
       this.dgv_DnsRequests.TabStop = false;
       this.dgv_DnsRequests.VirtualMode = true;
@@ -84,9 +85,10 @@
       // 
       // bt_Set
       // 
-      this.bt_Set.Location = new System.Drawing.Point(359, 16);
+      this.bt_Set.Location = new System.Drawing.Point(538, 25);
+      this.bt_Set.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_Set.Name = "bt_Set";
-      this.bt_Set.Size = new System.Drawing.Size(33, 20);
+      this.bt_Set.Size = new System.Drawing.Size(50, 31);
       this.bt_Set.TabIndex = 2;
       this.bt_Set.Text = "Set";
       this.bt_Set.UseVisualStyleBackColor = true;
@@ -95,9 +97,10 @@
       // tb_Filter
       // 
       this.tb_Filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Filter.Location = new System.Drawing.Point(113, 16);
+      this.tb_Filter.Location = new System.Drawing.Point(170, 25);
+      this.tb_Filter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Filter.Name = "tb_Filter";
-      this.tb_Filter.Size = new System.Drawing.Size(231, 20);
+      this.tb_Filter.Size = new System.Drawing.Size(344, 26);
       this.tb_Filter.TabIndex = 1;
       this.tb_Filter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TB_Filter_KeyUp);
       // 
@@ -105,39 +108,41 @@
       // 
       this.l_RequestFilter.AutoSize = true;
       this.l_RequestFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestFilter.Location = new System.Drawing.Point(23, 19);
+      this.l_RequestFilter.Location = new System.Drawing.Point(34, 29);
+      this.l_RequestFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_RequestFilter.Name = "l_RequestFilter";
-      this.l_RequestFilter.Size = new System.Drawing.Size(83, 13);
+      this.l_RequestFilter.Size = new System.Drawing.Size(123, 20);
       this.l_RequestFilter.TabIndex = 0;
       this.l_RequestFilter.Text = "Request filter";
       // 
       // cms_DnsRequests
       // 
+      this.cms_DnsRequests.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_DnsRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
             this.copyHostNameToolStripMenuItem});
       this.cms_DnsRequests.Name = "cms_DNSRequests";
-      this.cms_DnsRequests.Size = new System.Drawing.Size(162, 92);
+      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 94);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(215, 30);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(161, 22);
+      this.tsmi_Clear.Size = new System.Drawing.Size(215, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
       // copyHostNameToolStripMenuItem
       // 
       this.copyHostNameToolStripMenuItem.Name = "copyHostNameToolStripMenuItem";
-      this.copyHostNameToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+      this.copyHostNameToolStripMenuItem.Size = new System.Drawing.Size(215, 30);
       this.copyHostNameToolStripMenuItem.Text = "Copy host name";
       this.copyHostNameToolStripMenuItem.Click += new System.EventHandler(this.CopyHostNameToolStripMenuItem_Click);
       // 
@@ -148,15 +153,16 @@
       // 
       // Plugin_DnsRequests
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.bt_Set);
       this.Controls.Add(this.tb_Filter);
       this.Controls.Add(this.l_RequestFilter);
       this.Controls.Add(this.dgv_DnsRequests);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_DnsRequests";
-      this.Size = new System.Drawing.Size(996, 368);
+      this.Size = new System.Drawing.Size(1494, 566);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DnsRequests)).EndInit();
       this.cms_DnsRequests.ResumeLayout(false);
       this.ResumeLayout(false);

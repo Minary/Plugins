@@ -61,7 +61,8 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Accounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Accounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_Accounts.Location = new System.Drawing.Point(17, 19);
+      this.dgv_Accounts.Location = new System.Drawing.Point(26, 29);
+      this.dgv_Accounts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Accounts.MultiSelect = false;
       this.dgv_Accounts.Name = "dgv_Accounts";
       this.dgv_Accounts.RowHeadersVisible = false;
@@ -69,7 +70,7 @@
       this.dgv_Accounts.RowTemplate.Height = 20;
       this.dgv_Accounts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Accounts.Size = new System.Drawing.Size(933, 349);
+      this.dgv_Accounts.Size = new System.Drawing.Size(1400, 537);
       this.dgv_Accounts.TabIndex = 3;
       this.dgv_Accounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Accounts_CellContentClick);
       this.dgv_Accounts.DoubleClick += new System.EventHandler(this.DGV_Accounts_DoubleClick);
@@ -82,19 +83,19 @@
             this.tsmi_DeleteEntry,
             this.tsmi_Clear});
       this.cms_HTTPAccounts.Name = "cms_HTTPAccounts";
-      this.cms_HTTPAccounts.Size = new System.Drawing.Size(138, 48);
+      this.cms_HTTPAccounts.Size = new System.Drawing.Size(180, 64);
       // 
       // tsmi_DeleteEntry
       // 
       this.tsmi_DeleteEntry.Name = "tsmi_DeleteEntry";
-      this.tsmi_DeleteEntry.Size = new System.Drawing.Size(137, 22);
+      this.tsmi_DeleteEntry.Size = new System.Drawing.Size(179, 30);
       this.tsmi_DeleteEntry.Text = "Delete entry";
       this.tsmi_DeleteEntry.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(137, 22);
+      this.tsmi_Clear.Size = new System.Drawing.Size(179, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -105,12 +106,13 @@
       // 
       // Plugin_HttpAccounts
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.dgv_Accounts);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpAccounts";
-      this.Size = new System.Drawing.Size(996, 379);
+      this.Size = new System.Drawing.Size(1494, 583);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Accounts)).EndInit();
       this.cms_HTTPAccounts.ResumeLayout(false);
       this.ResumeLayout(false);

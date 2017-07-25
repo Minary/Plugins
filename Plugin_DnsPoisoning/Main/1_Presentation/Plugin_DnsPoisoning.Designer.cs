@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+      this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.bt_Add = new System.Windows.Forms.Button();
@@ -36,7 +37,7 @@
       this.tb_Address = new System.Windows.Forms.TextBox();
       this.l_Host = new System.Windows.Forms.Label();
       this.l_IpAddress = new System.Windows.Forms.Label();
-      this.cms_DnsPoison = new System.Windows.Forms.ContextMenuStrip();
+      this.cms_DnsPoison = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.tsmi_Delete = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_ClearList = new System.Windows.Forms.ToolStripMenuItem();
       this.dgv_Spoofing = new System.Windows.Forms.DataGridView();
@@ -46,10 +47,10 @@
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(452, 15);
+      this.bt_Add.Location = new System.Drawing.Point(678, 23);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
-      this.bt_Add.Size = new System.Drawing.Size(20, 21);
+      this.bt_Add.Size = new System.Drawing.Size(30, 32);
       this.bt_Add.TabIndex = 3;
       this.bt_Add.Text = "+";
       this.bt_Add.UseVisualStyleBackColor = true;
@@ -58,18 +59,20 @@
       // tb_Host
       // 
       this.tb_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Host.Location = new System.Drawing.Point(96, 16);
+      this.tb_Host.Location = new System.Drawing.Point(144, 25);
+      this.tb_Host.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Host.Name = "tb_Host";
-      this.tb_Host.Size = new System.Drawing.Size(154, 20);
+      this.tb_Host.Size = new System.Drawing.Size(229, 26);
       this.tb_Host.TabIndex = 1;
       this.tb_Host.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
       // tb_Address
       // 
       this.tb_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Address.Location = new System.Drawing.Point(341, 15);
+      this.tb_Address.Location = new System.Drawing.Point(512, 23);
+      this.tb_Address.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Address.Name = "tb_Address";
-      this.tb_Address.Size = new System.Drawing.Size(100, 20);
+      this.tb_Address.Size = new System.Drawing.Size(148, 26);
       this.tb_Address.TabIndex = 2;
       this.tb_Address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Address_KeyDown);
       // 
@@ -77,9 +80,10 @@
       // 
       this.l_Host.AutoSize = true;
       this.l_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Host.Location = new System.Drawing.Point(23, 19);
+      this.l_Host.Location = new System.Drawing.Point(34, 29);
+      this.l_Host.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Host.Name = "l_Host";
-      this.l_Host.Size = new System.Drawing.Size(67, 13);
+      this.l_Host.Size = new System.Drawing.Size(100, 20);
       this.l_Host.TabIndex = 0;
       this.l_Host.Text = "Host name";
       // 
@@ -87,31 +91,33 @@
       // 
       this.l_IpAddress.AutoSize = true;
       this.l_IpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_IpAddress.Location = new System.Drawing.Point(266, 19);
+      this.l_IpAddress.Location = new System.Drawing.Point(399, 29);
+      this.l_IpAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_IpAddress.Name = "l_IpAddress";
-      this.l_IpAddress.Size = new System.Drawing.Size(67, 13);
+      this.l_IpAddress.Size = new System.Drawing.Size(99, 20);
       this.l_IpAddress.TabIndex = 0;
       this.l_IpAddress.Text = "IP address";
       // 
       // cms_DnsPoison
       // 
+      this.cms_DnsPoison.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_DnsPoison.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_Delete,
             this.tsmi_ClearList});
       this.cms_DnsPoison.Name = "cms_DNSPoison";
-      this.cms_DnsPoison.Size = new System.Drawing.Size(138, 48);
+      this.cms_DnsPoison.Size = new System.Drawing.Size(180, 64);
       // 
       // tsmi_Delete
       // 
       this.tsmi_Delete.Name = "tsmi_Delete";
-      this.tsmi_Delete.Size = new System.Drawing.Size(137, 22);
+      this.tsmi_Delete.Size = new System.Drawing.Size(179, 30);
       this.tsmi_Delete.Text = "Delete entry";
       this.tsmi_Delete.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // tsmi_ClearList
       // 
       this.tsmi_ClearList.Name = "tsmi_ClearList";
-      this.tsmi_ClearList.Size = new System.Drawing.Size(137, 22);
+      this.tsmi_ClearList.Size = new System.Drawing.Size(179, 30);
       this.tsmi_ClearList.Text = "Clear list";
       this.tsmi_ClearList.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -136,7 +142,8 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Spoofing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_Spoofing.Location = new System.Drawing.Point(17, 44);
+      this.dgv_Spoofing.Location = new System.Drawing.Point(26, 68);
+      this.dgv_Spoofing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Spoofing.MultiSelect = false;
       this.dgv_Spoofing.Name = "dgv_Spoofing";
       this.dgv_Spoofing.RowHeadersVisible = false;
@@ -146,24 +153,25 @@
       this.dgv_Spoofing.RowTemplate.Height = 20;
       this.dgv_Spoofing.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Spoofing.Size = new System.Drawing.Size(933, 324);
+      this.dgv_Spoofing.Size = new System.Drawing.Size(1400, 498);
       this.dgv_Spoofing.TabIndex = 4;
       this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       this.dgv_Spoofing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
       // Plugin_DnsPoisoning
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.dgv_Spoofing);
       this.Controls.Add(this.l_IpAddress);
       this.Controls.Add(this.l_Host);
       this.Controls.Add(this.tb_Address);
       this.Controls.Add(this.tb_Host);
       this.Controls.Add(this.bt_Add);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_DnsPoisoning";
-      this.Size = new System.Drawing.Size(996, 379);
+      this.Size = new System.Drawing.Size(1494, 583);
       this.Load += new System.EventHandler(this.PluginDNSPoisonUC_Load);
       this.cms_DnsPoison.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Spoofing)).EndInit();

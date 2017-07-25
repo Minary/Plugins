@@ -66,7 +66,8 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Sessions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Sessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_Sessions.Location = new System.Drawing.Point(193, 19);
+      this.dgv_Sessions.Location = new System.Drawing.Point(290, 29);
+      this.dgv_Sessions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Sessions.MultiSelect = false;
       this.dgv_Sessions.Name = "dgv_Sessions";
       this.dgv_Sessions.RowHeadersVisible = false;
@@ -76,7 +77,7 @@
       this.dgv_Sessions.RowTemplate.Height = 20;
       this.dgv_Sessions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Sessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Sessions.Size = new System.Drawing.Size(757, 349);
+      this.dgv_Sessions.Size = new System.Drawing.Size(1136, 537);
       this.dgv_Sessions.TabIndex = 1;
       this.dgv_Sessions.DoubleClick += new System.EventHandler(this.DGV_Sessions_DoubleClick);
       this.dgv_Sessions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Sessions_MouseDown);
@@ -89,14 +90,15 @@
       this.tv_Sessions.ImageIndex = 0;
       this.tv_Sessions.ImageList = this.il_Sessions;
       this.tv_Sessions.ItemHeight = 22;
-      this.tv_Sessions.Location = new System.Drawing.Point(17, 19);
+      this.tv_Sessions.Location = new System.Drawing.Point(26, 29);
+      this.tv_Sessions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tv_Sessions.Name = "tv_Sessions";
       treeNode1.Name = "SessionRoot";
       treeNode1.Text = "Sessions";
       this.tv_Sessions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
       this.tv_Sessions.SelectedImageIndex = 0;
-      this.tv_Sessions.Size = new System.Drawing.Size(161, 349);
+      this.tv_Sessions.Size = new System.Drawing.Size(240, 535);
       this.tv_Sessions.TabIndex = 1;
       this.tv_Sessions.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TV_Sessions_AfterCollapse);
       this.tv_Sessions.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TV_Sessions_NodeMouseClick);
@@ -109,31 +111,32 @@
       // 
       // cms_Sessions
       // 
+      this.cms_Sessions.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_Sessions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
             this.tsmi_ShowData});
       this.cms_Sessions.Name = "cms_Sessions";
-      this.cms_Sessions.Size = new System.Drawing.Size(153, 70);
+      this.cms_Sessions.Size = new System.Drawing.Size(203, 94);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(202, 30);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMensuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(152, 22);
+      this.tsmi_Clear.Size = new System.Drawing.Size(202, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
       // tsmi_ShowData
       // 
       this.tsmi_ShowData.Name = "tsmi_ShowData";
-      this.tsmi_ShowData.Size = new System.Drawing.Size(152, 22);
+      this.tsmi_ShowData.Size = new System.Drawing.Size(202, 30);
       this.tsmi_ShowData.Text = "Show newData";
       this.tsmi_ShowData.Click += new System.EventHandler(this.TSMI_ShowData_Click);
       // 
@@ -144,13 +147,14 @@
       // 
       // Plugin_Sessions
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.tv_Sessions);
       this.Controls.Add(this.dgv_Sessions);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_Sessions";
-      this.Size = new System.Drawing.Size(996, 379);
+      this.Size = new System.Drawing.Size(1494, 583);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Sessions)).EndInit();
       this.cms_Sessions.ResumeLayout(false);
       this.ResumeLayout(false);

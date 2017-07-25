@@ -44,7 +44,7 @@
       this.cms_HTTPRequests.SuspendLayout();
       this.SuspendLayout();
       // 
-      // dgv_HTTPRequests
+      // dgv_HttpRequests
       // 
       this.dgv_HttpRequests.AllowUserToAddRows = false;
       this.dgv_HttpRequests.AllowUserToDeleteRows = false;
@@ -65,16 +65,17 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_HttpRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HttpRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_HttpRequests.Location = new System.Drawing.Point(17, 44);
+      this.dgv_HttpRequests.Location = new System.Drawing.Point(26, 68);
+      this.dgv_HttpRequests.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_HttpRequests.MultiSelect = false;
-      this.dgv_HttpRequests.Name = "dgv_HTTPRequests";
+      this.dgv_HttpRequests.Name = "dgv_HttpRequests";
       this.dgv_HttpRequests.ReadOnly = true;
       this.dgv_HttpRequests.RowHeadersVisible = false;
       this.dgv_HttpRequests.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_HttpRequests.RowTemplate.Height = 20;
       this.dgv_HttpRequests.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HttpRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_HttpRequests.Size = new System.Drawing.Size(933, 313);
+      this.dgv_HttpRequests.Size = new System.Drawing.Size(1400, 482);
       this.dgv_HttpRequests.TabIndex = 3;
       this.dgv_HttpRequests.DoubleClick += new System.EventHandler(this.DGV_HttpRequests_DoubleClick);
       this.dgv_HttpRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseDown);
@@ -82,31 +83,32 @@
       // 
       // cms_HTTPRequests
       // 
+      this.cms_HTTPRequests.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_HTTPRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
             this.requestDetailsToolStripMenuItem});
       this.cms_HTTPRequests.Name = "CMS_Downloads";
-      this.cms_HTTPRequests.Size = new System.Drawing.Size(174, 70);
+      this.cms_HTTPRequests.Size = new System.Drawing.Size(234, 94);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(173, 22);
+      this.tsmi_Clear.Size = new System.Drawing.Size(233, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
       // requestDetailsToolStripMenuItem
       // 
       this.requestDetailsToolStripMenuItem.Name = "requestDetailsToolStripMenuItem";
-      this.requestDetailsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+      this.requestDetailsToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
       this.requestDetailsToolStripMenuItem.Text = "Open in browser ...";
       this.requestDetailsToolStripMenuItem.Click += new System.EventHandler(this.RequestDetailsToolStripMenuItem_Click);
       // 
@@ -114,26 +116,29 @@
       // 
       this.l_UrlFilter.AutoSize = true;
       this.l_UrlFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_UrlFilter.Location = new System.Drawing.Point(23, 19);
+      this.l_UrlFilter.Location = new System.Drawing.Point(34, 29);
+      this.l_UrlFilter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_UrlFilter.Name = "l_UrlFilter";
-      this.l_UrlFilter.Size = new System.Drawing.Size(61, 13);
+      this.l_UrlFilter.Size = new System.Drawing.Size(91, 20);
       this.l_UrlFilter.TabIndex = 0;
       this.l_UrlFilter.Text = "URL filter";
       // 
       // tb_Filter
       // 
       this.tb_Filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Filter.Location = new System.Drawing.Point(104, 16);
+      this.tb_Filter.Location = new System.Drawing.Point(156, 25);
+      this.tb_Filter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Filter.Name = "tb_Filter";
-      this.tb_Filter.Size = new System.Drawing.Size(231, 20);
+      this.tb_Filter.Size = new System.Drawing.Size(344, 26);
       this.tb_Filter.TabIndex = 1;
       this.tb_Filter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TB_Filter_KeyUp);
       // 
       // bt_Set
       // 
-      this.bt_Set.Location = new System.Drawing.Point(350, 16);
+      this.bt_Set.Location = new System.Drawing.Point(525, 25);
+      this.bt_Set.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_Set.Name = "bt_Set";
-      this.bt_Set.Size = new System.Drawing.Size(33, 20);
+      this.bt_Set.Size = new System.Drawing.Size(50, 31);
       this.bt_Set.TabIndex = 2;
       this.bt_Set.Text = "Set";
       this.bt_Set.UseVisualStyleBackColor = true;
@@ -144,18 +149,19 @@
       this.t_GuiUpdate.Interval = 500;
       this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
       // 
-      // PluginHttpRequestsUC
+      // Plugin_HttpRequests
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.bt_Set);
       this.Controls.Add(this.tb_Filter);
       this.Controls.Add(this.l_UrlFilter);
       this.Controls.Add(this.dgv_HttpRequests);
       this.DoubleBuffered = true;
-      this.Name = "PluginHttpRequestsUC";
-      this.Size = new System.Drawing.Size(996, 368);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.Name = "Plugin_HttpRequests";
+      this.Size = new System.Drawing.Size(1494, 566);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpRequests)).EndInit();
       this.cms_HTTPRequests.ResumeLayout(false);
       this.ResumeLayout(false);

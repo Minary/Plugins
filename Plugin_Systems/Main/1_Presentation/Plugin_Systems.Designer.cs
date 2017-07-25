@@ -46,23 +46,24 @@ namespace Minary.Plugin.Main
       // 
       // cms_Systems
       // 
+      this.cms_Systems.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_Systems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear});
       this.cms_Systems.Name = "cms_Systems";
-      this.cms_Systems.Size = new System.Drawing.Size(138, 48);
+      this.cms_Systems.Size = new System.Drawing.Size(180, 64);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(137, 22);
+      this.tsmi_Clear.Size = new System.Drawing.Size(179, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -87,7 +88,8 @@ namespace Minary.Plugin.Main
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Systems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Systems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgv_Systems.Location = new System.Drawing.Point(17, 19);
+      this.dgv_Systems.Location = new System.Drawing.Point(26, 29);
+      this.dgv_Systems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Systems.MultiSelect = false;
       this.dgv_Systems.Name = "dgv_Systems";
       this.dgv_Systems.RowHeadersVisible = false;
@@ -97,7 +99,7 @@ namespace Minary.Plugin.Main
       this.dgv_Systems.RowTemplate.Height = 20;
       this.dgv_Systems.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Systems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Systems.Size = new System.Drawing.Size(933, 349);
+      this.dgv_Systems.Size = new System.Drawing.Size(1400, 537);
       this.dgv_Systems.TabIndex = 1;
       this.dgv_Systems.DoubleClick += new System.EventHandler(this.DGV_Systems_DoubleClick);
       this.dgv_Systems.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Systems_MouseDown);
@@ -110,12 +112,13 @@ namespace Minary.Plugin.Main
       // 
       // Plugin_Systems
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.Color.Transparent;
+      this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.dgv_Systems);
+      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_Systems";
-      this.Size = new System.Drawing.Size(996, 379);
+      this.Size = new System.Drawing.Size(1494, 583);
       this.cms_Systems.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Systems)).EndInit();
       this.ResumeLayout(false);

@@ -10,8 +10,7 @@
   {
 
     #region MEMBERS
-
-    private static ManageAuthentications instance;
+    
     private PluginProperties pluginProperties;
     private Infrastructure.ManageAuthentications infrastructureLayer;
     private List<IObserver> observers;
@@ -33,23 +32,12 @@
     /// Initializes a new instance of the <see cref="ManageAuthentications"/> class.
     ///
     /// </summary>
-    private ManageAuthentications(PluginProperties pluginProperties)
+    public ManageAuthentications(PluginProperties pluginProperties)
     {
       this.pluginProperties = pluginProperties;
-      this.infrastructureLayer = Plugin.Main.HttpAccounts.ManageAuthentications.Infrastructure.ManageAuthentications.GetInstance(this.pluginProperties);
+      this.infrastructureLayer = new Plugin.Main.HttpAccounts.ManageAuthentications.Infrastructure.ManageAuthentications(this.pluginProperties);
       this.accountPatterns = new List<HttpAccountPattern>();
       this.observers = new List<IObserver>();
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static ManageAuthentications GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new ManageAuthentications(pluginProperties));
     }
 
 

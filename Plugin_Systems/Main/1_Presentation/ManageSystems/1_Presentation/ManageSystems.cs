@@ -18,9 +18,8 @@
 
     #region MEMBERS
 
-    private static Form_ManageSystems instance;
     private BindingList<SystemPattern> systemPatterns;
-    private Plugin.Main.Systems.ManageSystems.Task.ManageSystems taskLayer;
+    private Task.ManageSystems taskLayer;
     private PluginProperties pluginProperties;
 
     #endregion
@@ -36,18 +35,101 @@
 
 
     #region PUBLIC METHODS
-
+    
     /// <summary>
+    /// Initializes a new instance of the <see cref="Form_ManageSystems"/> class.
     ///
     /// </summary>
     /// <param name="pPluginMain"></param>
     /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static Form_ManageSystems GetInstance(PluginProperties pluginProperties)
+    public Form_ManageSystems(PluginProperties pluginProperties)
     {
-      return instance ?? (instance = new Form_ManageSystems(pluginProperties));
+      this.InitializeComponent();
+
+      DataGridViewTextBoxColumn columnSystemName = new DataGridViewTextBoxColumn();
+      columnSystemName.DataPropertyName = "SystemName";
+      columnSystemName.Name = "SystemName";
+      columnSystemName.HeaderText = "System name";
+      columnSystemName.ReadOnly = true;
+      columnSystemName.Visible = true;
+      columnSystemName.Width = 140;
+      this.dgv_Systems.Columns.Add(columnSystemName);
+
+      DataGridViewTextBoxColumn columnSystemPattern = new DataGridViewTextBoxColumn();
+      columnSystemPattern.DataPropertyName = "SystemPatternstring";
+      columnSystemPattern.Name = "SystemPatternstring";
+      columnSystemPattern.HeaderText = "System pattern";
+      columnSystemPattern.ReadOnly = true;
+      columnSystemPattern.Visible = true;
+      columnSystemPattern.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_Systems.Columns.Add(columnSystemPattern);
+
+      DataGridViewTextBoxColumn columnDataSource = new DataGridViewTextBoxColumn();
+      columnDataSource.DataPropertyName = "Source";
+      columnDataSource.Name = "Source";
+      columnDataSource.HeaderText = "Source";
+      columnDataSource.ReadOnly = true;
+      columnDataSource.Visible = true;
+      columnDataSource.DefaultCellStyle.BackColor = Color.WhiteSmoke;
+      columnDataSource.DefaultCellStyle.ForeColor = Color.Gray;
+      columnDataSource.Width = 80;
+      this.dgv_Systems.Columns.Add(columnDataSource);
+
+      DataGridViewCheckBoxColumn columnIsEnabled = new DataGridViewCheckBoxColumn();
+      columnIsEnabled.DataPropertyName = "IsEnabled";
+      columnIsEnabled.Name = "IsEnabled";
+      columnIsEnabled.HeaderText = "Enabled";
+      columnIsEnabled.ReadOnly = true;
+      columnIsEnabled.Visible = true;
+      columnIsEnabled.Width = 80;
+      ////      DGV_ApplicationPatterns.CellClick += DGV_AccountPatterns_CellClick;
+      this.dgv_Systems.Columns.Add(columnIsEnabled);
+
+      DataGridViewTextBoxColumn columnConfig = new DataGridViewTextBoxColumn();
+      columnConfig.DataPropertyName = "PatternFileFullPath";
+      columnConfig.Name = "PatternFileFullPath";
+      columnConfig.HeaderText = "PatternFileFullPath";
+      columnConfig.ReadOnly = true;
+      columnConfig.Visible = false;
+      columnConfig.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_Systems.Columns.Add(columnConfig);
+
+      this.systemPatterns = new BindingList<SystemPattern>();
+      this.dgv_Systems.DataSource = this.systemPatterns;
+      this.dgv_Systems.CellClick += this.DGV_SystemPatterns_CellClick;
+
+      this.pluginProperties = pluginProperties;
+      this.taskLayer = new Task.ManageSystems(pluginProperties);
+      this.taskLayer.AddObserver(this);
+
+      try
+      {
+        this.taskLayer.ReadSystemPatterns();
+      }
+      catch (FileNotFoundException fnfex)
+      {
+        pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", fnfex.Message);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
+      }
+
+      // Configure pattern files file System Watcher
+      try
+      {
+        this.fsw_PatternFiles.Filter = Plugin.Main.Systems.DataTypes.General.PATTERN_FILE_PATTERN;
+        this.fsw_PatternFiles.Path = Path.Combine(this.pluginProperties.PluginBaseDir, this.pluginProperties.PatternSubDir);
+        this.fsw_PatternFiles.IncludeSubdirectories = true;
+        this.fsw_PatternFiles.EnableRaisingEvents = true;
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
+      }
     }
- 
+
 
     /// <summary>
     ///
@@ -105,102 +187,7 @@
 
 
     #region PRIVATE METHODS
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Form_ManageSystems"/> class.
-    ///
-    /// </summary>
-    /// <param name="pPluginMain"></param>
-    /// <param name="pluginProperties"></param>
-    private Form_ManageSystems(PluginProperties pluginProperties)
-    {
-      this.InitializeComponent();
-
-      DataGridViewTextBoxColumn columnSystemName = new DataGridViewTextBoxColumn();
-      columnSystemName.DataPropertyName = "SystemName";
-      columnSystemName.Name = "SystemName";
-      columnSystemName.HeaderText = "System name";
-      columnSystemName.ReadOnly = true;
-      columnSystemName.Visible = true;
-      columnSystemName.Width = 140;
-      this.dgv_Systems.Columns.Add(columnSystemName);
-
-      DataGridViewTextBoxColumn columnSystemPattern = new DataGridViewTextBoxColumn();
-      columnSystemPattern.DataPropertyName = "SystemPatternstring";
-      columnSystemPattern.Name = "SystemPatternstring";
-      columnSystemPattern.HeaderText = "System pattern";
-      columnSystemPattern.ReadOnly = true;
-      columnSystemPattern.Visible = true;
-      columnSystemPattern.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_Systems.Columns.Add(columnSystemPattern);
-
-      DataGridViewTextBoxColumn columnDataSource = new DataGridViewTextBoxColumn();
-      columnDataSource.DataPropertyName = "Source";
-      columnDataSource.Name = "Source";
-      columnDataSource.HeaderText = "Source";
-      columnDataSource.ReadOnly = true;
-      columnDataSource.Visible = true;
-      columnDataSource.DefaultCellStyle.BackColor = Color.WhiteSmoke;
-      columnDataSource.DefaultCellStyle.ForeColor = Color.Gray;
-      columnDataSource.Width = 80;
-      this.dgv_Systems.Columns.Add(columnDataSource);
-
-      DataGridViewCheckBoxColumn columnIsEnabled = new DataGridViewCheckBoxColumn();
-      columnIsEnabled.DataPropertyName = "IsEnabled";
-      columnIsEnabled.Name = "IsEnabled";
-      columnIsEnabled.HeaderText = "Enabled";
-      columnIsEnabled.ReadOnly = true;
-      columnIsEnabled.Visible = true;
-      columnIsEnabled.Width = 80;
-      ////      DGV_ApplicationPatterns.CellClick += DGV_AccountPatterns_CellClick;
-      this.dgv_Systems.Columns.Add(columnIsEnabled);
-
-      DataGridViewTextBoxColumn columnConfig = new DataGridViewTextBoxColumn();
-      columnConfig.DataPropertyName = "PatternFileFullPath";
-      columnConfig.Name = "PatternFileFullPath";
-      columnConfig.HeaderText = "PatternFileFullPath";
-      columnConfig.ReadOnly = true;
-      columnConfig.Visible = false;
-      columnConfig.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_Systems.Columns.Add(columnConfig);
-
-      this.systemPatterns = new BindingList<SystemPattern>();
-      this.dgv_Systems.DataSource = this.systemPatterns;
-      this.dgv_Systems.CellClick += this.DGV_SystemPatterns_CellClick;
-
-      this.pluginProperties = pluginProperties;
-      this.taskLayer = Plugin.Main.Systems.ManageSystems.Task.ManageSystems.GetInstance(pluginProperties);
-      this.taskLayer.AddObserver(this);
-
-      try
-      {
-        this.taskLayer.ReadSystemPatterns();
-      }
-      catch (FileNotFoundException fnfex)
-      {
-        pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", fnfex.Message);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
-      }
-
-      // Configure pattern files file System Watcher
-      try
-      {
-        this.fsw_PatternFiles.Filter = Plugin.Main.Systems.DataTypes.General.PATTERN_FILE_PATTERN;
-        this.fsw_PatternFiles.Path = Path.Combine(this.pluginProperties.PluginBaseDir, this.pluginProperties.PatternSubDir);
-        this.fsw_PatternFiles.IncludeSubdirectories = true;
-        this.fsw_PatternFiles.EnableRaisingEvents = true;
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
-      }
-    }
-
-
+    
     /// <summary>
     ///
     /// </summary>

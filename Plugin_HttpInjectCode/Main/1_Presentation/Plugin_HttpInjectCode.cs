@@ -156,7 +156,7 @@
       this.cb_injectPosition.SelectedIndex = 0;
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = InjectCode.Infrastructure.HttpInjectCode.GetInstance(this, this.injectCodeConfig);
+      this.infrastructureLayer = new InjectCode.Infrastructure.HttpInjectCode(this, this.injectCodeConfig);
     }
 
     #endregion

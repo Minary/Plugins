@@ -14,8 +14,7 @@
   {
 
     #region MEMBERS
-
-    private static Plugin.Main.Session.ManageSessions.Infrastructure.ManageSessions instance;
+    
     private PluginProperties pluginProperties;
 
     #endregion
@@ -27,19 +26,9 @@
     /// Initializes a new instance of the <see cref="ManageSessions"/> class.
     ///
     /// </summary>
-    private ManageSessions(PluginProperties pluginProperties)
+    public ManageSessions(PluginProperties pluginProperties)
     {
       this.pluginProperties = pluginProperties;
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static ManageSessions GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new Plugin.Main.Session.ManageSessions.Infrastructure.ManageSessions(pluginProperties));
     }
 
 

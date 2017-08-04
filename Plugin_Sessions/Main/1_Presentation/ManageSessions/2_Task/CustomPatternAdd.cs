@@ -5,12 +5,12 @@
   using System;
   using System.Text.RegularExpressions;
 
+
   public class CustomPatternAdd
   {
 
     #region MEMBERS
-
-    private static CustomPatternAdd instance;
+    
     private PluginProperties pluginProperties;
     private Infrastructure.CustomPatternAdd infrastructureLayer;
 
@@ -20,13 +20,14 @@
     #region PUBLIC
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
     ///
     /// </summary>
     /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static CustomPatternAdd GetInstance(PluginProperties pluginProperties)
+    public CustomPatternAdd(PluginProperties pluginProperties)
     {
-      return instance ?? (instance = new CustomPatternAdd(pluginProperties));
+      this.pluginProperties = pluginProperties;
+      this.infrastructureLayer = new Infrastructure.CustomPatternAdd(this.pluginProperties);
     }
 
 
@@ -89,22 +90,6 @@
     }
 
     #endregion
-
-
-    #region PRIVATE
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
-    ///
-    /// </summary>
-    /// <param name="pluginProperties"></param>
-    private CustomPatternAdd(PluginProperties pluginProperties)
-    {
-      this.pluginProperties = pluginProperties;
-      this.infrastructureLayer = Infrastructure.CustomPatternAdd.GetInstance(this.pluginProperties);
-    }
-
-    #endregion
-
+    
   }
 }

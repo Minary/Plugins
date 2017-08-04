@@ -158,7 +158,7 @@
       this.cb_Protocol.SelectedIndex = 0;
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = Firewall.Infrastructure.Firewall.GetInstance(this);
+      this.infrastructureLayer = new Firewall.Infrastructure.Firewall(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

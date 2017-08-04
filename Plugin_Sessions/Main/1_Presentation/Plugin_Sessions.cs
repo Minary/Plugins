@@ -30,7 +30,6 @@
     private Session.Infrastructure.Session infrastructureLayer;
     private PluginProperties pluginProperties;
     private TreeNode filterNode;
-    //private MngSessions.Presentation.Form_ManageSessions manageSessionsPresentationLayer;
     private MngSessions.Task.ManageSessions manageSessionsTaskLayer;
     private Dictionary<string, string> gitHubData = new Dictionary<string, string>()
                                                          { { "Username", string.Empty },
@@ -161,14 +160,14 @@
       }
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = Session.Infrastructure.Session.GetInstance(this);
+      this.infrastructureLayer = new Session.Infrastructure.Session(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();
 
       // Load session pattern management GUI
-      this.manageSessionsPresentationLayer = MngSessions.Presentation.Form_ManageSessions.GetInstance(this.pluginProperties);
-      this.manageSessionsTaskLayer = MngSessions.Task.ManageSessions.GetInstance(this.pluginProperties);
+      this.manageSessionsPresentationLayer = new MngSessions.Presentation.Form_ManageSessions(this.pluginProperties);
+      this.manageSessionsTaskLayer = new MngSessions.Task.ManageSessions(this.pluginProperties);
     }
 
 

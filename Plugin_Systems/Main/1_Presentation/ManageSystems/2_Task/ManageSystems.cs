@@ -6,13 +6,13 @@
   using MinaryLib.DataTypes;
   using System.Collections.Generic;
 
+
   public class ManageSystems
   {
 
     #region MEMBERS
 
-    private static ManageSystems instance;
-    private Plugin.Main.Systems.ManageSystems.Infrastructure.ManageSystems infrastructureLayer;
+    Infrastructure.ManageSystems infrastructureLayer;
     private List<IObserver> observers;
     private List<SystemPattern> systemPatterns;
 
@@ -32,23 +32,12 @@
     /// Initializes a new instance of the <see cref="ManageSystems"/> class.
     ///
     /// </summary>
-    private ManageSystems(PluginProperties pluginProperties)
+    public ManageSystems(PluginProperties pluginProperties)
     {
-      this.infrastructureLayer = Plugin.Main.Systems.ManageSystems.Infrastructure.ManageSystems.GetInstance(pluginProperties);
+      this.infrastructureLayer = new Infrastructure.ManageSystems(pluginProperties);
       this.systemPatterns = new List<SystemPattern>();
       this.observers = new List<IObserver>();
     }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static ManageSystems GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new ManageSystems(pluginProperties));
-    }
-
 
     /// <summary>
     ///

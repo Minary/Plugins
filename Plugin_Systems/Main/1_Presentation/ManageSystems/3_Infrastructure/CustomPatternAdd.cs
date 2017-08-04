@@ -11,8 +11,7 @@
   {
 
     #region MEMBERS
-
-    private static CustomPatternAdd instance;
+    
     private PluginProperties pluginProperties;
 
     #endregion
@@ -21,26 +20,11 @@
     #region PUBLIC
 
     /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static CustomPatternAdd GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new CustomPatternAdd(pluginProperties));
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
     ///
     /// </summary>
     /// <param name="pluginProperties"></param>
-    private CustomPatternAdd(PluginProperties pluginProperties)
+    public CustomPatternAdd(PluginProperties pluginProperties)
     {
       this.pluginProperties = pluginProperties;
     }

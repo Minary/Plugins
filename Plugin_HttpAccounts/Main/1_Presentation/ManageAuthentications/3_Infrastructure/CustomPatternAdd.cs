@@ -11,8 +11,7 @@
   {
 
     #region MEMBERS
-
-    private static CustomPatternAdd instance;
+    
     private PluginProperties pluginProperties;
 
     #endregion
@@ -21,12 +20,12 @@
     #region PUBLIC
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
     ///
     /// </summary>
-    /// <returns></returns>
-    public static CustomPatternAdd GetInstance(PluginProperties pluginProperties)
+    public CustomPatternAdd(PluginProperties pluginProperties)
     {
-      return instance ?? (instance = new CustomPatternAdd(pluginProperties));
+      this.pluginProperties = pluginProperties;
     }
 
 
@@ -54,20 +53,6 @@
           fileStream.Close();
         }
       }
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
-    ///
-    /// </summary>
-    private CustomPatternAdd(PluginProperties pluginProperties)
-    {
-      this.pluginProperties = pluginProperties;
     }
 
     #endregion

@@ -4,15 +4,14 @@
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
-  using System.ComponentModel;
   using System.IO;
+
 
   public class DnsRequests
   {
 
     #region MEMBERS
-
-    private static DnsRequests instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -20,26 +19,10 @@
 
     #region PUBLIC
 
-    private DnsRequests(IPlugin plugin)
+    public DnsRequests(IPlugin plugin)
     {
       this.plugin = plugin;
     }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static DnsRequests GetInstance(IPlugin plugin)
-    {
-      if (instance == null)
-      {
-        instance = new DnsRequests(plugin);
-      }
-
-      return (instance);
-    }
-
 
     #endregion
 

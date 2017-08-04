@@ -14,8 +14,7 @@
   {
 
     #region MEMBERS
-
-    private static ManageSystems instance;
+    
     private PluginProperties pluginProperties;
 
     #endregion
@@ -34,20 +33,10 @@
     /// Initializes a new instance of the <see cref="ManageSystems"/> class.
     ///
     /// </summary>
-    private ManageSystems(PluginProperties pluginProperties)
+    public ManageSystems(PluginProperties pluginProperties)
     {
       this.pluginProperties = pluginProperties;
       this.SystemPatternFile = Path.Combine(this.pluginProperties.PluginBaseDir, "Plugin_SystemsOS_Patterns.xml");
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static ManageSystems GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new ManageSystems(pluginProperties));
     }
 
 

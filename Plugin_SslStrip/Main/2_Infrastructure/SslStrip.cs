@@ -16,8 +16,7 @@
   {
 
     #region MEMBERS
-
-    private static SslStrip instance;
+    
     private IPlugin plugin;
     private SslStripConfig sslStripConfig;
 
@@ -31,7 +30,7 @@
     ///
     /// </summary>
     /// <param name="plugin"></param>
-    private SslStrip(IPlugin plugin, SslStripConfig sslStripConfig)
+    public SslStrip(IPlugin plugin, SslStripConfig sslStripConfig)
     {
       this.plugin = plugin;
       this.sslStripConfig = sslStripConfig;
@@ -51,17 +50,6 @@
       {
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="plugin"></param>
-    /// <param name="sslStripConfig"></param>
-    /// <returns></returns>
-    public static SslStrip GetInstance(IPlugin plugin, SslStripConfig sslStripConfig)
-    {
-      return instance ?? (instance = new SslStrip(plugin, sslStripConfig));
     }
     
 

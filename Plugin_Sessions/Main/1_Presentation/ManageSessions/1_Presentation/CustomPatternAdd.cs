@@ -34,9 +34,8 @@
       this.InitializeComponent();
 
       this.pluginProperties = pluginProperties;
-      this.taskLayer = Plugin.Main.Session.ManageSessions.Task.CustomPatternAdd.GetInstance(this.pluginProperties);
+      this.taskLayer = new Task.CustomPatternAdd(this.pluginProperties);
     }
-
 
     #endregion
 

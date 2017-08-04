@@ -7,13 +7,14 @@
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
+
   public partial class CustomPatternAdd : Form
   {
 
     #region MEMBERS
 
     private PluginProperties pluginProperties;
-    private Plugin.Main.Systems.ManageSystems.Task.CustomPatternAdd taskLayer;
+    private Task.CustomPatternAdd taskLayer;
 
     #endregion
 
@@ -24,7 +25,7 @@
     {
       this.InitializeComponent();
       this.pluginProperties = pluginProperties;
-      this.taskLayer = Plugin.Main.Systems.ManageSystems.Task.CustomPatternAdd.GetInstance(this.pluginProperties);
+      this.taskLayer = new Task.CustomPatternAdd(this.pluginProperties);
     }
 
     #endregion

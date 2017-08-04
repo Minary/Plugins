@@ -11,12 +11,12 @@
   using System.Linq;
   using System.Windows.Forms;
 
+
   public partial class Form_ManageAuthentications : Form, IObserver
   {
 
     #region MEMBERS
 
-    private static Form_ManageAuthentications instance;
     private BindingList<HttpAccountPattern> httpAccountPatterns;
     private PluginProperties pluginProperties;
     private Task.ManageAuthentications taskLayer;
@@ -34,81 +34,13 @@
 
 
     #region PUBLIC
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pPluginParameters"></param>
-    /// <returns></returns>
-    public static Form_ManageAuthentications GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new Form_ManageAuthentications(pluginProperties));
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public List<HttpAccountPattern> GetActiveAuthenticationPatterns()
-    {
-      List<HttpAccountPattern> activeAuthenticationPatterns = new List<HttpAccountPattern>();
-      List<HttpAccountPattern> localPatterns = this.httpAccountPatterns.Where(elem => elem.Source == "Local" &&
-                                                                               this.cb_LocalPatternsEnabled.Checked == true &&
-                                                                               elem.IsEnabled == true)
-                                                                               .ToList();
-      List<HttpAccountPattern> remotePatterns = this.httpAccountPatterns.Where(elem => elem.Source == "Remote" &&
-                                                                               this.cb_RemotePatternsEnabled.Checked == true &&
-                                                                               elem.IsEnabled == true)
-                                                                               .ToList();
-
-      localPatterns.ForEach(elem => activeAuthenticationPatterns.Add(elem));
-      remotePatterns.ForEach(elem => activeAuthenticationPatterns.Add(elem));
-
-      return activeAuthenticationPatterns;
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="authenticationPatterns"></param>
-    public void LoadTemplateAuthenticationPatterns(BindingList<HttpAccountPattern> authenticationPatterns)
-    {
-      // 1. Add template patterns and display them in the GUI
-      authenticationPatterns.ToList().ForEach(elem => this.taskLayer.SaveTemplate(elem));
-
-      // 2. Hide local and remote patterns
-      this.cb_LocalPatternsEnabled.Checked = false;
-      this.cb_RemotePatternsEnabled.Checked = false;
-
-      this.ChangeRowState();
-    }
-
-
-    public byte[] OnGetTemplateData()
-    {
-      return this.taskLayer.OnGetTemplateData(this.GetActiveAuthenticationPatterns());
-    }
-
-
-    public void OnLoadTemplateData(TemplatePluginData templateData)
-    {
-      List<HttpAccountPattern> authenticationPatterns = this.taskLayer.OnLoadTemplateData(templateData);
-      this.LoadTemplateAuthenticationPatterns(this.httpAccountPatterns);
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Form_ManageAuthentications"/> class.
     ///
     /// </summary>
     /// <param name="pPluginParameters"></param>
-    private Form_ManageAuthentications(PluginProperties pluginProperties)
+    public Form_ManageAuthentications(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
 
@@ -194,7 +126,7 @@
       columnConfig.ReadOnly = true;
       columnConfig.Visible = false;
       columnConfig.Width = 0;
-//      columnConfig.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
       this.dgv_AccountPatterns.Columns.Add(columnConfig);
 
       this.httpAccountPatterns = new BindingList<HttpAccountPattern>();
@@ -202,7 +134,7 @@
       this.dgv_AccountPatterns.CellClick += this.DGV_AccountPatterns_CellClick;
 
       this.pluginProperties = pluginProperties;
-      this.taskLayer = Task.ManageAuthentications.GetInstance(this.pluginProperties);
+      this.taskLayer = new Task.ManageAuthentications(this.pluginProperties);
       this.taskLayer.AddObserver(this);
 
       // Read pattern files
@@ -235,9 +167,63 @@
     /// <summary>
     ///
     /// </summary>
-    /// <param name="pIsVisible"></param>
-    /// <param name="pColumnName"></param>
-    /// <param name="pCellValue"></param>
+    /// <returns></returns>
+    public List<HttpAccountPattern> GetActiveAuthenticationPatterns()
+    {
+      List<HttpAccountPattern> activeAuthenticationPatterns = new List<HttpAccountPattern>();
+      List<HttpAccountPattern> localPatterns = this.httpAccountPatterns.Where(elem => elem.Source == "Local" &&
+                                                                               this.cb_LocalPatternsEnabled.Checked == true &&
+                                                                               elem.IsEnabled == true)
+                                                                               .ToList();
+      List<HttpAccountPattern> remotePatterns = this.httpAccountPatterns.Where(elem => elem.Source == "Remote" &&
+                                                                               this.cb_RemotePatternsEnabled.Checked == true &&
+                                                                               elem.IsEnabled == true)
+                                                                               .ToList();
+
+      localPatterns.ForEach(elem => activeAuthenticationPatterns.Add(elem));
+      remotePatterns.ForEach(elem => activeAuthenticationPatterns.Add(elem));
+
+      return activeAuthenticationPatterns;
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="authenticationPatterns"></param>
+    public void LoadTemplateAuthenticationPatterns(BindingList<HttpAccountPattern> authenticationPatterns)
+    {
+      // 1. Add template patterns and display them in the GUI
+      authenticationPatterns.ToList().ForEach(elem => this.taskLayer.SaveTemplate(elem));
+
+      // 2. Hide local and remote patterns
+      this.cb_LocalPatternsEnabled.Checked = false;
+      this.cb_RemotePatternsEnabled.Checked = false;
+
+      this.ChangeRowState();
+    }
+
+
+    public byte[] OnGetTemplateData()
+    {
+      return this.taskLayer.OnGetTemplateData(this.GetActiveAuthenticationPatterns());
+    }
+
+
+    public void OnLoadTemplateData(TemplatePluginData templateData)
+    {
+      List<HttpAccountPattern> authenticationPatterns = this.taskLayer.OnLoadTemplateData(templateData);
+      this.LoadTemplateAuthenticationPatterns(this.httpAccountPatterns);
+    }
+
+    #endregion
+
+
+    #region PRIVATE
+    
+    /// <summary>
+    /// 
+    /// </summary>
     private void ChangeRowState()
     {
       BindingList<HttpAccountPattern> allActiveRows = new BindingList<HttpAccountPattern>();

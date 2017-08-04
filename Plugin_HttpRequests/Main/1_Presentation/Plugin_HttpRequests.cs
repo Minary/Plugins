@@ -145,7 +145,7 @@
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = HttpRequest.Infrastructure.HttpRequest.GetInstance(this);
+      this.infrastructureLayer = new HttpRequest.Infrastructure.HttpRequest(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

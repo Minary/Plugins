@@ -160,12 +160,12 @@
       }
 
       // Instantiate and initialize infrastructure layer
-      this.infrastructureLayer = HttpAccounts.Infrastructure.HttpAccounts.GetInstance(this);
+      this.infrastructureLayer = new HttpAccounts.Infrastructure.HttpAccounts(this);
       this.infrastructureLayer.OnInit();
 
       // Load authentication pattern management GUI
-      this.manageHttpAccountsPresentationLayer = MngAuthentications.Presentation.Form_ManageAuthentications.GetInstance(this.pluginProperties);
-      this.manageHttpAccountsTaskLayer = MngAuthentications.Task.ManageAuthentications.GetInstance(this.pluginProperties);
+      this.manageHttpAccountsPresentationLayer = new MngAuthentications.Presentation.Form_ManageAuthentications(this.pluginProperties);
+      this.manageHttpAccountsTaskLayer = new MngAuthentications.Task.ManageAuthentications(this.pluginProperties);
       this.accountPatterns = this.manageHttpAccountsPresentationLayer.GetActiveAuthenticationPatterns();
 
       // Start DataGridView Update thredat_GuiUpdate

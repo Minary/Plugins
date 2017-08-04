@@ -13,8 +13,7 @@
   {
 
     #region MEMBERS
-
-    private static Systems instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -22,24 +21,9 @@
 
     #region PUBLIC
 
-    private Systems(IPlugin plugin)
+    public Systems(IPlugin plugin)
     {
       this.plugin = plugin;
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static Systems GetInstance(IPlugin plugin)
-    {
-      if (instance == null)
-      {
-        instance = new Systems(plugin);
-      }
-
-      return (instance);
     }
 
     #endregion

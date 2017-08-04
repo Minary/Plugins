@@ -14,8 +14,7 @@
   {
 
     #region MEMBERS
-
-    private static DnsPoisoning instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -23,7 +22,7 @@
 
     #region PUBLIC
 
-    private DnsPoisoning(IPlugin plugin)
+    public DnsPoisoning(IPlugin plugin)
     {
       this.plugin = plugin;
 
@@ -42,16 +41,6 @@
       {
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static DnsPoisoning GetInstance(IPlugin plugin)
-    {
-      return instance ?? (instance = new DnsPoisoning(plugin));
     }
 
     #endregion

@@ -5,13 +5,13 @@
   using System;
   using System.Text.RegularExpressions;
 
+
   public class CustomPatternAdd
   {
 
     #region MEMBERS
-
-    private static Plugin.Main.Systems.ManageSystems.Task.CustomPatternAdd instance;
-    private Plugin.Main.Systems.ManageSystems.Infrastructure.CustomPatternAdd infrastructureLayer;
+    
+    private Infrastructure.CustomPatternAdd infrastructureLayer;
     private PluginProperties pluginProperties;
 
     #endregion
@@ -20,13 +20,14 @@
     #region PUBLIC
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
     ///
     /// </summary>
     /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static CustomPatternAdd GetInstance(PluginProperties pluginProperties)
+    public CustomPatternAdd(PluginProperties pluginProperties)
     {
-      return instance ?? (instance = new CustomPatternAdd(pluginProperties));
+      this.pluginProperties = pluginProperties;
+      this.infrastructureLayer = new Infrastructure.CustomPatternAdd(pluginProperties);
     }
 
 
@@ -56,22 +57,6 @@
       }
 
       this.infrastructureLayer.SaveNewAccountPatternRecord(record);
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CustomPatternAdd"/> class.
-    ///
-    /// </summary>
-    /// <param name="pluginProperties"></param>
-    private CustomPatternAdd(PluginProperties pluginProperties)
-    {
-      this.pluginProperties = pluginProperties;
-      this.infrastructureLayer = Plugin.Main.Systems.ManageSystems.Infrastructure.CustomPatternAdd.GetInstance(pluginProperties);
     }
 
     #endregion

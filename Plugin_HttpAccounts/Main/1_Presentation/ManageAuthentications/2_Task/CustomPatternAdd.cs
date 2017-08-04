@@ -9,8 +9,7 @@
   {
 
     #region MEMBERS
-
-    private static CustomPatternAdd instance;
+    
     private Infrastructure.CustomPatternAdd infrastructureLayer;
     private PluginProperties pluginProperties;
 
@@ -18,14 +17,11 @@
 
 
     #region PUBLIC
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static CustomPatternAdd GetInstance(PluginProperties pluginProperties)
+    
+    public CustomPatternAdd(PluginProperties pluginProperties)
     {
-      return instance ?? (instance = new CustomPatternAdd(pluginProperties));
+      this.pluginProperties = pluginProperties;
+      this.infrastructureLayer = new Infrastructure.CustomPatternAdd(this.pluginProperties);
     }
 
 
@@ -101,17 +97,6 @@
     public void SaveAccountPatterns(HttpAccountPattern newPatternRecord)
     {
       this.infrastructureLayer.SaveNewAccountPatternRecord(newPatternRecord);
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
-    private CustomPatternAdd(PluginProperties pluginProperties)
-    {
-      this.pluginProperties = pluginProperties;
-      this.infrastructureLayer = Infrastructure.CustomPatternAdd.GetInstance(this.pluginProperties);
     }
 
     #endregion

@@ -16,10 +16,9 @@
   {
 
     #region MEMBERS
-
-    private static HttpInjectCode instance;
+    
     private IPlugin plugin;
-    private InjectCodeConfig InjectCodeConfig;
+    private InjectCodeConfig injectCodeConfig;
 
     #endregion
 
@@ -31,10 +30,10 @@
     /// </summary>
     /// <param name="plugin"></param>
     /// <param name="InjectCodeConfig"></param>
-    private HttpInjectCode(IPlugin plugin, InjectCodeConfig InjectCodeConfig)
+    public HttpInjectCode(IPlugin plugin, InjectCodeConfig injectCodeConfig)
     {
       this.plugin = plugin;
-      this.InjectCodeConfig = InjectCodeConfig;
+      this.injectCodeConfig = injectCodeConfig;
 
       // Verifying plugin parameters
       if (plugin == null)
@@ -51,17 +50,6 @@
       {
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="plugin"></param>
-    /// <param name="sslStripConfig"></param>
-    /// <returns></returns>
-    public static HttpInjectCode GetInstance(IPlugin plugin, InjectCodeConfig InjectCodeConfig)
-    {
-      return instance ?? (instance = new HttpInjectCode(plugin, InjectCodeConfig));
     }
 
 
@@ -95,9 +83,9 @@
       // Write configuration file
       try
       {
-        if (!File.Exists(this.InjectCodeConfig.InjectCodeConfigFilePath))
+        if (!File.Exists(this.injectCodeConfig.InjectCodeConfigFilePath))
         {
-          File.Delete(this.InjectCodeConfig.InjectCodeConfigFilePath);
+          File.Delete(this.injectCodeConfig.InjectCodeConfigFilePath);
         }
       }
       catch (Exception ex)
@@ -119,8 +107,8 @@
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.InjectCodeConfig.InjectCodeConfigFilePath);
-        File.WriteAllText(this.InjectCodeConfig.InjectCodeConfigFilePath, injectCodeConfigurationFileData, Encoding.ASCII);
+        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.injectCodeConfig.InjectCodeConfigFilePath);
+        File.WriteAllText(this.injectCodeConfig.InjectCodeConfigFilePath, injectCodeConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
@@ -137,7 +125,7 @@
       // Remove plugin configuration file
       try
       {
-        File.Delete(this.InjectCodeConfig.InjectCodeConfigFilePath);
+        File.Delete(this.injectCodeConfig.InjectCodeConfigFilePath);
       }
       catch
       {

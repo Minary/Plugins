@@ -16,8 +16,7 @@
   {
 
     #region MEMBERS
-
-    private static HttpInjectFile instance;
+    
     private IPlugin plugin;
     private InjectFileConfig injectFileConfig;
 
@@ -31,7 +30,7 @@
     ///
     /// </summary>
     /// <param name="plugin"></param>
-    private HttpInjectFile(IPlugin plugin, InjectFileConfig injectFileConfig)
+    public HttpInjectFile(IPlugin plugin, InjectFileConfig injectFileConfig)
     {
       this.plugin = plugin;
       this.injectFileConfig = injectFileConfig;
@@ -51,18 +50,6 @@
       {
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="plugin"></param>
-    /// <param name="sslStripConfig"></param>
-    /// <returns></returns>
-    public static HttpInjectFile GetInstance(IPlugin plugin, InjectFileConfig injectFileConfig)
-    {
-      return instance ?? (instance = new HttpInjectFile(plugin, injectFileConfig));
     }
 
 

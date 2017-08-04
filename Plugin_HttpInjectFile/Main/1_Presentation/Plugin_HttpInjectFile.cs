@@ -126,7 +126,7 @@ private const string Label_URL = "Redirect to URL";
       };
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = InjectFile.Infrastructure.HttpInjectFile.GetInstance(this, this.injectFileConfig);
+      this.infrastructureLayer = new InjectFile.Infrastructure.HttpInjectFile(this, this.injectFileConfig);
     }
 
     #endregion

@@ -30,7 +30,7 @@
       this.pluginProperties = pluginProperties;
 
       // Initialize task layer
-      this.taskLayer = Task.CustomPatternAdd.GetInstance(this.pluginProperties);
+      this.taskLayer = new Task.CustomPatternAdd(this.pluginProperties);
 
       // Set default values
       this.cb_Method.SelectedIndex = 0;

@@ -121,7 +121,7 @@
       };
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = HostMapping.Infrastructure.HostMapping.GetInstance(this, this.hostMappingConfig);
+      this.infrastructureLayer = new HostMapping.Infrastructure.HostMapping(this, this.hostMappingConfig);
     }
 
     #endregion

@@ -16,10 +16,9 @@
   {
 
     #region MEMBERS
-
-    private static Form_ManageSessions instance;
+    
     private BindingList<SessionPattern> sessionPatternRecords;
-    private Plugin.Main.Session.ManageSessions.Task.ManageSessions taskLayer;
+    private Task.ManageSessions taskLayer;
     private PluginProperties pluginProperties;
 
     #endregion
@@ -37,82 +36,12 @@
     #region PUBLIC
 
     /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pPluginMain"></param>
-    /// <param name="pluginProperties"></param>
-    /// <returns></returns>
-    public static Form_ManageSessions GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new Form_ManageSessions(pluginProperties));
-    }
-
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public List<SessionPattern> GetActiveSessionPatterns()
-    {
-      List<SessionPattern> activeSessionPatterns = new List<SessionPattern>();
-      List<SessionPattern> localPatterns = this.sessionPatternRecords.Where(elem => elem.Source == "Local" &&
-                                                                                  this.cb_LocalPatternsEnabled.Checked == true &&
-                                                                                  elem.IsEnabled == true)
-                                                                                  .ToList();
-      List<SessionPattern> remotePatterns = this.sessionPatternRecords.Where(elem => elem.Source == "Remote" &&
-                                                                                  this.cb_RemotePatternsEnabled.Checked == true &&
-                                                                                  elem.IsEnabled == true)
-                                                                                  .ToList();
-
-      localPatterns.ForEach(elem => activeSessionPatterns.Add(elem));
-      remotePatterns.ForEach(elem => activeSessionPatterns.Add(elem));
-
-      return activeSessionPatterns;
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sessionPatterns"></param>
-    public void LoadTemplateSessionPatterns(List<SessionPattern> sessionPatterns)
-    {
-      // 1. Add template patterns and display them in the GUI
-      sessionPatterns.ForEach(elem => this.taskLayer.SaveTemplate(elem));
-
-      // 2. Hide local and remote patterns
-      this.cb_LocalPatternsEnabled.Checked = false;
-      this.cb_RemotePatternsEnabled.Checked = false;
-
-      this.ChangeRowState();
-    }
-
-
-    public byte[] OnGetTemplateData()
-    {
-      return this.taskLayer.OnGetTemplateData(this.GetActiveSessionPatterns());
-    }
-
-
-    public void OnLoadTemplateData(TemplatePluginData templateData)
-    {
-      List<SessionPattern> applicationPatterns = this.taskLayer.OnLoadTemplateData(templateData);
-      this.LoadTemplateSessionPatterns(applicationPatterns);
-    }
-
-    #endregion
-
-
-    #region PRIVATE
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="Form_ManageSessions"/> class.
     ///
     /// </summary>
     /// <param name="pPluginMain"></param>
     /// <param name="pluginProperties"></param>
-    private Form_ManageSessions(PluginProperties pluginProperties)
+    public Form_ManageSessions(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
 
@@ -189,10 +118,9 @@
       this.sessionPatternRecords = new BindingList<SessionPattern>();
       this.dgv_SessionPatterns.DataSource = this.sessionPatternRecords;
       this.dgv_SessionPatterns.CellClick += this.DGV_SessionPatterns_CellClick;
-
-
+      
       this.pluginProperties = pluginProperties;
-      this.taskLayer = Plugin.Main.Session.ManageSessions.Task.ManageSessions.GetInstance(pluginProperties);
+      this.taskLayer = new Task.ManageSessions(pluginProperties);
       this.taskLayer.AddObserver(this);
 
       try
@@ -217,6 +145,59 @@
       {
         this.pluginProperties.HostApplication.LogMessage("Form_ManageSessions(): {0}", ex.Message);
       }
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <returns></returns>
+    public List<SessionPattern> GetActiveSessionPatterns()
+    {
+      List<SessionPattern> activeSessionPatterns = new List<SessionPattern>();
+      List<SessionPattern> localPatterns = this.sessionPatternRecords.Where(elem => elem.Source == "Local" &&
+                                                                                  this.cb_LocalPatternsEnabled.Checked == true &&
+                                                                                  elem.IsEnabled == true)
+                                                                                  .ToList();
+      List<SessionPattern> remotePatterns = this.sessionPatternRecords.Where(elem => elem.Source == "Remote" &&
+                                                                                  this.cb_RemotePatternsEnabled.Checked == true &&
+                                                                                  elem.IsEnabled == true)
+                                                                                  .ToList();
+
+      localPatterns.ForEach(elem => activeSessionPatterns.Add(elem));
+      remotePatterns.ForEach(elem => activeSessionPatterns.Add(elem));
+
+      return activeSessionPatterns;
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="sessionPatterns"></param>
+    public void LoadTemplateSessionPatterns(List<SessionPattern> sessionPatterns)
+    {
+      // 1. Add template patterns and display them in the GUI
+      sessionPatterns.ForEach(elem => this.taskLayer.SaveTemplate(elem));
+
+      // 2. Hide local and remote patterns
+      this.cb_LocalPatternsEnabled.Checked = false;
+      this.cb_RemotePatternsEnabled.Checked = false;
+
+      this.ChangeRowState();
+    }
+
+
+    public byte[] OnGetTemplateData()
+    {
+      return this.taskLayer.OnGetTemplateData(this.GetActiveSessionPatterns());
+    }
+
+
+    public void OnLoadTemplateData(TemplatePluginData templateData)
+    {
+      List<SessionPattern> applicationPatterns = this.taskLayer.OnLoadTemplateData(templateData);
+      this.LoadTemplateSessionPatterns(applicationPatterns);
     }
 
     #endregion

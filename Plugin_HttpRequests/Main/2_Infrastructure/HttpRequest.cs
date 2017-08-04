@@ -12,8 +12,7 @@
   {
 
     #region MEMBERS
-
-    private static HttpRequest instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -21,24 +20,9 @@
 
     #region PUBLIC
 
-    private HttpRequest(IPlugin plugin)
+    public HttpRequest(IPlugin plugin)
     {
       this.plugin = plugin;
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static HttpRequest GetInstance(IPlugin plugin)
-    {
-      if (instance == null)
-      {
-        instance = new HttpRequest(plugin);
-      }
-
-      return (instance);
     }
 
     #endregion

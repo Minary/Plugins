@@ -16,8 +16,7 @@
   {
 
     #region MEMBERS
-
-    private static RequestRedirect instance;
+    
     private IPlugin plugin;
     private RequestRedirectConfig requestRedirectConfig;
 
@@ -31,7 +30,7 @@
     /// </summary>
     /// <param name="plugin"></param>
     /// <param name="requestRedirectdConfig"></param>
-    private RequestRedirect(IPlugin plugin, RequestRedirectConfig requestRedirectdConfig)
+    public RequestRedirect(IPlugin plugin, RequestRedirectConfig requestRedirectdConfig)
     {
       this.plugin = plugin;
       this.requestRedirectConfig = requestRedirectdConfig;
@@ -51,18 +50,6 @@
       {
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="plugin"></param>
-    /// <param name="sslStripConfig"></param>
-    /// <returns></returns>
-    public static RequestRedirect GetInstance(IPlugin plugin, RequestRedirectConfig requestRedirectConfig)
-    {
-      return instance ?? (instance = new RequestRedirect(plugin, requestRedirectConfig));
     }
 
 

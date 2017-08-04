@@ -13,8 +13,7 @@
   {
 
     #region MEMBERS
-
-    private static HttpAccounts instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -27,20 +26,9 @@
     ///
     /// </summary>
     /// <param name="plugin"></param>
-    private HttpAccounts(IPlugin plugin)
+    public HttpAccounts(IPlugin plugin)
     {
       this.plugin = plugin;
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <param name="pWebServerConfig"></param>
-    /// <returns></returns>
-    public static HttpAccounts GetInstance(IPlugin plugin)
-    {
-      return instance ?? (instance = new HttpAccounts(plugin));
     }
 
     #endregion

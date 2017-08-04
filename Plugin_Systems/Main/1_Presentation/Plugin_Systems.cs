@@ -171,14 +171,14 @@
       this.t_GUIUpdate.Start();
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = Systems.Infrastructure.Systems.GetInstance(this);
+      this.infrastructureLayer = new Systems.Infrastructure.Systems(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();
 
       // Load authentication pattern management GUI
-      this.manageSystemsPresentationLayer = ManageSystems.Presentation.Form_ManageSystems.GetInstance(this.pluginProperties);
-      this.manageSystemsTaskLayer = ManageSystems.Task.ManageSystems.GetInstance(this.pluginProperties);
+      this.manageSystemsPresentationLayer = new ManageSystems.Presentation.Form_ManageSystems(this.pluginProperties);
+      this.manageSystemsTaskLayer = new ManageSystems.Task.ManageSystems(this.pluginProperties);
       this.systemPatterns = this.manageSystemsPresentationLayer.GetActiveSystemPatterns();
     }
 

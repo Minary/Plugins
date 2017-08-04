@@ -119,7 +119,7 @@
                                                      pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.DnsPoisoning"].ConfigFilePath);
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = DnsPoison.Infrastructure.DnsPoisoning.GetInstance(this);
+      this.infrastructureLayer = new DnsPoison.Infrastructure.DnsPoisoning(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

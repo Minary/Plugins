@@ -13,8 +13,7 @@
   {
 
     #region MEMBERS
-
-    private static Session instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -22,24 +21,9 @@
 
     #region PUBLIC
 
-    private Session(IPlugin plugin)
+    public Session(IPlugin plugin)
     {
       this.plugin = plugin;
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static Session GetInstance(IPlugin plugin)
-    {
-      if (instance == null)
-      {
-        instance = new Session(plugin);
-      }
-
-      return instance;
     }
 
     #endregion

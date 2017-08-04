@@ -122,7 +122,7 @@
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 53, IpProtocols.Udp } };
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = DnsRequests.GetInstance(this);
+      this.infrastructureLayer = new DnsRequests(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

@@ -17,7 +17,6 @@
 
     #region MEMBERS
 
-    private static HostMapping instance;
     private IPlugin plugin;
     private HostMappingConfig hostMappingConfig;
 
@@ -31,7 +30,7 @@
     ///
     /// </summary>
     /// <param name="plugin"></param>
-    private HostMapping(IPlugin plugin, HostMappingConfig hostMappingConfig)
+    public HostMapping(IPlugin plugin, HostMappingConfig hostMappingConfig)
     {
       this.plugin = plugin;
       this.hostMappingConfig = hostMappingConfig;
@@ -52,18 +51,7 @@
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="plugin"></param>
-    /// <param name="hostMappingConfig"></param>
-    /// <returns></returns>
-    public static HostMapping GetInstance(IPlugin plugin, HostMappingConfig hostMappingConfig)
-    {
-      return instance ?? (instance = new HostMapping(plugin, hostMappingConfig));
-    }
-
+    
 
     /// <summary>
     ///

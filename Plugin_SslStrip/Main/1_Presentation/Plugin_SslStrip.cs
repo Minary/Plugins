@@ -117,7 +117,7 @@
       };
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = SslStrip.Infrastructure.SslStrip.GetInstance(this, this.sslStripConfig);
+      this.infrastructureLayer = new SslStrip.Infrastructure.SslStrip(this, this.sslStripConfig);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

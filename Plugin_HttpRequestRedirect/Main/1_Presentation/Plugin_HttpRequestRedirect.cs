@@ -35,6 +35,7 @@
 
 
     #region PUBLIC
+
     public Plugin_HttpRequestRedirect(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
@@ -129,7 +130,7 @@
       };
 
       // Instantiate infrastructureLayer layer
-      this.infrastructureLayer = RequestRedirect.Infrastructure.RequestRedirect.GetInstance(this, this.requestRedirectConfig);
+      this.infrastructureLayer = new RequestRedirect.Infrastructure.RequestRedirect(this, this.requestRedirectConfig);
 
       // Populate redirect type combobox
       this.cb_RedirectType.Items.Add("301/Moved Permanently");

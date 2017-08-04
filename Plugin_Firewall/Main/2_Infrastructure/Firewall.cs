@@ -15,8 +15,7 @@
   {
 
     #region MEMBERS
-
-    private static Firewall instance;
+    
     private IPlugin plugin;
 
     #endregion
@@ -24,19 +23,9 @@
 
     #region PUBLIC
 
-    private Firewall(IPlugin plugin)
+    public Firewall(IPlugin plugin)
     {
       this.plugin = plugin;
-    }
-
-
-    /// <summary>
-    /// Create single instance
-    /// </summary>
-    /// <returns></returns>
-    public static Firewall GetInstance(IPlugin plugin)
-    {
-      return instance ?? (instance = new Firewall(plugin));
     }
 
     #endregion

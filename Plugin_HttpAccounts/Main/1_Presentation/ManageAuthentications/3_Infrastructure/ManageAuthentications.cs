@@ -13,8 +13,7 @@
   {
 
     #region MEMBERS
-
-    private static ManageAuthentications instance;
+    
     private PluginProperties pluginProperties;
 
     #endregion
@@ -26,19 +25,9 @@
     /// Initializes a new instance of the <see cref="ManageAuthentications"/> class.
     ///
     /// </summary>
-    private ManageAuthentications(PluginProperties pluginProperties)
+    public ManageAuthentications(PluginProperties pluginProperties)
     {
       this.pluginProperties = pluginProperties;
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static ManageAuthentications GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new ManageAuthentications(pluginProperties));
     }
 
 

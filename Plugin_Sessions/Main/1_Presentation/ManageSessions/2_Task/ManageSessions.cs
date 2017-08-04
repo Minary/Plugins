@@ -9,9 +9,8 @@
   {
 
     #region MEMBERS
-
-    private static ManageSessions instance;
-    private Plugin.Main.Session.ManageSessions.Infrastructure.ManageSessions infrastructureLayer;
+    
+    private Infrastructure.ManageSessions infrastructureLayer;
     private List<SessionPattern> sessionPatterns;
     private List<IObserver> observers;
 
@@ -31,21 +30,11 @@
     /// 
     /// </summary>
     /// <param name="pluginParams"></param>
-    private ManageSessions(PluginProperties pluginParams)
+    public ManageSessions(PluginProperties pluginParams)
     {
-      this.infrastructureLayer = Plugin.Main.Session.ManageSessions.Infrastructure.ManageSessions.GetInstance(pluginParams);
+      this.infrastructureLayer = new Infrastructure.ManageSessions(pluginParams);
       this.sessionPatterns = new List<SessionPattern>();
       this.observers = new List<IObserver>();
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <returns></returns>
-    public static ManageSessions GetInstance(PluginProperties pluginProperties)
-    {
-      return instance ?? (instance = new ManageSessions(pluginProperties));
     }
 
 

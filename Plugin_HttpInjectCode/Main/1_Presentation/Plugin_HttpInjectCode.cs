@@ -63,7 +63,7 @@
       columnRequestedPath.Name = "RequestedPathRegex";
       columnRequestedPath.HeaderText = "Requested path";
       columnRequestedPath.ReadOnly = true;
-      columnRequestedPath.Width = 150;
+      columnRequestedPath.Width = 200;
       this.dgv_InjectionTriggerURLs.Columns.Add(columnRequestedPath);
 
       DataGridViewTextBoxColumn columnTag = new DataGridViewTextBoxColumn();

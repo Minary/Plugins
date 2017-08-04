@@ -62,7 +62,7 @@
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
       columnSrcIp.ReadOnly = true;
-      columnSrcIp.Width = 95;
+      columnSrcIp.Width = 120;
       this.dgv_FWRules.Columns.Add(columnSrcIp);
 
       DataGridViewTextBoxColumn columnSrcPortLower = new DataGridViewTextBoxColumn();
@@ -70,7 +70,7 @@
       columnSrcPortLower.Name = "SrcPortLower";
       columnSrcPortLower.HeaderText = "Src. port (lower)";
       columnSrcPortLower.ReadOnly = true;
-      columnSrcPortLower.Width = 125;
+      columnSrcPortLower.Width = 180;
       this.dgv_FWRules.Columns.Add(columnSrcPortLower);
 
       DataGridViewTextBoxColumn columnSrcPortUpper = new DataGridViewTextBoxColumn();
@@ -78,7 +78,7 @@
       columnSrcPortUpper.Name = "SrcPortUpper";
       columnSrcPortUpper.HeaderText = "Src. port (upper)";
       columnSrcPortUpper.ReadOnly = true;
-      columnSrcPortUpper.Width = 125;
+      columnSrcPortUpper.Width = 180;
       this.dgv_FWRules.Columns.Add(columnSrcPortUpper);
 
       DataGridViewTextBoxColumn columnDstIP = new DataGridViewTextBoxColumn();
@@ -86,7 +86,7 @@
       columnDstIP.Name = "DstIP";
       columnDstIP.HeaderText = "Dest. IP";
       columnDstIP.ReadOnly = true;
-      columnDstIP.Width = 95;
+      columnDstIP.Width = 120;
       this.dgv_FWRules.Columns.Add(columnDstIP);
 
       DataGridViewTextBoxColumn columnDstPortLower = new DataGridViewTextBoxColumn();
@@ -94,7 +94,7 @@
       columnDstPortLower.Name = "DstPortLower";
       columnDstPortLower.HeaderText = "Dst. port (lower)";
       columnDstPortLower.ReadOnly = true;
-      columnDstPortLower.Width = 125;
+      columnDstPortLower.Width = 180;
       this.dgv_FWRules.Columns.Add(columnDstPortLower);
 
       DataGridViewTextBoxColumn columnDstPortUpper = new DataGridViewTextBoxColumn();
@@ -103,7 +103,6 @@
       columnDstPortUpper.HeaderText = "Dst. port (upper)";
       columnDstPortUpper.ReadOnly = true;
       columnDstPortUpper.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      //// columnDstPortUpper.Width = 127;
       this.dgv_FWRules.Columns.Add(columnDstPortUpper);
 
       this.firewallRules = new BindingList<FirewallRuleRecord>();

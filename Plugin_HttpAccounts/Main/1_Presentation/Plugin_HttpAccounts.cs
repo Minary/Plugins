@@ -67,7 +67,7 @@
       columnMac.Name = "SrcMAC";
       columnMac.HeaderText = "MAC address";
       columnMac.ReadOnly = true;
-      columnMac.Width = 120;
+      columnMac.Width = 180;
       this.dgv_Accounts.Columns.Add(columnMac);
 
       DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();

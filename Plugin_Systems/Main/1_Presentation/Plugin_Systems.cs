@@ -85,7 +85,7 @@
       columnMac.Name = "SrcMac";
       columnMac.HeaderText = "MAC address";
       columnMac.ReadOnly = true;
-      columnMac.Width = 120;
+      columnMac.Width = 180;
       columnMac.Resizable = System.Windows.Forms.DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnMac);
 

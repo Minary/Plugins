@@ -67,7 +67,7 @@
       columnSrcMac.DataPropertyName = "SrcMAC";
       columnSrcMac.Name = "SrcMAC";
       columnSrcMac.HeaderText = "Source MAC";
-      columnSrcMac.Width = 125;
+      columnSrcMac.Width = 180;
       this.dgv_Sessions.Columns.Add(columnSrcMac);
 
       DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();

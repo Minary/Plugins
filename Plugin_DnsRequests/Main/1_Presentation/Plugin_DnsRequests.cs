@@ -51,7 +51,7 @@
       columnSrcMac.Name = "SrcMAC";
       columnSrcMac.HeaderText = "MAC address";
       columnSrcMac.ReadOnly = true;
-      columnSrcMac.Width = 140;
+      columnSrcMac.Width = 180;
       this.dgv_DnsRequests.Columns.Add(columnSrcMac);
       
       DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();

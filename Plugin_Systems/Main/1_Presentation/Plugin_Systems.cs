@@ -269,13 +269,18 @@
 
       foreach (string tmpNewData in newData)
       {
+        if (string.IsNullOrEmpty(tmpNewData))
+        {
+          continue;
+        }
+
         try
         {
           dataPacket = this.GetDataPacket(tmpNewData);
         }
         catch (Exception ex)
         {
-          MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.ToString()));
+          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
           continue;
         }
 
@@ -452,9 +457,8 @@
     {
       DataPacket dataPacket = new DataPacket();
       string[] splitter;
-
-      if (string.IsNullOrEmpty(data) ||
-          (splitter = Regex.Split(data, @"\|\|")).Length != 7)
+      
+      if ((splitter = Regex.Split(data, @"\|\|")).Length != 7)
       {
         throw new Exception("The record structure is invalid");
       }

@@ -20,7 +20,7 @@
       string hostName = this.tb_Host.Text.Trim();
       string ipAddress = this.tb_Address.Text.Trim();
       DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      string cname = this.tb_Cname.Text.Trim();
+      string cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
 
       try
       {
@@ -151,7 +151,7 @@
       string hostName = this.tb_Host.Text.Trim();
       string ipAddress = this.tb_Address.Text.Trim();
       DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      string cname = this.tb_Cname.Text.Trim();
+      string cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
 
       try
       {

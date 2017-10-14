@@ -123,6 +123,8 @@
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();
+
+      this.SetGuiActive();
     }
 
     #endregion
@@ -144,12 +146,12 @@
 
       this.tb_Address.Enabled = false;
       this.tb_Host.Enabled = false;
-      this.tb_Cname.Enabled = false;
       this.bt_Add.Enabled = false;
-      this.cb_Cname.Enabled = false;
       this.cms_DnsPoison.Enabled = false;
       this.tsmi_Delete.Enabled = false;
       this.tsmi_ClearList.Enabled = false;
+      this.tb_Cname.Enabled = false;
+      this.cb_Cname.Enabled = false;
     }
 
 
@@ -166,13 +168,13 @@
       }
 
       this.tb_Address.Enabled = true;
-      this.tb_Cname.Enabled = false;
       this.tb_Host.Enabled = true;
       this.bt_Add.Enabled = true;
-      this.cb_Cname.Enabled = true;
       this.cms_DnsPoison.Enabled = true;
       this.tsmi_Delete.Enabled = true;
       this.tsmi_ClearList.Enabled = true;
+      this.tb_Cname.Enabled = false;
+      this.cb_Cname.Enabled = true;
     }
 
 
@@ -181,12 +183,12 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void OnDNSHijackExited(object sender, System.EventArgs e)
+    private void OnDnsHijackExited(object sender, System.EventArgs e)
     {
       this.SetGuiActive();
     }
 
     #endregion
-    
+
   }
 }

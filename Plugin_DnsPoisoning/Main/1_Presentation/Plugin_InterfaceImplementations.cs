@@ -36,7 +36,6 @@
       // Plugin initialisation
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-
       this.SetGuiActive();
     }
 

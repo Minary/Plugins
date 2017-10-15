@@ -67,7 +67,6 @@
       this.dgv_Accounts.Name = "dgv_Accounts";
       this.dgv_Accounts.RowHeadersVisible = false;
       this.dgv_Accounts.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_Accounts.RowTemplate.Height = 20;
       this.dgv_Accounts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Accounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Accounts.Size = new System.Drawing.Size(1400, 537);

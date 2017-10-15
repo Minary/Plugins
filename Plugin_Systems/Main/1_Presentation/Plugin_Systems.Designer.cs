@@ -96,7 +96,6 @@ namespace Minary.Plugin.Main
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Systems.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Systems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_Systems.RowTemplate.Height = 20;
       this.dgv_Systems.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Systems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Systems.Size = new System.Drawing.Size(1400, 537);

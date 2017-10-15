@@ -72,7 +72,6 @@
       this.dgv_HttpRequests.ReadOnly = true;
       this.dgv_HttpRequests.RowHeadersVisible = false;
       this.dgv_HttpRequests.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_HttpRequests.RowTemplate.Height = 20;
       this.dgv_HttpRequests.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HttpRequests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_HttpRequests.Size = new System.Drawing.Size(1400, 482);

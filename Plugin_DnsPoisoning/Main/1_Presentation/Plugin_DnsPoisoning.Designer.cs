@@ -152,7 +152,6 @@
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Spoofing.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_Spoofing.RowTemplate.Height = 20;
       this.dgv_Spoofing.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Spoofing.Size = new System.Drawing.Size(1400, 482);
@@ -160,12 +159,12 @@
       this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       this.dgv_Spoofing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
-      // CB_Cname
+      // cb_Cname
       // 
       this.cb_Cname.AutoSize = true;
       this.cb_Cname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cb_Cname.Location = new System.Drawing.Point(726, 29);
-      this.cb_Cname.Name = "CB_Cname";
+      this.cb_Cname.Name = "cb_Cname";
       this.cb_Cname.Size = new System.Drawing.Size(117, 24);
       this.cb_Cname.TabIndex = 3;
       this.cb_Cname.Text = "Is CNAME";

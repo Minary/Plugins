@@ -74,7 +74,6 @@
       this.dgv_FWRules.ReadOnly = true;
       this.dgv_FWRules.RowHeadersVisible = false;
       this.dgv_FWRules.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_FWRules.RowTemplate.Height = 20;
       this.dgv_FWRules.RowTemplate.ReadOnly = true;
       this.dgv_FWRules.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_FWRules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

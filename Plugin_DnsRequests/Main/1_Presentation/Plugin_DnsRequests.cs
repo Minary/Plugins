@@ -67,7 +67,7 @@
       columnTimestamp.Name = "Timestamp";
       columnTimestamp.HeaderText = "Timestamp";
       columnTimestamp.ReadOnly = true;
-      columnTimestamp.Width = 120;
+      columnTimestamp.Width = 200;
       this.dgv_DnsRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();

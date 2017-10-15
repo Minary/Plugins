@@ -71,7 +71,7 @@
       columnRequestMethod.HeaderText = "Method";
       columnRequestMethod.ReadOnly = true;
       columnRequestMethod.Visible = true;
-      columnRequestMethod.Width = 60;
+      columnRequestMethod.Width = 80;
       this.dgv_HttpRequests.Columns.Add(columnRequestMethod);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();

@@ -147,10 +147,17 @@
       TemplatePluginData templateData = new TemplatePluginData();
       List<RecordDnsPoison> genericObjectList = new List<RecordDnsPoison>();
 
-      // Replace current configuration parameter with placeholder values
+      // where necessary replace current configuration parameter 
+      // with placeholder values
       foreach (RecordDnsPoison tmpRecord in dnsPoisonRecords)
       {
-        genericObjectList.Add(new RecordDnsPoison(tmpRecord.HostName, MinaryLib.DSL.Config.CONSTANT_LOCAL_IP, tmpRecord.ResponseType, tmpRecord.CName));
+        RecordDnsPoison realRecord = new RecordDnsPoison(tmpRecord.HostName, tmpRecord.IpAddress, tmpRecord.ResponseType, tmpRecord.CName);
+        if (tmpRecord.IpAddress == this.plugin.Config.HostApplication.CurrentIP)
+        {
+          realRecord.IpAddress = MinaryLib.DSL.Config.CONSTANT_LOCAL_IP;
+        }
+
+        genericObjectList.Add(realRecord);
       }
 
       // Serialize the list
@@ -184,7 +191,12 @@
       poisoningRecords = (List<RecordDnsPoison>)formatter.Deserialize(stream);
 
       // Replace place holders by current configuration values
-      poisoningRecords.ForEach(elem => { elem.IpAddress = this.plugin.Config.HostApplication.CurrentIP; });
+      poisoningRecords.ForEach(elem => {
+        if (elem.IpAddress == MinaryLib.DSL.Config.CONSTANT_LOCAL_IP)
+        {
+          elem.IpAddress = this.plugin.Config.HostApplication.CurrentIP;
+        }
+      });
 
       return poisoningRecords;
     }

@@ -150,7 +150,7 @@
             }
             else
             {
-              dnsPoisoningHosts += string.Format("{0},{1},{2},{3}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.IpAddress, tmpRecord.CName);
+              dnsPoisoningHosts += string.Format("{0},{1},{2},{3}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.CName, tmpRecord.IpAddress);
             }
           }
 

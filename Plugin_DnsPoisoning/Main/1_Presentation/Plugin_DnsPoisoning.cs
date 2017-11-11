@@ -173,8 +173,9 @@
       this.cms_DnsPoison.Enabled = true;
       this.tsmi_Delete.Enabled = true;
       this.tsmi_ClearList.Enabled = true;
-      this.tb_Cname.Enabled = false;
+
       this.cb_Cname.Enabled = true;
+      this.tb_Cname.Enabled = this.cb_Cname.Checked == true ? true : false;
     }
 
 

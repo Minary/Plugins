@@ -132,8 +132,8 @@
         this.tb_Address.Text = this.pluginProperties.HostApplication.CurrentIP;
       }
     }
-    
 
+ 
     /// <summary>
     ///
     /// </summary>

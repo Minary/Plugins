@@ -147,7 +147,7 @@
       TemplatePluginData templateData = new TemplatePluginData();
       List<RecordDnsPoison> genericObjectList = new List<RecordDnsPoison>();
 
-      // where necessary replace current configuration parameter 
+      // Where necessary replace current configuration parameter
       // with placeholder values
       foreach (RecordDnsPoison tmpRecord in dnsPoisonRecords)
       {

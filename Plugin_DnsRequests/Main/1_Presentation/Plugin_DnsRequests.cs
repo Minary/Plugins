@@ -199,7 +199,6 @@
       {
         try
         {
-          this.pluginProperties.HostApplication.LogMessage("Plugin_DnsRequest.ProcessEntries(): newRecords.Count:{0}", newRecords.Count);
           this.AddRecordsToDgv(newRecords);
         }
         catch (Exception ex)

@@ -23,9 +23,7 @@
         return;
       }
 
-      this.pluginProperties.HostApplication.LogMessage("Plugin_HttpRequests.AddRecords(): {0}", newRecords.Count);
       int firstVisibleRowTop = -1;
-
       lock (this)
       {
         // Memorize DataGridView position and selection

@@ -24,7 +24,6 @@
 
       int firstVisibleRowTop = -1;
 
-      this.pluginProperties.HostApplication.LogMessage("Plugin_DnsRequest.AddRecordsToDgv(): newRecords.Count:{0}", dnsRequests.Count);
       if (dnsRequests != null && dnsRequests.Count > 0)
       {
         lock (this)

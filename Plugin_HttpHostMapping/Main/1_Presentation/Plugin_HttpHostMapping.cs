@@ -88,17 +88,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication == null ||
-          pluginProperties.HostApplication.AttackServiceList == null ||
-          !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
-          pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.HostMapping") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.HostMapping"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.HostMapping"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -106,12 +95,8 @@
       this.pluginProperties.PluginType = "Active";
       this.pluginProperties.PluginDescription = "Map HTTP request to an other server";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
-      //this.dataBatch = new List<string>();
-      
-      // Set inject payload config file path
-      this.hostMappingConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.HostMapping"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.HostMapping"].ConfigFilePath);
+
+      this.hostMappingConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\HttpReverseProxy\plugins\hostmapping\plugin.config");
 
       this.hostMappingConfig = new HostMappingConfig()
       {

@@ -115,17 +115,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication == null ||
-          pluginProperties.HostApplication.AttackServiceList == null ||
-          !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
-          pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.InjectCode") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -135,9 +124,7 @@
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
       // Set inject code config file path
-      this.injectCodeConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.InjectCode"].ConfigFilePath);
+      this.injectCodeConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\HttpReverseProxy\plugins\injectcode\plugin.config");
 
       this.injectCodeConfig = new InjectCodeConfig()
       {

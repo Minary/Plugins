@@ -129,16 +129,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication.AttackServiceList == null ||
-          pluginProperties.HostApplication.AttackServiceList.ContainsKey("ArpPoisoning") == false ||
-          pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules == null ||
-          pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules.ContainsKey("ArpPoisoning.Firewall") == false ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.Firewall"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.Firewall"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -147,10 +137,9 @@
       this.pluginProperties.PluginDescription = "Control data packet flow between client and server systems";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
-      // Set DNS poisoning config file path
-      this.firewallConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.Firewall"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.Firewall"].ConfigFilePath);
+      // Set Firewall config file path
+      this.firewallConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.fwrules");
+
 
       // Populate Protocol combobox
       this.cb_Protocol.Items.Add("TCP");

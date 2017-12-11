@@ -98,17 +98,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication == null ||
-          pluginProperties.HostApplication.AttackServiceList == null ||
-          !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
-          pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.RequestRedirect") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -118,9 +107,7 @@
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 
       // Set inject file config file path
-      this.requestRedirectConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.RequestRedirect"].ConfigFilePath);
+      this.requestRedirectConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\HttpReverseProxy\plugins\requestredirect\plugin.config");
 
       this.requestRedirectConfig = new RequestRedirectConfig()
       {

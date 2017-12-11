@@ -83,17 +83,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication == null ||
-          pluginProperties.HostApplication.AttackServiceList == null ||
-          !pluginProperties.HostApplication.AttackServiceList.ContainsKey("HttpReverseProxyServer") ||
-          pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules == null ||
-          !pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules.ContainsKey("HttpReverseProxyServer.SslStrip") ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.SslStrip"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.SslStrip"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -102,11 +91,9 @@
       this.pluginProperties.PluginDescription = "SSL strip tags from HTTP server responses";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
       this.dataBatch = new List<string>();
- 
+
       // Set SslStrip config file path
-      this.sslStripConfigFilePath = Path.Combine(
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.SslStrip"].WorkingDirectory,
-                                                 pluginProperties.HostApplication.AttackServiceList["HttpReverseProxyServer"].SubModules["HttpReverseProxyServer.SslStrip"].ConfigFilePath);
+      this.sslStripConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\HttpReverseProxy\plugins\sslstrip\plugin.config");
 
       this.sslStripConfig = new SslStripConfig()
       {

@@ -95,16 +95,6 @@
         throw new Exception("Parameter PluginBaseDir is null");
       }
 
-      if (pluginProperties.HostApplication.AttackServiceList == null ||
-          pluginProperties.HostApplication.AttackServiceList.ContainsKey("ArpPoisoning") == false ||
-          pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules == null ||
-          pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules.ContainsKey("ArpPoisoning.DnsPoisoning") == false ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.DnsPoisoning"].WorkingDirectory) ||
-          string.IsNullOrEmpty(pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.DnsPoisoning"].ConfigFilePath))
-      {
-        throw new Exception("Attack services parameters are invalid");
-      }
-
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
@@ -114,9 +104,7 @@
       this.pluginProperties.Ports = new Dictionary<int, MinaryLib.DataTypes.IpProtocols>();
 
       // Set DNS poisoning config file path
-      this.dnsPoisoningConfigFilePath = Path.Combine(
-                                                     pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.DnsPoisoning"].WorkingDirectory,
-                                                     pluginProperties.HostApplication.AttackServiceList["ArpPoisoning"].SubModules["ArpPoisoning.DnsPoisoning"].ConfigFilePath);
+      this.dnsPoisoningConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.dnshosts");
 
       // Instantiate infrastructure layer
       this.infrastructureLayer = new DnsPoison.Infrastructure.DnsPoisoning(this);

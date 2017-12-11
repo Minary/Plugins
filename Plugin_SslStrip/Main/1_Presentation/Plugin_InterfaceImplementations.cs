@@ -31,6 +31,7 @@
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.SetGuiActive();
+      this.Refresh();
     }
 
 
@@ -80,6 +81,8 @@
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
         this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
       }
+
+      this.Refresh();
     }
 
 
@@ -98,6 +101,7 @@
       this.infrastructureLayer.OnStop();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.SetGuiActive();
+      this.Refresh();
     }
 
 
@@ -153,6 +157,7 @@
       this.ClearRecordList();
       this.infrastructureLayer.OnReset();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -184,6 +189,7 @@
       if (tmpSslStripRecords != null && tmpSslStripRecords.Count > 0)
       {
         tmpSslStripRecords.ToList().ForEach(elem => this.sslStripRecords.Add(elem));
+        this.Refresh();
       }
     }
 
@@ -196,6 +202,9 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+      
+      this.sslStripRecords.Clear();
+      this.Refresh();
     }
 
     #endregion

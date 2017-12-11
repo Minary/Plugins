@@ -131,6 +131,8 @@ private const string Label_URL = "Redirect to URL";
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cms_InjectFile.Enabled = true;
+
+      this.Refresh();
     }
 
     /// <summary>
@@ -143,6 +145,8 @@ private const string Label_URL = "Redirect to URL";
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cms_InjectFile.Enabled = false;
+
+      this.Refresh();
     }
 
     #endregion

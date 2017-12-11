@@ -48,6 +48,8 @@
       {
         this.pluginProperties.HostApplication.LogMessage("{0} : Error ocurred while initialising pattern file : {1}", this.Config.PluginName, ex.Message);
       }
+
+      this.Refresh();
     }
 
     
@@ -82,6 +84,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+      this.Refresh();
     }
 
 
@@ -98,6 +101,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -126,7 +130,6 @@
         this.BeginInvoke(new OnResetPluginDelegate(this.OnResetPlugin), new object[] { });
         return;
       }
-
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
@@ -165,6 +168,7 @@
       //// myTreeView.SelectedNode = myTreeNode
 
       this.infrastructureLayer.OnReset();
+      this.Refresh();
     }
 
 
@@ -187,6 +191,7 @@
         if (this.dataBatch != null && newData != null && newData.Length > 0)
         {
           this.dataBatch.Add(newData);
+          this.Refresh();
         }
       }
     }
@@ -239,6 +244,7 @@
 
       // Pattern items
       this.manageSessionsPresentationLayer.OnLoadTemplateData(templateData);
+      this.Refresh();
     }
 
 
@@ -258,6 +264,7 @@
       this.manageSessionsPresentationLayer.LocalPatternsEnabled = true;
       this.manageSessionsPresentationLayer.RemotePatternsEnabled = true;
       this.manageSessionsTaskLayer.ReadSessionPatterns();
+      this.Refresh();
     }
 
     #endregion

@@ -128,6 +128,8 @@
       this.tb_HostName.Enabled = true;
       this.cb_ContentType.Enabled = true;
       this.bt_Add.Enabled = true;
+
+      this.Refresh();
     }
 
     /// <summary>
@@ -138,6 +140,8 @@
       this.tb_HostName.Enabled = false;
       this.cb_ContentType.Enabled = false;
       this.bt_Add.Enabled = false;
+
+      this.Refresh();
     }
 
 

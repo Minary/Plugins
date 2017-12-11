@@ -39,6 +39,7 @@
       // Plugin initialisation
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -96,6 +97,8 @@
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
+
+      this.Refresh();
     }
 
 
@@ -115,6 +118,7 @@
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       
       this.infrastructureLayer.OnStop();
+      this.Refresh();
     }
 
 
@@ -147,6 +151,7 @@
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
       this.infrastructureLayer.OnReset();
+      this.Refresh();
     }
 
     /// <summary>
@@ -202,6 +207,8 @@
       {
         tmpHostMappingRecords.ToList().ForEach(elem => this.hostMappingRecords.Add(elem));
       }
+
+      this.Refresh();
     }
 
 
@@ -213,6 +220,10 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+
+
+      this.hostMappingRecords.Clear();
+      this.Refresh();
     }
 
     #endregion

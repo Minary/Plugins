@@ -141,6 +141,8 @@
       this.tb_RedirectURL.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cb_RedirectType.Enabled = true;
+
+      this.Refresh();
     }
 
     /// <summary>
@@ -152,6 +154,8 @@
       this.tb_RedirectURL.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cb_RedirectType.Enabled = false;
+
+      this.Refresh();
     }
 
     #endregion

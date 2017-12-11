@@ -35,6 +35,7 @@
       this.infrastructureLayer.OnInit();
 
       this.t_GuiUpdate.Start();
+      this.Refresh();
     }
 
 
@@ -65,6 +66,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+      this.Refresh();
     }
 
 
@@ -81,6 +83,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -92,7 +95,7 @@
     {
       this.targetList = targetList;
     }
-        
+
 
     /// <summary>
     ///
@@ -112,6 +115,7 @@
       this.infrastructureLayer.OnReset();
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -141,6 +145,7 @@
         if (this.dataBatch != null && data != null && data.Length > 0)
         {
           this.dataBatch.Add(data);
+          this.Refresh();
         }
       }
     }

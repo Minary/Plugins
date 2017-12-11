@@ -34,6 +34,7 @@
       // Plugin initialisation
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -69,15 +70,16 @@
       {
         string firewallRulesPath = this.firewallConfigFilePath;
         this.infrastructureLayer.OnStart(this.firewallRules, firewallRulesPath);
-
-        this.SetGuiInactive();
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       }
       catch (MinaryWarningException ex)
       {
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.pluginProperties.HostApplication.LogMessage("{0}: {1}", Config.PluginName, ex.Message);
       }
+
+      this.SetGuiInactive();
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
+      this.Refresh();
     }
 
 
@@ -95,6 +97,7 @@
 
       this.SetGuiActive();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
 
       // Delete firewall rules file
       this.infrastructureLayer.OnStop(this.firewallConfigFilePath);
@@ -122,7 +125,6 @@
         return;
       }
 
-
       this.tb_DstPortLower.Text = string.Empty;
       this.tb_DstPortUpper.Text = string.Empty;
       this.tb_SrcPortLower.Text = string.Empty;
@@ -135,6 +137,7 @@
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
       this.infrastructureLayer.OnReset();
+      this.Refresh();
     }
     
 
@@ -202,6 +205,8 @@
       {
         poisoningRecords.ToList().ForEach(elem => this.firewallRules.Add(elem));
       }
+
+      this.Refresh();
     }
 
 
@@ -213,6 +218,9 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+      
+      this.firewallRules.Clear();
+      this.Refresh();
     }
 
     #endregion

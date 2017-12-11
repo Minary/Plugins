@@ -164,6 +164,8 @@
       this.cb_injectPosition.Enabled = true;
       this.rb_After.Enabled = true;
       this.rb_Before.Enabled = true;
+
+      this.Refresh();
     }
 
     /// <summary>
@@ -179,6 +181,8 @@
       this.cb_injectPosition.Enabled = false;
       this.rb_After.Enabled = false;
       this.rb_Before.Enabled = false;
+
+      this.Refresh();
     }
 
     #endregion

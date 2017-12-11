@@ -123,6 +123,8 @@
       this.tb_RequestedHost.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cms_HostMapping.Enabled = true;
+
+      this.Refresh();
     }
 
     /// <summary>
@@ -134,6 +136,8 @@
       this.tb_RequestedHost.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cms_HostMapping.Enabled = false;
+
+      this.Refresh();
     }
 
     #endregion

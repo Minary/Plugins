@@ -289,6 +289,8 @@
 
       this.tsmi_DeleteEntry.Enabled = false;
       this.tsmi_Clear.Enabled = false;
+
+      this.Refresh();
     }
 
 
@@ -306,6 +308,8 @@
 
       this.tsmi_DeleteEntry.Enabled = true;
       this.tsmi_Clear.Enabled = true;
+
+      this.Refresh();
     }
 
 
@@ -359,7 +363,7 @@
         {
           continue;
         }
-        
+
         reqMethod = matchMethod.Groups[1].Value.ToString();
         reqUri = matchURI.Groups[2].Value.ToString();
         reqHost = matchHost.Groups[1].Value.ToString();

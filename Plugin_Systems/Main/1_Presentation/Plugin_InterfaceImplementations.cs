@@ -36,6 +36,7 @@
       this.infrastructureLayer.OnInit();
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -88,6 +89,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+      this.Refresh();
     }
 
 
@@ -104,6 +106,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -139,6 +142,7 @@
       }
 
       this.infrastructureLayer.OnReset();
+      this.Refresh();
     }
 
 
@@ -160,6 +164,7 @@
         if (this.dataBatch != null && data != null && data.Length > 0)
         {
           this.dataBatch.Add(data);
+          this.Refresh();
         }
       }
     }
@@ -212,6 +217,7 @@
 
       // Pattern items
       this.manageSystemsPresentationLayer.OnLoadTemplateData(templateData);
+      this.Refresh();
     }
 
 
@@ -231,6 +237,7 @@
       this.manageSystemsPresentationLayer.LocalPatternsEnabled = true;
       this.manageSystemsPresentationLayer.RemotePatternsEnabled = true;
       this.manageSystemsTaskLayer.ReadSystemPatterns();
+      this.Refresh();
     }
 
     #endregion

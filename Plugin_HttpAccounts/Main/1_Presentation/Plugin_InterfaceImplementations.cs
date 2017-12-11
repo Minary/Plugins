@@ -90,6 +90,7 @@
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       this.SetGuiInactive();
+      this.Refresh();
     }
 
 
@@ -105,8 +106,9 @@
         return;
       }
 
-      this.SetGuiActive();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.SetGuiActive();
+      this.Refresh();
     }
 
 
@@ -128,6 +130,7 @@
         if (this.dataBatch != null && data != null && data.Length > 0)
         {
           this.dataBatch.Add(data);
+          this.Refresh();
         }
       }
     }
@@ -147,7 +150,6 @@
 
       this.infrastructureLayer.OnStop();
     }
-
 
     /// <summary>
     ///
@@ -171,9 +173,10 @@
         return;
       }
 
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.ClearRecordList();
       this.SetGuiActive();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
 
       this.infrastructureLayer.OnReset();
     }
@@ -216,6 +219,7 @@
 
       // Pattern items
       this.manageHttpAccountsPresentationLayer.OnLoadTemplateData(templateData);
+      this.Refresh();
     }
 
 
@@ -235,6 +239,7 @@
       this.manageHttpAccountsPresentationLayer.LocalPatternsEnabled = true;
       this.manageHttpAccountsPresentationLayer.RemotePatternsEnabled = true;
       this.manageHttpAccountsTaskLayer.ReadAccountsPatterns();
+      this.Refresh();
     }
 
     #endregion

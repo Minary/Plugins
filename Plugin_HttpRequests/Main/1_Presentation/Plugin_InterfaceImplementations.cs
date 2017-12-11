@@ -35,6 +35,7 @@
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.t_GuiUpdate.Start();
+      this.Refresh();
     }
 
 
@@ -74,6 +75,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+      this.Refresh();
     }
 
 
@@ -90,6 +92,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -124,6 +127,7 @@
       this.infrastructureLayer.OnReset();
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -145,6 +149,7 @@
         if (this.dataBatch != null && !string.IsNullOrEmpty(data))
         {
           this.dataBatch.Add(data);
+          this.Refresh();
         }
       }
     }

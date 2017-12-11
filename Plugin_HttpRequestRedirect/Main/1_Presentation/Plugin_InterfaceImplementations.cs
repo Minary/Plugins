@@ -31,6 +31,7 @@
       this.pluginProperties.HostApplication.Register(this);
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.SetGuiActive();
+      this.Refresh();
     }
 
 
@@ -88,6 +89,8 @@
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
+
+      this.Refresh();
     }
 
 
@@ -106,6 +109,7 @@
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.SetGuiActive();
       this.infrastructureLayer.OnStop();
+      this.Refresh();
     }
 
 
@@ -157,6 +161,7 @@
       
       this.infrastructureLayer.OnReset();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -189,6 +194,8 @@
       {
         tmpRequestRedirectRecords.ToList().ForEach(elem => this.requestRedirectRecords.Add(elem));
       }
+
+      this.Refresh();
     }
 
 
@@ -200,6 +207,9 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+
+      this.requestRedirectRecords.Clear();
+      this.Refresh();
     }
 
     #endregion

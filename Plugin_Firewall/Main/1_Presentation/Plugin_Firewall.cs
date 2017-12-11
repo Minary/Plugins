@@ -180,6 +180,8 @@
       this.tb_DstPortUpper.Enabled = true;
       this.bt_Add.Enabled = true;
       this.cms_DataGrid_RightMouseButton.Enabled = true;
+
+      this.Refresh();
     }
 
 
@@ -205,6 +207,8 @@
       this.tb_DstPortUpper.Enabled = false;
       this.bt_Add.Enabled = false;
       this.cms_DataGrid_RightMouseButton.Enabled = false;
+
+      this.Refresh();
     }
 
     #endregion

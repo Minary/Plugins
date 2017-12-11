@@ -133,6 +133,8 @@
 
         this.dgv_HttpRequests.ResumeLayout();
       }
+
+      this.Refresh();
     }
 
     #endregion

@@ -114,6 +114,7 @@
       this.ClearRecordList();
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -169,6 +170,8 @@
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
+
+      this.Refresh();
     }
 
 
@@ -193,6 +196,7 @@
 
       this.SetGuiActive();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+      this.Refresh();
     }
 
 
@@ -225,6 +229,8 @@
       {
         poisoningRecords.ToList().ForEach(elem => this.dnsPoisonRecords.Add(elem));
       }
+
+      this.Refresh();
     }
 
 
@@ -236,6 +242,9 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+      
+      this.dnsPoisonRecords.Clear();
+      this.Refresh();
     }
 
     #endregion

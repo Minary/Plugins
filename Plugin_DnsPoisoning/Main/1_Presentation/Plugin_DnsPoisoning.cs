@@ -140,6 +140,8 @@
       this.tsmi_ClearList.Enabled = false;
       this.tb_Cname.Enabled = false;
       this.cb_Cname.Enabled = false;
+
+      this.Refresh();
     }
 
 
@@ -164,6 +166,8 @@
 
       this.cb_Cname.Enabled = true;
       this.tb_Cname.Enabled = this.cb_Cname.Checked == true ? true : false;
+
+      this.Refresh();
     }
 
 

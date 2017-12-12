@@ -186,6 +186,9 @@
         this.BeginInvoke(new OnLoadTemplateDataDelegate(this.OnLoadTemplateData), new object[] { templateData });
         return;
       }
+
+      this.ClearRecordList();
+      this.Refresh();
     }
 
 
@@ -197,6 +200,9 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+
+      this.ClearRecordList();
+      this.Refresh();
     }
 
     #endregion

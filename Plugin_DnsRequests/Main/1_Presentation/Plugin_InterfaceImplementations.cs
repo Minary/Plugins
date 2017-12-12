@@ -172,6 +172,10 @@
         this.BeginInvoke(new OnLoadTemplateDataDelegate(this.OnLoadTemplateData), new object[] { templateData });
         return;
       }
+
+      this.infrastructureLayer.OnReset();
+      this.dataBatch.Clear();
+      this.Refresh();
     }
 
 
@@ -183,6 +187,10 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
+
+      this.infrastructureLayer.OnReset();
+      this.dataBatch.Clear();
+      this.Refresh();
     }
 
     #endregion

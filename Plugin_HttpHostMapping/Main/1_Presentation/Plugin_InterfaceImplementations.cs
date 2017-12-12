@@ -221,7 +221,6 @@
         return;
       }
 
-
       this.hostMappingRecords.Clear();
       this.Refresh();
     }

@@ -242,7 +242,7 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
-      
+
       this.dnsPoisonRecords.Clear();
       this.Refresh();
     }

@@ -132,14 +132,7 @@
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-
-      // Clear DataGridView
-      ////if (sessions != null)
-      ////  sessions.Clear();
-
-      ////dgv_Sessions.DataSource = sessions;
-      ////dgv_Sessions.Refresh();
-
+      
       // Clear TreeView
       try
       {
@@ -264,6 +257,8 @@
       this.manageSessionsPresentationLayer.LocalPatternsEnabled = true;
       this.manageSessionsPresentationLayer.RemotePatternsEnabled = true;
       this.manageSessionsTaskLayer.ReadSessionPatterns();
+
+      this.sessionRecords.Clear();
       this.Refresh();
     }
 

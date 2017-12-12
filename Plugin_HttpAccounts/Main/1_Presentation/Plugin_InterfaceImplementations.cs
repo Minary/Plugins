@@ -239,6 +239,8 @@
       this.manageHttpAccountsPresentationLayer.LocalPatternsEnabled = true;
       this.manageHttpAccountsPresentationLayer.RemotePatternsEnabled = true;
       this.manageHttpAccountsTaskLayer.ReadAccountsPatterns();
+
+      this.accountRecords.Clear();
       this.Refresh();
     }
 

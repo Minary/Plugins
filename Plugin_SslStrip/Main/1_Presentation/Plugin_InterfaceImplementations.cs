@@ -189,8 +189,9 @@
       if (tmpSslStripRecords != null && tmpSslStripRecords.Count > 0)
       {
         tmpSslStripRecords.ToList().ForEach(elem => this.sslStripRecords.Add(elem));
-        this.Refresh();
       }
+
+      this.Refresh();
     }
 
 
@@ -202,7 +203,7 @@
         this.BeginInvoke(new OnUnloadTemplateDataDelegate(this.OnUnloadTemplateData), new object[] { });
         return;
       }
-      
+
       this.sslStripRecords.Clear();
       this.Refresh();
     }

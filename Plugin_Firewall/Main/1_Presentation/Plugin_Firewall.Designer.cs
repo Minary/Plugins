@@ -30,7 +30,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_FWRules = new System.Windows.Forms.DataGridView();
       this.l_SrcIp = new System.Windows.Forms.Label();
       this.bt_Add = new System.Windows.Forms.Button();
@@ -58,8 +58,8 @@
       this.dgv_FWRules.AllowUserToDeleteRows = false;
       this.dgv_FWRules.AllowUserToResizeColumns = false;
       this.dgv_FWRules.AllowUserToResizeRows = false;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_FWRules.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dgv_FWRules.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
       this.dgv_FWRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -122,6 +122,7 @@
       this.tb_SrcPortLower.Name = "tb_SrcPortLower";
       this.tb_SrcPortLower.Size = new System.Drawing.Size(55, 26);
       this.tb_SrcPortLower.TabIndex = 3;
+      this.tb_SrcPortLower.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // l_SrcPort
       // 
@@ -152,6 +153,7 @@
       this.tb_SrcPortUpper.Name = "tb_SrcPortUpper";
       this.tb_SrcPortUpper.Size = new System.Drawing.Size(55, 26);
       this.tb_SrcPortUpper.TabIndex = 4;
+      this.tb_SrcPortUpper.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // tb_DstPortUpper
       // 
@@ -161,6 +163,7 @@
       this.tb_DstPortUpper.Name = "tb_DstPortUpper";
       this.tb_DstPortUpper.Size = new System.Drawing.Size(55, 26);
       this.tb_DstPortUpper.TabIndex = 7;
+      this.tb_DstPortUpper.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // l_DstPort
       // 
@@ -181,6 +184,7 @@
       this.tb_DstPortLower.Name = "tb_DstPortLower";
       this.tb_DstPortLower.Size = new System.Drawing.Size(55, 26);
       this.tb_DstPortLower.TabIndex = 6;
+      this.tb_DstPortLower.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // cb_Protocol
       // 
@@ -224,6 +228,7 @@
       this.cb_SrcIP.Name = "cb_SrcIP";
       this.cb_SrcIP.Size = new System.Drawing.Size(152, 28);
       this.cb_SrcIP.TabIndex = 2;
+      this.cb_SrcIP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // cb_DstIP
       // 
@@ -234,6 +239,7 @@
       this.cb_DstIP.Name = "cb_DstIP";
       this.cb_DstIP.Size = new System.Drawing.Size(152, 28);
       this.cb_DstIP.TabIndex = 5;
+      this.cb_DstIP.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // Plugin_Firewall
       // 

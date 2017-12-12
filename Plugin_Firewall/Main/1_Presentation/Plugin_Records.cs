@@ -20,12 +20,12 @@
     /// <param name="srcPortUpperStr"></param>
     /// <param name="dstPortLowerStr"></param>
     /// <param name="dstPortUpperStr"></param>
-    private delegate void AddRecordDelegate(string protocol, string srcIP, string dstIP, string srcPortLowerStr, string srcPortUpperStr, string dstPortLowerStr, string dstPortUpperStr);
-    public void AddRecord(string protocol, string srcIp, string dstIp, string srcPortLowerStr, string srcPortUpperStr, string dstPortLowerStr, string dstPortUpperStr)
+    private delegate void EvaluateAndAddRecordDelegate(string protocol, string srcIP, string dstIP, string srcPortLowerStr, string srcPortUpperStr, string dstPortLowerStr, string dstPortUpperStr);
+    public void EvaluateAndAddRecord(string protocol, string srcIp, string dstIp, string srcPortLowerStr, string srcPortUpperStr, string dstPortLowerStr, string dstPortUpperStr)
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new AddRecordDelegate(this.AddRecord), new object[] { protocol, srcIp, dstIp, srcPortLowerStr, srcPortUpperStr, dstPortLowerStr, dstPortUpperStr });
+        this.BeginInvoke(new EvaluateAndAddRecordDelegate(this.EvaluateAndAddRecord), new object[] { protocol, srcIp, dstIp, srcPortLowerStr, srcPortUpperStr, dstPortLowerStr, dstPortUpperStr });
         return;
       }
 

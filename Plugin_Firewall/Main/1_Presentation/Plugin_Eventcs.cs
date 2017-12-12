@@ -19,23 +19,7 @@
     /// <param name="e"></param>
     private void BT_Add_Click(object sender, EventArgs e)
     {
-      string protocol = this.cb_Protocol.Text;
-      string srcIp = this.cb_SrcIP.Text;
-      string dstIp = this.cb_DstIP.Text;
-      string srcPortLowerStr = this.tb_SrcPortLower.Text;
-      string srcPortUpperStr = this.tb_SrcPortUpper.Text;
-      string dstPortLowerStr = this.tb_DstPortLower.Text;
-      string dstPortUpperStr = this.tb_DstPortUpper.Text;
-
-      try
-      {
-        this.AddRecord(protocol, srcIp, dstIp, srcPortLowerStr, srcPortUpperStr, dstPortLowerStr, dstPortUpperStr);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show(string.Format(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning));
-      }
+      this.AddRecord();
     }
 
 
@@ -121,6 +105,43 @@
     private void DeleteAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
       this.ClearRecordList();
+    }
+
+
+    private void OnEnterAddRecord(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode != Keys.Enter)
+      {
+        return;
+      }
+
+      e.SuppressKeyPress = true;
+      this.AddRecord();
+    }
+
+    #endregion
+
+    #region PRIVATE
+
+    private void AddRecord()
+    {
+      string protocol = this.cb_Protocol.Text;
+      string srcIp = this.cb_SrcIP.Text;
+      string dstIp = this.cb_DstIP.Text;
+      string srcPortLowerStr = this.tb_SrcPortLower.Text;
+      string srcPortUpperStr = this.tb_SrcPortUpper.Text;
+      string dstPortLowerStr = this.tb_DstPortLower.Text;
+      string dstPortUpperStr = this.tb_DstPortUpper.Text;
+
+      try
+      {
+        this.EvaluateAndAddRecord(protocol, srcIp, dstIp, srcPortLowerStr, srcPortUpperStr, dstPortLowerStr, dstPortUpperStr);
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        MessageBox.Show(string.Format(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning));
+      }
     }
 
     #endregion

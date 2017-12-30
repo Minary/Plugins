@@ -146,19 +146,6 @@
       this.pluginProperties.PluginDescription = "Eavesdrop account information from HTTP data packets.";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 
-      try
-      {
-        // Load parameters from app.config file
-        // Todo: This should not be done in the presentation layer.
-        //       Instead implement it in the Infrastructure layer.
-        string configFileFullPath = Path.Combine(this.pluginProperties.PluginBaseDir, Settings.APP_CONFIG_FILE);
-        Minary.PatternFileManager.GitHubPatternFileMgr.LoadParametersFromConfig(configFileFullPath, this.gitHubData);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-      }
-
       // Instantiate and initialize infrastructure layer
       this.infrastructureLayer = new HttpAccounts.Infrastructure.HttpAccounts(this);
       this.infrastructureLayer.OnInit();
@@ -412,53 +399,6 @@
                                                     this.pluginProperties.PluginBaseDir,
                                                     this.pluginProperties.PatternSubDir,
                                                     Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_REMOTE);
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.InitializeRepository(repositoryLocalFullpath, this.gitHubData["RepositoryRemote"]);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin HTTP accounts: Initializing local attack pattern directory ({0}) failed: {1}", this.gitHubData["RepositoryRemote"], ex.Message);
-      }
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.SyncRepository(repositoryLocalFullpath, this.gitHubData["Username"], this.gitHubData["Email"]);
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin HTTP accounts: Attack pattern sync finished.");
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin HTTP accounts: Syncing attack pattern failed: {0}", ex.Message);
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="configFileFullPath"></param>
-    private void LoadParametersFromConfig(string configFileFullPath)
-    {
-      // Load config file
-      ExeConfigurationFileMap configMap = new ExeConfigurationFileMap();
-      configMap.ExeConfigFilename = configFileFullPath;
-      Configuration pluginConfiguration = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-      AppSettingsSection section = (pluginConfiguration.GetSection("appSettings") as AppSettingsSection);
-
-      // Load parameters
-      foreach (string tmpKey in this.gitHubData.Keys)
-      {
-        try
-        {
-          this.gitHubData[tmpKey] = section.Settings[tmpKey].Value.ToString();
-        }
-        catch (Exception ex)
-        {
-          this.gitHubData[tmpKey] = string.Empty;
-          this.pluginProperties.HostApplication.LogMessage("{0}: ", this.Config.PluginName, ex.Message);
-        }
-      }
     }
 
     #endregion

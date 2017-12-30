@@ -149,16 +149,6 @@
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
       this.dataBatch = new List<string>();
 
-      try
-      {
-        string configFileFullPath = Path.Combine(this.pluginProperties.ApplicationBaseDir, this.pluginProperties.PluginBaseDir, MngSessionsConfig.General.APP_CONFIG_FILE);
-        Minary.PatternFileManager.GitHubPatternFileMgr.LoadParametersFromConfig(configFileFullPath, this.gitHubData);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-      }
-
       // Instantiate infrastructure layer
       this.infrastructureLayer = new Session.Infrastructure.Session(this);
 
@@ -194,25 +184,6 @@
                                                     this.pluginProperties.PluginBaseDir,
                                                     this.pluginProperties.PatternSubDir,
                                                     Plugin.Main.Session.Config.General.PATTERN_DIR_REMOTE);
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.InitializeRepository(repositoryLocalFullpath, this.gitHubData["RepositoryRemote"]);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Sessions: Initializing local attack pattern directory ({0}) failed: {1}", this.gitHubData["RepositoryRemote"], ex.Message);
-      }
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.SyncRepository(repositoryLocalFullpath, this.gitHubData["Username"], this.gitHubData["Email"]);
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Sessions: Attack pattern sync finished.");
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Sessions: Syncing attack pattern failed: {0}", ex.Message);
-      }
 
       lock (this)
       {

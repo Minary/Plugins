@@ -158,16 +158,6 @@
       this.pluginProperties.PluginDescription = "Determine operating system of detected target systems";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 
-      try
-      {
-        string configFileFullPath = Path.Combine(this.pluginProperties.ApplicationBaseDir, this.pluginProperties.PluginBaseDir, Systems.ManageSystems.DataTypes.General.APP_CONFIG_FILE);
-        Minary.PatternFileManager.GitHubPatternFileMgr.LoadParametersFromConfig(configFileFullPath, this.gitHubData);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-      }
-
       this.t_GUIUpdate.Start();
 
       // Instantiate infrastructure layer
@@ -207,25 +197,6 @@
                                                     this.pluginProperties.PluginBaseDir,
                                                     this.pluginProperties.PatternSubDir,
                                                     Plugin.Main.Systems.DataTypes.General.PATTERN_DIR_REMOTE);
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.InitializeRepository(repositoryLocalFullpath, this.gitHubData["RepositoryRemote"]);
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Systems: Initializing local attack pattern directory ({0}) failed: {1}", this.gitHubData["RepositoryRemote"], ex.Message);
-      }
-
-      try
-      {
-        Minary.PatternFileManager.GitHubPatternFileMgr.SyncRepository(repositoryLocalFullpath, this.gitHubData["Username"], this.gitHubData["Email"]);
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Systems: Attack pattern sync finished.");
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Systems: Syncing attack pattern failed: {0}", ex.Message);
-      }
 
       lock (this)
       {

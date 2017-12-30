@@ -172,45 +172,6 @@
       this.systemPatterns = this.manageSystemsPresentationLayer.GetActiveSystemPatterns();
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    public delegate void SyncPatternFileFromServerDelegate();
-    public void SyncPatternFileFromServer()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new SyncPatternFileFromServerDelegate(this.SyncPatternFileFromServer), new object[] { });
-        return;
-      }
-
-      if (string.IsNullOrEmpty(this.gitHubData["RepositoryRemote"]))
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin Systems: Can't sync attack pattern files because no remote repository is defined in the configuration file");
-        return;
-      }
-
-      //
-      string repositoryLocalFullpath = Path.Combine(
-                                                    this.pluginProperties.ApplicationBaseDir,
-                                                    this.pluginProperties.PluginBaseDir,
-                                                    this.pluginProperties.PatternSubDir,
-                                                    Plugin.Main.Systems.DataTypes.General.PATTERN_DIR_REMOTE);
-
-      lock (this)
-      {
-        try
-        {
-          this.systemPatterns = this.manageSystemsPresentationLayer.GetActiveSystemPatterns();
-        }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        }
-      }
-    }
-
     #endregion
 
 

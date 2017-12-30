@@ -43,20 +43,6 @@
     /// <summary>
     ///
     /// </summary>
-    public delegate void OnStartUpdateDelegate();
-    public void OnStartUpdate()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
-        return;
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnShutDownDelegate();
     public void OnShutDown()
     {

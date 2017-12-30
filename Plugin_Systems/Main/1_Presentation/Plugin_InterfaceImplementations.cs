@@ -43,24 +43,6 @@
     /// <summary>
     ///
     /// </summary>
-    public delegate void OnStartUpdateDelegate();
-    public void OnStartUpdate()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
-        return;
-      }
-
-      this.pluginProperties.HostApplication.LogMessage("{0}: Downloading new pattern file(s)", this.Config.PluginName);
-      Thread updateProcessThread = new Thread(new ThreadStart(this.SyncPatternFileFromServer));
-      updateProcessThread.Start();
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnStartAttackDelegate();
     public void OnStartAttack()
     {

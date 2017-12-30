@@ -33,20 +33,6 @@
       this.SetGuiActive();
       this.Refresh();
     }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    public delegate void OnStartUpdateDelegate();
-    public void OnStartUpdate()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new OnStartUpdateDelegate(this.OnStartUpdate), new object[] { });
-        return;
-      }
-    }
  
 
     /// <summary>

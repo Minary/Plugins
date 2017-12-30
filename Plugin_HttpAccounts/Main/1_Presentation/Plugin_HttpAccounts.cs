@@ -374,33 +374,6 @@
       return retVal;
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    public delegate void SyncPatternFileFromServerDelegate();
-    public void SyncPatternFileFromServer()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new SyncPatternFileFromServerDelegate(this.SyncPatternFileFromServer), new object[] { });
-        return;
-      }
-
-      if (string.IsNullOrEmpty(this.gitHubData["RepositoryRemote"]))
-      {
-        this.pluginProperties.HostApplication.LogMessage("Minary plugin HTTP accounts: Can't sync attack pattern files because no remote repository is defined in the configuration file");
-        return;
-      }
-
-      //
-      string repositoryLocalFullpath = Path.Combine(
-                                                    this.pluginProperties.ApplicationBaseDir,
-                                                    this.pluginProperties.PluginBaseDir,
-                                                    this.pluginProperties.PatternSubDir,
-                                                    Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_REMOTE);
-    }
-
     #endregion
 
   }

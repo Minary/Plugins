@@ -71,16 +71,14 @@
         return;
       }
 
-      bool isLastLine = false;
-      int firstVisibleRowTopRow = -1;
-      int lastRowIndex = -1;
-      int selectedIndex = -1;
+      var isLastLine = false;
+      var firstVisibleRowTopRow = -1;
+      var lastRowIndex = -1;
+      var selectedIndex = -1;
 
       lock (this)
       {
-
-        if (this.dgv_HostMapping.CurrentRow != null &&
-            this.dgv_HostMapping.CurrentRow == this.dgv_HostMapping.Rows[this.dgv_HostMapping.Rows.Count - 1])
+        if (this.dgv_HostMapping?.CurrentRow == this.dgv_HostMapping.Rows[this.dgv_HostMapping.Rows.Count - 1])
         {
           isLastLine = true;
         }
@@ -99,12 +97,12 @@
 
         try
         {
-          int currentIndex = this.dgv_HostMapping.CurrentCell.RowIndex;
+          var currentIndex = this.dgv_HostMapping.CurrentCell.RowIndex;
           this.hostMappingRecords.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         // Selected cell/row

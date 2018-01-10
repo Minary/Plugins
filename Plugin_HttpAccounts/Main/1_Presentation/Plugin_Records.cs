@@ -16,10 +16,9 @@
     /// <param name="record"></param>
     private void AddRecords(List<AccountRecord> records)
     {
-      int firstVisibleRowTop = -1;
+      var firstVisibleRowTop = -1;
 
-
-      if (records == null || records.Count <= 0)
+      if (records?.Count > 0 == false)
       {
         return;
       }
@@ -36,7 +35,7 @@
         {
           if (this.accountRecords.Select(elem => elem.Username == newAccount.Username && elem.Password == newAccount.Password && newAccount.DstIP == elem.DstIP && elem.DstPort == newAccount.DstPort).Count() > 0)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: The account record for user \"{1}\" and password \"{2}\" already exists", Config.PluginName, newAccount.Username, newAccount.Password);
+            this.Config.HostApplication.LogMessage($"{Config.PluginName}: The account record for user \"{newAccount.Username}\" and password \"{newAccount.Password}\" already exists");
           }
           else
           {

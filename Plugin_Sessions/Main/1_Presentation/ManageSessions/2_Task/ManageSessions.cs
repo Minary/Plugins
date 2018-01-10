@@ -5,6 +5,7 @@
   using MinaryLib.DataTypes;
   using System.Collections.Generic;
 
+
   public class ManageSessions : IObservable
   {
 
@@ -13,13 +14,6 @@
     private Infrastructure.ManageSessions infrastructureLayer;
     private List<SessionPattern> sessionPatterns;
     private List<IObserver> observers;
-
-    #endregion
-
-
-    #region PROPERTIES
-
-    public List<SessionPattern> SessionPatterns { get { return this.sessionPatterns; } private set { } }
 
     #endregion
 

@@ -17,10 +17,10 @@
     /// <param name="e"></param>
     private void BT_Add_Click(object sender, EventArgs e)
     {
-      string hostName = this.tb_Host.Text.Trim();
-      string ipAddress = this.tb_Address.Text.Trim();
-      DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      string cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var hostName = this.tb_Host.Text.Trim();
+      var ipAddress = this.tb_Address.Text.Trim();
+      var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
+      var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
 
       try
       {
@@ -28,8 +28,8 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show(string.Format("{0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
 
@@ -73,7 +73,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -129,7 +129,7 @@
     {
       if (this.tb_Address.Text.Length == 0)
       {
-        this.tb_Address.Text = this.pluginProperties.HostApplication.CurrentIP;
+        this.tb_Address.Text = this.Config.HostApplication.CurrentIP;
       }
     }
 
@@ -148,10 +148,10 @@
 
       e.SuppressKeyPress = true;
 
-      string hostName = this.tb_Host.Text.Trim();
-      string ipAddress = this.tb_Address.Text.Trim();
-      DnsResponseType responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      string cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var hostName = this.tb_Host.Text.Trim();
+      var ipAddress = this.tb_Address.Text.Trim();
+      var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
+      var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
 
       try
       {
@@ -159,8 +159,8 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show(string.Format("{0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
 

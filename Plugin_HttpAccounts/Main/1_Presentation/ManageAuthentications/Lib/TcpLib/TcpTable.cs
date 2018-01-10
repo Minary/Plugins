@@ -15,8 +15,6 @@
 
     #region PROPERTIES
 
-    public IEnumerable<TcpRow> Rows { get { return tcpRows; } }
-
     public IEnumerator<TcpRow> GetEnumerator() { return tcpRows.GetEnumerator(); }
 
     IEnumerator IEnumerable.GetEnumerator() { return tcpRows.GetEnumerator(); }

@@ -19,11 +19,10 @@
 
     private readonly int maxRowNum = 256;
 
-    private List<Tuple<string, string, string>> targetList;
-    private BindingList<DnsRequestRecord> dnsRequests;
+    private BindingList<DnsRequestRecord> dnsRequests = new BindingList<DnsRequestRecord>();
     private List<string> dataBatch = new List<string>();
+    private List<Tuple<string, string, string>> targetList;
     private DnsRequests infrastructureLayer;
-    private bool isUpToDate = false;
     private PluginProperties pluginProperties;
 
     #endregion
@@ -86,9 +85,7 @@
       columnPacketType.ReadOnly = true;
       //// columnRemHost.Width = 280;
       columnPacketType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_DnsRequests.Columns.Add(columnPacketType);
-
-      this.dnsRequests = new BindingList<DnsRequestRecord>();
+      this.dgv_DnsRequests.Columns.Add(columnPacketType);      
       this.dgv_DnsRequests.DataSource = this.dnsRequests;
       
       // Verify passed parameter(s)
@@ -133,13 +130,12 @@
 
     #region PRIVATE
 
-
     /// <summary>
     ///
     /// </summary>
     public void ProcessEntries()
     {
-      if (this.dataBatch == null || this.dataBatch.Count <= 0)
+      if (this.dataBatch?.Count > 0 == false)
       {
         return;
       }
@@ -147,13 +143,13 @@
       List<DnsRequestRecord> newRecords = new List<DnsRequestRecord>();
       List<string> newData;
       string[] splitter;
-      string proto = string.Empty;
-      string srcMac = string.Empty;
-      string srcIp = string.Empty;
-      string srcPort = string.Empty;
-      string dstIP = string.Empty;
-      string dstPort = string.Empty;
-      string hostName = string.Empty;
+      var proto = string.Empty;
+      var srcMac = string.Empty;
+      var srcIp = string.Empty;
+      var srcPort = string.Empty;
+      var dstIP = string.Empty;
+      var dstPort = string.Empty;
+      var hostName = string.Empty;
 
       lock (this)
       {
@@ -161,7 +157,7 @@
         this.dataBatch.Clear();
       }
 
-      foreach (string tmpRecord in newData)
+      foreach (var tmpRecord in newData)
       {
         if (string.IsNullOrEmpty(tmpRecord))
         {
@@ -180,7 +176,8 @@
             dstPort = splitter[5];
             hostName = splitter[6];
 
-            if (dstPort != null && dstPort == "53")
+            if (dstPort != null && 
+                dstPort == "53")
             {
               newRecords.Add(new DnsRequestRecord(srcMac, srcIp, hostName, proto));
             }
@@ -188,10 +185,7 @@
         }
         catch (Exception ex)
         {
-          if (this.pluginProperties.HostApplication != null)
-          {
-            this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-          }
+          this.pluginProperties?.HostApplication?.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
 
@@ -203,10 +197,7 @@
         }
         catch (Exception ex)
         {
-          if (this.pluginProperties.HostApplication != null)
-          {
-            this.pluginProperties.HostApplication.LogMessage("{0}: {1} (Host name: \"{2}\")", this.Config.PluginName, ex.Message, hostName);
-          }
+          this.pluginProperties?.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message} (Host name: \"{hostName}\")");
         }
       }
     }
@@ -219,7 +210,7 @@
     /// <returns></returns>
     private bool CompareToFilter(string inputData)
     {
-      bool retVal = false;
+      var retVal = false;
 
       if (Regex.Match(inputData, this.tb_Filter.Text, RegexOptions.IgnoreCase).Success)
       {
@@ -242,7 +233,7 @@
 
       // TODO: Without this line we will get an exception :/ FIX IT!
       this.dgv_DnsRequests.CurrentCell = null;
-      for (int i = 0; i < this.dgv_DnsRequests.Rows.Count; i++)
+      for (var i = 0; i < this.dgv_DnsRequests.Rows.Count; i++)
       {
         if (this.tb_Filter.Text.Length <= 0)
         {
@@ -252,7 +243,7 @@
         {
           try
           {
-            string selectedHostName = this.dgv_DnsRequests.Rows[i].Cells["DNSHostname"].Value.ToString();
+            var selectedHostName = this.dgv_DnsRequests.Rows[i].Cells["DNSHostname"].Value.ToString();
             if (!Regex.Match(selectedHostName, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
             {
               this.dgv_DnsRequests.Rows[i].Visible = false;
@@ -264,7 +255,7 @@
           }
           catch (Exception ex)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+            this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
           }
         }
       }

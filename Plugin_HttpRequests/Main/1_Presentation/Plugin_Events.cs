@@ -43,7 +43,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
     }
@@ -58,7 +58,6 @@
     {
       this.UseFilter();
       this.dgv_HttpRequests.Refresh();
-
     }
 
 
@@ -86,10 +85,10 @@
     {
       try
       {
-        BindingList<HTTPRequests> tmpHosts = new BindingList<HTTPRequests>();
+        BindingList<HttpRequests> tmpHosts = new BindingList<HttpRequests>();
         int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
 
-        this.pluginProperties.HostApplication.LogMessage("{0}: currentIndex:{1}", this.Config.PluginName, currentIndex);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: currentIndex:{currentIndex}");
         string request = this.dgv_HttpRequests.Rows[currentIndex].Cells["Request"].Value.ToString();
 
         request = Regex.Replace(request, @"\.\.", "\r\n");
@@ -98,7 +97,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -128,7 +127,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -148,13 +147,11 @@
         {
           this.dgv_HttpRequests.ClearSelection();
           this.dgv_HttpRequests.Rows[hti.RowIndex].Selected = true;
-////pluginProperties.HostApplication.LogMessage("{0}: 4", Config.PluginName));
-////          dgv_HTTPRequests.currentr.CurrentCell = dgv_HTTPRequests.Rows[hti.RowIndex].Cells[2];
         }
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         this.dgv_HttpRequests.ClearSelection();
       }
     }
@@ -181,12 +178,12 @@
       }
       catch (ArgumentOutOfRangeException aoorex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, aoorex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {aoorex.Message}");
         return;
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       try
@@ -196,8 +193,8 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show("MiniBrowser unexpectedly crashed : " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        MessageBox.Show($"MiniBrowser unexpectedly crashed : {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 

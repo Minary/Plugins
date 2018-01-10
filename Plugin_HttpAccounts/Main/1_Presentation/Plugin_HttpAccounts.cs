@@ -21,13 +21,12 @@
     #region MEMBERS
 
     private const int MaxTableRows = 128;
-    private List<HttpAccountPattern> accountPatterns;
     private List<Tuple<string, string, string>> targetList;
-    private List<PeerSystems> peersDataSource;
-    private BindingList<AccountRecord> accountRecords;
+    private List<HttpAccountPattern> accountPatterns = new List<HttpAccountPattern>();
+    private List<PeerSystems> peersDataSource = new List<PeerSystems>();
+    private BindingList<AccountRecord> accountRecords = new BindingList<AccountRecord>();
     private List<string> dataBatch = new List<string>();
     private HttpAccounts.Infrastructure.HttpAccounts infrastructureLayer;
-    private PluginProperties pluginProperties;
     private MngAuthentications.Presentation.Form_ManageAuthentications manageHttpAccountsPresentationLayer;
     private MngAuthentications.Task.ManageAuthentications manageHttpAccountsTaskLayer;
     private Dictionary<string, string> gitHubData = new Dictionary<string, string>()
@@ -35,7 +34,6 @@
                                                            { "Email", string.Empty },
                                                            { "RepositoryRemote", string.Empty }
                                                          };
-//private ManageAuthentications.Presentation.Form_ManageAuthentications manageHttpAccountsPresentationLayer;
 
     #endregion
 
@@ -43,9 +41,7 @@
     #region PROPERTIES
 
     public Control PluginControl { get { return this; } }
-
-    public List<HttpAccountPattern> AccountPatterns { get { return this.accountPatterns; } set { this.accountPatterns = value; } }
-
+    
     #endregion
 
 
@@ -110,8 +106,7 @@
       columnPass.ReadOnly = true;
       columnPass.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_Accounts.Columns.Add(columnPass);
-
-      this.accountRecords = new BindingList<AccountRecord>();
+ 
       this.dgv_Accounts.DataSource = this.accountRecords;
 
       // Verify passed parameter(s)
@@ -136,23 +131,19 @@
       }
 
       // Configure plugin
-      this.pluginProperties = pluginProperties;
-
-      this.peersDataSource = new List<PeerSystems>();
-      this.accountPatterns = new List<HttpAccountPattern>();
-
-      this.pluginProperties.PluginName = "HTTP accounts";
-      this.pluginProperties.PluginType = "Passive";
-      this.pluginProperties.PluginDescription = "Eavesdrop account information from HTTP data packets.";
-      this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
+      this.Config = pluginProperties;   
+      this.Config.PluginName = "HTTP accounts";
+      this.Config.PluginType = "Passive";
+      this.Config.PluginDescription = "Eavesdrop account information from HTTP data packets.";
+      this.Config.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 
       // Instantiate and initialize infrastructure layer
       this.infrastructureLayer = new HttpAccounts.Infrastructure.HttpAccounts(this);
       this.infrastructureLayer.OnInit();
 
       // Load authentication pattern management GUI
-      this.manageHttpAccountsPresentationLayer = new MngAuthentications.Presentation.Form_ManageAuthentications(this.pluginProperties);
-      this.manageHttpAccountsTaskLayer = new MngAuthentications.Task.ManageAuthentications(this.pluginProperties);
+      this.manageHttpAccountsPresentationLayer = new MngAuthentications.Presentation.Form_ManageAuthentications(this.Config);
+      this.manageHttpAccountsTaskLayer = new MngAuthentications.Task.ManageAuthentications(this.Config);
       this.accountPatterns = this.manageHttpAccountsPresentationLayer.GetActiveAuthenticationPatterns();
 
       // Start DataGridView Update thredat_GuiUpdate
@@ -170,7 +161,7 @@
     /// </summary>
     private void ProcessEntries()
     {
-      if (this.dataBatch == null || this.dataBatch.Count <= 0)
+      if (this.dataBatch?.Count > 0 == false)
       {
         return;
       }
@@ -223,7 +214,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
           return;
         }
         
@@ -231,11 +222,12 @@
         {
           if (!int.TryParse(dstPort, out dstPortInt))
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: Something is wrong with the remote port \"{1}\"", this.Config.PluginName, dstPort);
+            this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: Something is wrong with the remote port \"{dstPort}\"");
           }
-          else if (!Regex.Match(dstIp, @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$").Success && !Regex.Match(dstIp, @"\.[\d\w]+").Success)
+          else if (!Regex.Match(dstIp, @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$").Success && 
+                   !Regex.Match(dstIp, @"\.[\d\w]+").Success)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: Something is wrong with the remote system \"{1}\"", this.Config.PluginName, dstIp);
+            this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: Something is wrong with the remote system \"{dstIp}\"");
           }
 
           try
@@ -244,7 +236,7 @@
           }
           catch (Exception ex)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: The following error occurred while adding account credentials : {1}", this.Config.PluginName, ex.Message);
+            this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: The following error occurred while adding account credentials : {ex.Message}");
           }
         }
       }
@@ -258,7 +250,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: The following error occurred while adding account credentials : {1}", this.Config.PluginName, ex.Message);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: The following error occurred while adding account credentials : {ex.Message}");
       }
     }
 
@@ -295,7 +287,6 @@
 
       this.tsmi_DeleteEntry.Enabled = true;
       this.tsmi_Clear.Enabled = true;
-
       this.Refresh();
     }
 
@@ -307,14 +298,14 @@
     /// <returns></returns>
     private HttpAccountStruct FindAuthString(string inputHttpData)
     {
-      HttpAccountStruct retVal = new HttpAccountStruct();
+      var retVal = new HttpAccountStruct();
 
       retVal.Username = string.Empty;
       retVal.Password = string.Empty;
       retVal.Company = string.Empty;
       retVal.CompanyURL = string.Empty;
 
-      if (this.accountPatterns == null || this.accountPatterns.Count <= 0)
+      if (this.accountPatterns?.Count > 0 == false)
       {
         return retVal;
       }
@@ -323,11 +314,11 @@
       Match matchMethod;
       Match matchURI;
       Match matchCreds;
-      string reqHost = string.Empty;
-      string reqMethod = string.Empty;
-      string reqUri = string.Empty;
-      string username = string.Empty;
-      string password = string.Empty;
+      var reqHost = string.Empty;
+      var reqMethod = string.Empty;
+      var reqUri = string.Empty;
+      var username = string.Empty;
+      var password = string.Empty;
 
       foreach (HttpAccountPattern tmpAccount in this.accountPatterns)
       {
@@ -363,7 +354,7 @@
             Regex.Match(inputHttpData, tmpAccount.DataPattern).Success)
         {
           retVal.Company = tmpAccount.Company;
-          retVal.CompanyURL = tmpAccount.WebPage + "   (http://" + reqHost + reqUri + ")";
+          retVal.CompanyURL = $"{tmpAccount.WebPage}   (http://{reqHost}{reqUri})";
           retVal.Username = username;
           retVal.Password = password;
 

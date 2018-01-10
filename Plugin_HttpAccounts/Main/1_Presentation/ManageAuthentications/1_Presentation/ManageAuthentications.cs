@@ -17,7 +17,7 @@
 
     #region MEMBERS
 
-    private BindingList<HttpAccountPattern> httpAccountPatterns;
+    private BindingList<HttpAccountPattern> httpAccountPatterns = new BindingList<HttpAccountPattern>();
     private PluginProperties pluginProperties;
     private Task.ManageAuthentications taskLayer;
 
@@ -127,9 +127,7 @@
       columnConfig.Visible = false;
       columnConfig.Width = 0;
 
-      this.dgv_AccountPatterns.Columns.Add(columnConfig);
-
-      this.httpAccountPatterns = new BindingList<HttpAccountPattern>();
+      this.dgv_AccountPatterns.Columns.Add(columnConfig);      
       this.dgv_AccountPatterns.DataSource = this.httpAccountPatterns;
       this.dgv_AccountPatterns.CellClick += this.DGV_AccountPatterns_CellClick;
 
@@ -145,7 +143,7 @@
       catch (Exception ex)
       {
         MessageBox.Show("Error occurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageAuthentications(): {ex.Message}");
       }
 
       // Configure pattern files file System Watcher
@@ -158,7 +156,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageAuthentications(): {ex.Message}");
       }
     }
 
@@ -298,8 +296,8 @@
       }
       catch (Exception ex)
       {
-        MessageBox.Show(string.Format("Error occurred while deleting pattern file: {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Presentation.ManageAuthentications(): {0}", ex.Message);
+        MessageBox.Show($"Error occurred while deleting pattern file: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.pluginProperties.HostApplication.LogMessage($"Presentation.ManageAuthentications(): {ex.Message}");
       }
     }
 
@@ -422,7 +420,7 @@
         catch (Exception ex)
         {
           MessageBox.Show("Error occurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"Form_ManageAuthentications(): {ex.Message}");
         }
       }
     }

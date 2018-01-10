@@ -8,11 +8,7 @@
 
     #region PROPERTIES
 
-    public BindingList<Minary.Plugin.Main.InjectCode.DataTypes.InjectCodeRecord> InjectPayloadRecords
-    {
-      get;
-      set;
-    }
+    public BindingList<Minary.Plugin.Main.InjectCode.DataTypes.InjectCodeRecord> InjectPayloadRecords { get; set; }
 
     #endregion
 

@@ -18,7 +18,7 @@
     /// <summary>
     ///
     /// </summary>
-    public PluginProperties Config { get { return this.pluginProperties; } set { this.pluginProperties = value; } }
+    public PluginProperties Config { get; set; }
 
 
     /// <summary>
@@ -34,8 +34,8 @@
       }
 
       // Plugin initialisation
-      this.pluginProperties.HostApplication.Register(this);
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.Register(this);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.SetGuiActive();
     }
 
@@ -93,13 +93,13 @@
         return;
       }
 
-      this.tb_Address.Text = this.pluginProperties.HostApplication.CurrentIP;
+      this.tb_Address.Text = this.Config.HostApplication.CurrentIP;
       this.tb_Host.Text = string.Empty;
 
       this.SetGuiActive();
       this.ClearRecordList();
 
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.Refresh();
     }
 
@@ -116,7 +116,7 @@
         return;
       }
 
-      if (this.dnsPoisonRecords != null && this.dnsPoisonRecords.Count > 0)
+      if (this.dnsPoisonRecords?.Count > 0)
       {
         string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
         string dnsPoisoningHosts = string.Empty;
@@ -133,27 +133,27 @@
           {
             if (tmpRecord.ResponseType == DnsResponseType.A)
             {
-              dnsPoisoningHosts += string.Format("{0},{1},{2}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.IpAddress);
+              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.IpAddress}\r\n";
             }
             else
             {
-              dnsPoisoningHosts += string.Format("{0},{1},{2},{3}\r\n", tmpRecord.HostName, tmpRecord.ResponseType.ToString(), tmpRecord.CName, tmpRecord.IpAddress);
+              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
             }
           }
 
-          using (StreamWriter outfile = new StreamWriter(poisoningHostsPath))
+          using (var outfile = new StreamWriter(poisoningHostsPath))
           {
             outfile.Write(dnsPoisoningHosts);
           }
         }
 
         this.SetGuiInactive();
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
+        this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       }
       else
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: No rule defined. Stopping the pluggin.", this.Config.PluginName);
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
+        this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
 
@@ -181,7 +181,7 @@
       }
 
       this.SetGuiActive();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.Refresh();
     }
 
@@ -211,7 +211,7 @@
       this.dnsPoisonRecords.Clear();
 
       List<RecordDnsPoison> poisoningRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (poisoningRecords != null && poisoningRecords.Count > 0)
+      if (poisoningRecords?.Count > 0)
       {
         poisoningRecords.ToList().ForEach(elem => this.dnsPoisonRecords.Add(elem));
       }

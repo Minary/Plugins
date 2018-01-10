@@ -17,7 +17,7 @@
 
     #region MEMBERS
     
-    private BindingList<SessionPattern> sessionPatternRecords;
+    private BindingList<SessionPattern> sessionPatternRecords = new BindingList<SessionPattern>();
     private Task.ManageSessions taskLayer;
     private PluginProperties pluginProperties;
 
@@ -115,7 +115,6 @@
       columnConfig.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_SessionPatterns.Columns.Add(columnConfig);
 
-      this.sessionPatternRecords = new BindingList<SessionPattern>();
       this.dgv_SessionPatterns.DataSource = this.sessionPatternRecords;
       this.dgv_SessionPatterns.CellClick += this.DGV_SessionPatterns_CellClick;
       
@@ -130,7 +129,7 @@
       catch (Exception ex)
       {
         MessageBox.Show("Error ocurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSessions(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageSessions(): {ex.Message}");
       }
 
       // Configure pattern files file System Watcher
@@ -143,7 +142,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSessions(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageSessions(): {ex.Message}");
       }
     }
 
@@ -212,7 +211,7 @@
     /// <param name="e"></param>
     private void ManageSessions_MouseUp(object sender, MouseEventArgs e)
     {
-      int dgvColumnSource = 5;
+      var dgvColumnSource = 5;
 
       if (e.Button != MouseButtons.Right)
       {
@@ -297,12 +296,11 @@
     /// </summary>
     private void ChangeRowState()
     {
-      BindingList<SessionPattern> allActiveRows = new BindingList<SessionPattern>();
+      var allActiveRows = new BindingList<SessionPattern>();
 
       this.sessionPatternRecords.Where(m => (m.Source == "Local" && this.cb_LocalPatternsEnabled.Checked == true)).ToList().ForEach(elem => allActiveRows.Add(elem));
       this.sessionPatternRecords.Where(m => (m.Source == "Remote" && this.cb_RemotePatternsEnabled.Checked == true)).ToList().ForEach(elem => allActiveRows.Add(elem));
       this.sessionPatternRecords.Where(m => (m.Source == "Template")).ToList().ForEach(elem => allActiveRows.Add(elem));
-
       this.dgv_SessionPatterns.DataSource = allActiveRows;
     }
 
@@ -314,9 +312,10 @@
     /// <param name="e"></param>
     private void DGV_SessionPatterns_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-      int dgvColumnCheckboxEnabled = 6;
+      var dgvColumnCheckboxEnabled = 6;
 
-      if (e.RowIndex >= 0 && e.ColumnIndex == dgvColumnCheckboxEnabled)
+      if (e.RowIndex >= 0 && 
+          e.ColumnIndex == dgvColumnCheckboxEnabled)
       {
         var dataGridView = (DataGridView)sender;
         var cell = dataGridView[dgvColumnCheckboxEnabled, e.RowIndex];
@@ -340,17 +339,15 @@
     {
       try
       {
-        SessionPattern patternFileObj = (SessionPattern)this.dgv_SessionPatterns.SelectedRows[0].DataBoundItem;
+        var patternFileObj = (SessionPattern)this.dgv_SessionPatterns.SelectedRows[0].DataBoundItem;
         this.taskLayer.RemoveTemplate(patternFileObj);
       }
       catch (Exception ex)
       {
-        MessageBox.Show(string.Format("Error occurred while deleting pattern file: {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Presentation.ManageSessions(): {0}", ex.Message);
+        MessageBox.Show($"Error occurred while deleting pattern file: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.pluginProperties.HostApplication.LogMessage($"Presentation.ManageSessions(): {ex.Message}");
       }
     }
-
-
 
 
     /// <summary>
@@ -364,6 +361,7 @@
       e.Cancel = true;
       this.pluginProperties.HostApplication.MainWindowForm.Activate();
     }
+
 
     /// <summary>
     /// Close Sessions GUI on Escape.
@@ -403,7 +401,7 @@
         catch (Exception ex)
         {
           MessageBox.Show("Error occurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"Form_ManageAuthentications(): {ex.Message}");
         }
       }
     }

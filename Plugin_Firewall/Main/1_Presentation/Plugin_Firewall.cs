@@ -19,10 +19,8 @@
     private readonly string firewallConfigFilePath;
     private List<string> srcTargetList = new List<string>();
     private List<string> dstTargetList = new List<string>();
-    private BindingList<FirewallRuleRecord> firewallRules;
+    private BindingList<FirewallRuleRecord> firewallRules = new BindingList<FirewallRuleRecord>();
     private Firewall.Infrastructure.Firewall infrastructureLayer;
-    private bool isUpToDate = false;
-    private PluginProperties pluginProperties;
 
     #endregion
 
@@ -104,8 +102,7 @@
       columnDstPortUpper.ReadOnly = true;
       columnDstPortUpper.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_FWRules.Columns.Add(columnDstPortUpper);
-
-      this.firewallRules = new BindingList<FirewallRuleRecord>();
+      
       this.dgv_FWRules.DataSource = this.firewallRules;
 
       // Verify passed parameter(s)
@@ -130,16 +127,15 @@
       }
 
       // Plugin configuration
-      this.pluginProperties = pluginProperties;
+      this.Config = pluginProperties;
 
-      this.pluginProperties.PluginName = "Firewall";
-      this.pluginProperties.PluginType = "Active";
-      this.pluginProperties.PluginDescription = "Control data packet flow between client and server systems";
-      this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
+      this.Config.PluginName = "Firewall";
+      this.Config.PluginType = "Active";
+      this.Config.PluginDescription = "Control data packet flow between client and server systems";
+      this.Config.Ports = new Dictionary<int, IpProtocols>();
 
       // Set Firewall config file path
-      this.firewallConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.fwrules");
-
+      this.firewallConfigFilePath = Path.Combine(this.Config.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.fwrules");
 
       // Populate Protocol combobox
       this.cb_Protocol.Items.Add("TCP");
@@ -212,7 +208,6 @@
     }
 
     #endregion
-
 
   }
 }

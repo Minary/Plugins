@@ -67,7 +67,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       });
 
@@ -115,7 +115,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       }
     }

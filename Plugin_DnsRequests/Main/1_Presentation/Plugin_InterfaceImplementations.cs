@@ -128,7 +128,7 @@
 
       lock (this)
       {
-        if (this.dataBatch != null && data != null && data.Length > 0)
+        if (this.dataBatch != null && data?.Length > 0)
         {
           this.dataBatch.Add(data);
           this.Refresh();

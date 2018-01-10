@@ -35,7 +35,7 @@
     /// <param name="pWebServerConfig"></param>
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
@@ -66,7 +66,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       });
 
@@ -115,7 +115,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       }
     }

@@ -18,7 +18,7 @@
 
     private const int MaxTableRows = 128;
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<HTTPRequests> httpRequests;
+    private BindingList<HttpRequests> httpRequests = new BindingList<HttpRequests>();
     private List<string> dataBatch = new List<string>();
     private bool isUpToDate = false;
     private HttpRequest.Infrastructure.HttpRequest infrastructureLayer;
@@ -111,8 +111,7 @@
       columnRequest.HeaderText = "Request";
       columnRequest.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnRequest);
-
-      this.httpRequests = new BindingList<HTTPRequests>();
+      
       this.dgv_HttpRequests.DataSource = this.httpRequests;
 
       // Verify passed parameter(s)
@@ -164,25 +163,26 @@
     /// </summary>
     public void ProcessEntries()
     {
-      List<HTTPRequests> newRecords = new List<HTTPRequests>();
+      var newRecords = new List<HttpRequests>();
       List<string> newDataRecords;
       Match matchUri;
       Match matchHost;
       Match matchCookies;
-      string requestMethod = string.Empty;
-      string remoteHost = string.Empty;
-      string requestString = string.Empty;
-      string cookies = string.Empty;
+      var requestMethod = string.Empty;
+      var remoteHost = string.Empty;
+      var requestString = string.Empty;
+      var cookies = string.Empty;
       string[] splitter;
-      string proto;
-      string macAddr;
-      string srcIp;
-      string srcPort;
-      string dstIp;
-      string dstPort;
-      string data;
+      var proto = string.Empty;
+      var macAddr = string.Empty;
+      var srcIp = string.Empty;
+      var srcPort = string.Empty;
+      var dstIp = string.Empty;
+      var dstPort = string.Empty;
+      var data = string.Empty;
 
-      if (this.dataBatch == null || this.dataBatch.Count <= 0)
+      if (this.dataBatch == null || 
+          this.dataBatch.Count <= 0)
       {
         return;
       }
@@ -238,12 +238,12 @@
               cookies = string.Empty;
             }
 
-            newRecords.Add(new HTTPRequests(macAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data));
+            newRecords.Add(new HttpRequests(macAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data));
           }
         }
         catch (Exception ex)
         {
-          MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.ToString()));
+          MessageBox.Show($"{this.Config.PluginName} : {ex.ToString()}");
         }
       }
 
@@ -255,7 +255,7 @@
         }
         catch (Exception ex)
         {
-          MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.ToString()));
+          MessageBox.Show($"{this.Config.PluginName} : {ex.ToString()}");
         }
       }
     }
@@ -295,7 +295,7 @@
 
       // TODO: Without this line we will get an exception. FIX IT!
       this.dgv_HttpRequests.CurrentCell = null;
-      for (int i = 0; i < this.dgv_HttpRequests.RowCount; i++)
+      for (var i = 0; i < this.dgv_HttpRequests.RowCount; i++)
       {
         if (this.tb_Filter.Text.Length <= 0)
         {
@@ -305,7 +305,7 @@
         {
           try
           {
-            string cellData = this.dgv_HttpRequests.Rows[i].Cells["URL"].Value.ToString();
+            var cellData = this.dgv_HttpRequests.Rows[i].Cells["URL"].Value.ToString();
             if (!Regex.Match(cellData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
             {
               this.dgv_HttpRequests.Rows[i].Visible = false;
@@ -317,7 +317,7 @@
           }
           catch (Exception ex)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+            this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
           }
         }
       }

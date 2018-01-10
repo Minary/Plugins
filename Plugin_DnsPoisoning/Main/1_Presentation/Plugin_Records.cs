@@ -23,7 +23,7 @@
         return;
       }
 
-      int firstVisibleRowTop = -1;
+      var firstVisibleRowTop = -1;
 
       // Verify if Hostname and IPaddress for correctness.
       if (this.VerifyHostNameStructure(newRecord.HostName) == false)
@@ -47,7 +47,7 @@
       {
         if (tmpRecord.HostName.ToLower() == newRecord.HostName.ToLower())
         {
-          throw new Exception(string.Format("An entry for this hostname already exists"));
+          throw new Exception("An entry for this hostname already exists");
         }
       }
 
@@ -94,15 +94,15 @@
         return;
       }
 
-      bool isLastLine = false;
-      int firstVisibleRowTopRow = -1;
-      int lastRowIndex = -1;
-      int selectedIndex = -1;
+      var isLastLine = false;
+      var firstVisibleRowTopRow = -1;
+      var lastRowIndex = -1;
+      var selectedIndex = -1;
 
       lock (this)
       {
 
-        if (this.dgv_Spoofing.CurrentRow != null && this.dgv_Spoofing.CurrentRow == this.dgv_Spoofing.Rows[this.dgv_Spoofing.Rows.Count - 1])
+        if (this.dgv_Spoofing?.CurrentRow == this.dgv_Spoofing.Rows[this.dgv_Spoofing.Rows.Count - 1])
         {
           isLastLine = true;
         }
@@ -121,12 +121,12 @@
 
         try
         {
-          int currentIndex = this.dgv_Spoofing.CurrentCell.RowIndex;
+          var currentIndex = this.dgv_Spoofing.CurrentCell.RowIndex;
           this.dnsPoisonRecords.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         // Selected cell/row

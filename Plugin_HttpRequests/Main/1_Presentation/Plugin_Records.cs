@@ -14,8 +14,8 @@
     ///
     /// </summary>
     /// <param name="newRecords"></param>
-    private delegate void AddRecordsDelegate(List<HTTPRequests> newRecords);
-    private void AddRecords(List<HTTPRequests> newRecords)
+    private delegate void AddRecordsDelegate(List<HttpRequests> newRecords);
+    private void AddRecords(List<HttpRequests> newRecords)
     {
       if (this.InvokeRequired)
       {
@@ -23,7 +23,7 @@
         return;
       }
 
-      int firstVisibleRowTop = -1;
+      var firstVisibleRowTop = -1;
       lock (this)
       {
         // Memorize DataGridView position and selection
@@ -34,7 +34,7 @@
 
         try
         {
-          foreach (HTTPRequests tmpRecord in newRecords)
+          foreach (HttpRequests tmpRecord in newRecords)
           {
             this.httpRequests.Insert(0, tmpRecord);
           }
@@ -72,8 +72,8 @@
         return;
       }
 
-      int firstVisibleRowTop = -1;
-      int lastRowIndex = -1;
+      var firstVisibleRowTop = -1;
+      var lastRowIndex = -1;
 
       lock (this)
       {
@@ -84,22 +84,13 @@
 
         try
         {
-          int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
+          var currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
           //// string lHostName = DGV_Spoofing.Rows[currentIndex].Cells["HostName"].Value.ToString();
           //// httpRequests.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        }
-
-        // Reset position
-        try
-        {
-        }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         this.dgv_HttpRequests.ResumeLayout();

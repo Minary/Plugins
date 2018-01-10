@@ -59,7 +59,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       lock (this)
@@ -70,7 +70,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
     }
@@ -102,7 +102,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
       else
@@ -117,7 +117,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         lock (this)
@@ -128,7 +128,7 @@
           }
           catch (Exception ex)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+            this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
           }
         }
       }
@@ -154,7 +154,7 @@
       // Clear TreeView
       try
       {
-        if (this.tv_Sessions != null && this.tv_Sessions.Nodes.Count > 0)
+        if (this.tv_Sessions?.Nodes.Count > 0)
         {
           foreach (TreeNode tmpNode in this.tv_Sessions.Nodes)
           {
@@ -170,7 +170,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       // Select Main TV-Node.
@@ -204,7 +204,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -216,12 +216,12 @@
     /// <param name="e"></param>
     private void TSMI_ShowData_Click(object sender, EventArgs e)
     {
-      Main_Notes sessionNotes = new Main_Notes();
-      string dataLine = string.Empty;
+      var sessionNotes = new Main_Notes();
+      var dataLine = string.Empty;
 
       foreach (Session.DataTypes.TheSessionRecord tmpSession in this.sessionRecords)
       {
-        dataLine = "\nSystem\t" + tmpSession.SrcMAC + " - " + tmpSession.SrcIP + "\nWebsite\t" + tmpSession.URL + "\nCookies\t" + tmpSession.SessionCookies + "\n";
+        dataLine = $"\nSystem\t{tmpSession.SrcMAC} - {tmpSession.SrcIP}\nWebsite\t{tmpSession.URL}\nCookies\t{tmpSession.SessionCookies}\n";
         sessionNotes.AppendText(dataLine);
       }
 
@@ -243,7 +243,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -268,7 +268,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         this.dgv_Sessions.ClearSelection();
       }
     }

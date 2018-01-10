@@ -2,7 +2,6 @@
 {
   using Minary.Plugin.Main.RequestRedirect.DataTypes;
   using System;
-  using System.IO;
   using System.Linq;
   using System.Text.RegularExpressions;
 
@@ -73,7 +72,7 @@
 
       if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: Invalid host name regex: {1}", this.Config.PluginName, requestUrl.HostRegex);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: Invalid host name regex: {requestUrl.HostRegex}");
         throw new Exception("The host name regex is invalid");
       }
 
@@ -138,7 +137,7 @@
         }
         catch(Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         // Selected cell/row
@@ -227,7 +226,7 @@
 
     public bool IsRegexPatternValid(string pattern)
     {
-      bool isValid = false;
+      var isValid = false;
 
       try
       {
@@ -245,32 +244,35 @@
     private RequestURL ParseRequestedURLRegex(string url)
     {
       RequestURL requestedUrl;
-      char pathDelimiter = '/';
+      var pathDelimiter = '/';
 
-      if(string.IsNullOrEmpty(url) == true || string.IsNullOrWhiteSpace(url) == true)
+      if (string.IsNullOrEmpty(url) == true || 
+          string.IsNullOrWhiteSpace(url) == true)
       {
         throw new Exception("The URL is invalid");
       }
 
       url = url.Trim();
-      if(url.StartsWith("http://") == true || url.StartsWith("https://") == true)
+      if(url.StartsWith("http://") == true || 
+         url.StartsWith("https://") == true)
       {
         throw new Exception("The URL must not contain a scheme definition");
       }
 
-      if(url.Contains(pathDelimiter) == false)
+      if (url.Contains(pathDelimiter) == false)
       {
         throw new Exception("The URL must contain a root path slash");
       }
 
       string[] splitter = url.Split(new char[] { pathDelimiter }, 2);
 
-      if(splitter == null || splitter.Count() != 2)
+      if (splitter == null || 
+          splitter.Count() != 2)
       {
         throw new Exception("The URL is invalid");
       }
 
-      string urlPath = string.Format("{0}{1}", pathDelimiter, splitter[1]);
+      var urlPath = $"{pathDelimiter}{splitter[1]}";
       requestedUrl = new RequestURL(splitter[0], urlPath);
 
       return requestedUrl;

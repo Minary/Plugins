@@ -53,32 +53,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public AccountRecord()
-    {
-      this.srcMac = string.Empty;
-      this.srcIp = string.Empty;
-      this.dstIp = string.Empty;
-      this.dstPort = string.Empty;
-      this.username = string.Empty;
-      this.password = string.Empty;
-    }
-
-
-    public AccountRecord(string srcMac, string srcIp, string dstIp, string dstPort, string username, string password)
-    {
-      this.srcMac = srcMac;
-      this.srcIp = srcIp;
-      this.dstIp = dstIp;
-      this.dstPort = dstPort;
-      this.username = username;
-      this.password = password;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -174,6 +148,32 @@
         this.password = value;
         this.NotifyPropertyChanged("Password");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public AccountRecord()
+    {
+      this.srcMac = string.Empty;
+      this.srcIp = string.Empty;
+      this.dstIp = string.Empty;
+      this.dstPort = string.Empty;
+      this.username = string.Empty;
+      this.password = string.Empty;
+    }
+
+
+    public AccountRecord(string srcMac, string srcIp, string dstIp, string dstPort, string username, string password)
+    {
+      this.srcMac = srcMac;
+      this.srcIp = srcIp;
+      this.dstIp = dstIp;
+      this.dstPort = dstPort;
+      this.username = username;
+      this.password = password;
     }
 
     #endregion

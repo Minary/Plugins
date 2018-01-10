@@ -68,7 +68,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       });
 
@@ -108,8 +108,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.Session.Config.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -117,7 +116,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       }
     }

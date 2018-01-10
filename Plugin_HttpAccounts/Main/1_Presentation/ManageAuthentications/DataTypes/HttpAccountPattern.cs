@@ -28,88 +28,7 @@
     #endregion
 
 
-    #region PUBLIC
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HttpAccountPattern"/> class.
-    ///
-    /// </summary>
-    public HttpAccountPattern()
-    {
-//      this.config = new TemplateConfig();
-      this.httpMethod = string.Empty;
-      this.hostPattern = string.Empty;
-      this.pathPattern = string.Empty;
-      this.dataPattern = string.Empty;
-      this.company = string.Empty;
-      this.webPage = string.Empty;
-      this.source = string.Empty;
-      this.isEnabled = true;
-      this.patternFileFullPath = string.Empty;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="method"></param>
-    /// <param name="host"></param>
-    /// <param name="pathPattern"></param>
-    /// <param name="dataPattern"></param>
-    /// <param name="company"></param>
-    /// <param name="webPage"></param>
-    /// <param name="source"></param>
-    /// <param name="patternFileFullPath"></param>
-    public HttpAccountPattern(string method, string host, string pathPattern, string dataPattern, string company, string webPage, string source, string patternFileFullPath)
-    {
-//      this.config = new TemplateConfig();
-      this.httpMethod = method;
-      this.hostPattern = host;
-      this.pathPattern = pathPattern;
-      this.dataPattern = dataPattern;
-      this.company = company;
-      this.webPage = webPage;
-      this.source = source;
-      this.isEnabled = true;
-      this.patternFileFullPath = patternFileFullPath;
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <returns></returns>
-    public override bool Equals(object compObj)
-    {
-      bool retVal = false;
-
-      if (compObj is HttpAccountPattern)
-      {
-        HttpAccountPattern tmp = (HttpAccountPattern)compObj;
-        if (tmp.Method == this.Method && tmp.HostPattern == this.HostPattern && tmp.PathPattern == this.PathPattern)
-        {
-          retVal = true;
-        }
-      }
-
-      return retVal;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
-
-    //[Browsable(false)]
-    //public TemplateConfig Config
-    //{
-    //  get { return this.config; }
-    //  set
-    //  {
-    //    this.config = value;
-    //  }
-    //}
-
 
     [Browsable(true)]
     public string Method
@@ -251,6 +170,76 @@
       {
         this.patternFileFullPath = value;
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="HttpAccountPattern"/> class.
+    ///
+    /// </summary>
+    public HttpAccountPattern()
+    {
+      //      this.config = new TemplateConfig();
+      this.httpMethod = string.Empty;
+      this.hostPattern = string.Empty;
+      this.pathPattern = string.Empty;
+      this.dataPattern = string.Empty;
+      this.company = string.Empty;
+      this.webPage = string.Empty;
+      this.source = string.Empty;
+      this.isEnabled = true;
+      this.patternFileFullPath = string.Empty;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="method"></param>
+    /// <param name="host"></param>
+    /// <param name="pathPattern"></param>
+    /// <param name="dataPattern"></param>
+    /// <param name="company"></param>
+    /// <param name="webPage"></param>
+    /// <param name="source"></param>
+    /// <param name="patternFileFullPath"></param>
+    public HttpAccountPattern(string method, string host, string pathPattern, string dataPattern, string company, string webPage, string source, string patternFileFullPath)
+    {
+      //      this.config = new TemplateConfig();
+      this.httpMethod = method;
+      this.hostPattern = host;
+      this.pathPattern = pathPattern;
+      this.dataPattern = dataPattern;
+      this.company = company;
+      this.webPage = webPage;
+      this.source = source;
+      this.isEnabled = true;
+      this.patternFileFullPath = patternFileFullPath;
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    public override bool Equals(object compObj)
+    {
+      bool retVal = false;
+
+      if (compObj is HttpAccountPattern)
+      {
+        HttpAccountPattern tmp = (HttpAccountPattern)compObj;
+        if (tmp.Method == this.Method && tmp.HostPattern == this.HostPattern && tmp.PathPattern == this.PathPattern)
+        {
+          retVal = true;
+        }
+      }
+
+      return retVal;
     }
 
     #endregion

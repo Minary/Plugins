@@ -23,32 +23,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public InjectCodeRecord()
-    {
-      this.requestedScheme = string.Empty;
-      this.requestedHostRegex = string.Empty;
-      this.requestedPathRegex = string.Empty;
-      this.injectionCodeFile = string.Empty;
-      this.tag = string.Empty;
-      this.position = string.Empty;
-    }
-
-
-    public InjectCodeRecord(string requestedScheme, string requestedHostRegex, string requestedPathRegex, string replacementResource, string tag, string position)
-    {
-      this.requestedScheme = requestedScheme;
-      this.requestedHostRegex = requestedHostRegex;
-      this.requestedPathRegex = requestedPathRegex;
-      this.injectionCodeFile = replacementResource;
-      this.tag = tag;
-      this.position = position;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -144,6 +118,32 @@
         this.position = value;
         this.NotifyPropertyChanged("Potision");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public InjectCodeRecord()
+    {
+      this.requestedScheme = string.Empty;
+      this.requestedHostRegex = string.Empty;
+      this.requestedPathRegex = string.Empty;
+      this.injectionCodeFile = string.Empty;
+      this.tag = string.Empty;
+      this.position = string.Empty;
+    }
+
+
+    public InjectCodeRecord(string requestedScheme, string requestedHostRegex, string requestedPathRegex, string replacementResource, string tag, string position)
+    {
+      this.requestedScheme = requestedScheme;
+      this.requestedHostRegex = requestedHostRegex;
+      this.requestedPathRegex = requestedPathRegex;
+      this.injectionCodeFile = replacementResource;
+      this.tag = tag;
+      this.position = position;
     }
 
     #endregion

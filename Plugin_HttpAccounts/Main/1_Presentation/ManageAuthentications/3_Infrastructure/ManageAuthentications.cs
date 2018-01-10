@@ -102,18 +102,15 @@
                                         this.pluginProperties.PluginBaseDir,
                                         this.pluginProperties.PatternSubDir,
                                         Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_TEMPLATE);
-      string fileName = Regex.Replace(record.Company, @"[^\d\w\-]", "_", RegexOptions.IgnoreCase);
+      var fileName = Regex.Replace(record.Company, @"[^\d\w\-]", "_", RegexOptions.IgnoreCase);
       fileName += Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_FILE_EXTENSION;
-      string newPatternFileFullPath = Path.Combine(templateDir, fileName);
+      var newPatternFileFullPath = Path.Combine(templateDir, fileName);
 
       try
       {
-        BinaryFormatter formatter = new BinaryFormatter();
+        var formatter = new BinaryFormatter();
         fileStream = new FileStream(newPatternFileFullPath, FileMode.Create);
         formatter.Serialize(fileStream, record);
-      }
-      catch (Exception)
-      {
       }
       finally
       {
@@ -130,8 +127,8 @@
       byte[] templateDataBytes;
 
       // Serialize the pattern data
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, httpAccountPatternRecords);
       stream.Seek(0, SeekOrigin.Begin);
       templateDataBytes = stream.ToArray();
@@ -169,10 +166,10 @@
     private List<HttpAccountPattern> ParsePatternFiles(string path, string filePattern, string source)
     {
       FileStream fileStream = null;
-      HttpAccountPattern tmpRecord = new HttpAccountPattern();
-      List<HttpAccountPattern> foundPatternFiles = new List<HttpAccountPattern>();
       string[] remotePatternFiles;
-      BinaryFormatter formatter = new BinaryFormatter();
+      var tmpRecord = new HttpAccountPattern();
+      var foundPatternFiles = new List<HttpAccountPattern>();
+      var formatter = new BinaryFormatter();
 
       if (!Directory.Exists(path))
       {

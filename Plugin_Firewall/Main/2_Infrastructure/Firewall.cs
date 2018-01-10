@@ -40,9 +40,9 @@
     /// <param name="firewallRulesPath"></param>
     public void OnStart(BindingList<FirewallRuleRecord> firewallRulesList, string firewallRulesPath)
     {
-      string firewallRulesString = string.Empty;
+      var firewallRulesString = string.Empty;
 
-      if (firewallRulesList == null || firewallRulesList.Count <= 0)
+      if (firewallRulesList?.Count > 0 == false)
       {
         throw new MinaryWarningException("No firewall rules defined");
       }
@@ -60,10 +60,10 @@
 
       foreach (FirewallRuleRecord tmpFirewallRule in firewallRulesList)
       {
-        firewallRulesString += string.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}\r\n", tmpFirewallRule.Protocol, tmpFirewallRule.SrcIP, tmpFirewallRule.SrcPortLower, tmpFirewallRule.SrcPortUpper, tmpFirewallRule.DstIP, tmpFirewallRule.DstPortLower, tmpFirewallRule.DstPortUpper);
+        firewallRulesString += $"{tmpFirewallRule.Protocol}:{tmpFirewallRule.SrcIP}:{tmpFirewallRule.SrcPortLower}:{tmpFirewallRule.SrcPortUpper}:{tmpFirewallRule.DstIP}:{tmpFirewallRule.DstPortLower}:{tmpFirewallRule.DstPortUpper}\r\n";
       }
 
-      using (StreamWriter outfile = new StreamWriter(firewallRulesPath))
+      using (var outfile = new StreamWriter(firewallRulesPath))
       {
         outfile.Write(firewallRulesString);
       }
@@ -78,7 +78,8 @@
     {
       try
       {
-        if (!string.IsNullOrEmpty(firewallRulesFilePath) && File.Exists(firewallRulesFilePath))
+        if (!string.IsNullOrEmpty(firewallRulesFilePath) && 
+            File.Exists(firewallRulesFilePath))
         {
           File.Delete(firewallRulesFilePath);
         }
@@ -96,7 +97,7 @@
     /// <param name="pWebServerConfig"></param>
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
@@ -127,7 +128,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
         }
       });
 
@@ -176,7 +177,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage("{this.plugin.Config.PluginName} : {ex.Message}");
         }
       }
     }

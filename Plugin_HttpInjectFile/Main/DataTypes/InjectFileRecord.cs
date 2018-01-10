@@ -20,26 +20,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public InjectFileRecord()
-    {
-      this.requestedHostRegex = string.Empty;
-      this.requestedPathRegex = string.Empty;
-      this.replacementResource = string.Empty;
-    }
-
-
-    public InjectFileRecord(string requestedHost, string requestedPath, string replacementResource)
-    {
-      this.requestedHostRegex = requestedHost;
-      this.requestedPathRegex = requestedPath;
-      this.replacementResource = replacementResource;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -87,6 +67,26 @@
         this.replacementResource = value;
         this.NotifyPropertyChanged("ReplacementResource");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public InjectFileRecord()
+    {
+      this.requestedHostRegex = string.Empty;
+      this.requestedPathRegex = string.Empty;
+      this.replacementResource = string.Empty;
+    }
+
+
+    public InjectFileRecord(string requestedHost, string requestedPath, string replacementResource)
+    {
+      this.requestedHostRegex = requestedHost;
+      this.requestedPathRegex = requestedPath;
+      this.replacementResource = replacementResource;
     }
 
     #endregion

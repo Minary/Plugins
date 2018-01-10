@@ -4,6 +4,7 @@
   using System;
   using System.Collections.Generic;
 
+
   public partial class Plugin_DnsRequests
   {
 
@@ -22,9 +23,8 @@
         return;
       }
 
-      int firstVisibleRowTop = -1;
-
-      if (dnsRequests != null && dnsRequests.Count > 0)
+      var firstVisibleRowTop = -1;
+      if (dnsRequests?.Count > 0)
       {
         lock (this)
         {
@@ -55,7 +55,7 @@
             }
             catch (Exception ex)
             {
-              this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+              this.pluginProperties.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
               continue;
             }
 

@@ -13,15 +13,8 @@
     
     private PluginProperties pluginProperties;
     private Infrastructure.ManageAuthentications infrastructureLayer;
-    private List<IObserver> observers;
-    private List<HttpAccountPattern> accountPatterns;
-
-    #endregion
-
-
-    #region PROPERTIES
-
-    public List<HttpAccountPattern> AccountPatterns { get { return this.accountPatterns; } }
+    private List<IObserver> observers = new List<IObserver>();
+    private List<HttpAccountPattern> accountPatterns = new List<HttpAccountPattern>();
 
     #endregion
 
@@ -36,8 +29,6 @@
     {
       this.pluginProperties = pluginProperties;
       this.infrastructureLayer = new Plugin.Main.HttpAccounts.ManageAuthentications.Infrastructure.ManageAuthentications(this.pluginProperties);
-      this.accountPatterns = new List<HttpAccountPattern>();
-      this.observers = new List<IObserver>();
     }
 
 

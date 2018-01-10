@@ -26,37 +26,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public TheSessionRecord()
-    {
-      this.timeStamp = string.Empty;
-      this.srcMac = string.Empty;
-      this.srcIp = string.Empty;
-      this.url = string.Empty;
-      this.dstPort = string.Empty;
-      this.sessionCookies = string.Empty;
-      this.browser = string.Empty;
-      this.group = string.Empty;
-      this.id = string.Empty;
-    }
-
-    public TheSessionRecord(string srcMac, string srcIp, string url, string dstPort, string sessionCookies, string browser, string group)
-    {
-      this.id = string.Format("{0}{1}{2}", url.Trim(), dstPort.Trim(), sessionCookies.Trim());
-      this.timeStamp = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
-      this.srcMac = srcMac;
-      this.srcIp = srcIp;
-      this.url = url;
-      this.dstPort = dstPort;
-      this.sessionCookies = sessionCookies;
-      this.browser = browser;
-      this.group = group;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -200,6 +169,37 @@
         this.id = value;
         this.NotifyPropertyChanged("ID");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public TheSessionRecord()
+    {
+      this.timeStamp = string.Empty;
+      this.srcMac = string.Empty;
+      this.srcIp = string.Empty;
+      this.url = string.Empty;
+      this.dstPort = string.Empty;
+      this.sessionCookies = string.Empty;
+      this.browser = string.Empty;
+      this.group = string.Empty;
+      this.id = string.Empty;
+    }
+
+    public TheSessionRecord(string srcMac, string srcIp, string url, string dstPort, string sessionCookies, string browser, string group)
+    {
+      this.id = $"{url.Trim()}{dstPort.Trim()}{sessionCookies.Trim()}";
+      this.timeStamp = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+      this.srcMac = srcMac;
+      this.srcIp = srcIp;
+      this.url = url;
+      this.dstPort = dstPort;
+      this.sessionCookies = sessionCookies;
+      this.browser = browser;
+      this.group = group;
     }
 
     #endregion

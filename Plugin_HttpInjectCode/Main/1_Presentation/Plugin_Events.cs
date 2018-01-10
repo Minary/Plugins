@@ -16,7 +16,7 @@
       try
       {
         string selectedTag = (this.cb_injectPosition.SelectedItem as ComboboxItem).Value.ToString();
-        string position = this.rb_Before.Checked?"before" : "after";
+        string position = this.rb_Before.Checked ? "before" : "after";
         string url = this.tb_RequestedURLRegex.Text;
         string path = this.tb_InjectioinContentFile.Text;
 
@@ -24,8 +24,8 @@
       }
       catch (Exception ex)
       {
-        string msg = string.Format("Error occurred while adding inject code record: \r\n\r\n{0}", ex.Message);
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        string msg = $"Error occurred while adding inject code record: \r\n\r\n{ex.Message}";
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         MessageBox.Show(msg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
@@ -70,7 +70,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 

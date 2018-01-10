@@ -8,9 +8,8 @@
   {
 
     #region MEMBERS
-
-    private const string MimeType = "text/css";
-    private readonly BindingList<Plugin.Main.SslStrip.DataTypes.ComboboxItem> cssTagList;
+    
+    private readonly BindingList<ComboboxItem> cssTagList;
 
     #endregion
 
@@ -18,7 +17,7 @@
     #region PROPERTIES
 
     public ContextType UsedContextType { get { return ContextType.CSS; } }
-    public string UsedContentType { get { return MimeType; } }
+    public string UsedContentType { get; private set; } = "text/css";
 
     #endregion
 

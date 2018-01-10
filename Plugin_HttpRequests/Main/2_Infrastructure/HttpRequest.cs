@@ -67,7 +67,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       });
 
@@ -95,11 +95,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.HttpRequest.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.HttpRequest.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -107,8 +107,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.HttpRequest.DataTypes.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpPatternFile in patternFiles)
+      foreach (var tmpPatternFile in patternFiles)
       {
         try
         {
@@ -116,7 +115,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       }
     }

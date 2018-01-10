@@ -97,7 +97,7 @@
 
       if (this.systemRecords.ToList().FindAll(elem => record.Id == elem.Id).Count() > 0)
       {
-        throw new RecordExistsException(string.Format("System ({0}) already exists.", record.Id));
+        throw new RecordExistsException($"System ({record.Id}) already exists.");
       }
 
       // Add new record to the data grid view

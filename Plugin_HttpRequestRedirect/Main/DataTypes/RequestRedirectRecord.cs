@@ -22,30 +22,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public RequestRedirectRecord()
-    {
-      this.redirectType = string.Empty;
-      this.redirectDescription = string.Empty;
-      this.requestedHostRegex = string.Empty;
-      this.requestedPathRegex = string.Empty;
-      this.replacementResource = string.Empty;
-    }
-
-
-    public RequestRedirectRecord(string redirectType, string redirectDescription, string requestedHostRegex, string requestedPathRegex, string replacementResource)
-    {
-      this.redirectType = redirectType;
-      this.redirectDescription = redirectDescription;
-      this.requestedHostRegex = requestedHostRegex;
-      this.requestedPathRegex = requestedPathRegex;
-      this.replacementResource = replacementResource;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -126,7 +102,31 @@
         this.NotifyPropertyChanged("ReplacementResource");
       }
     }
-    
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public RequestRedirectRecord()
+    {
+      this.redirectType = string.Empty;
+      this.redirectDescription = string.Empty;
+      this.requestedHostRegex = string.Empty;
+      this.requestedPathRegex = string.Empty;
+      this.replacementResource = string.Empty;
+    }
+
+
+    public RequestRedirectRecord(string redirectType, string redirectDescription, string requestedHostRegex, string requestedPathRegex, string replacementResource)
+    {
+      this.redirectType = redirectType;
+      this.redirectDescription = redirectDescription;
+      this.requestedHostRegex = requestedHostRegex;
+      this.requestedPathRegex = requestedPathRegex;
+      this.replacementResource = replacementResource;
+    }
+
     #endregion
 
 

@@ -7,6 +7,13 @@
   public class TemplateHTTPAccounts
   {
 
+    #region PROPERTIES
+
+    public BindingList<HttpAccountPattern> AccountPatterns { get; set; }
+
+    #endregion
+
+
     #region PUBLIC
 
     /// <summary>
@@ -16,17 +23,6 @@
     public TemplateHTTPAccounts()
     {
       this.AccountPatterns = new BindingList<HttpAccountPattern>();
-    }
-
-    #endregion
-
-
-    #region PROPERTIES
-    
-    public BindingList<HttpAccountPattern> AccountPatterns
-    {
-      get;
-      set;
     }
 
     #endregion

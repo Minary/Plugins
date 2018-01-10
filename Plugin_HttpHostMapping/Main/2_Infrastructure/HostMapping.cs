@@ -64,7 +64,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.OnReset(EXCEPTION) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.OnReset(EXCEPTION) : {ex.Message}");
       }
     }
 
@@ -74,30 +74,30 @@
     /// </summary>
     public void OnStart(List<HostMappingRecord> recordList)
     {
-      if (recordList == null || recordList.Count <= 0)
+      if (recordList?.Count > 0 == false)
       {
         throw new MinaryWarningException("No host mapping rules defined");
       }
 
-      string hostMappingConfigurationFileData = string.Empty;
+      var hostMappingConfigurationFileData = string.Empty;
       foreach (HostMappingRecord tmpRecord in recordList)
       {
-        string requestedHost = tmpRecord.RequestedHost;
-        string mappedHost = tmpRecord.MappedHost;
+        var requestedHost = tmpRecord.RequestedHost;
+        var mappedHost = tmpRecord.MappedHost;
 
-        hostMappingConfigurationFileData += string.Format("{0}||{1}\r\n", tmpRecord.RequestedHost, tmpRecord.MappedHost);
+        hostMappingConfigurationFileData += $"{tmpRecord.RequestedHost}||{tmpRecord.MappedHost}\r\n";
       }
 
       hostMappingConfigurationFileData = hostMappingConfigurationFileData.Trim();
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.hostMappingConfig.HostMappingConfigFilePath);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): Writing to config file {this.hostMappingConfig.HostMappingConfigFilePath}");
         File.WriteAllText(this.hostMappingConfig.HostMappingConfigFilePath, hostMappingConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception(string.Format("Errorr occurred while writing HostMapping configuration data: {0}", ex.Message));
+        throw new Exception($"Errorr occurred while writing HostMapping configuration data: {ex.Message}");
       }
     }
 
@@ -107,7 +107,7 @@
     /// </summary>
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
@@ -138,7 +138,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
         }
       });
 
@@ -148,7 +148,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
       }
     }
 
@@ -179,11 +179,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.HostMapping.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.HostMapping.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -191,8 +191,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.HostMapping.DataTypes.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -200,7 +199,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0}.CleanUpTemplateDir() : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.CleanUpTemplateDir() : {ex.Message}");
         }
       }
     }
@@ -212,8 +211,8 @@
 
     public TemplatePluginData OnGetTemplateData(BindingList<HostMappingRecord> hostMappingRecords)
     {
-      TemplatePluginData templateData = new TemplatePluginData();
-      List<HostMappingRecord> genericObjectList = new List<HostMappingRecord>();
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<HostMappingRecord>();
 
       // Replace current configuration parameter with placeholder values
       foreach (HostMappingRecord tmpRecord in hostMappingRecords)
@@ -222,8 +221,8 @@
       }
 
       // Serialize the list
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, genericObjectList);
       stream.Seek(0, SeekOrigin.Begin);
 
@@ -244,11 +243,11 @@
       }
 
       // Deserialize plugin data
-      MemoryStream stream = new MemoryStream();
+      var stream = new MemoryStream();
       stream.Write(pluginData.PluginConfigurationItems, 0, pluginData.PluginConfigurationItems.Length);
       stream.Seek(0, SeekOrigin.Begin);
 
-      BinaryFormatter formatter = new BinaryFormatter();
+      var formatter = new BinaryFormatter();
       poisoningRecords = (List<HostMappingRecord>)formatter.Deserialize(stream);
       
       return poisoningRecords;

@@ -27,81 +27,7 @@
     #endregion
 
 
-    #region PUBLIC
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SessionPattern"/> class.
-    ///
-    /// </summary>
-    public SessionPattern()
-    {
-//      this.config = new TemplateConfig();
-      this.companyName = string.Empty;
-      this.companyWebpage = string.Empty;
-      this.httpHostRegex = string.Empty;
-      this.sessionRegex = string.Empty;
-      this.isEnabled = true;
-      this.patternFileFullPath = string.Empty;
-    }
-
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="SessionPattern"/> class.
-    ///
-    /// </summary>
-    /// <param name="sessionPatternstring"></param>
-    /// <param name="sessionName"></param>
-    /// <param name="httpHost"></param>
-    /// <param name="companyWebpage"></param>
-    public SessionPattern(string sessionPatternstring, string companyName, string httpHost, string companyWebpage, string patternFileFullPath)
-    {
-      this.companyName = companyName;
-      this.companyWebpage = companyWebpage;
-      this.httpHostRegex = httpHost;
-      this.sessionRegex = sessionPatternstring;
-      this.isEnabled = true;
-      this.patternFileFullPath = patternFileFullPath;
-
-//      this.config = new TemplateConfig();
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <returns></returns>
-    public override bool Equals(object obj)
-    {
-      bool retVal = false;
-
-      if (obj is SessionPattern)
-      {
-        SessionPattern tmpSessionPattern = (SessionPattern)obj;
-        if (tmpSessionPattern.sessionRegex == this.sessionRegex && tmpSessionPattern.httpHostRegex == this.httpHostRegex)
-        {
-          retVal = true;
-        }
-      }
-
-      return retVal;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
-
-    //[Browsable(false)]
-    //public TemplateConfig Config
-    //{
-    //  get { return this.config; }
-    //  set
-    //  {
-    //    this.config = value;
-    //  }
-    //}
-
 
     [Browsable(true)]
     public string CompanyName
@@ -211,6 +137,69 @@
       {
         this.patternFileFullPath = value;
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SessionPattern"/> class.
+    ///
+    /// </summary>
+    public SessionPattern()
+    {
+//      this.config = new TemplateConfig();
+      this.companyName = string.Empty;
+      this.companyWebpage = string.Empty;
+      this.httpHostRegex = string.Empty;
+      this.sessionRegex = string.Empty;
+      this.isEnabled = true;
+      this.patternFileFullPath = string.Empty;
+    }
+
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SessionPattern"/> class.
+    ///
+    /// </summary>
+    /// <param name="sessionPatternstring"></param>
+    /// <param name="sessionName"></param>
+    /// <param name="httpHost"></param>
+    /// <param name="companyWebpage"></param>
+    public SessionPattern(string sessionPatternstring, string companyName, string httpHost, string companyWebpage, string patternFileFullPath)
+    {
+      this.companyName = companyName;
+      this.companyWebpage = companyWebpage;
+      this.httpHostRegex = httpHost;
+      this.sessionRegex = sessionPatternstring;
+      this.isEnabled = true;
+      this.patternFileFullPath = patternFileFullPath;
+
+//      this.config = new TemplateConfig();
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
+    public override bool Equals(object obj)
+    {
+      bool retVal = false;
+
+      if (obj is SessionPattern)
+      {
+        SessionPattern tmpSessionPattern = (SessionPattern)obj;
+        if (tmpSessionPattern.sessionRegex == this.sessionRegex && tmpSessionPattern.httpHostRegex == this.httpHostRegex)
+        {
+          retVal = true;
+        }
+      }
+
+      return retVal;
     }
 
     #endregion

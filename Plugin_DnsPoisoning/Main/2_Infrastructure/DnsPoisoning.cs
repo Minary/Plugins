@@ -84,7 +84,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
         }
       });
 
@@ -111,11 +111,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -123,8 +123,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -132,7 +131,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
         }
       }
     }
@@ -144,14 +143,14 @@
 
     public TemplatePluginData OnGetTemplateData(BindingList<RecordDnsPoison> dnsPoisonRecords)
     {
-      TemplatePluginData templateData = new TemplatePluginData();
-      List<RecordDnsPoison> genericObjectList = new List<RecordDnsPoison>();
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<RecordDnsPoison>();
 
       // Where necessary replace current configuration parameter
       // with placeholder values
       foreach (RecordDnsPoison tmpRecord in dnsPoisonRecords)
       {
-        RecordDnsPoison realRecord = new RecordDnsPoison(tmpRecord.HostName, tmpRecord.IpAddress, tmpRecord.ResponseType, tmpRecord.CName);
+        var realRecord = new RecordDnsPoison(tmpRecord.HostName, tmpRecord.IpAddress, tmpRecord.ResponseType, tmpRecord.CName);
         if (tmpRecord.IpAddress == this.plugin.Config.HostApplication.CurrentIP)
         {
           realRecord.IpAddress = MinaryLib.DSL.Config.CONSTANT_LOCAL_IP;
@@ -161,8 +160,8 @@
       }
 
       // Serialize the list
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, genericObjectList);
       stream.Seek(0, SeekOrigin.Begin);
 
@@ -183,11 +182,11 @@
       }
 
       // Deserialize plugin data
-      MemoryStream stream = new MemoryStream();
+      var stream = new MemoryStream();
       stream.Write(pluginData.PluginConfigurationItems, 0, pluginData.PluginConfigurationItems.Length);
       stream.Seek(0, SeekOrigin.Begin);
 
-      BinaryFormatter formatter = new BinaryFormatter();
+      var formatter = new BinaryFormatter();
       poisoningRecords = (List<RecordDnsPoison>)formatter.Deserialize(stream);
 
       // Replace place holders by current configuration values

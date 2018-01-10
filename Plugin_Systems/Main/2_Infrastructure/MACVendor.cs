@@ -49,7 +49,7 @@
           string oct1 = match.Groups[1].Value.ToString();
           string oct2 = match.Groups[2].Value.ToString();
           string oct3 = match.Groups[3].Value.ToString();
-          string tmp = string.Format("{0}{1}{2}", oct1, oct2, oct3).ToLower();
+          string tmp = $"{oct1}{oct2}{oct3}".ToLower();
 
           retVal = this.macVendorMap.ContainsKey(tmp) ? this.macVendorMap[tmp].ToString() : string.Empty;
         }
@@ -95,17 +95,17 @@
           }
           catch (Exception)
           {
-            ////            LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("Unable to load MAC/Vendor pair: {0}/{1}   ({2})", tmpLine, macAddress, vendorName));
+            ////LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("Unable to load MAC/Vendor pair: {0}/{1}   ({2})", tmpLine, macAddress, vendorName));
           }
         }
       }
       catch (FileNotFoundException)
       {
-        ////        LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("{0} not found!", macVendorList));
+        ////LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("{0} not found!", macVendorList));
       }
       catch (Exception)
       {
-        ////        LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("Error occurred while opening {0}: {1}", macVendorList, ex.StackTrace));
+        ////LogConsole.Main.LogConsole.LogInstance.pushMsg(string.Format("Error occurred while opening {0}: {1}", macVendorList, ex.StackTrace));
       }
       finally
       {

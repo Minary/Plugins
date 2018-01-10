@@ -47,7 +47,7 @@
         return;
       }
 
-      if (this.injectCodeRecords != null && this.injectCodeRecords.Count > 0)
+      if (this.injectCodeRecords?.Count > 0 == true)
       {
         try
         {
@@ -60,18 +60,18 @@
         {
           this.infrastructureLayer.OnStop();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
         catch (Exception ex)
         {
           this.infrastructureLayer.OnStop();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
       else
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: No rule defined. Stopping the pluggin.", this.Config.PluginName);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
@@ -176,7 +176,7 @@
       this.injectCodeRecords.Clear();
 
       List<InjectCodeRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpInjectPayloadRecords != null && tmpInjectPayloadRecords.Count > 0)
+      if (tmpInjectPayloadRecords?.Count > 0)
       {
         tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectCodeRecords.Add(elem));
       }

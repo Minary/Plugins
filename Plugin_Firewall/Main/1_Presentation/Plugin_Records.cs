@@ -147,13 +147,15 @@
 
 
       // Verify firewall rule ID for uniqueness
-      id = string.Format("{0}{1}{2}{3}{4}{5}{6}", protocol, dstIp, dstPortLowerStr, dstPortUpperStr, srcIp, srcPortLowerStr, srcPortUpperStr);
+      id = $"{protocol}{dstIp}{dstPortLowerStr}{dstPortUpperStr}{srcIp}{srcPortLowerStr}{srcPortUpperStr}";
 
       foreach (FirewallRuleRecord tmpRule in this.firewallRules)
+      {
         if (tmpRule.ID == id)
         {
           throw new Exception("This rule already exists");
         }
+      }
 
       // Memorize DataGridView position and selection
       firstVisibleRowTop = this.dgv_FWRules.FirstDisplayedScrollingRowIndex;
@@ -219,16 +221,14 @@
         return;
       }
 
-      bool isLastLine = false;
-      int firstVisibleRowTop = -1;
-      int lastRowIndex = -1;
-      int selectedRowIndex = -1;
-
+      var isLastLine = false;
+      var firstVisibleRowTop = -1;
+      var lastRowIndex = -1;
+      var selectedRowIndex = -1;
 
       lock (this)
       {
-
-        if (this.dgv_FWRules.CurrentRow != null && this.dgv_FWRules.CurrentRow == this.dgv_FWRules.Rows[this.dgv_FWRules.Rows.Count - 1])
+        if (this.dgv_FWRules?.CurrentRow == this.dgv_FWRules.Rows[this.dgv_FWRules.Rows.Count - 1])
         {
           isLastLine = true;
         }
@@ -251,7 +251,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
 
         // Selected cell/row

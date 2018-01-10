@@ -59,13 +59,13 @@
       {
         this.infrastructureLayer.OnStop();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
       catch (Exception ex)
       {
         this.infrastructureLayer.OnStop();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       this.Refresh();

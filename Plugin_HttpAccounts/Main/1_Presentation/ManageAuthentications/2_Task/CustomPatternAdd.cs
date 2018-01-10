@@ -35,27 +35,27 @@
       {
         throw new Exception("Something is wrong with the account pattern record.");
       }
-      else if (record.Company == null || record.Company.Length <= 0)
+      else if (record.Company?.Length > 0 == false)
       {
         throw new Exception("You didn't define a company name");
       }
-      else if (record.HostPattern == null || record.HostPattern.Length <= 0)
+      else if (record.HostPattern?.Length > 0 == false)
       {
         throw new Exception("You didn't define a host pattern");
       }
-      else if (record.WebPage == null || record.WebPage.Length <= 0)
+      else if (record.WebPage?.Length > 0 == false)
       {
         throw new Exception("You didn't define a company web page");
       }
-      else if (record.PathPattern == null || record.PathPattern.Length <= 0)
+      else if (record.PathPattern?.Length > 0 == false)
       {
         throw new Exception("You didn't define a path pattern");
       }
-      else if (record.Method == null || record.Method.Length <= 0)
+      else if (record.Method?.Length > 0 == false)
       {
         throw new Exception("You didn't define a request method");
       }
-      else if (record.DataPattern == null || record.DataPattern.Length <= 0)
+      else if (record.DataPattern?.Length > 0 == false)
       {
         throw new Exception("You didn't define a data pattern");
       }

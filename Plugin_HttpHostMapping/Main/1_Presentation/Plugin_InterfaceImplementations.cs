@@ -7,7 +7,6 @@
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
-  using System.IO;
   using System.Linq;
 
 
@@ -55,7 +54,7 @@
         return;
       }
 
-      if (this.hostMappingRecords != null && this.hostMappingRecords.Count > 0)
+      if (this.hostMappingRecords?.Count > 0)
       {
         try
         {
@@ -68,18 +67,18 @@
         {
           this.infrastructureLayer.OnStop();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
         catch (Exception ex)
         {
           this.infrastructureLayer.OnStop();
           this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
       else
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: No rule defined. Stopping the pluggin.", this.Config.PluginName);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
@@ -189,7 +188,7 @@
       this.hostMappingRecords.Clear();
 
       List<HostMappingRecord> tmpHostMappingRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpHostMappingRecords != null && tmpHostMappingRecords.Count > 0)
+      if (tmpHostMappingRecords?.Count > 0)
       {
         tmpHostMappingRecords.ToList().ForEach(elem => this.hostMappingRecords.Add(elem));
       }

@@ -6,6 +6,13 @@
   public class TemplateFirewall
   {
 
+    #region PROPERTIES
+
+    public BindingList<FirewallRuleRecord> FirewallRules { get; set; }
+
+    #endregion
+
+
     #region PUBLIC
 
     /// <summary>
@@ -14,17 +21,6 @@
     /// </summary>
     public TemplateFirewall()
     {
-    }
-
-    #endregion
-
-
-    #region PROPERTIES
-    
-    public BindingList<FirewallRuleRecord> FirewallRules
-    {
-      get;
-      set;
     }
 
     #endregion

@@ -72,7 +72,7 @@
                               }
                               catch (Exception ex)
                               {
-                                this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+                                this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
                               }
                             });
 
@@ -107,11 +107,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -119,8 +119,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -128,7 +127,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}: {ex.Message}");
         }
       }
     }
@@ -146,7 +145,7 @@
 
     public List<AccountRecord> OnLoadTemplateData(TemplatePluginData pluginData)
     {
-      List<AccountRecord> applicatoinPatternRecords = new List<AccountRecord>();
+      var applicatoinPatternRecords = new List<AccountRecord>();
 
       return applicatoinPatternRecords;
     }
@@ -158,5 +157,6 @@
     }
 
     #endregion
+
   }
 }

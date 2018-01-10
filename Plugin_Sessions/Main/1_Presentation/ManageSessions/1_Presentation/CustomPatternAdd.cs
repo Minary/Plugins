@@ -20,13 +20,6 @@
     #endregion
 
 
-    #region PROPERTIES
-
-    public bool AddedNewPatternFile { get { return this.addedNewPatternFile; } set { } }
-
-    #endregion
-
-
     #region PUBLIC
 
     public CustomPatternAdd(PluginProperties pluginProperties)
@@ -40,7 +33,7 @@
     #endregion
 
 
-    #region EVENTOS
+    #region EVENTS
 
     /// <summary>
     ///
@@ -78,7 +71,7 @@
       catch (Exception ex)
       {
         MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("ManageSessions(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"ManageSessions(): {ex.Message}");
 
         return;
       }

@@ -55,7 +55,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -84,12 +84,12 @@
     {
       try
       {
-        int currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
+        var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
         this.RemoveRecordAt(currentIndex);
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -103,13 +103,13 @@
     {
       try
       {
-        int currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
-        string hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
+        var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
+        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
         Clipboard.SetText(hostName);
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -123,13 +123,13 @@
     {
       try
       {
-        int currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
-        string hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
+        var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
+        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
         Clipboard.SetText(hostName);
       }
       catch (Exception ex)
       {
-        pluginProperties.HostApplication.LogMessage("{0}: {1}", Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -154,7 +154,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
         this.dgv_DnsRequests.ClearSelection();
       }
     }

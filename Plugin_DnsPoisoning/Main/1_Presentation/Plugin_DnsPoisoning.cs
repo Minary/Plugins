@@ -19,9 +19,8 @@
     private readonly string dnsPoisoningConfigFilePath;
 
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<RecordDnsPoison> dnsPoisonRecords;
+    private BindingList<RecordDnsPoison> dnsPoisonRecords = new BindingList<RecordDnsPoison>();
     private DnsPoison.Infrastructure.DnsPoisoning infrastructureLayer;
-    private PluginProperties pluginProperties;
 
     #endregion
 
@@ -70,8 +69,7 @@
       columnType.ReadOnly = true;
       columnType.Width = 130;
       this.dgv_Spoofing.Columns.Add(columnType);
-
-      this.dnsPoisonRecords = new BindingList<RecordDnsPoison>();
+   
       this.dgv_Spoofing.DataSource = this.dnsPoisonRecords;
 
       // Verify passed parameter(s)
@@ -96,15 +94,15 @@
       }
 
       // Plugin configuration
-      this.pluginProperties = pluginProperties;
+      this.Config = pluginProperties;
 
-      this.pluginProperties.PluginName = "DNS Poisoning";
-      this.pluginProperties.PluginType = "Active";
-      this.pluginProperties.PluginDescription = "Poison client system DNS request and servers DNS responses.";
-      this.pluginProperties.Ports = new Dictionary<int, MinaryLib.DataTypes.IpProtocols>();
+      this.Config.PluginName = "DNS Poisoning";
+      this.Config.PluginType = "Active";
+      this.Config.PluginDescription = "Poison client system DNS request and servers DNS responses.";
+      this.Config.Ports = new Dictionary<int, MinaryLib.DataTypes.IpProtocols>();
 
       // Set DNS poisoning config file path
-      this.dnsPoisoningConfigFilePath = Path.Combine(this.pluginProperties.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.dnshosts");
+      this.dnsPoisoningConfigFilePath = Path.Combine(this.Config.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.dnshosts");
 
       // Instantiate infrastructure layer
       this.infrastructureLayer = new DnsPoison.Infrastructure.DnsPoisoning(this);

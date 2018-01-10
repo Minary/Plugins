@@ -64,7 +64,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.OnReset(EXCEPTION) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{ this.plugin.Config.PluginName}.OnReset(EXCEPTION) : {ex.Message}");
       }
     }
 
@@ -74,7 +74,8 @@
     /// </summary>
     public void OnStart(List<RequestRedirectRecord> recordList)
     {
-      if (recordList == null || recordList.Count <= 0)
+      if (recordList == null || 
+          recordList.Count <= 0)
       {
         throw new MinaryWarningException("No request redirection rules defined");
       }
@@ -89,25 +90,25 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(3) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(3) : {ex.Message}");
       }
       
-      string requestRedirectConfigurationFileData = string.Empty;
+      var requestRedirectConfigurationFileData = string.Empty;
       foreach (RequestRedirectRecord tmpRecord in recordList)
       {
-        requestRedirectConfigurationFileData += string.Format("{0}||{1}||{2}||{3}||{4}\r\n", tmpRecord.RedirectType, tmpRecord.RedirectDescription, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource);
+        requestRedirectConfigurationFileData += $"{tmpRecord.RedirectType}||{tmpRecord.RedirectDescription}||{tmpRecord.RequestedHostRegex}||{tmpRecord.RequestedPathRegex}||{tmpRecord.ReplacementResource}\r\n";
       }
 
       requestRedirectConfigurationFileData = requestRedirectConfigurationFileData.Trim();
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.requestRedirectConfig.RequestRedirectConfigFilePath);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): Writing to config file {this.requestRedirectConfig.RequestRedirectConfigFilePath}");
         File.WriteAllText(this.requestRedirectConfig.RequestRedirectConfigFilePath, requestRedirectConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception(string.Format("Errorr occurred while writing Redirect Request configuration data: {0}", ex.Message));
+        throw new Exception($"Errorr occurred while writing Redirect Request configuration data: {ex.Message}");
       }
     }
 
@@ -137,11 +138,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.RequestRedirect.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.RequestRedirect.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -150,7 +151,7 @@
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.RequestRedirect.DataTypes.General.PATTERN_FILE_PATTERN);
 
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -158,7 +159,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0}.CleanUpTemplateDir() : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.CleanUpTemplateDir() : {ex.Message}");
         }
       }
     }
@@ -174,16 +175,27 @@
     /// <returns></returns>
     public TemplatePluginData OnGetTemplateData(BindingList<RequestRedirectRecord> requestRedirectRecords)
     {
-      TemplatePluginData templateData = new TemplatePluginData();
-      List<RequestRedirectRecord> genericObjectList = new List<RequestRedirectRecord>();
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<RequestRedirectRecord>();
+
+      // Create new record list
       foreach (RequestRedirectRecord tmpRecord in requestRedirectRecords)
       {
-        genericObjectList.Add(new RequestRedirectRecord(tmpRecord.RedirectType, tmpRecord.RedirectDescription, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.ReplacementResource));
+        var tmpRecord2 = new RequestRedirectRecord()
+        {
+          RedirectType = tmpRecord.RedirectType,
+          RedirectDescription = tmpRecord.RedirectDescription,
+          RequestedHostRegex = tmpRecord.RequestedHostRegex,
+          RequestedPathRegex = tmpRecord.RequestedPathRegex,
+          ReplacementResource = tmpRecord.ReplacementResource
+        };
+
+        genericObjectList.Add(tmpRecord2);
       }
 
       // Serialize the list
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, genericObjectList);
       stream.Seek(0, SeekOrigin.Begin);
 
@@ -208,11 +220,11 @@
       }
 
       // Deserialize plugin data
-      MemoryStream stream = new MemoryStream();
+      var stream = new MemoryStream();
       stream.Write(templateData.PluginConfigurationItems, 0, templateData.PluginConfigurationItems.Length);
       stream.Seek(0, SeekOrigin.Begin);
 
-      BinaryFormatter formatter = new BinaryFormatter();
+      var formatter = new BinaryFormatter();
       poisoningRecords = (List<RequestRedirectRecord>)formatter.Deserialize(stream);
 
       return poisoningRecords;

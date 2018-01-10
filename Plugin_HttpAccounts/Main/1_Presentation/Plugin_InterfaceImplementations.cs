@@ -5,7 +5,6 @@
   using MinaryLib.DataTypes;
   using System;
   using System.Collections.Generic;
-  using System.Threading;
 
 
   public partial class Plugin_HttpAccounts
@@ -13,7 +12,7 @@
 
     #region IPlugin Member
 
-    public PluginProperties Config { get { return this.pluginProperties; } set { this.pluginProperties = value; } }
+    public PluginProperties Config { get; set; }
 
 
     /// <summary>
@@ -29,8 +28,8 @@
       }
 
       // Plugin initialisation
-      this.pluginProperties.HostApplication.Register(this);
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.Register(this);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
       this.SetGuiActive();
       this.t_GuiUpdate.Start();
@@ -41,7 +40,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -67,11 +66,11 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
 
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       this.SetGuiInactive();
       this.Refresh();
     }
@@ -89,7 +88,7 @@
         return;
       }
 
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.SetGuiActive();
       this.Refresh();
     }
@@ -110,7 +109,8 @@
 
       lock (this)
       {
-        if (this.dataBatch != null && data != null && data.Length > 0)
+        if (this.dataBatch != null && 
+            data?.Length > 0)
         {
           this.dataBatch.Add(data);
           this.Refresh();
@@ -156,7 +156,7 @@
         return;
       }
 
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.ClearRecordList();
       this.SetGuiActive();
       this.Refresh();

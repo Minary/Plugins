@@ -19,24 +19,6 @@
     #endregion
 
 
-    #region PUBLIC
-
-    public HostMappingRecord()
-    {
-      this.requestedHost = string.Empty;
-      this.mappedHost = string.Empty;
-    }
-
-
-    public HostMappingRecord(string requestedHost, string mappedHost)
-    {
-      this.requestedHost = requestedHost;
-      this.mappedHost = mappedHost;
-    }
-
-    #endregion
-
-
     #region PROPERTIES
 
     [Browsable(true)]
@@ -68,7 +50,25 @@
         this.mappedHost = value;
         this.NotifyPropertyChanged("MappedHost");
       }
-    }    
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public HostMappingRecord()
+    {
+      this.requestedHost = string.Empty;
+      this.mappedHost = string.Empty;
+    }
+
+
+    public HostMappingRecord(string requestedHost, string mappedHost)
+    {
+      this.requestedHost = requestedHost;
+      this.mappedHost = mappedHost;
+    }
 
     #endregion
 

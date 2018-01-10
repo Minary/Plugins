@@ -1,11 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.HostMapping;
-  using MinaryLib;
-  using MinaryLib.Exceptions;
   using System;
-  using System.Collections.Generic;
-  using System.Linq;
   using System.Windows.Forms;
 
 
@@ -22,7 +17,7 @@
       }
       catch (Exception ex)
       {
-        string msg = string.Format("An error occurred while adding a new record:\r\n\r\n{0}", ex.Message);
+        var msg = $"An error occurred while adding a new record:\r\n\r\n{ex.Message}";
         this.pluginProperties.HostApplication.LogMessage(msg);
         MessageBox.Show(msg, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
@@ -46,7 +41,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 

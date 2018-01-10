@@ -64,7 +64,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.OnReset(EXCEPTION) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.OnReset(EXCEPTION): {ex.Message}");
       }
     }
 
@@ -89,25 +89,25 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): {ex.Message}");
       }
 
       string sslStripConfigurationFileData = string.Empty;
       foreach (SslStripRecord tmpRecord in recordList)
       {
-        sslStripConfigurationFileData += string.Format("{0}:{1}\r\n", tmpRecord.HostName, tmpRecord.ContentType);
+        sslStripConfigurationFileData += string.Format($"{tmpRecord.HostName}:{tmpRecord.ContentType}\r\n");
       }
 
       sslStripConfigurationFileData = sslStripConfigurationFileData.Trim();
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.sslStripConfig.SslStripConfigFilePath);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): Writing to config file {this.sslStripConfig.SslStripConfigFilePath}");
         File.WriteAllText(this.sslStripConfig.SslStripConfigFilePath, sslStripConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception(string.Format("Errorr occurred while writing SslStrip configuration data: {0}", ex.Message));
+        throw new Exception($"Errorr occurred while writing SslStrip configuration data: {ex.Message}");
       }
     }
  
@@ -129,11 +129,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.SslStrip.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.SslStrip.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -141,8 +141,7 @@
       }
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.SslStrip.DataTypes.General.PATTERN_FILE_PATTERN);
-
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -150,7 +149,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0}.CleanUpTemplateDir() : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.CleanUpTemplateDir(): {ex.Message}");
         }
       }
     }
@@ -179,7 +178,7 @@
     /// </summary>
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
@@ -210,7 +209,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{ this.plugin.Config.PluginName}: {ex.Message}");
         }
       });
 
@@ -220,7 +219,7 @@
       }
       catch (Exception ex)
       {
-          this.plugin.Config.HostApplication.LogMessage("{0} : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{ this.plugin.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -235,8 +234,8 @@
     /// <returns></returns>
     public TemplatePluginData OnGetTemplateData(BindingList<SslStripRecord> sslStripRules)
     {
-      TemplatePluginData templateData = new TemplatePluginData();
-      List<SslStripRecord> genericObjectList = new List<SslStripRecord>();
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<SslStripRecord>();
 
       // Replace current configuration parameter with placeholder values
       foreach (SslStripRecord tmpRecord in sslStripRules)
@@ -245,8 +244,8 @@
       }
 
       // Serialize the list
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, genericObjectList);
       stream.Seek(0, SeekOrigin.Begin);
 
@@ -271,11 +270,11 @@
       }
 
       // Deserialize plugin data
-      MemoryStream stream = new MemoryStream();
+      var stream = new MemoryStream();
       stream.Write(pluginData.PluginConfigurationItems, 0, pluginData.PluginConfigurationItems.Length);
       stream.Seek(0, SeekOrigin.Begin);
 
-      BinaryFormatter formatter = new BinaryFormatter();
+      var formatter = new BinaryFormatter();
       poisoningRecords = (List<SslStripRecord>)formatter.Deserialize(stream);
 
       return poisoningRecords;

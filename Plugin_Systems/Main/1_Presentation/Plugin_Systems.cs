@@ -188,7 +188,7 @@
         return;
       }
 
-      List<SystemRecord> newRecords = new List<SystemRecord>();
+      var newRecords = new List<SystemRecord>();
       List<string> newData;
       Match matchUserAgent;
       DataPacket dataPacket;
@@ -212,7 +212,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
           continue;
         }
 
@@ -420,14 +420,14 @@
       }
       catch (RecordException rex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0} 0: {1}", this.Config.PluginName, rex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {rex.Message}");
       }
       catch (RecordExistsException)
       {
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0} 2: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName} 2: {ex.Message}");
       }
     }
 
@@ -446,7 +446,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       if (dataPacket.EntryType != EntryType.Full && operatingSystem.Length > 0)

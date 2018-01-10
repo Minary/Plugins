@@ -8,11 +8,7 @@
 
     #region PROPERTIES
     
-    public BindingList<Minary.Plugin.Main.HostMapping.DataTypes.HostMappingRecord> HostMappingRecords
-    {
-      get;
-      set;
-    }
+    public BindingList<HostMappingRecord> HostMappingRecords { get; set; }
 
     #endregion
 

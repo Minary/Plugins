@@ -108,12 +108,12 @@
       }
       catch (FileNotFoundException fnfex)
       {
-        pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", fnfex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageSystems(): {fnfex.Message}");
       }
       catch (Exception ex)
       {
         MessageBox.Show(ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageSystems(): {ex.Message}");
       }
 
       // Configure pattern files file System Watcher
@@ -126,7 +126,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("Form_ManageSystems(): {0}", ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"Form_ManageSystems(): {ex.Message}");
       }
     }
 
@@ -224,8 +224,8 @@
       }
       catch (Exception ex)
       {
-        MessageBox.Show(string.Format("Error occurred while deleting pattern file: {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Presentation.ManageSystem(): {0}", ex.Message);
+        MessageBox.Show($"Error occurred while deleting pattern file: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.pluginProperties.HostApplication.LogMessage($"Presentation.ManageSystem(): {ex.Message}");
       }
     }
 
@@ -237,7 +237,7 @@
     /// <param name="e"></param>
     private void DGV_Systems_MouseUp(object sender, MouseEventArgs e)
     {
-      int dgvColumnSource = 3;
+      var dgvColumnSource = 3;
 
       if (e.Button != MouseButtons.Right)
       {
@@ -312,7 +312,7 @@
         catch (Exception ex)
         {
           MessageBox.Show("Error occurred while loading pattern files.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-          this.pluginProperties.HostApplication.LogMessage("Form_ManageAuthentications(): {0}", ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"Form_ManageAuthentications(): {ex.Message}");
         }
       }
     }

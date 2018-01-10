@@ -3,28 +3,19 @@
   using System.Net;
   using System.Net.NetworkInformation;
 
+
   public class TcpRow
   {
 
-    #region MEMBERS
-
-    private IPEndPoint localEndPoint;
-    private IPEndPoint remoteEndPoint;
-    private TcpState state;
-    private int processId;
-
-    #endregion
-
-
     #region PROPERTIES
 
-    public IPEndPoint LocalEndPoint { get { return localEndPoint; } }
+    public IPEndPoint LocalEndPoint { get; private set; }
 
-    public IPEndPoint RemoteEndPoint { get { return remoteEndPoint; } }
+    public IPEndPoint RemoteEndPoint { get; private set; }
 
-    public TcpState State { get { return state; } }
+    public TcpState State { get; private set; }
 
-    public int ProcessId { get { return processId; } }
+    public int ProcessId { get; private set; }
 
     #endregion
 
@@ -33,16 +24,16 @@
 
     public TcpRow(IpHelper.TcpRow tcpRow)
     {
-      state = tcpRow.State;
-      processId = tcpRow.OwningPid;
+      this.State = tcpRow.State;
+      this.ProcessId = tcpRow.OwningPid;
 
       int localPort = (tcpRow.LocalPort1 << 8) + tcpRow.LocalPort2 + (tcpRow.LocalPort3 << 24) + (tcpRow.LocalPort4 << 16);
       long localAddress = tcpRow.LocalAddr;
-      localEndPoint = new IPEndPoint(localAddress, localPort);
+      this.LocalEndPoint = new IPEndPoint(localAddress, localPort);
 
       int remotePort = (tcpRow.RemotePort1 << 8) + tcpRow.RemotePort2 + (tcpRow.RemotePort3 << 24) + (tcpRow.RemotePort4 << 16);
       long remoteAddress = tcpRow.RemoteAddr;
-      remoteEndPoint = new IPEndPoint(remoteAddress, remotePort);
+      this.RemoteEndPoint = new IPEndPoint(remoteAddress, remotePort);
     }
 
     #endregion

@@ -3,7 +3,6 @@
   using System;
   using System.ComponentModel;
 
-
   
 
   public class DnsRequestRecord : INotifyPropertyChanged
@@ -17,32 +16,8 @@
     private string dnsHostname;
     private string packetType;
 
-    [field:NonSerialized]
+    [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
-
-    #endregion
-
-
-    #region PUBLIC
-
-    public DnsRequestRecord()
-    {
-      this.srcMac = string.Empty;
-      this.srcIp = string.Empty;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.dnsHostname = string.Empty;
-      this.packetType = string.Empty;
-    }
-
-
-    public DnsRequestRecord(string srcMac, string srcIp, string dnsHostname, string type)
-    {
-      this.srcMac = srcMac;
-      this.srcIp = srcIp;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.dnsHostname = dnsHostname;
-      this.packetType = type;
-    }
 
     #endregion
 
@@ -125,6 +100,30 @@
         this.packetType = value;
         this.NotifyPropertyChanged("PacketType");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public DnsRequestRecord()
+    {
+      this.srcMac = string.Empty;
+      this.srcIp = string.Empty;
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.dnsHostname = string.Empty;
+      this.packetType = string.Empty;
+    }
+
+
+    public DnsRequestRecord(string srcMac, string srcIp, string dnsHostname, string type)
+    {
+      this.srcMac = srcMac;
+      this.srcIp = srcIp;
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.dnsHostname = dnsHostname;
+      this.packetType = type;
     }
 
     #endregion

@@ -16,9 +16,9 @@
     /// <param name="e"></param>
     private void BT_Add_Click(object sender, EventArgs e)
     {
-      IContentTypeState contentTypeObj = (IContentTypeState)(this.cb_ContentType.SelectedItem as ComboboxItem).Value;
+      var contentTypeObj = (IContentTypeState)(this.cb_ContentType.SelectedItem as ComboboxItem).Value;
       string contentType = contentTypeObj.UsedContentType;
-      SslStripRecord tmpRecord = new SslStripRecord(this.tb_HostName.Text.Trim(), contentType);
+      var tmpRecord = new SslStripRecord(this.tb_HostName.Text.Trim(), contentType);
 
       try
       {
@@ -26,8 +26,8 @@
       }
       catch (Exception ex)
       {
-        string msg = string.Format("Error occurred while adding SslStrip record for host name \"{0}\": {1}", this.tb_HostName.Text, ex.Message);
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        var msg = $"Error occurred while adding SslStrip record for host name \"{this.tb_HostName.Text}\": {ex.Message}";
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         MessageBox.Show(msg, "Can't add SslStrip record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
@@ -53,8 +53,8 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-          MessageBox.Show(string.Format("{0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+          MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
       }
     }
@@ -90,7 +90,7 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
       }
     }
@@ -111,7 +111,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -136,7 +136,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         this.dgv_SslStrippingTargets.ClearSelection();
       }
     }

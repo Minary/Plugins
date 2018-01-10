@@ -17,7 +17,7 @@
     /// <summary>
     ///
     /// </summary>
-    public PluginProperties Config { get { return this.pluginProperties; } set { this.pluginProperties = value; } }
+    public PluginProperties Config { get; set; }
 
     /// <summary>
     ///
@@ -32,8 +32,8 @@
       }
 
       // Plugin initialisation
-      this.pluginProperties.HostApplication.Register(this);
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.Register(this);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.Refresh();
     }
 
@@ -50,7 +50,7 @@
         return;
       }
 
-      this.pluginProperties.HostApplication.LogMessage("FIREWALL PATH:{0}", this.firewallConfigFilePath);
+      this.Config.HostApplication.LogMessage($"FIREWALL PATH:{this.firewallConfigFilePath}");
 
       try
       {
@@ -59,12 +59,12 @@
       }
       catch (MinaryWarningException ex)
       {
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", Config.PluginName, ex.Message);
+        this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+        this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
       }
 
       this.SetGuiInactive();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       this.Refresh();
     }
 
@@ -82,7 +82,7 @@
       }
 
       this.SetGuiActive();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.Refresh();
 
       // Delete firewall rules file
@@ -120,7 +120,7 @@
 
       this.ClearRecordList();
       this.SetGuiActive();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
       this.infrastructureLayer.OnReset();
       this.Refresh();
@@ -148,7 +148,7 @@
     /// <param name="targetList"></param>
     public void SetTargets(List<Tuple<string, string, string>> targetList)
     {
-      if (targetList != null && targetList.Count > 0)
+      if (targetList?.Count > 0)
       {
         foreach (Tuple<string, string, string> tmpTuple in targetList)
         {
@@ -187,7 +187,7 @@
       this.firewallRules.Clear();
 
       List<FirewallRuleRecord> poisoningRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (poisoningRecords != null && poisoningRecords.Count > 0)
+      if (poisoningRecords?.Count > 0)
       {
         poisoningRecords.ToList().ForEach(elem => this.firewallRules.Add(elem));
       }

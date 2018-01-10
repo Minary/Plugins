@@ -7,6 +7,7 @@
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
+
   public partial class CustomPatternAdd : Form
   {
 
@@ -46,20 +47,20 @@
     /// <param name="e"></param>
     private void BT_Add_Click(object sender, EventArgs e)
     {
-      string httpMethod = this.cb_Method.SelectedItem.ToString();
-      string hostPattern = this.tb_HostPattern.Text;
-      string pathPattern = this.tb_PathPattern.Text;
-      string dataPattern = this.tb_DataPattern.Text;
-      string company = this.tb_Company.Text;
-      string webPage = this.tb_WebPage.Text;
-      string patternName = this.tb_PatternName.Text;
-      string patternDescription = this.tb_Description.Text;
-      string repositoryLocalFullpath = Path.Combine(this.pluginProperties.ApplicationBaseDir,
+      var httpMethod = this.cb_Method.SelectedItem.ToString();
+      var hostPattern = this.tb_HostPattern.Text;
+      var pathPattern = this.tb_PathPattern.Text;
+      var dataPattern = this.tb_DataPattern.Text;
+      var company = this.tb_Company.Text;
+      var webPage = this.tb_WebPage.Text;
+      var patternName = this.tb_PatternName.Text;
+      var patternDescription = this.tb_Description.Text;
+      var repositoryLocalFullpath = Path.Combine(this.pluginProperties.ApplicationBaseDir,
                                                     this.pluginProperties.PluginBaseDir,
                                                     this.pluginProperties.PatternSubDir,
                                                     Plugin.Main.HttpAccounts.DataTypes.General.PATTERN_DIR_LOCAL);
-      string fileName = Regex.Replace(company, @"[^\d\w\-]", "_", RegexOptions.IgnoreCase);
-      string patternFileFullPath = Path.Combine(repositoryLocalFullpath, fileName + HttpAccounts.DataTypes.General.PATTERN_FILE_EXTENSION);
+      var fileName = Regex.Replace(company, @"[^\d\w\-]", "_", RegexOptions.IgnoreCase);
+      var patternFileFullPath = Path.Combine(repositoryLocalFullpath, fileName + HttpAccounts.DataTypes.General.PATTERN_FILE_EXTENSION);
 
       try
       {
@@ -74,11 +75,10 @@
       }
       catch (Exception ex)
       {
-        MessageBox.Show(string.Format("Error occurred while adding new account pattern.\r\nMessage: {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        this.pluginProperties.HostApplication.LogMessage("Error occurred while adding new account pattern : {0}", ex.Message);
+        MessageBox.Show($"Error occurred while adding new account pattern.\r\nMessage: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        this.pluginProperties.HostApplication.LogMessage("Error occurred while adding new account pattern : {ex.Message}");
       }
     }
-
 
 
     /// <summary>
@@ -94,7 +94,9 @@
         return true;
       }
       else
+      {
         return base.ProcessDialogKey(keyData);
+      }
     }
 
 
@@ -111,5 +113,4 @@
     #endregion
 
   }
-
 }

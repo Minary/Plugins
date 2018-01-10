@@ -3,54 +3,23 @@
   using System;
   using System.ComponentModel;
 
-  public class HTTPRequests : INotifyPropertyChanged
+
+  public class HttpRequests : INotifyPropertyChanged
   {
 
     #region MEMBERS
 
-    private string srcMac;
-    private string srcIp;
-    private string timestamp;
-    private string requestMethod;
-    private string remoteHost;
-    private string remoteFile;
-    private string url;
-    private string sessionCookies;
-    private string request;
+    private string srcMac = string.Empty;
+    private string srcIp = string.Empty;
+    private string timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+    private string requestMethod = string.Empty;
+    private string remoteHost = string.Empty;
+    private string remoteFile = string.Empty;
+    private string url = string.Empty;
+    private string sessionCookies = string.Empty;
+    private string request = string.Empty;
 
     public event PropertyChangedEventHandler PropertyChanged;
-
-    #endregion
-
-
-    #region PUBLIC
-
-    public HTTPRequests()
-    {
-      this.srcMac = string.Empty;
-      this.srcIp = string.Empty;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.requestMethod = string.Empty;
-      this.remoteHost = string.Empty;
-      this.remoteFile = string.Empty;
-      this.url = string.Empty;
-      this.sessionCookies = string.Empty;
-      this.request = string.Empty;
-    }
-
-
-    public HTTPRequests(string srcMac, string srcIp, string requestMethod, string remoteHost, string remoteFile, string cookies, string request)
-    {
-      this.srcMac = srcMac;
-      this.srcIp = srcIp;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.requestMethod = requestMethod;
-      this.remoteHost = remoteHost;
-      this.remoteFile = remoteFile;
-      this.url = string.Format("{0}{1}", this.remoteHost, this.remoteFile);
-      this.sessionCookies = cookies;
-      this.request = request;
-    }
 
     #endregion
 
@@ -129,7 +98,6 @@
     }
 
 
-
     [Browsable(true)]
     public string URL
     {
@@ -163,6 +131,29 @@
         this.request = value;
         this.NotifyPropertyChanged("Request");
       }
+    }
+
+    #endregion
+
+
+    #region PUBLIC
+
+    public HttpRequests()
+    {
+    }
+
+
+    public HttpRequests(string srcMac, string srcIp, string requestMethod, string remoteHost, string remoteFile, string cookies, string request)
+    {
+      this.srcMac = srcMac;
+      this.srcIp = srcIp;
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.requestMethod = requestMethod;
+      this.remoteHost = remoteHost;
+      this.remoteFile = remoteFile;
+      this.url = $"{this.remoteHost}{this.remoteFile}";
+      this.sessionCookies = cookies;
+      this.request = request;
     }
 
     #endregion

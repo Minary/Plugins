@@ -161,11 +161,8 @@
       this.hardwareVendor = hardwareVendor;
       this.lastSeen = !string.IsNullOrEmpty(lastSeen) ? lastSeen : DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
       this.id = srcMacAddress;
-////      id = string.Format("{0}{1}{2}", srcMac, srcMac, pUserAgentstring);
-////      id = string.Format("{0}{1}{2}", srcMac, srcIp, pUserAgentstring);
-
       this.srcMacAddress = Regex.Replace(this.srcMacAddress, @"-", ":");
-      this.id = string.Format("{0}{1}", this.srcMacAddress.ToLower(), this.srcIpAddress);
+      this.id = $"{this.srcMacAddress.ToLower()}{this.srcIpAddress}";
     }
 
     #endregion

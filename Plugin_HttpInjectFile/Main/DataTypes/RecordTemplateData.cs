@@ -8,11 +8,7 @@
 
     #region PROPERTIES
 
-    public BindingList<Minary.Plugin.Main.InjectFile.DataTypes.InjectFileRecord> InjectFileRecords
-    {
-      get;
-      set;
-    }
+    public BindingList<InjectFileRecord> InjectFileRecords { get; set; }
 
     #endregion
 

@@ -41,10 +41,11 @@
     /// <param name="e"></param>
     private void DGV_Patterns_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
     {
-      string firewallRuleId = string.Empty;
+      var firewallRuleId = string.Empty;
       FirewallRuleRecord firewallRule = null;
 
-      if (e.RowIndex >= 0 && this.dgv_FWRules.SelectedRows.Count > 0)
+      if (e.RowIndex >= 0 && 
+          this.dgv_FWRules.SelectedRows.Count > 0)
       {
         try
         {
@@ -53,12 +54,12 @@
         }
         catch (Exception ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("{0}: {1}", Config.PluginName, ex.Message);
-          MessageBox.Show(string.Format("Error occurred : {0}", ex.Message), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
+          MessageBox.Show($"Error occurred : {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
           return;
         }
 
-        MessageBox.Show(string.Format("FW rule ID : {0}", firewallRuleId));
+        MessageBox.Show($"FW rule ID : {firewallRuleId}");
       }
     }
 
@@ -121,17 +122,18 @@
 
     #endregion
 
+
     #region PRIVATE
 
     private void AddRecord()
     {
-      string protocol = this.cb_Protocol.Text;
-      string srcIp = this.cb_SrcIP.Text;
-      string dstIp = this.cb_DstIP.Text;
-      string srcPortLowerStr = this.tb_SrcPortLower.Text;
-      string srcPortUpperStr = this.tb_SrcPortUpper.Text;
-      string dstPortLowerStr = this.tb_DstPortLower.Text;
-      string dstPortUpperStr = this.tb_DstPortUpper.Text;
+      var protocol = this.cb_Protocol.Text;
+      var srcIp = this.cb_SrcIP.Text;
+      var dstIp = this.cb_DstIP.Text;
+      var srcPortLowerStr = this.tb_SrcPortLower.Text;
+      var srcPortUpperStr = this.tb_SrcPortUpper.Text;
+      var dstPortLowerStr = this.tb_DstPortLower.Text;
+      var dstPortUpperStr = this.tb_DstPortUpper.Text;
 
       try
       {
@@ -139,8 +141,8 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
-        MessageBox.Show(string.Format(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning));
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
 

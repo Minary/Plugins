@@ -16,19 +16,19 @@
 
     #region PROPERTIES
 
-    public ContextType UsedContextType { get { return ContextType.HTML; } }
-    public string UsedContentType { get { return MimeType; } }
+    public ContextType UsedContextType { get; private set; } = ContextType.HTML;
+    public string UsedContentType { get; private set; } = MimeType;
 
     #endregion
 
 
-    #region PUBLIC METHODS
+  #region PUBLIC METHODS
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="StateHtml"/> class.
-    ///
-    /// </summary>
-    public StateHtml(BindingList<ComboboxItem> comboBoxContentTypeList, BindingList<ComboboxItem> comboBoxDataList)
+  /// <summary>
+  /// Initializes a new instance of the <see cref="StateHtml"/> class.
+  ///
+  /// </summary>
+  public StateHtml(BindingList<ComboboxItem> comboBoxContentTypeList, BindingList<ComboboxItem> comboBoxDataList)
     {
       this.htmlTagListData = new BindingList<ComboboxItem>();
       this.htmlTagListData.Add(new ComboboxItem("Anchor", "a"));

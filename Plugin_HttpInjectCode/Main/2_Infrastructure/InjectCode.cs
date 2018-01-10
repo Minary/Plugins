@@ -64,7 +64,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.OnReset(EXCEPTION) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.OnReset(EXCEPTION) : {ex.Message}");
       }
     }
 
@@ -75,7 +75,8 @@
     /// <param name="recordList"></param>
     public void OnStart(List<InjectCodeRecord> recordList)
     {
-      if (recordList == null || recordList.Count <= 0)
+      if (recordList == null || 
+          recordList.Count <= 0)
       {
         throw new MinaryWarningException("No file injection rules defined");
       }
@@ -90,29 +91,29 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0) : {1}", this.plugin.Config.PluginName, ex.Message);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0) : {ex.Message}");
       }
 
-      string injectCodeConfigurationFileData = string.Empty;
+      var injectCodeConfigurationFileData = string.Empty;
       foreach (InjectCodeRecord tmpRecord in recordList)
       {
-        string requestedHost = tmpRecord.RequestedHostRegex;
-        string requestedPath = tmpRecord.RequestedPathRegex;
-        string replacementResource = tmpRecord.InjectionCodeFile;
+        var requestedHost = tmpRecord.RequestedHostRegex;
+        var requestedPath = tmpRecord.RequestedPathRegex;
+        var replacementResource = tmpRecord.InjectionCodeFile;
 
-        injectCodeConfigurationFileData += string.Format("{0}||{1}||{2}||{3}||{4}\r\n", tmpRecord.Tag, tmpRecord.Position, tmpRecord.InjectionCodeFile, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex);
+        injectCodeConfigurationFileData += $"{tmpRecord.Tag}||{tmpRecord.Position}||{tmpRecord.InjectionCodeFile}||{tmpRecord.RequestedHostRegex}||{tmpRecord.RequestedPathRegex}\r\n";
       }
 
       injectCodeConfigurationFileData = injectCodeConfigurationFileData.Trim();
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage("{0}.Infrastructure.OnStart(0): Writing to config file {1}", this.plugin.Config.PluginName, this.injectCodeConfig.InjectCodeConfigFilePath);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): Writing to config file {this.injectCodeConfig.InjectCodeConfigFilePath}");
         File.WriteAllText(this.injectCodeConfig.InjectCodeConfigFilePath, injectCodeConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception(string.Format("Errorr occurred while writing Inject File configuration data: {0}", ex.Message));
+        throw new Exception($"Errorr occurred while writing Inject File configuration data: {ex.Message}");
       }
     }
  
@@ -142,11 +143,11 @@
     /// </summary>
     private void CleanUpTemplateDir()
     {
-      string templateDir = Path.Combine(
-                                        this.plugin.Config.ApplicationBaseDir,
-                                        this.plugin.Config.PluginBaseDir,
-                                        this.plugin.Config.PatternSubDir,
-                                        Plugin.Main.InjectCode.DataTypes.General.PATTERN_DIR_TEMPLATE);
+      var templateDir = Path.Combine(
+                                     this.plugin.Config.ApplicationBaseDir,
+                                     this.plugin.Config.PluginBaseDir,
+                                     this.plugin.Config.PatternSubDir,
+                                     Plugin.Main.InjectCode.DataTypes.General.PATTERN_DIR_TEMPLATE);
 
       if (!Directory.Exists(templateDir))
       {
@@ -155,7 +156,7 @@
 
       string[] patternFiles = Directory.GetFiles(templateDir, Plugin.Main.InjectCode.DataTypes.General.PATTERN_FILE_PATTERN);
 
-      foreach (string tmpFile in patternFiles)
+      foreach (var tmpFile in patternFiles)
       {
         try
         {
@@ -163,7 +164,7 @@
         }
         catch (Exception ex)
         {
-          this.plugin.Config.HostApplication.LogMessage("{0}.CleanUpTemplateDir() : {1}", this.plugin.Config.PluginName, ex.Message);
+          this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.CleanUpTemplateDir() : {ex.Message}");
         }
       }
     }
@@ -180,16 +181,16 @@
     /// <returns></returns>
     public TemplatePluginData OnGetTemplateData(BindingList<InjectCodeRecord> InjectCodeRecords)
     {
-      TemplatePluginData templateData = new TemplatePluginData();
-      List<InjectCodeRecord> genericObjectList = new List<InjectCodeRecord>();
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<InjectCodeRecord>();
       foreach (InjectCodeRecord tmpRecord in InjectCodeRecords)
       {
         genericObjectList.Add(new InjectCodeRecord(tmpRecord.RequestedScheme, tmpRecord.RequestedHostRegex, tmpRecord.RequestedPathRegex, tmpRecord.InjectionCodeFile, tmpRecord.Tag, tmpRecord.Position));
       }
 
       // Serialize the list
-      MemoryStream stream = new MemoryStream();
-      BinaryFormatter formatter = new BinaryFormatter();
+      var stream = new MemoryStream();
+      var formatter = new BinaryFormatter();
       formatter.Serialize(stream, genericObjectList);
       stream.Seek(0, SeekOrigin.Begin);
 
@@ -215,7 +216,7 @@
       }
 
       // Deserialize plugin data
-      MemoryStream stream = new MemoryStream();
+      var stream = new MemoryStream();
       stream.Write(templateData.PluginConfigurationItems, 0, templateData.PluginConfigurationItems.Length);
       stream.Seek(0, SeekOrigin.Begin);
 

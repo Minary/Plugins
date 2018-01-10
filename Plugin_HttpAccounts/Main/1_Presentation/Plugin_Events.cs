@@ -31,7 +31,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -65,12 +65,12 @@
     {
       try
       {
-        int currentIndex = this.dgv_Accounts.CurrentCell.RowIndex;
+        var currentIndex = this.dgv_Accounts.CurrentCell.RowIndex;
         RemoveRecordAt(currentIndex);
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 

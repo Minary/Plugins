@@ -24,7 +24,7 @@
     private const int MaxTableRows = 128;
     private string iconsDir = @"\Icons";
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<TheSessionRecord> sessionRecords;
+    private BindingList<TheSessionRecord> sessionRecords = new BindingList<Session.DataTypes.TheSessionRecord>();
     private List<MngSessionsConfig.SessionPattern> sessionPatterns = new List<MngSessionsConfig.SessionPattern>();
     private List<string> dataBatch;
     private Session.Infrastructure.Session infrastructureLayer;
@@ -115,8 +115,7 @@
       columnGroup.Visible = false;
       columnGroup.Width = 0;
       this.dgv_Sessions.Columns.Add(columnGroup);
-
-      this.sessionRecords = new BindingList<Session.DataTypes.TheSessionRecord>();
+      
       this.dgv_Sessions.DataSource = this.sessionRecords;
 
       // Verify passed parameter(s)
@@ -166,7 +165,7 @@
     /// </summary>
     public void ProcessEntries()
     {
-      if (this.dataBatch != null && this.dataBatch.Count > 0)
+      if (this.dataBatch?.Count > 0)
       {
         List<string> newData;
         string[] splitter;
@@ -208,7 +207,7 @@
 
             foreach (MngSessionsConfig.SessionPattern tmpSessionPattern in this.sessionPatterns)
             {
-              string host = string.Format(@"\.\.Host\s*:\s*{0}\.\.", tmpSessionPattern.HTTPHostRegex);
+              var host = $@"\.\.Host\s*:\s*{tmpSessionPattern.HTTPHostRegex}\.\.";
               if (Regex.Match(data, host, RegexOptions.IgnoreCase).Success &&
                   Regex.Match(data, tmpSessionPattern.SessionRegex, RegexOptions.IgnoreCase).Success)
               {
@@ -219,7 +218,7 @@
           }
           catch (Exception ex)
           {
-            MessageBox.Show(string.Format("{0} : {1}", this.Config.PluginName, ex.Message));
+            MessageBox.Show($"{this.Config.PluginName} : {ex.Message}");
           }
         }
       }
@@ -237,14 +236,14 @@
     {
       // Clear and repopulate ImageList
       this.il_Sessions.Images.Clear();
-      string imgDir = string.Format("{0}{1}", this.Config.PluginBaseDir, this.iconsDir);
+      var imgDir = $"{this.Config.PluginBaseDir}{this.iconsDir}";
       string[] fileEntries = Directory.GetFiles(imgDir);
 
       foreach (string tmpFileName in fileEntries)
       {
         Image icon = Image.FromFile(tmpFileName);
-        FileInfo fileInfo = new FileInfo(tmpFileName);
-        string iconKey = Path.GetFileNameWithoutExtension(fileInfo.Name).ToLower();
+        var fileInfo = new FileInfo(tmpFileName);
+        var iconKey = Path.GetFileNameWithoutExtension(fileInfo.Name).ToLower();
 
         this.il_Sessions.Images.Add(iconKey, icon);
       }
@@ -267,8 +266,8 @@
       this.filterNode = this.tv_Sessions.Nodes[0];
       foreach (MngSessionsConfig.SessionPattern tmpSessionPatterns in this.sessionPatterns)
       {
-        TreeNode childNode = new TreeNode(tmpSessionPatterns.CompanyName);
-        string sessionName = tmpSessionPatterns.CompanyName.ToLower();
+        var childNode = new TreeNode(tmpSessionPatterns.CompanyName);
+        var sessionName = tmpSessionPatterns.CompanyName.ToLower();
 
         childNode.ImageIndex = this.il_Sessions.Images.IndexOfKey(sessionName);
         childNode.SelectedImageIndex = this.il_Sessions.Images.IndexOfKey(sessionName);
@@ -291,29 +290,26 @@
     /// <returns></returns>
     private bool EvaluateSession(string data, string srcMacAddress, string srcIp, string url, string sessionName)
     {
-      bool retVal = false;
-      string cookies = string.Empty;
-      string browser = string.Empty;
-      string host = string.Empty;
-      string uri = string.Empty;
-      Match matchCookies;
-      Match matchBrowser;
-      Match matchUri;
-      Match matchHost;
-      Match matchReferer;
+      var retVal = false;
+      var cookies = string.Empty;
+      var browser = string.Empty;
+      var host = string.Empty;
+      var uri = string.Empty;
+      var matchCookies = Regex.Match(data, @"\.\.Cookie\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
+      var matchBrowser = Regex.Match(data, @"\.\.User-Agent\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
+      var matchUri = Regex.Match(data, @"GET|POST\s+([^\s]+)\s+", RegexOptions.IgnoreCase);
+      var matchHost = Regex.Match(data, @"\.\.Host\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
+      var matchReferer = Regex.Match(data, @"\.\.Referer\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
 
-      matchBrowser = Regex.Match(data, @"\.\.User-Agent\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
-      matchCookies = Regex.Match(data, @"\.\.Cookie\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
-      matchHost = Regex.Match(data, @"\.\.Host\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
-      matchReferer = Regex.Match(data, @"\.\.Referer\s*:\s*(.*?)(\.\.|$)", RegexOptions.IgnoreCase);
-      matchUri = Regex.Match(data, @"GET|POST\s+([^\s]+)\s+", RegexOptions.IgnoreCase);
-
-      if (!matchHost.Success && matchReferer.Success)
+      if (matchHost.Success == false && 
+          matchReferer.Success == true)
       {
         matchHost = matchReferer;
       }
 
-      if (!matchCookies.Success || !matchUri.Success || !matchHost.Success)
+      if (matchCookies.Success == false || 
+          matchUri.Success == false || 
+          matchHost.Success == false)
       {
         return false;
       }
@@ -343,7 +339,7 @@
           }
           catch (Exception ex)
           {
-            this.pluginProperties.HostApplication.LogMessage("{0} : {1}", this.Config.PluginName, ex.Message);
+            this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName} : {ex.Message}");
           }
         }
       }
@@ -383,13 +379,15 @@
     /// <returns></returns>
     private bool AddNode(string parentName, string srcIp, int imgIndex)
     {
-      bool retVal = false;
+      var retVal = false;
       TreeNode parentNode;
       TreeNode tempNode;
 
       try
       {
-        if (this.tv_Sessions.Nodes.Count > 0 && this.tv_Sessions.Nodes[0].Nodes.Count > 0 && (parentNode = this.GetNodeByName(parentName)) != null)
+        if (this.tv_Sessions.Nodes.Count > 0 && 
+            this.tv_Sessions.Nodes[0].Nodes.Count > 0 && 
+            (parentNode = this.GetNodeByName(parentName)) != null)
         {
           if (this.NodeExists(parentNode, srcIp) == false)
           {
@@ -403,7 +401,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0}: {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
       return retVal;
@@ -419,7 +417,7 @@
     {
       TreeNode retVal = null;
 
-      if (!string.IsNullOrEmpty(nodeName))
+      if (string.IsNullOrEmpty(nodeName) == false)
       {
         foreach (TreeNode tmpNode in this.tv_Sessions.Nodes[0].Nodes)
         {
@@ -444,22 +442,19 @@
     /// <returns></returns>
     private bool IsInDGV(string ipAddress, string browser, string cookie)
     {
-      bool retVal = false;
+      var retVal = false;
       Session.DataTypes.TheSessionRecord session;
       IEnumerator sessionEnum = this.sessionRecords.GetEnumerator();
 
       sessionEnum.Reset();
       while (sessionEnum.MoveNext())
       {
-        if ((session = (Session.DataTypes.TheSessionRecord)sessionEnum.Current) != null)
+        if ((session = (Session.DataTypes.TheSessionRecord)sessionEnum.Current) != null &&
+            session.SrcIP == ipAddress &&
+            session.SessionCookies == cookie)
         {
-          if (session.SrcIP == ipAddress &&
-////            session.Browser == browser &&
-              session.SessionCookies == cookie)
-          {
-            retVal = true;
-            break;
-          }
+          retVal = true;
+          break;
         }
       }
 
@@ -535,7 +530,7 @@
     /// <param name="group"></param>
     private void FilterByGroup(string group)
     {
-      CurrencyManager cm = (CurrencyManager)this.BindingContext[this.dgv_Sessions.DataSource];
+      var cm = (CurrencyManager)this.BindingContext[this.dgv_Sessions.DataSource];
       cm.SuspendBinding();
 
       foreach (DataGridViewRow tmpRow in this.dgv_Sessions.Rows)
@@ -559,7 +554,7 @@
     /// </summary>
     private void DisableFilter()
     {
-      CurrencyManager cm = (CurrencyManager)this.BindingContext[this.dgv_Sessions.DataSource];
+      var cm = (CurrencyManager)this.BindingContext[this.dgv_Sessions.DataSource];
       cm.SuspendBinding();
 
       foreach (DataGridViewRow tmpRow in this.dgv_Sessions.Rows)

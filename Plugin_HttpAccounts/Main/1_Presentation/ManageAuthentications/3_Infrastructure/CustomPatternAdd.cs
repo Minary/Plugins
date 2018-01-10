@@ -35,7 +35,7 @@
     public void SaveNewAccountPatternRecord(HttpAccountPattern newRecord)
     {
       FileStream fileStream = null;
-      BinaryFormatter formatter = new BinaryFormatter();
+      var formatter = new BinaryFormatter();
 
       try
       {
@@ -44,7 +44,7 @@
       }
       catch (Exception ex)
       {
-        Console.WriteLine("SaveNewAccountPatternRecord(ex): {0}", ex.Message);
+        Console.WriteLine($"SaveNewAccountPatternRecord(ex): {ex.Message}");
       }
       finally
       {

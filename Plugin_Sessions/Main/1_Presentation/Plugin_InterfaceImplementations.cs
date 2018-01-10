@@ -46,7 +46,7 @@
       }
       catch (Exception ex)
       {
-        this.pluginProperties.HostApplication.LogMessage("{0} : Error ocurred while initialising pattern file : {1}", this.Config.PluginName, ex.Message);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName} : Error ocurred while initialising pattern file: {ex.Message}");
       }
 
       this.Refresh();

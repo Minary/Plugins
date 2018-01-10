@@ -9,8 +9,7 @@
   {
 
     #region MEMBERS
-
-    private const string MimeType = "application/javascript";
+    
     private readonly BindingList<ComboboxItem> javaScriptTagList;
 
     #endregion
@@ -18,8 +17,8 @@
 
     #region PROPERTIES
 
-    public ContextType UsedContextType { get { return ContextType.JavaScript; } }
-    public string UsedContentType { get { return MimeType; } }
+    public ContextType UsedContextType { get; private set; } = ContextType.JavaScript;
+    public string UsedContentType { get; private set; } = "application/javascript";
 
     #endregion
 

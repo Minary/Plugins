@@ -62,11 +62,11 @@
         }
         catch (RecordExistsException ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("Plugin_System.OnStartAttack(RecordExistsException): {0}/{1} - {2}\r\n{3}", tmpSystem.Item1, tmpSystem.Item2, ex.Message, ex.StackTrace);
+          this.pluginProperties.HostApplication.LogMessage($"Plugin_System.OnStartAttack(RecordExistsException): {tmpSystem.Item1}/{tmpSystem.Item2} - {ex.Message}\r\n{ex.StackTrace}");
         }
         catch (RecordException ex)
         {
-          this.pluginProperties.HostApplication.LogMessage("Plugin_System.OnStartAttack(RecordException): {0}\r\n{1}", ex.Message, ex.StackTrace);
+          this.pluginProperties.HostApplication.LogMessage($"Plugin_System.OnStartAttack(RecordException): {ex.Message}\r\n{ex.StackTrace}");
         }
       }
 

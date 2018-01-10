@@ -10,10 +10,10 @@
 
     #region MEMBERS
 
-    private string hostName;
-    private string ipAddress;
+    private string hostName = string.Empty;
+    private string ipAddress = string.Empty;
     private DnsResponseType responseType;
-    private string cname;
+    private string cname = string.Empty;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -93,8 +93,6 @@
 
     public RecordDnsPoison()
     {
-      this.hostName = string.Empty;
-      this.ipAddress = string.Empty;
     }
 
 

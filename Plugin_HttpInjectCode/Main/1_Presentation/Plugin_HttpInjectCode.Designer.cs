@@ -31,6 +31,7 @@
     {
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_InjectionTriggerURLs = new System.Windows.Forms.DataGridView();
       this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
       this.bt_AddRecord = new System.Windows.Forms.Button();
@@ -64,13 +65,22 @@
       this.dgv_InjectionTriggerURLs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_InjectionTriggerURLs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       this.dgv_InjectionTriggerURLs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgv_InjectionTriggerURLs.DefaultCellStyle = dataGridViewCellStyle1;
+      this.dgv_InjectionTriggerURLs.EnableHeadersVisualStyles = false;
       this.dgv_InjectionTriggerURLs.Location = new System.Drawing.Point(26, 68);
       this.dgv_InjectionTriggerURLs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_InjectionTriggerURLs.MultiSelect = false;
       this.dgv_InjectionTriggerURLs.Name = "dgv_InjectionTriggerURLs";
       this.dgv_InjectionTriggerURLs.RowHeadersVisible = false;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_InjectionTriggerURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_InjectionTriggerURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(1400, 482);

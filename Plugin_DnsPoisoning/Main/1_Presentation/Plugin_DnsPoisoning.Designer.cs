@@ -144,6 +144,7 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Spoofing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_Spoofing.EnableHeadersVisualStyles = false;
       this.dgv_Spoofing.Location = new System.Drawing.Point(26, 69);
       this.dgv_Spoofing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Spoofing.MultiSelect = false;

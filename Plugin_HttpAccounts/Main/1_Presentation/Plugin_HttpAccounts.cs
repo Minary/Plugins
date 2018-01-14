@@ -8,8 +8,6 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
-  using System.Configuration;
-  using System.IO;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
   using MngAuthentications = Minary.Plugin.Main.HttpAccounts.ManageAuthentications;
@@ -88,7 +86,7 @@
       columnDestPort.Name = "DstPort";
       columnDestPort.HeaderText = "Service";
       columnDestPort.ReadOnly = true;
-      columnDestPort.Width = 60;
+      columnDestPort.Width = 100;
       this.dgv_Accounts.Columns.Add(columnDestPort);
 
       DataGridViewTextBoxColumn columnUser = new DataGridViewTextBoxColumn();

@@ -53,7 +53,7 @@
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
       columnSrcIp.ReadOnly = true;
-      columnSrcIp.Width = 120;
+      columnSrcIp.Width = 150;
       this.dgv_HttpRequests.Columns.Add(columnSrcIp);
 
       DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
@@ -71,7 +71,7 @@
       columnRequestMethod.HeaderText = "Method";
       columnRequestMethod.ReadOnly = true;
       columnRequestMethod.Visible = true;
-      columnRequestMethod.Width = 80;
+      columnRequestMethod.Width = 100;
       this.dgv_HttpRequests.Columns.Add(columnRequestMethod);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
@@ -79,13 +79,13 @@
       columnRemHost.Name = "RemoteHost";
       columnRemHost.HeaderText = "Server";
       columnRemHost.ReadOnly = true;
-      columnRemHost.Width = 150;
+      columnRemHost.Width = 250;
       this.dgv_HttpRequests.Columns.Add(columnRemHost);
 
       DataGridViewTextBoxColumn columnRemFileName = new DataGridViewTextBoxColumn();
-      columnRemFileName.DataPropertyName = "RemoteFile";
-      columnRemFileName.Name = "RemoteFile";
-      columnRemFileName.HeaderText = "File name";
+      columnRemFileName.DataPropertyName = "Path";
+      columnRemFileName.Name = "Path";
+      columnRemFileName.HeaderText = "Path";
       columnRemFileName.ReadOnly = true;
       columnRemFileName.Width = 216;
       columnRemFileName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

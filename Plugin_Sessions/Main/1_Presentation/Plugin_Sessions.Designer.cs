@@ -58,7 +58,7 @@
       this.dgv_Sessions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_Sessions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -66,6 +66,7 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Sessions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Sessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_Sessions.EnableHeadersVisualStyles = false;
       this.dgv_Sessions.Location = new System.Drawing.Point(290, 29);
       this.dgv_Sessions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Sessions.MultiSelect = false;

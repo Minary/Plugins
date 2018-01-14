@@ -31,6 +31,7 @@
     {
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_MappedHost = new System.Windows.Forms.TextBox();
       this.l_MappedHost = new System.Windows.Forms.Label();
       this.dgv_HostMapping = new System.Windows.Forms.DataGridView();
@@ -77,14 +78,23 @@
       this.dgv_HostMapping.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HostMapping.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HostMapping.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HostMapping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HostMapping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_HostMapping.EnableHeadersVisualStyles = false;
       this.dgv_HostMapping.Location = new System.Drawing.Point(26, 68);
       this.dgv_HostMapping.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_HostMapping.MultiSelect = false;
       this.dgv_HostMapping.Name = "dgv_HostMapping";
       this.dgv_HostMapping.RowHeadersVisible = false;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_HostMapping.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HostMapping.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_HostMapping.Size = new System.Drawing.Size(1400, 482);

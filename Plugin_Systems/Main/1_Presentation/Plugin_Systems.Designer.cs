@@ -80,7 +80,7 @@ namespace Minary.Plugin.Main
       this.dgv_Systems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_Systems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -88,6 +88,7 @@ namespace Minary.Plugin.Main
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Systems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Systems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_Systems.EnableHeadersVisualStyles = false;
       this.dgv_Systems.Location = new System.Drawing.Point(26, 29);
       this.dgv_Systems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Systems.MultiSelect = false;

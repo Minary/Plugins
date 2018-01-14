@@ -14,7 +14,7 @@
     private string timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
     private string requestMethod = string.Empty;
     private string remoteHost = string.Empty;
-    private string remoteFile = string.Empty;
+    private string path = string.Empty;
     private string url = string.Empty;
     private string sessionCookies = string.Empty;
     private string request = string.Empty;
@@ -87,13 +87,13 @@
 
 
     [Browsable(true)]
-    public string RemoteFile
+    public string Path
     {
-      get { return this.remoteFile; }
+      get { return this.path; }
       set
       {
-        this.remoteFile = value;
-        this.NotifyPropertyChanged("RemoteFile");
+        this.path = value;
+        this.NotifyPropertyChanged("Path");
       }
     }
 
@@ -150,8 +150,8 @@
       this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
       this.requestMethod = requestMethod;
       this.remoteHost = remoteHost;
-      this.remoteFile = remoteFile;
-      this.url = $"{this.remoteHost}{this.remoteFile}";
+      this.path = remoteFile;
+      this.url = $"{this.remoteHost}{this.path}";
       this.sessionCookies = cookies;
       this.request = request;
     }

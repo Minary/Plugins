@@ -58,7 +58,7 @@
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
       columnSrcIp.ReadOnly = true;
-      columnSrcIp.Width = 120;
+      columnSrcIp.Width = 150;
       this.dgv_DnsRequests.Columns.Add(columnSrcIp);
       
       DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();

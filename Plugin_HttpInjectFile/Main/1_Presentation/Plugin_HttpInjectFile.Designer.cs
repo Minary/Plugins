@@ -88,7 +88,7 @@
       // tb_RequestedURLRegex
       // 
       this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(302, 25);
+      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(293, 25);
       this.tb_RequestedURLRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
       this.tb_RequestedURLRegex.Size = new System.Drawing.Size(386, 26);
@@ -97,7 +97,7 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(1287, 22);
+      this.bt_AddRecord.Location = new System.Drawing.Point(1244, 19);
       this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(34, 32);
@@ -121,7 +121,7 @@
       // tb_ReplacementResource
       // 
       this.tb_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_ReplacementResource.Location = new System.Drawing.Point(834, 22);
+      this.tb_ReplacementResource.Location = new System.Drawing.Point(799, 22);
       this.tb_ReplacementResource.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_ReplacementResource.Name = "tb_ReplacementResource";
       this.tb_ReplacementResource.Size = new System.Drawing.Size(346, 26);
@@ -132,7 +132,7 @@
       // 
       this.l_ReplacementResource.AutoSize = true;
       this.l_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ReplacementResource.Location = new System.Drawing.Point(740, 28);
+      this.l_ReplacementResource.Location = new System.Drawing.Point(715, 28);
       this.l_ReplacementResource.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_ReplacementResource.Name = "l_ReplacementResource";
       this.l_ReplacementResource.Size = new System.Drawing.Size(87, 20);
@@ -145,7 +145,7 @@
       // 
       // bt_AddFile
       // 
-      this.bt_AddFile.Location = new System.Drawing.Point(1198, 22);
+      this.bt_AddFile.Location = new System.Drawing.Point(1163, 19);
       this.bt_AddFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_AddFile.Name = "bt_AddFile";
       this.bt_AddFile.Size = new System.Drawing.Size(34, 32);
@@ -181,7 +181,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(236, 31);
+      this.l_Scheme.Location = new System.Drawing.Point(227, 31);
       this.l_Scheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(73, 20);

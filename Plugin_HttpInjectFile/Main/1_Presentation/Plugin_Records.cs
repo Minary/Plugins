@@ -199,7 +199,7 @@
     }
 
 
-    public bool IsRegexPatternValid(string pattern)
+    private bool IsRegexPatternValid(string pattern)
     {
       var isValid = false;
 

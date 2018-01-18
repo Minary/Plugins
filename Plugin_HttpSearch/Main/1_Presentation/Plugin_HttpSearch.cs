@@ -15,7 +15,7 @@
     #region MEMBERS
 
     private readonly int maxRowNum = 256;
-    private BindingList<RecordHttpSearch> dnsPoisonRecords = new BindingList<RecordHttpSearch>();
+    private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
 
     #endregion
 
@@ -33,9 +33,58 @@
     {
       InitializeComponent();
 
+      DataGridViewTextBoxColumn columnMethod = new DataGridViewTextBoxColumn();
+      columnMethod.DataPropertyName = "Method";
+      columnMethod.Name = "Method";
+      columnMethod.HeaderText = "Method";
+      columnMethod.ReadOnly = true;
+      columnMethod.Width = 100;
+      this.dgv_HttpSearch.Columns.Add(columnMethod);
+
+      DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
+      columnType.DataPropertyName = "Type";
+      columnType.Name = "Type";
+      columnType.HeaderText = "Type";
+      columnType.ReadOnly = true;
+      columnType.Width = 100;
+      this.dgv_HttpSearch.Columns.Add(columnType);
+
+      DataGridViewTextBoxColumn columnDomain = new DataGridViewTextBoxColumn();
+      columnDomain.DataPropertyName = "Domain";
+      columnDomain.Name = "Domain";
+      columnDomain.HeaderText = "Domain";
+      columnDomain.ReadOnly = true;
+      columnDomain.Width = 100;
+      this.dgv_HttpSearch.Columns.Add(columnDomain);
+
+      DataGridViewTextBoxColumn columnHostRegex = new DataGridViewTextBoxColumn();
+      columnHostRegex.DataPropertyName = "HostRegex";
+      columnHostRegex.Name = "HostRegex";
+      columnHostRegex.HeaderText = "HostRegex";
+      columnHostRegex.ReadOnly = true;
+      columnHostRegex.Width = 260;
+      this.dgv_HttpSearch.Columns.Add(columnHostRegex);
+
+      DataGridViewTextBoxColumn columnPathRegex = new DataGridViewTextBoxColumn();
+      columnPathRegex.DataPropertyName = "PathRegex";
+      columnPathRegex.Name = "PathRegex";
+      columnPathRegex.HeaderText = "PathRegex";
+      columnPathRegex.ReadOnly = true;
+      columnPathRegex.Width = 260;
+      this.dgv_HttpSearch.Columns.Add(columnPathRegex);
+
+      DataGridViewTextBoxColumn columnDataRegex = new DataGridViewTextBoxColumn();
+      columnDataRegex.DataPropertyName = "DataRegex";
+      columnDataRegex.Name = "DataRegex";
+      columnDataRegex.HeaderText = "DataRegex";
+      columnDataRegex.ReadOnly = true;
+      columnDataRegex.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_HttpSearch.Columns.Add(columnDataRegex);
+
+      this.dgv_HttpSearch.DataSource = this.httpSearchRecords;
       this.dgv_HttpSearch.AutoGenerateColumns = false;
-      this.CB_Method.SelectedIndex = 0;
-      this.CB_Type.SelectedIndex = 0;
+      this.cb_Method.SelectedIndex = 0;
+      this.cb_Type.SelectedIndex = 0;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -64,7 +113,6 @@
       this.Config.PluginType = "Passive";
       this.Config.PluginDescription = "Search data regex in HTTP header/data packets.";
       this.Config.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
-
     }
 
     #endregion
@@ -84,13 +132,13 @@
       }
       
       this.bt_Add.Enabled = false;
-      this.CB_Method.Enabled = false;
-      this.CB_Type.Enabled = false;
-      this.TB_DataRegex.Enabled = false;
-      this.TB_HostRegex.Enabled = false;
-      this.TB_PathRegex.Enabled = false;
-      this.RB_Body.Enabled = false;
-      this.RB_Header.Enabled = false;
+      this.cb_Method.Enabled = false;
+      this.cb_Type.Enabled = false;
+      this.tb_DataRegex.Enabled = false;
+      this.tb_HostRegex.Enabled = false;
+      this.tb_PathRegex.Enabled = false;
+      this.rb_Body.Enabled = false;
+      this.rb_Header.Enabled = false;
 
       this.Refresh();
     }
@@ -109,14 +157,14 @@
       }
 
       this.bt_Add.Enabled = true;
-      this.CB_Method.Enabled = true;
-      this.CB_Type.Enabled = true;
-      this.TB_DataRegex.Enabled = true;
-      this.TB_HostRegex.Enabled = true;
-      this.TB_PathRegex.Enabled = true;
+      this.cb_Method.Enabled = true;
+      this.cb_Type.Enabled = true;
+      this.tb_DataRegex.Enabled = true;
+      this.tb_HostRegex.Enabled = true;
+      this.tb_PathRegex.Enabled = true;
 
-      this.RB_Body.Enabled = true;
-      this.RB_Header.Enabled = true;
+      this.rb_Body.Enabled = true;
+      this.rb_Header.Enabled = true;
 
       this.Refresh();
     }

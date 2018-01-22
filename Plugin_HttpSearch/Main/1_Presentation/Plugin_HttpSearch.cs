@@ -16,6 +16,9 @@
 
     private readonly int maxRowNum = 256;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
+    private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;
+    private List<string> dataBatch = new List<string>();
+    private List<Tuple<string, string, string>> targetList;
 
     #endregion
 

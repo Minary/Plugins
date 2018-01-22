@@ -47,6 +47,7 @@
       this.cms_HttpSearch = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).BeginInit();
       this.cms_HttpSearch.SuspendLayout();
       this.SuspendLayout();
@@ -296,5 +297,6 @@
     private System.Windows.Forms.ContextMenuStrip cms_HttpSearch;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
+    private System.Windows.Forms.Timer t_GuiUpdate;
   }
 }

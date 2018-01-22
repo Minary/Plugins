@@ -63,12 +63,12 @@
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Main\2_Infrastructure\HttpSearch.cs" />
+    <Compile Include="Main\DataTypes\General.cs" />
     <Compile Include="Main\DataTypes\RecordHttpSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Main\2_Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpSearch.resx">
       <DependentUpon>Plugin_HttpSearch.cs</DependentUpon>

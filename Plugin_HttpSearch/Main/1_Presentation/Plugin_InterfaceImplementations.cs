@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-//  using Minary.Plugin.Main.HttpSearch.DataTypes;
+  using Minary.Plugin.Main.HttpSearch.DataTypes;
   using MinaryLib;
   using MinaryLib.DataTypes;
   using System;
@@ -32,16 +32,16 @@
       this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
 
       this.SetGuiActive();
-      //this.t_GuiUpdate.Start();
+      this.t_GuiUpdate.Start();
 
-      //try
-      //{
-      //  this.infrastructureLayer.OnInit();
-      //}
-      //catch (Exception ex)
-      //{
-      //  this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      //}
+      try
+      {
+        this.infrastructureLayer.OnInit();
+      }
+      catch (Exception ex)
+      {
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
     }
 
 
@@ -109,12 +109,12 @@
 
       lock (this)
       {
-        //if (this.dataBatch != null &&
-        //    data?.Length > 0)
-        //{
-        //  this.dataBatch.Add(data);
-        //  this.Refresh();
-        //}
+        if (this.dataBatch != null &&
+            data?.Length > 0)
+        {
+          this.dataBatch.Add(data);
+          this.Refresh();
+        }
       }
     }
 
@@ -131,8 +131,9 @@
         return;
       }
 
-//      this.infrastructureLayer.OnStop();
+      this.infrastructureLayer.OnStop();
     }
+
 
     /// <summary>
     ///
@@ -140,7 +141,7 @@
     /// <param name="targetList"></param>
     public void SetTargets(List<Tuple<string, string, string>> targetList)
     {
-//      this.targetList = targetList;
+      this.targetList = targetList;
     }
 
 
@@ -157,11 +158,10 @@
       }
 
       this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-      //this.ClearRecordList();
+      this.ClearRecordList();
       this.SetGuiActive();
       this.Refresh();
-
-//      this.infrastructureLayer.OnReset();
+      this.infrastructureLayer.OnReset();
     }
 
 
@@ -177,10 +177,10 @@
       TemplatePluginData newTemplateData = new TemplatePluginData();
 
       // Configuration items
-//      newTemplateData.PluginConfigurationItems = this.infrastructureLayer.OnGetTemplateData(this.accountRecords);
+      newTemplateData.PluginConfigurationItems = this.infrastructureLayer.OnGetTemplateData(this.httpSearchRecords);
 
       // Pattern items
-//      newTemplateData.PluginDataSearchPatternItems = this.manageHttpAccountsPresentationLayer.OnGetTemplateData();
+      //newTemplateData.PluginDataSearchPatternItems = this.manageHttpAccountsPresentationLayer.OnGetTemplateData();
 
       return newTemplateData;
     }
@@ -196,12 +196,12 @@
       }
 
       // Configuration items
-      //this.accountRecords.Clear();
-      //List<AccountRecord> loadedApplicationRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      //loadedApplicationRecords.ForEach(elem => this.accountRecords.Add(elem));
+      this.httpSearchRecords.Clear();
+      List<RecordHttpSearch> loadedApplicationRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
+      loadedApplicationRecords.ForEach(elem => this.httpSearchRecords.Add(elem));
 
       // Pattern items
-//      this.manageHttpAccountsPresentationLayer.OnLoadTemplateData(templateData);
+      // this.manageHttpAccountsPresentationLayer.OnLoadTemplateData(templateData);
       this.Refresh();
     }
 
@@ -216,14 +216,14 @@
       }
 
       // Remove all template data
-//      this.infrastructureLayer.OnUnoadTemplateData();
+      this.infrastructureLayer.OnUnoadTemplateData();
 
       // Reload local and remote pattern files
       //this.manageHttpAccountsPresentationLayer.LocalPatternsEnabled = true;
       //this.manageHttpAccountsPresentationLayer.RemotePatternsEnabled = true;
       //this.manageHttpAccountsTaskLayer.ReadAccountsPatterns();
 
-//      this.accountRecords.Clear();
+      this.httpSearchRecords.Clear();
       this.Refresh();
     }
 

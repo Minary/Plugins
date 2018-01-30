@@ -28,6 +28,7 @@
 
     private IPlugin loadedPlugin;
     private Dictionary<string, PluginRecord> pluginDict = new Dictionary<string, PluginRecord>();
+    private string rbLastChoice;
 
     #endregion
 
@@ -37,6 +38,9 @@
     public PluginTest_MainForm()
     {
       InitializeComponent();
+
+      this.rbLastChoice = this.rb_DnsExample.Checked ? this.rb_DnsExample.Name : this.rb_HttpExample.Name;
+      this.PopulatePluginsCombobox();
     }
 
 
@@ -44,6 +48,45 @@
 
 
     #region PRIVATE
+
+    private Dictionary<string, string> comboboxPluginMap = new Dictionary<string, string>();
+
+    private void PopulatePluginsCombobox()
+    {
+      //      Directory.EnumerateFiles
+      var pluginList = new List<string>();
+      var baseDir = Directory.GetCurrentDirectory();
+      var tempPluginPath = Path.Combine(baseDir, @"..\..\..\");
+      string[] tempPluginList = Directory.GetDirectories(tempPluginPath, "Plugin_*");
+      //string[] tempPluginList = Directory.GetDirectories(tempPluginPath);
+
+      foreach (var pluginDir in tempPluginList)
+      {
+        var tmpPluginDir = Path.Combine(pluginDir, @"bin\debug\");
+        string[] pluginFiles = Directory.GetFiles(tmpPluginDir, "plugin_*.dll");
+
+        if (pluginFiles.Length == 1)
+        {
+          var filename = Path.GetFileNameWithoutExtension(pluginFiles[0]);
+          this.cb_PluginSelection.Items.Add(filename);
+          this.comboboxPluginMap.Add(filename, pluginFiles[0]);
+        }
+
+//        MessageBox.Show($"plugindir:{pluginDir}");
+      }
+/*
+      for (var i = 0; i < tempPluginList.Length; i++)
+      {
+        string[] pluginFiles = Directory.GetFiles(tempPluginList[i], "plugin_*.dll");
+
+        if (pluginFiles.Length > 0)
+        {
+          pluginList.Add(tempPluginList[i]);
+        }
+      }
+*/
+    }
+
 
     private void LoadModule(string pluginPath)
     {

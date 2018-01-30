@@ -1,11 +1,8 @@
 ﻿namespace PluginTest
 {
   using MinaryLib.DataTypes;
-  using MinaryLib.Plugin;
   using System;
-  using System.Collections.Generic;
   using System.IO;
-  using System.Linq;
   using System.Windows.Forms;
 
 
@@ -13,6 +10,15 @@
   {
 
     #region EVENTS
+
+    private void cb_PluginSelection_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      ComboBox comboBox = (ComboBox)sender;
+      string selectedPlugin = (string)comboBox.SelectedItem;
+      this.tb_PluginPath.Text = this.comboboxPluginMap[selectedPlugin];
+      this.LoadModule(this.comboboxPluginMap[selectedPlugin]);
+    }
+
 
     private void BT_PluginPath_Click(object sender, EventArgs e)
     {
@@ -120,6 +126,23 @@
       foreach (var key in this.pluginDict.Keys)
       {
         this.pluginDict[key].IPlugin.OnUnloadTemplateData();
+      }
+    }
+
+
+    private void rb_Example_Click(object sender, EventArgs e)
+    {
+      if (this.rbLastChoice != this.rb_DnsExample.Name &&
+          this.rb_DnsExample.Checked)
+      {
+        this.rbLastChoice = this.rb_DnsExample.Name;
+        this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||53||auth.facebook.com";
+      }
+      else if (this.rbLastChoice != this.rb_HttpExample.Name &&
+               this.rb_HttpExample.Checked)
+      {
+        this.rbLastChoice = this.rb_HttpExample.Name;
+        this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTTP/1.1....Host:www.facebook.com....";
       }
     }
 

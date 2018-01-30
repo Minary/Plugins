@@ -29,11 +29,14 @@
     private void InitializeComponent()
     {
       this.gb_PluginTest = new System.Windows.Forms.GroupBox();
+      this.cb_PluginSelection = new System.Windows.Forms.ComboBox();
       this.bt_PluginPath = new System.Windows.Forms.Button();
       this.tb_PluginPath = new System.Windows.Forms.TextBox();
       this.l_Plugin = new System.Windows.Forms.Label();
       this.ofd_PluginPath = new System.Windows.Forms.OpenFileDialog();
       this.gb_Events = new System.Windows.Forms.GroupBox();
+      this.rb_HttpExample = new System.Windows.Forms.RadioButton();
+      this.rb_DnsExample = new System.Windows.Forms.RadioButton();
       this.tb_NewData = new System.Windows.Forms.TextBox();
       this.button2 = new System.Windows.Forms.Button();
       this.bt_OnNewData = new System.Windows.Forms.Button();
@@ -54,15 +57,25 @@
       // 
       // gb_PluginTest
       // 
+      this.gb_PluginTest.Controls.Add(this.cb_PluginSelection);
       this.gb_PluginTest.Controls.Add(this.bt_PluginPath);
       this.gb_PluginTest.Controls.Add(this.tb_PluginPath);
       this.gb_PluginTest.Controls.Add(this.l_Plugin);
       this.gb_PluginTest.Location = new System.Drawing.Point(13, 13);
       this.gb_PluginTest.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
       this.gb_PluginTest.Name = "gb_PluginTest";
-      this.gb_PluginTest.Size = new System.Drawing.Size(1087, 78);
+      this.gb_PluginTest.Size = new System.Drawing.Size(1225, 78);
       this.gb_PluginTest.TabIndex = 0;
       this.gb_PluginTest.TabStop = false;
+      // 
+      // cb_PluginSelection
+      // 
+      this.cb_PluginSelection.FormattingEnabled = true;
+      this.cb_PluginSelection.Location = new System.Drawing.Point(962, 26);
+      this.cb_PluginSelection.Name = "cb_PluginSelection";
+      this.cb_PluginSelection.Size = new System.Drawing.Size(243, 28);
+      this.cb_PluginSelection.TabIndex = 3;
+      this.cb_PluginSelection.SelectedIndexChanged += new System.EventHandler(this.cb_PluginSelection_SelectedIndexChanged);
       // 
       // bt_PluginPath
       // 
@@ -94,6 +107,8 @@
       // 
       this.gb_Events.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_Events.Controls.Add(this.rb_HttpExample);
+      this.gb_Events.Controls.Add(this.rb_DnsExample);
       this.gb_Events.Controls.Add(this.tb_NewData);
       this.gb_Events.Controls.Add(this.button2);
       this.gb_Events.Controls.Add(this.bt_OnNewData);
@@ -103,16 +118,44 @@
       this.gb_Events.Controls.Add(this.bt_OnInit);
       this.gb_Events.Location = new System.Drawing.Point(12, 28);
       this.gb_Events.Name = "gb_Events";
-      this.gb_Events.Size = new System.Drawing.Size(1051, 187);
+      this.gb_Events.Size = new System.Drawing.Size(1209, 187);
       this.gb_Events.TabIndex = 1;
       this.gb_Events.TabStop = false;
       this.gb_Events.Text = "Events";
       // 
+      // rb_HttpExample
+      // 
+      this.rb_HttpExample.AutoSize = true;
+      this.rb_HttpExample.Location = new System.Drawing.Point(652, 45);
+      this.rb_HttpExample.Name = "rb_HttpExample";
+      this.rb_HttpExample.Size = new System.Drawing.Size(74, 24);
+      this.rb_HttpExample.TabIndex = 8;
+      this.rb_HttpExample.TabStop = true;
+      this.rb_HttpExample.Text = "HTTP";
+      this.rb_HttpExample.UseVisualStyleBackColor = true;
+      this.rb_HttpExample.Click += new System.EventHandler(this.rb_Example_Click);
+      // 
+      // rb_DnsExample
+      // 
+      this.rb_DnsExample.AutoSize = true;
+      this.rb_DnsExample.Checked = true;
+      this.rb_DnsExample.Location = new System.Drawing.Point(568, 45);
+      this.rb_DnsExample.Name = "rb_DnsExample";
+      this.rb_DnsExample.Size = new System.Drawing.Size(68, 24);
+      this.rb_DnsExample.TabIndex = 7;
+      this.rb_DnsExample.TabStop = true;
+      this.rb_DnsExample.Text = "DNS";
+      this.rb_DnsExample.UseVisualStyleBackColor = true;
+      this.rb_DnsExample.Click += new System.EventHandler(this.rb_Example_Click);
+      // 
       // tb_NewData
       // 
-      this.tb_NewData.Location = new System.Drawing.Point(398, 44);
+      this.tb_NewData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tb_NewData.Location = new System.Drawing.Point(420, 84);
+      this.tb_NewData.Multiline = true;
       this.tb_NewData.Name = "tb_NewData";
-      this.tb_NewData.Size = new System.Drawing.Size(600, 26);
+      this.tb_NewData.Size = new System.Drawing.Size(769, 88);
       this.tb_NewData.TabIndex = 6;
       this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||53||auth.facebook.com";
       // 
@@ -128,7 +171,7 @@
       // 
       // bt_OnNewData
       // 
-      this.bt_OnNewData.Location = new System.Drawing.Point(269, 37);
+      this.bt_OnNewData.Location = new System.Drawing.Point(420, 37);
       this.bt_OnNewData.Name = "bt_OnNewData";
       this.bt_OnNewData.Size = new System.Drawing.Size(123, 41);
       this.bt_OnNewData.TabIndex = 4;
@@ -184,7 +227,7 @@
       this.gb_Logs.Controls.Add(this.tb_Logs);
       this.gb_Logs.Location = new System.Drawing.Point(12, 235);
       this.gb_Logs.Name = "gb_Logs";
-      this.gb_Logs.Size = new System.Drawing.Size(1051, 216);
+      this.gb_Logs.Size = new System.Drawing.Size(1209, 216);
       this.gb_Logs.TabIndex = 2;
       this.gb_Logs.TabStop = false;
       this.gb_Logs.Text = "Logs";
@@ -199,7 +242,7 @@
       this.tb_Logs.Multiline = true;
       this.tb_Logs.Name = "tb_Logs";
       this.tb_Logs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.tb_Logs.Size = new System.Drawing.Size(1023, 167);
+      this.tb_Logs.Size = new System.Drawing.Size(1182, 167);
       this.tb_Logs.TabIndex = 0;
       // 
       // TC_PluginTester
@@ -211,7 +254,7 @@
       this.TC_PluginTester.Location = new System.Drawing.Point(13, 97);
       this.TC_PluginTester.Name = "TC_PluginTester";
       this.TC_PluginTester.SelectedIndex = 0;
-      this.TC_PluginTester.Size = new System.Drawing.Size(1091, 504);
+      this.TC_PluginTester.Size = new System.Drawing.Size(1380, 504);
       this.TC_PluginTester.TabIndex = 3;
       // 
       // tp_Oper
@@ -221,7 +264,7 @@
       this.tp_Oper.Location = new System.Drawing.Point(4, 29);
       this.tp_Oper.Name = "tp_Oper";
       this.tp_Oper.Padding = new System.Windows.Forms.Padding(3);
-      this.tp_Oper.Size = new System.Drawing.Size(1083, 471);
+      this.tp_Oper.Size = new System.Drawing.Size(1372, 471);
       this.tp_Oper.TabIndex = 0;
       this.tp_Oper.Text = "Plugin oper";
       this.tp_Oper.UseVisualStyleBackColor = true;
@@ -230,7 +273,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1116, 613);
+      this.ClientSize = new System.Drawing.Size(1405, 613);
       this.Controls.Add(this.TC_PluginTester);
       this.Controls.Add(this.gb_PluginTest);
       this.Name = "PluginTest_MainForm";
@@ -266,6 +309,9 @@
     private System.Windows.Forms.TextBox tb_NewData;
     private System.Windows.Forms.TabControl TC_PluginTester;
     private System.Windows.Forms.TabPage tp_Oper;
+    private System.Windows.Forms.RadioButton rb_HttpExample;
+    private System.Windows.Forms.RadioButton rb_DnsExample;
+    private System.Windows.Forms.ComboBox cb_PluginSelection;
   }
 }
 

@@ -179,6 +179,7 @@
             if (dstPort != null && 
                 dstPort == "53")
             {
+this.pluginProperties?.HostApplication?.LogMessage($"{this.Config.PluginName}: New Record: {srcMac}/{srcIp}/{hostName}/{proto}");
               newRecords.Add(new DnsRequestRecord(srcMac, srcIp, hostName, proto));
             }
           }

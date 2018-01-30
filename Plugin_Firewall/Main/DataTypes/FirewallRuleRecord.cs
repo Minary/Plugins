@@ -4,6 +4,7 @@
   using System.ComponentModel;
 
 
+
   [Serializable]
   public class FirewallRuleRecord : INotifyPropertyChanged
   {
@@ -11,6 +12,14 @@
     #region MEMBERS
 
     private string id;
+    private string protocol;
+    private string srcIp;
+    private string dstIp;
+    private string srcPortLower;
+    private string srcPortUpper;
+    private string dstPortLower;
+    private string dstPortUpper;
+
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -25,12 +34,12 @@
     {
       get
       {
-        return this.Protocol;
+        return this.protocol;
       }
 
       set
       {
-        this.Protocol = value;
+        this.protocol = value;
         this.NotifyPropertyChanged("Protocol");
       }
     }
@@ -57,12 +66,12 @@
     {
       get
       {
-        return this.SrcIP;
+        return this.srcIp;
       }
 
       set
       {
-        this.SrcIP = value;
+        this.srcIp = value;
         this.NotifyPropertyChanged("SrcIP");
       }
     }
@@ -73,12 +82,12 @@
     {
       get
       {
-        return this.DstIP;
+        return this.dstIp;
       }
 
       set
       {
-        this.DstIP = value;
+        this.dstIp = value;
         this.NotifyPropertyChanged("DstIP");
       }
     }
@@ -89,12 +98,12 @@
     {
       get
       {
-        return this.SrcPortLower;
+        return this.srcPortLower;
       }
 
       set
       {
-        this.SrcPortLower = value;
+        this.srcPortLower = value;
         this.NotifyPropertyChanged("SrcPortLower");
       }
     }
@@ -105,12 +114,12 @@
     {
       get
       {
-        return this.SrcPortUpper;
+        return this.srcPortUpper;
       }
 
       set
       {
-        this.SrcPortUpper = value;
+        this.srcPortUpper = value;
         this.NotifyPropertyChanged("SrcPortUpper");
       }
     }
@@ -121,12 +130,12 @@
     {
       get
       {
-        return this.DstPortLower;
+        return this.dstPortLower;
       }
 
       set
       {
-        this.DstPortLower = value;
+        this.dstPortLower = value;
         this.NotifyPropertyChanged("DstPortLower");
       }
     }
@@ -137,12 +146,12 @@
     {
       get
       {
-        return this.DstPortUpper;
+        return this.dstPortUpper;
       }
 
       set
       {
-        this.DstPortUpper = value;
+        this.dstPortUpper = value;
         this.NotifyPropertyChanged("DstPortUpper");
       }
     }
@@ -155,25 +164,26 @@
     public FirewallRuleRecord()
     {
       this.id = string.Empty;
-      this.Protocol = string.Empty;
-      this.SrcIP = string.Empty;
-      this.DstIP = string.Empty;
-      this.SrcPortLower = string.Empty;
-      this.SrcPortUpper = string.Empty;
-      this.DstPortLower = string.Empty;
-      this.DstPortUpper = string.Empty;
+      this.protocol = string.Empty;
+      this.srcIp = string.Empty;
+      this.dstIp = string.Empty;
+      this.srcPortLower = string.Empty;
+      this.srcPortUpper = string.Empty;
+      this.dstPortLower = string.Empty;
+      this.dstPortUpper = string.Empty;
     }
+
 
     public FirewallRuleRecord(string protocol, string srcIp, string srcPortLower, string srcPortUpper, string dstIp, string dstPortLower, string dstPortUpper)
     {
       this.id = $"{protocol}{dstIp}{dstPortLower}{dstPortUpper}{srcIp}{srcPortLower}{srcPortUpper}";
-      this.Protocol = protocol;
-      this.SrcIP = srcIp;
-      this.DstIP = dstIp;
-      this.SrcPortLower = srcPortLower;
-      this.SrcPortUpper = srcPortUpper;
-      this.DstPortLower = dstPortLower;
-      this.DstPortUpper = dstPortUpper;
+      this.protocol = protocol;
+      this.srcIp = srcIp;
+      this.dstIp = dstIp;
+      this.srcPortLower = srcPortLower;
+      this.srcPortUpper = srcPortUpper;
+      this.dstPortLower = dstPortLower;
+      this.dstPortUpper = dstPortUpper;
     }
 
     #endregion

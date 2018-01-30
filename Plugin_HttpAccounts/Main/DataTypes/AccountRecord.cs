@@ -7,9 +7,6 @@
 
   #region DATATYPES
 
-  /// <summary>
-  ///
-  /// </summary>
   public struct HttpAccountStruct
   {
     public string Username;

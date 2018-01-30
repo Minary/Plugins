@@ -1,16 +1,17 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.HttpSearch.DataTypes;
+  using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
+  using Ifc = Minary.Plugin.Main.HttpSearch.DataTypes.Interface;
   using MinaryLib;
   using MinaryLib.DataTypes;
   using System;
   using System.Collections.Generic;
 
 
-  public partial class Plugin_HttpSearch
+  public partial class Plugin_HttpSearch : Ifc.IObserver
   {
 
-    #region IPlugin Member
+    #region INTERFACE IPlugin Member
 
     public PluginProperties Config { get; set; }
 
@@ -225,6 +226,26 @@
 
       this.httpSearchRecords.Clear();
       this.Refresh();
+    }
+
+    #endregion
+
+
+    #region INTERFACE IObserver
+
+    public void Update(List<HttpFoundRecord> newRecords)
+    {
+      if (newRecords == null)
+      {
+        return;
+      }
+
+      this.httpFindingRedcords.Clear();
+
+      if (newRecords.Count > 0)
+      {
+        newRecords.ForEach(elem => this.httpFindingRedcords.Add(elem));
+      }
     }
 
     #endregion

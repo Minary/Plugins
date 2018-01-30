@@ -90,6 +90,7 @@
       this.CleanUpTemplateDir();
     }
 
+
     /// <summary>
     ///
     /// </summary>

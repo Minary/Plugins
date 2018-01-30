@@ -1,7 +1,9 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.HttpSearch.DataTypes;
+  using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
+  using System.Collections.Generic;
+  using System.Linq;
   using System.Text.RegularExpressions;
 
 
@@ -9,6 +11,51 @@
   {
 
     #region GUI RECORDS METHODS
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="record"></param>
+    private void AddRecords(List<RecordHttpSearch> records)
+    {
+      var firstVisibleRowTop = -1;
+
+      if (records?.Count > 0 == false)
+      {
+        return;
+      }
+
+      // Memorize DataGridView position and selection
+      firstVisibleRowTop = this.dgv_HttpSearch.FirstDisplayedScrollingRowIndex;
+
+      // Update DataGridView
+      this.dgv_HttpSearch.SuspendLayout();
+
+      lock (this)
+      {
+        foreach (RecordHttpSearch newAccount in records)
+        {
+          this.httpSearchRecords.Insert(0, newAccount);
+          //if (this.httpSearchRecords.Select(elem => elem.Username == newAccount.Username && elem.Password == newAccount.Password && newAccount.DstIP == elem.DstIP && elem.DstPort == newAccount.DstPort).Count() > 0)
+          //{
+          //  this.Config.HostApplication.LogMessage($"{Config.PluginName}: The account record for user \"{newAccount.Username}\" and password \"{newAccount.Password}\" already exists");
+          //}
+          //else
+          //{
+          //  this.httpSearchRecords.Insert(0, newAccount);
+          //}
+        }
+
+        // Resize the DGV to the defined maximum size.
+        while (this.httpSearchRecords.Count > maxRowNum)
+        {
+          this.httpSearchRecords.RemoveAt(this.dgv_HttpSearch.Rows.Count - 1);
+        }
+
+        this.dgv_HttpSearch.ResumeLayout();
+      }
+    }
+
 
     /// <summary>
     ///
@@ -29,7 +76,6 @@
       foreach (RecordHttpSearch tmpRecord in this.httpSearchRecords)
       {
         if (tmpRecord.Method == newRecord.Method &&
-            tmpRecord.Domain == newRecord.Domain &&
             tmpRecord.HostRegex == newRecord.HostRegex &&
             tmpRecord.PathRegex == newRecord.PathRegex &&
             tmpRecord.DataRegex == newRecord.DataRegex)
@@ -56,7 +102,7 @@
       {
         throw new Exception("The data regular expression is invalid");
       }
-
+      
       lock (this)
       {
         // Memorize DataGridView position and selection

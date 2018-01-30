@@ -1,4 +1,4 @@
-﻿namespace Minary.Plugin.Main.HttpSearch.DataTypes
+﻿namespace Minary.Plugin.Main.HttpSearch.DataTypes.Class
 {
   public class General
   {

@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_HttpSearch = new System.Windows.Forms.DataGridView();
       this.L_Method = new System.Windows.Forms.Label();
       this.tb_HostRegex = new System.Windows.Forms.TextBox();
@@ -38,8 +38,6 @@
       this.tb_PathRegex = new System.Windows.Forms.TextBox();
       this.cb_Method = new System.Windows.Forms.ComboBox();
       this.bt_Add = new System.Windows.Forms.Button();
-      this.rb_Header = new System.Windows.Forms.RadioButton();
-      this.rb_Body = new System.Windows.Forms.RadioButton();
       this.L_DataRegex = new System.Windows.Forms.Label();
       this.tb_DataRegex = new System.Windows.Forms.TextBox();
       this.cb_Type = new System.Windows.Forms.ComboBox();
@@ -48,8 +46,14 @@
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
+      this.dgv_Findings = new System.Windows.Forms.DataGridView();
+      this.gb_findings = new System.Windows.Forms.GroupBox();
+      this.gb_Patterns = new System.Windows.Forms.GroupBox();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).BeginInit();
       this.cms_HttpSearch.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).BeginInit();
+      this.gb_findings.SuspendLayout();
+      this.gb_Patterns.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_HttpSearch
@@ -58,23 +62,22 @@
       this.dgv_HttpSearch.AllowUserToDeleteRows = false;
       this.dgv_HttpSearch.AllowUserToResizeColumns = false;
       this.dgv_HttpSearch.AllowUserToResizeRows = false;
-      this.dgv_HttpSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+      this.dgv_HttpSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dgv_HttpSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HttpSearch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HttpSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
       this.dgv_HttpSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_HttpSearch.EnableHeadersVisualStyles = false;
-      this.dgv_HttpSearch.Location = new System.Drawing.Point(26, 99);
+      this.dgv_HttpSearch.Location = new System.Drawing.Point(11, 110);
       this.dgv_HttpSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_HttpSearch.MultiSelect = false;
       this.dgv_HttpSearch.Name = "dgv_HttpSearch";
@@ -83,8 +86,8 @@
       this.dgv_HttpSearch.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_HttpSearch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HttpSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_HttpSearch.Size = new System.Drawing.Size(1400, 451);
-      this.dgv_HttpSearch.TabIndex = 8;
+      this.dgv_HttpSearch.Size = new System.Drawing.Size(1374, 181);
+      this.dgv_HttpSearch.TabIndex = 7;
       this.dgv_HttpSearch.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_MouseDown);
       this.dgv_HttpSearch.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_MouseUp);
       // 
@@ -92,7 +95,7 @@
       // 
       this.L_Method.AutoSize = true;
       this.L_Method.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Method.Location = new System.Drawing.Point(33, 29);
+      this.L_Method.Location = new System.Drawing.Point(18, 40);
       this.L_Method.Name = "L_Method";
       this.L_Method.Size = new System.Drawing.Size(69, 20);
       this.L_Method.TabIndex = 0;
@@ -100,7 +103,7 @@
       // 
       // tb_HostRegex
       // 
-      this.tb_HostRegex.Location = new System.Drawing.Point(318, 18);
+      this.tb_HostRegex.Location = new System.Drawing.Point(303, 29);
       this.tb_HostRegex.Name = "tb_HostRegex";
       this.tb_HostRegex.Size = new System.Drawing.Size(272, 26);
       this.tb_HostRegex.TabIndex = 2;
@@ -110,7 +113,7 @@
       // 
       this.L_Host.AutoSize = true;
       this.L_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Host.Location = new System.Drawing.Point(222, 25);
+      this.L_Host.Location = new System.Drawing.Point(207, 36);
       this.L_Host.Name = "L_Host";
       this.L_Host.Size = new System.Drawing.Size(96, 20);
       this.L_Host.TabIndex = 0;
@@ -120,7 +123,7 @@
       // 
       this.L_Path.AutoSize = true;
       this.L_Path.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Path.Location = new System.Drawing.Point(604, 25);
+      this.L_Path.Location = new System.Drawing.Point(589, 36);
       this.L_Path.Name = "L_Path";
       this.L_Path.Size = new System.Drawing.Size(95, 20);
       this.L_Path.TabIndex = 0;
@@ -128,7 +131,7 @@
       // 
       // tb_PathRegex
       // 
-      this.tb_PathRegex.Location = new System.Drawing.Point(705, 18);
+      this.tb_PathRegex.Location = new System.Drawing.Point(690, 29);
       this.tb_PathRegex.Name = "tb_PathRegex";
       this.tb_PathRegex.Size = new System.Drawing.Size(332, 26);
       this.tb_PathRegex.TabIndex = 3;
@@ -144,50 +147,27 @@
             "PUT",
             "DELETE",
             "HEAD"});
-      this.cb_Method.Location = new System.Drawing.Point(98, 22);
+      this.cb_Method.Location = new System.Drawing.Point(84, 33);
       this.cb_Method.Name = "cb_Method";
       this.cb_Method.Size = new System.Drawing.Size(98, 28);
       this.cb_Method.TabIndex = 1;
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(1056, 17);
+      this.bt_Add.Location = new System.Drawing.Point(1041, 69);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
       this.bt_Add.Size = new System.Drawing.Size(30, 32);
-      this.bt_Add.TabIndex = 7;
+      this.bt_Add.TabIndex = 6;
       this.bt_Add.Text = "+";
       this.bt_Add.UseVisualStyleBackColor = true;
       this.bt_Add.Click += new System.EventHandler(this.BT_Add_Click);
-      // 
-      // rb_Header
-      // 
-      this.rb_Header.AutoSize = true;
-      this.rb_Header.Checked = true;
-      this.rb_Header.Location = new System.Drawing.Point(38, 67);
-      this.rb_Header.Name = "rb_Header";
-      this.rb_Header.Size = new System.Drawing.Size(87, 24);
-      this.rb_Header.TabIndex = 4;
-      this.rb_Header.TabStop = true;
-      this.rb_Header.Text = "Header";
-      this.rb_Header.UseVisualStyleBackColor = true;
-      // 
-      // rb_Body
-      // 
-      this.rb_Body.AutoSize = true;
-      this.rb_Body.Location = new System.Drawing.Point(119, 67);
-      this.rb_Body.Name = "rb_Body";
-      this.rb_Body.Size = new System.Drawing.Size(70, 24);
-      this.rb_Body.TabIndex = 5;
-      this.rb_Body.TabStop = true;
-      this.rb_Body.Text = "Body";
-      this.rb_Body.UseVisualStyleBackColor = true;
       // 
       // L_DataRegex
       // 
       this.L_DataRegex.AutoSize = true;
       this.L_DataRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_DataRegex.Location = new System.Drawing.Point(222, 69);
+      this.L_DataRegex.Location = new System.Drawing.Point(207, 80);
       this.L_DataRegex.Name = "L_DataRegex";
       this.L_DataRegex.Size = new System.Drawing.Size(97, 20);
       this.L_DataRegex.TabIndex = 0;
@@ -195,10 +175,10 @@
       // 
       // tb_DataRegex
       // 
-      this.tb_DataRegex.Location = new System.Drawing.Point(318, 63);
+      this.tb_DataRegex.Location = new System.Drawing.Point(303, 74);
       this.tb_DataRegex.Name = "tb_DataRegex";
       this.tb_DataRegex.Size = new System.Drawing.Size(719, 26);
-      this.tb_DataRegex.TabIndex = 6;
+      this.tb_DataRegex.TabIndex = 5;
       this.tb_DataRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
       // cb_Type
@@ -210,16 +190,16 @@
             "Cookie",
             "Session",
             "Other"});
-      this.cb_Type.Location = new System.Drawing.Point(1101, 61);
+      this.cb_Type.Location = new System.Drawing.Point(84, 73);
       this.cb_Type.Name = "cb_Type";
       this.cb_Type.Size = new System.Drawing.Size(98, 28);
-      this.cb_Type.TabIndex = 9;
+      this.cb_Type.TabIndex = 4;
       // 
       // L_Type
       // 
       this.L_Type.AutoSize = true;
       this.L_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Type.Location = new System.Drawing.Point(1052, 68);
+      this.L_Type.Location = new System.Drawing.Point(35, 80);
       this.L_Type.Name = "L_Type";
       this.L_Type.Size = new System.Drawing.Size(47, 20);
       this.L_Type.TabIndex = 8;
@@ -248,33 +228,91 @@
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
+      // t_GuiUpdate
+      // 
+      this.t_GuiUpdate.Interval = 500;
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      // 
+      // dgv_Findings
+      // 
+      this.dgv_Findings.AllowUserToAddRows = false;
+      this.dgv_Findings.AllowUserToDeleteRows = false;
+      this.dgv_Findings.AllowUserToResizeColumns = false;
+      this.dgv_Findings.AllowUserToResizeRows = false;
+      this.dgv_Findings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.dgv_Findings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.dgv_Findings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+      this.dgv_Findings.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+      this.dgv_Findings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_Findings.EnableHeadersVisualStyles = false;
+      this.dgv_Findings.Location = new System.Drawing.Point(11, 25);
+      this.dgv_Findings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_Findings.MultiSelect = false;
+      this.dgv_Findings.Name = "dgv_Findings";
+      this.dgv_Findings.ReadOnly = true;
+      this.dgv_Findings.RowHeadersVisible = false;
+      this.dgv_Findings.RowTemplate.Height = 28;
+      this.dgv_Findings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+      this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgv_Findings.Size = new System.Drawing.Size(1374, 172);
+      this.dgv_Findings.TabIndex = 8;
+      // 
+      // gb_findings
+      // 
+      this.gb_findings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_findings.Controls.Add(this.dgv_Findings);
+      this.gb_findings.Location = new System.Drawing.Point(26, 332);
+      this.gb_findings.Name = "gb_findings";
+      this.gb_findings.Size = new System.Drawing.Size(1400, 218);
+      this.gb_findings.TabIndex = 0;
+      this.gb_findings.TabStop = false;
+      this.gb_findings.Text = "Findings";
+      // 
+      // gb_Patterns
+      // 
+      this.gb_Patterns.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_Patterns.Controls.Add(this.L_Method);
+      this.gb_Patterns.Controls.Add(this.dgv_HttpSearch);
+      this.gb_Patterns.Controls.Add(this.tb_HostRegex);
+      this.gb_Patterns.Controls.Add(this.cb_Type);
+      this.gb_Patterns.Controls.Add(this.L_Host);
+      this.gb_Patterns.Controls.Add(this.L_Type);
+      this.gb_Patterns.Controls.Add(this.L_Path);
+      this.gb_Patterns.Controls.Add(this.tb_DataRegex);
+      this.gb_Patterns.Controls.Add(this.tb_PathRegex);
+      this.gb_Patterns.Controls.Add(this.L_DataRegex);
+      this.gb_Patterns.Controls.Add(this.cb_Method);
+      this.gb_Patterns.Controls.Add(this.bt_Add);
+      this.gb_Patterns.Location = new System.Drawing.Point(26, 15);
+      this.gb_Patterns.Name = "gb_Patterns";
+      this.gb_Patterns.Size = new System.Drawing.Size(1400, 304);
+      this.gb_Patterns.TabIndex = 9;
+      this.gb_Patterns.TabStop = false;
+      this.gb_Patterns.Text = "Patterns";
+      // 
       // Plugin_HttpSearch
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
-      this.Controls.Add(this.cb_Type);
-      this.Controls.Add(this.L_Type);
-      this.Controls.Add(this.tb_DataRegex);
-      this.Controls.Add(this.L_DataRegex);
-      this.Controls.Add(this.rb_Body);
-      this.Controls.Add(this.rb_Header);
-      this.Controls.Add(this.bt_Add);
-      this.Controls.Add(this.cb_Method);
-      this.Controls.Add(this.tb_PathRegex);
-      this.Controls.Add(this.L_Path);
-      this.Controls.Add(this.L_Host);
-      this.Controls.Add(this.tb_HostRegex);
-      this.Controls.Add(this.L_Method);
-      this.Controls.Add(this.dgv_HttpSearch);
+      this.Controls.Add(this.gb_Patterns);
+      this.Controls.Add(this.gb_findings);
       this.DoubleBuffered = true;
       this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpSearch";
       this.Size = new System.Drawing.Size(1494, 566);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).EndInit();
       this.cms_HttpSearch.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).EndInit();
+      this.gb_findings.ResumeLayout(false);
+      this.gb_Patterns.ResumeLayout(false);
+      this.gb_Patterns.PerformLayout();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
     }
 
@@ -288,8 +326,6 @@
     private System.Windows.Forms.TextBox tb_PathRegex;
     private System.Windows.Forms.ComboBox cb_Method;
     private System.Windows.Forms.Button bt_Add;
-    private System.Windows.Forms.RadioButton rb_Header;
-    private System.Windows.Forms.RadioButton rb_Body;
     private System.Windows.Forms.Label L_DataRegex;
     private System.Windows.Forms.TextBox tb_DataRegex;
     private System.Windows.Forms.ComboBox cb_Type;
@@ -298,5 +334,8 @@
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
     private System.Windows.Forms.Timer t_GuiUpdate;
+    private System.Windows.Forms.DataGridView dgv_Findings;
+    private System.Windows.Forms.GroupBox gb_findings;
+    private System.Windows.Forms.GroupBox gb_Patterns;
   }
 }

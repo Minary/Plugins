@@ -1,11 +1,12 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.HttpSearch.DataTypes;
+  using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using MinaryLib.DataTypes;
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
+  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -16,6 +17,7 @@
 
     private readonly int maxRowNum = 256;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
+    private BindingList<HttpFoundRecord> httpFindingRedcords = new BindingList<HttpFoundRecord>();
     private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;
     private List<string> dataBatch = new List<string>();
     private List<Tuple<string, string, string>> targetList;
@@ -36,14 +38,6 @@
     {
       InitializeComponent();
 
-      DataGridViewTextBoxColumn columnMethod = new DataGridViewTextBoxColumn();
-      columnMethod.DataPropertyName = "Method";
-      columnMethod.Name = "Method";
-      columnMethod.HeaderText = "Method";
-      columnMethod.ReadOnly = true;
-      columnMethod.Width = 100;
-      this.dgv_HttpSearch.Columns.Add(columnMethod);
-
       DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
       columnType.DataPropertyName = "Type";
       columnType.Name = "Type";
@@ -51,6 +45,14 @@
       columnType.ReadOnly = true;
       columnType.Width = 100;
       this.dgv_HttpSearch.Columns.Add(columnType);
+
+      DataGridViewTextBoxColumn columnMethod = new DataGridViewTextBoxColumn();
+      columnMethod.DataPropertyName = "Method";
+      columnMethod.Name = "Method";
+      columnMethod.HeaderText = "Method";
+      columnMethod.ReadOnly = true;
+      columnMethod.Width = 100;
+      this.dgv_HttpSearch.Columns.Add(columnMethod);
 
       DataGridViewTextBoxColumn columnDomain = new DataGridViewTextBoxColumn();
       columnDomain.DataPropertyName = "Domain";
@@ -86,6 +88,11 @@
 
       this.dgv_HttpSearch.DataSource = this.httpSearchRecords;
       this.dgv_HttpSearch.AutoGenerateColumns = false;
+
+
+      this.dgv_Findings.DataSource = this.httpFindingRedcords;
+
+
       this.cb_Method.SelectedIndex = 0;
       this.cb_Type.SelectedIndex = 0;
 
@@ -116,9 +123,13 @@
       this.Config.PluginType = "Passive";
       this.Config.PluginDescription = "Search data regex in HTTP header/data packets.";
       this.Config.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
+
+      // Instantiate infrastructure layer
+      this.infrastructureLayer = new HttpSearch.Infrastructure.HttpSearch(this);
     }
 
     #endregion
+
 
     #region PRIVATE
 
@@ -140,8 +151,6 @@
       this.tb_DataRegex.Enabled = false;
       this.tb_HostRegex.Enabled = false;
       this.tb_PathRegex.Enabled = false;
-      this.rb_Body.Enabled = false;
-      this.rb_Header.Enabled = false;
 
       this.Refresh();
     }
@@ -166,10 +175,29 @@
       this.tb_HostRegex.Enabled = true;
       this.tb_PathRegex.Enabled = true;
 
-      this.rb_Body.Enabled = true;
-      this.rb_Header.Enabled = true;
-
       this.Refresh();
+    }
+
+
+    private void ProcessEntries()
+    {
+      List<string> newData;
+      
+      lock (this)
+      {
+        newData = new List<string>(dataBatch);
+        dataBatch.Clear();
+      }
+
+      try
+      {
+        this.infrastructureLayer.ProcessEntries(dataBatch);
+      }
+      catch (Exception ex)
+      {
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        return;
+      }
     }
 
     #endregion

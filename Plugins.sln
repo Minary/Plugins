@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Systems", "Plugin_Sy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpSearch", "Plugin_HttpSearch\Plugin_HttpSearch.csproj", "{101A5303-08E7-4FF7-B31F-2C9D1FDCFCB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginTest", "PluginTest\PluginTest.csproj", "{78F45849-4724-49C9-85CB-3482B38C97D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,14 @@ Global
 		{101A5303-08E7-4FF7-B31F-2C9D1FDCFCB8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{101A5303-08E7-4FF7-B31F-2C9D1FDCFCB8}.Release|x86.ActiveCfg = Release|Any CPU
 		{101A5303-08E7-4FF7-B31F-2C9D1FDCFCB8}.Release|x86.Build.0 = Release|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{78F45849-4724-49C9-85CB-3482B38C97D1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

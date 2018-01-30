@@ -1,4 +1,4 @@
-﻿namespace Minary.Plugin.Main.HttpSearch.DataTypes
+﻿namespace Minary.Plugin.Main.HttpSearch.DataTypes.Class
 {
   using System;
   using System.ComponentModel;
@@ -53,22 +53,6 @@
       {
         this.type = value;
         this.NotifyPropertyChanged("Type");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string Domain
-    {
-      get
-      {
-        return this.domain;
-      }
-
-      set
-      {
-        this.domain = value;
-        this.NotifyPropertyChanged("Domain");
       }
     }
 
@@ -130,14 +114,13 @@
     }
 
 
-    public RecordHttpSearch(string method, string type, string domain, string hostRegex, string pathRegex, string dataRegex)
+    public RecordHttpSearch(string method, string type, string hostRegex, string pathRegex, string dataRegex)
     {
       this.method = method;
       this.type = type;
       this.dataRegex = dataRegex;
       this.hostRegex = hostRegex;
       this.pathRegex = pathRegex;
-      this.domain = domain;
     }
 
     #endregion

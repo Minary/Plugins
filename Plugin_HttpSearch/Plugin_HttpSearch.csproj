@@ -64,8 +64,11 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\2_Infrastructure\HttpSearch.cs" />
-    <Compile Include="Main\DataTypes\General.cs" />
-    <Compile Include="Main\DataTypes\RecordHttpSearch.cs" />
+    <Compile Include="Main\DataTypes\Class\General.cs" />
+    <Compile Include="Main\DataTypes\Class\RecordHttpSearch.cs" />
+    <Compile Include="Main\DataTypes\Class\HttpFoundRecord.cs" />
+    <Compile Include="Main\DataTypes\Interface\IObserver.cs" />
+    <Compile Include="Main\DataTypes\Interface\Observable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

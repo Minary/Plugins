@@ -113,17 +113,17 @@
         throw new Exception("Parameter PluginParameters is null");
       }
 
-      if (pluginProperties.HostApplication == null)
+      if (pluginProperties?.HostApplication == null)
       {
         throw new Exception("Parameter HostApplication is null");
       }
 
-      if (pluginProperties.ApplicationBaseDir == null)
+      if (pluginProperties?.ApplicationBaseDir == null)
       {
         throw new Exception("Parameter ApplicationBaseDir is null");
       }
 
-      if (pluginProperties.PluginBaseDir == null)
+      if (pluginProperties?.PluginBaseDir == null)
       {
         throw new Exception("Parameter PluginBaseDir is null");
       }
@@ -164,7 +164,7 @@
         return;
       }
 
-      List<AccountRecord> newRecords = new List<AccountRecord>();
+      var newRecords = new List<AccountRecord>();
       List<string> newData;
       int dstPortInt;
       string[] splitter;
@@ -204,7 +204,7 @@
         data = splitter[6];
 
         // HTML GET authentication strings
-        HttpAccountStruct authData = new HttpAccountStruct();
+        var authData = new HttpAccountStruct();
 
         try
         {
@@ -213,10 +213,12 @@
         catch (Exception ex)
         {
           this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-          return;
+          continue;
         }
         
-        if (authData.CompanyURL.Length > 0 && authData.Username.Length > 0 && authData.Password.Length > 0)
+        if (authData.CompanyURL.Length > 0 && 
+            authData.Username.Length > 0 && 
+            authData.Password.Length > 0)
         {
           if (!int.TryParse(dstPort, out dstPortInt))
           {
@@ -296,13 +298,14 @@
     /// <returns></returns>
     private HttpAccountStruct FindAuthString(string inputHttpData)
     {
-      var retVal = new HttpAccountStruct();
-
-      retVal.Username = string.Empty;
-      retVal.Password = string.Empty;
-      retVal.Company = string.Empty;
-      retVal.CompanyURL = string.Empty;
-
+      var retVal = new HttpAccountStruct()
+                    {
+                      Username = string.Empty,
+                      Password = string.Empty,
+                      Company = string.Empty,
+                      CompanyURL = string.Empty
+                    };
+      
       if (this.accountPatterns?.Count > 0 == false)
       {
         return retVal;

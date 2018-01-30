@@ -5,6 +5,7 @@
   using System.Collections.Generic;
   using System.Linq;
 
+
   public partial class Plugin_HttpAccounts
   {
 
@@ -52,7 +53,6 @@
         this.dgv_Accounts.ResumeLayout();
       }
     }
-
 
 
     /// <summary>

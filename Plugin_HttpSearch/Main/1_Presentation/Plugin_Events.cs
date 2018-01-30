@@ -1,12 +1,13 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.HttpSearch.DataTypes;
+  using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
   using System.Windows.Forms;
 
 
   public partial class Plugin_HttpSearch
   {
+
     #region EVENTS
 
     /// <summary>
@@ -18,14 +19,13 @@
     {
       var method = this.cb_Method?.SelectedItem?.ToString() ?? string.Empty;
       var type = this.cb_Type?.SelectedItem?.ToString() ?? string.Empty;
-      var domain = (this.rb_Body?.Checked == true) ? "Body" : "Header";
       var hostRegex = this.tb_HostRegex?.Text?.Trim() ?? string.Empty;
       var pathRegex = this.tb_PathRegex?.Text?.Trim() ?? string.Empty;
       var dataRegex = this.tb_DataRegex?.Text?.Trim() ?? string.Empty;
 
       try
       {
-        this.AddRecord(new RecordHttpSearch(method, type, domain, hostRegex, pathRegex, dataRegex));
+        this.AddRecord(new RecordHttpSearch(method, type, hostRegex, pathRegex, dataRegex));
       }
       catch (Exception ex)
       {
@@ -33,7 +33,6 @@
         MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
-
 
 
     /// <summary>
@@ -120,23 +119,7 @@
       {
       }
     }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    //private void PluginDNSPoisonUC_Load(object sender, EventArgs e)
-    //{
-    //  if (this.tb_Address.Text.Length == 0)
-    //  {
-    //    this.tb_Address.Text = this.Config.HostApplication.CurrentIP;
-    //  }
-    //}
-
-
-
+    
 
     /// <summary>
     ///
@@ -154,14 +137,14 @@
 
       var method = this.cb_Method?.SelectedItem?.ToString() ?? string.Empty;
       var type = this.cb_Type?.SelectedItem?.ToString() ?? string.Empty;
-      var domain = (this.rb_Body?.Checked == true) ? "Body" : "Header";
       var hostRegex = this.tb_HostRegex?.Text?.Trim() ?? string.Empty;
       var pathRegex = this.tb_PathRegex?.Text?.Trim() ?? string.Empty;
       var dataRegex = this.tb_DataRegex?.Text?.Trim() ?? string.Empty;
-
+      var newRecord = new RecordHttpSearch(method, type, hostRegex, pathRegex, dataRegex);
+            
       try
       {
-        this.AddRecord(new RecordHttpSearch(method, type, domain, hostRegex, pathRegex, dataRegex));
+        this.AddRecord(newRecord);
       }
       catch (Exception ex)
       {
@@ -171,6 +154,15 @@
     }
 
 
+    private void T_GUIUpdate_Tick(object sender, EventArgs e)
+    {
+      if (dataBatch?.Count > 0 == false)
+      {
+        return;
+      }
+
+      this.ProcessEntries();
+    }
 
     #endregion
 

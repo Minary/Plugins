@@ -6,7 +6,6 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
-  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -86,11 +85,57 @@
       columnDataRegex.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_HttpSearch.Columns.Add(columnDataRegex);
 
+
+
+
+      DataGridViewTextBoxColumn columnFindingMethod = new DataGridViewTextBoxColumn();
+      columnFindingMethod.DataPropertyName = "Method";
+      columnFindingMethod.Name = "Method";
+      columnFindingMethod.HeaderText = "Method";
+      columnFindingMethod.ReadOnly = true;
+      columnFindingMethod.Width = 260;
+      this.dgv_HttpSearch.Columns.Add(columnFindingMethod);
+
+      DataGridViewTextBoxColumn columnFindingType = new DataGridViewTextBoxColumn();
+      columnFindingType.DataPropertyName = "Type";
+      columnFindingType.Name = "Type";
+      columnFindingType.HeaderText = "Type";
+      columnFindingType.ReadOnly = true;
+      columnFindingType.Width = 260;
+      this.dgv_HttpSearch.Columns.Add(columnFindingType);
+
+      DataGridViewTextBoxColumn columnFindingHost = new DataGridViewTextBoxColumn();
+      columnFindingHost.DataPropertyName = "Host";
+      columnFindingHost.Name = "Host";
+      columnFindingHost.HeaderText = "Host";
+      columnFindingHost.ReadOnly = true;
+      columnFindingHost.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_HttpSearch.Columns.Add(columnFindingHost);
+
+      DataGridViewTextBoxColumn columnFindingPath = new DataGridViewTextBoxColumn();
+      columnFindingPath.DataPropertyName = "Path";
+      columnFindingPath.Name = "Path";
+      columnFindingPath.HeaderText = "Path";
+      columnFindingPath.ReadOnly = true;
+      columnFindingPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_HttpSearch.Columns.Add(columnFindingPath);
+
+      DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();
+      columnFindingFinding.DataPropertyName = "Finding";
+      columnFindingFinding.Name = "Finding";
+      columnFindingFinding.HeaderText = "Finding";
+      columnFindingFinding.ReadOnly = true;
+      columnFindingFinding.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_HttpSearch.Columns.Add(columnFindingFinding);
+
       this.dgv_HttpSearch.DataSource = this.httpSearchRecords;
       this.dgv_HttpSearch.AutoGenerateColumns = false;
 
 
+
+
       this.dgv_Findings.DataSource = this.httpFindingRedcords;
+      this.dgv_HttpSearch.AutoGenerateColumns = false;
 
 
       this.cb_Method.SelectedIndex = 0;
@@ -126,6 +171,10 @@
 
       // Instantiate infrastructure layer
       this.infrastructureLayer = new HttpSearch.Infrastructure.HttpSearch(this);
+
+
+      this.infrastructureLayer.AddObserverRecordDef(this);
+      this.infrastructureLayer.AddObserverRecordFound(this);
     }
 
     #endregion
@@ -191,7 +240,7 @@
 
       try
       {
-        this.infrastructureLayer.ProcessEntries(dataBatch);
+        this.infrastructureLayer.ProcessEntries(newData);
       }
       catch (Exception ex)
       {

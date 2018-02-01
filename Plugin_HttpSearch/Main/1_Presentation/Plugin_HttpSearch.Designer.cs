@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_HttpSearch = new System.Windows.Forms.DataGridView();
       this.L_Method = new System.Windows.Forms.Label();
       this.tb_HostRegex = new System.Windows.Forms.TextBox();
@@ -67,14 +67,14 @@
       this.dgv_HttpSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HttpSearch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HttpSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HttpSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_HttpSearch.EnableHeadersVisualStyles = false;
       this.dgv_HttpSearch.Location = new System.Drawing.Point(11, 110);
@@ -253,7 +253,6 @@
       this.dgv_Findings.Name = "dgv_Findings";
       this.dgv_Findings.ReadOnly = true;
       this.dgv_Findings.RowHeadersVisible = false;
-      this.dgv_Findings.RowTemplate.Height = 28;
       this.dgv_Findings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Findings.Size = new System.Drawing.Size(1374, 172);

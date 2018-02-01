@@ -3,7 +3,6 @@
   using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
   using System.Collections.Generic;
-  using System.Linq;
   using System.Text.RegularExpressions;
 
 
@@ -102,35 +101,8 @@
       {
         throw new Exception("The data regular expression is invalid");
       }
-      
-      lock (this)
-      {
-        // Memorize DataGridView position and selection
-        firstVisibleRowTop = this.dgv_HttpSearch.FirstDisplayedScrollingRowIndex;
 
-        // Update DataGridView
-        this.dgv_HttpSearch.SuspendLayout();
-
-        try
-        {
-          this.httpSearchRecords.Insert(0, newRecord);
-
-          while (this.dgv_HttpSearch.Rows.Count > this.maxRowNum)
-          {
- //           this.dnsPoisonRecords.RemoveAt(this.dgv_HttpSearch.Rows.Count - 1);
-          }
-
-          if (firstVisibleRowTop >= 0)
-          {
-            this.dgv_HttpSearch.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
-          }
-        }
-        catch (Exception)
-        {
-        }
-
-        this.dgv_HttpSearch.ResumeLayout();
-      }
+      this.infrastructureLayer.AddRecord(newRecord);
     }
 
     #endregion

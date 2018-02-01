@@ -67,8 +67,10 @@
     <Compile Include="Main\DataTypes\Class\General.cs" />
     <Compile Include="Main\DataTypes\Class\RecordHttpSearch.cs" />
     <Compile Include="Main\DataTypes\Class\HttpFoundRecord.cs" />
-    <Compile Include="Main\DataTypes\Interface\IObserver.cs" />
-    <Compile Include="Main\DataTypes\Interface\Observable.cs" />
+    <Compile Include="Main\DataTypes\Interface\IObservableRecordDef.cs" />
+    <Compile Include="Main\DataTypes\Interface\IObserverRecordFound.cs" />
+    <Compile Include="Main\DataTypes\Interface\IObservableRecordFound.cs" />
+    <Compile Include="Main\DataTypes\Interface\IObserverRecordDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

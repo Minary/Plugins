@@ -11,13 +11,15 @@
   using System.Text.RegularExpressions;
 
 
-  public class HttpSearch : Ifc.IObservable
+  public class HttpSearch : Ifc.IObservableRecordFound, Ifc.IObservableRecordDef
   {
 
     #region MEMBERS
 
     private IPlugin plugin;
-    private List<Ifc.IObserver> observers = new List<Ifc.IObserver>();
+    private List<Ifc.IObserverRecordFound> observersRecFound = new List<Ifc.IObserverRecordFound>();
+    private List<Ifc.IObserverRecordDef> observersRecDef = new List<Ifc.IObserverRecordDef>();
+    private List<RecordHttpSearch> httpSearchRecords = new List<RecordHttpSearch>();
 
     #endregion
 
@@ -32,6 +34,13 @@
     public HttpSearch(IPlugin plugin)
     {
       this.plugin = plugin;
+    }
+
+
+    public void AddRecord(RecordHttpSearch newRecord)
+    {
+      this.httpSearchRecords.Add(newRecord);
+      this.NotifyRecordDef(this.httpSearchRecords);
     }
 
 
@@ -75,7 +84,7 @@
         // HTML GET authentication strings
         var searchData = this.FindHttpSearchString(data);
 
-        if (searchData.Finding.Length <= 0)
+        if (searchData.Finding?.Length > 0 == false)
         {
           continue;
         }
@@ -98,7 +107,7 @@
       // findings
       if (newRecords.Count > 0)
       {
-        this.Notify(newRecords);
+        this.NotifyRecordFound(newRecords);
       }
     }
 
@@ -200,9 +209,8 @@
       var username = string.Empty;
       var password = string.Empty;
 
-      //foreach (var tmpRecord in this .httpSearchRecords)
+      foreach (var tmpRecord in this.httpSearchRecords)
       {
-      /*
         if ((matchMethod = Regex.Match(inputHttpData, @"\s*(GET|POST|PUT|DELETE|HEAD)\s+")).Success == false)
         {
           continue;
@@ -218,11 +226,6 @@
           continue;
         }
 
-        //if ((matchCreds = Regex.Match(inputHttpData, tmpRecord.)).Success == false)
-        //{
-        //  continue;
-        //}
-
         reqMethod = matchMethod.Groups[1].Value.ToString();
         reqUri = matchURI.Groups[2].Value.ToString();
         reqHost = matchHost.Groups[1].Value.ToString();
@@ -234,14 +237,16 @@
             Regex.Match(reqUri, tmpRecord.PathRegex).Success &&
             Regex.Match(inputHttpData, tmpRecord.DataRegex).Success)
         {
-          //retVal.Company = tmpRecord.Company;
+          retVal.Method = reqMethod;
+          retVal.Host = reqHost;
+          retVal.Path = reqUri;
+          retVal.Finding = "FINDING";
           //retVal.CompanyURL = $"{tmpRecord.WebPage}   (http://{reqHost}{reqUri})";
           //retVal.Username = username;
           //retVal.Password = password;
 
           break;
         }
-        */
       }
 
       return retVal;
@@ -305,22 +310,39 @@
     #endregion
 
 
-    #region INTERFACE: IObservable
+    #region INTERFACE: IObservableRecordDef
 
-    public void AddObserver(Ifc.IObserver observer)
+
+    public void AddObserverRecordDef(Ifc.IObserverRecordDef observer)
     {
-      if (observer != null)
-      {
-        this.observers.Add(observer);
-      }
+      this.observersRecDef.Add(observer);
     }
 
 
-    public void Notify(List<HttpFoundRecord> findings)
+    public void NotifyRecordDef(List<RecordHttpSearch> newRecords)
     {
-      foreach (var observer in this.observers)
+      foreach (var observer in this.observersRecDef)
       {
-        observer.Update(findings);
+        observer.UpdateRecordDef(newRecords);
+      }
+    }
+
+    #endregion
+
+
+    #region INTERFACE: IObservableRecordFound
+
+    public void AddObserverRecordFound(Ifc.IObserverRecordFound observer)
+    {
+      this.observersRecFound.Add(observer);
+    }
+
+
+    public void NotifyRecordFound(List<HttpFoundRecord> newRecords)
+    {
+      foreach (var observer in this.observersRecFound)
+      {
+        observer.UpdateRecordsFound(newRecords);
       }
     }
 

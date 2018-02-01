@@ -4,9 +4,8 @@
   using System.Collections.Generic;
 
 
-  public interface IObservable
+  public interface IObserverRecordDef
   {
-    void AddObserver(IObserver observer);
-    void Notify(List<HttpFoundRecord> findings);
+    void UpdateRecordDef(List<RecordHttpSearch> newRecords);
   }
 }

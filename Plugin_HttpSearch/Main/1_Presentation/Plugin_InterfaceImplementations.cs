@@ -8,7 +8,7 @@
   using System.Collections.Generic;
 
 
-  public partial class Plugin_HttpSearch : Ifc.IObserver
+  public partial class Plugin_HttpSearch : Ifc.IObserverRecordFound, Ifc.IObserverRecordDef
   {
 
     #region INTERFACE IPlugin Member
@@ -231,9 +231,29 @@
     #endregion
 
 
-    #region INTERFACE IObserver
+    #region INTERFACE IObserverRecordDef
 
-    public void Update(List<HttpFoundRecord> newRecords)
+    public void UpdateRecordDef(List<RecordHttpSearch> newRecords)
+    {
+      if (newRecords == null)
+      {
+        return;
+      }
+
+      this.httpSearchRecords.Clear();
+
+      if (newRecords.Count > 0)
+      {
+        newRecords.ForEach(elem => this.httpSearchRecords.Add(elem));
+      }
+    }
+
+    #endregion
+
+
+    #region INTERFACE IObserverRecordFound
+
+    public void UpdateRecordsFound(List<HttpFoundRecord> newRecords)
     {
       if (newRecords == null)
       {

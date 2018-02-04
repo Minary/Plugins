@@ -7,6 +7,6 @@
   public interface IObservableRecordDef
   {
     void AddObserverRecordDef(IObserverRecordDef observer);
-    void NotifyRecordDef(List<RecordHttpSearch> newRecords);
+    void NotifyRecordDef();
   }
 }

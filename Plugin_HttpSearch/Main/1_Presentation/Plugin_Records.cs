@@ -3,7 +3,9 @@
   using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
   using System.Collections.Generic;
+  using System.ComponentModel;
   using System.Text.RegularExpressions;
+  using System.Windows.Forms;
 
 
   public partial class Plugin_HttpSearch
@@ -102,7 +104,7 @@
         throw new Exception("The data regular expression is invalid");
       }
 
-      this.infrastructureLayer.AddRecord(newRecord);
+      this.infrastructureLayer.AddSearchPatternRecord(newRecord);
     }
 
     #endregion
@@ -130,44 +132,48 @@
     /// <summary>
     ///
     /// </summary>
-    private delegate void DeleteSelectedRecordDelegate();
-    private void DeleteSelectedRecord()
+    private delegate void DeleteSelectedRecordDelegate<T>(DataGridView dgv, BindingList<T> dataList);
+    private void DeleteSelectedRecord<T>(DataGridView dgv, BindingList<T> dataList)
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new DeleteSelectedRecordDelegate(this.DeleteSelectedRecord), new object[] { });
+        this.BeginInvoke(new DeleteSelectedRecordDelegate<T>(this.DeleteSelectedRecord), new object[] { dgv, dataList });
         return;
       }
+
+      if (dgv.CurrentCell == null)
+      {
+        return;
+      }
+
+     
+
 
       var isLastLine = false;
       var firstVisibleRowTopRow = -1;
       var lastRowIndex = -1;
-      var selectedIndex = -1;
+      var selectedIndex = dgv.CurrentCell.RowIndex;
+
 
       lock (this)
       {
-
-        if (this.dgv_HttpSearch?.CurrentRow == this.dgv_HttpSearch.Rows[this.dgv_HttpSearch.Rows.Count - 1])
+        if (dgv?.CurrentRow == dgv.Rows[dgv.Rows.Count - 1])
         {
           isLastLine = true;
         }
 
-        firstVisibleRowTopRow = this.dgv_HttpSearch.FirstDisplayedScrollingRowIndex;
-        lastRowIndex = this.dgv_HttpSearch.Rows.Count - 1;
+        firstVisibleRowTopRow = dgv.FirstDisplayedScrollingRowIndex;
+        lastRowIndex = dgv.Rows.Count - 1;
 
-        if (this.dgv_HttpSearch.CurrentCell != null)
-        {
-          selectedIndex = this.dgv_HttpSearch.CurrentCell.RowIndex;
-        }
-
-        this.dgv_HttpSearch.SuspendLayout();
-        this.dgv_HttpSearch.BeginEdit(true);
-        this.dgv_HttpSearch.RefreshEdit();
+/*
+        dgv.SuspendLayout();
+        dgv.BeginEdit(true);
+        dgv.RefreshEdit();
 
         try
         {
-          var currentIndex = this.dgv_HttpSearch.CurrentCell.RowIndex;
-          this.httpSearchRecords.RemoveAt(currentIndex);
+          var currentIndex = dgv.CurrentCell.RowIndex;
+          dataList.RemoveAt(currentIndex);
         }
         catch (Exception ex)
         {
@@ -179,7 +185,7 @@
         {
           if (selectedIndex >= 0)
           {
-            this.dgv_HttpSearch.CurrentCell = this.dgv_HttpSearch.Rows[selectedIndex].Cells[0];
+            dgv.CurrentCell = dgv.Rows[selectedIndex].Cells[0];
           }
         }
         catch (Exception)
@@ -191,43 +197,15 @@
         {
           if (firstVisibleRowTopRow >= 0)
           {
-            this.dgv_HttpSearch.FirstDisplayedScrollingRowIndex = firstVisibleRowTopRow;
+            dgv.FirstDisplayedScrollingRowIndex = firstVisibleRowTopRow;
           }
         }
         catch (Exception)
         {
         }
 
-        this.dgv_HttpSearch.ResumeLayout();
-      }
-    }
-    
-
-    /// <summary>
-    ///
-    /// </summary>
-    private delegate void ClearRecordListDelegate();
-    private void ClearRecordList()
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new ClearRecordListDelegate(this.ClearRecordList), new object[] { });
-        return;
-      }
-
-      lock (this)
-      {
-        this.dgv_HttpSearch.SuspendLayout();
-
-        try
-        {
-          this.httpSearchRecords.Clear();
-        }
-        catch (Exception)
-        {
-        }
-
-        this.dgv_HttpSearch.ResumeLayout();
+        dgv.ResumeLayout();
+*/
       }
     }
 

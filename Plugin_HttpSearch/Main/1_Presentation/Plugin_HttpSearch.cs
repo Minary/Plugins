@@ -16,7 +16,7 @@
 
     private readonly int maxRowNum = 256;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
-    private BindingList<HttpFoundRecord> httpFindingRedcords = new BindingList<HttpFoundRecord>();
+    private BindingList<HttpFindingRecord> httpFindingRedcords = new BindingList<HttpFindingRecord>();
     private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;
     private List<string> dataBatch = new List<string>();
     private List<Tuple<string, string, string>> targetList;
@@ -85,6 +85,10 @@
       columnDataRegex.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_HttpSearch.Columns.Add(columnDataRegex);
 
+      this.dgv_HttpSearch.DataSource = this.httpSearchRecords;
+      this.dgv_HttpSearch.AutoGenerateColumns = false;
+
+
 
 
 
@@ -93,32 +97,32 @@
       columnFindingMethod.Name = "Method";
       columnFindingMethod.HeaderText = "Method";
       columnFindingMethod.ReadOnly = true;
-      columnFindingMethod.Width = 260;
-      this.dgv_HttpSearch.Columns.Add(columnFindingMethod);
+      columnFindingMethod.Width = 100;
+      this.dgv_Findings.Columns.Add(columnFindingMethod);
 
       DataGridViewTextBoxColumn columnFindingType = new DataGridViewTextBoxColumn();
       columnFindingType.DataPropertyName = "Type";
       columnFindingType.Name = "Type";
       columnFindingType.HeaderText = "Type";
       columnFindingType.ReadOnly = true;
-      columnFindingType.Width = 260;
-      this.dgv_HttpSearch.Columns.Add(columnFindingType);
+      columnFindingType.Width = 100;
+      this.dgv_Findings.Columns.Add(columnFindingType);
 
       DataGridViewTextBoxColumn columnFindingHost = new DataGridViewTextBoxColumn();
       columnFindingHost.DataPropertyName = "Host";
       columnFindingHost.Name = "Host";
       columnFindingHost.HeaderText = "Host";
       columnFindingHost.ReadOnly = true;
-      columnFindingHost.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_HttpSearch.Columns.Add(columnFindingHost);
+      columnFindingHost.Width = 200;
+      this.dgv_Findings.Columns.Add(columnFindingHost);
 
       DataGridViewTextBoxColumn columnFindingPath = new DataGridViewTextBoxColumn();
       columnFindingPath.DataPropertyName = "Path";
       columnFindingPath.Name = "Path";
       columnFindingPath.HeaderText = "Path";
       columnFindingPath.ReadOnly = true;
-      columnFindingPath.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_HttpSearch.Columns.Add(columnFindingPath);
+      columnFindingType.Width = 200;
+      this.dgv_Findings.Columns.Add(columnFindingPath);
 
       DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();
       columnFindingFinding.DataPropertyName = "Finding";
@@ -126,16 +130,10 @@
       columnFindingFinding.HeaderText = "Finding";
       columnFindingFinding.ReadOnly = true;
       columnFindingFinding.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_HttpSearch.Columns.Add(columnFindingFinding);
-
-      this.dgv_HttpSearch.DataSource = this.httpSearchRecords;
-      this.dgv_HttpSearch.AutoGenerateColumns = false;
-
-
-
+      this.dgv_Findings.Columns.Add(columnFindingFinding);
 
       this.dgv_Findings.DataSource = this.httpFindingRedcords;
-      this.dgv_HttpSearch.AutoGenerateColumns = false;
+      this.dgv_Findings.AutoGenerateColumns = false;
 
 
       this.cb_Method.SelectedIndex = 0;
@@ -172,7 +170,6 @@
       // Instantiate infrastructure layer
       this.infrastructureLayer = new HttpSearch.Infrastructure.HttpSearch(this);
 
-
       this.infrastructureLayer.AddObserverRecordDef(this);
       this.infrastructureLayer.AddObserverRecordFound(this);
     }
@@ -200,6 +197,8 @@
       this.tb_DataRegex.Enabled = false;
       this.tb_HostRegex.Enabled = false;
       this.tb_PathRegex.Enabled = false;
+      this.cms_HttpSearchFindings.Enabled = false;
+      this.cms_HttpSearchPatterns.Enabled = false;
 
       this.Refresh();
     }
@@ -223,6 +222,8 @@
       this.tb_DataRegex.Enabled = true;
       this.tb_HostRegex.Enabled = true;
       this.tb_PathRegex.Enabled = true;
+      this.cms_HttpSearchFindings.Enabled = true;
+      this.cms_HttpSearchPatterns.Enabled = true;
 
       this.Refresh();
     }

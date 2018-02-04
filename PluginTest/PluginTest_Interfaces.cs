@@ -27,6 +27,9 @@
     public string CurrentIP => "192.168.0.100";
 
 
+    public bool AttackStarted { get; set; }
+
+
     public List<Tuple<string, string, string>> ReachableSystemsList => new List<Tuple<string, string, string>>();
 
 
@@ -67,9 +70,11 @@
         return;
       }
 
+      IPlugin tmpPlugin = (IPlugin)callingPluginObj;
+
       var tmpNewPluginStatus = (int)status;
       tmpNewPluginStatus = (status >= 0) ? (int)status : (int)MinaryLib.Plugin.Status.NotRunning;
-      this.LogMessage($"Changed to state {tmpNewPluginStatus}/{status}");
+      this.LogMessage($"{tmpPlugin.Config.PluginName}: Changed to state {tmpNewPluginStatus}/{status}");
     }
 
     #endregion

@@ -8,7 +8,7 @@
   using System.Collections.Generic;
 
 
-  public partial class Plugin_HttpSearch : Ifc.IObserverRecordFound, Ifc.IObserverRecordDef
+  public partial class Plugin_HttpSearch : Ifc.IObserverRecordFinding, Ifc.IObserverRecordDef
   {
 
     #region INTERFACE IPlugin Member
@@ -57,20 +57,7 @@
         this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
         return;
       }
-
-      // Get active HTTP Account patterns
-      lock (this)
-      {
-      //  try
-      //  {
-      //    this.accountPatterns = this.manageHttpAccountsPresentationLayer.GetActiveAuthenticationPatterns();
-      //  }
-      //  catch (Exception ex)
-      //  {
-      //    this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      //  }
-      }
-
+      
       this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       this.SetGuiInactive();
       this.Refresh();
@@ -159,7 +146,9 @@
       }
 
       this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-      this.ClearRecordList();
+      this.infrastructureLayer.ClearFindingRecordList();
+      this.infrastructureLayer.ClearSearchPatternRecordList();
+
       this.SetGuiActive();
       this.Refresh();
       this.infrastructureLayer.OnReset();
@@ -241,7 +230,6 @@
       }
 
       this.httpSearchRecords.Clear();
-
       if (newRecords.Count > 0)
       {
         newRecords.ForEach(elem => this.httpSearchRecords.Add(elem));
@@ -253,7 +241,7 @@
 
     #region INTERFACE IObserverRecordFound
 
-    public void UpdateRecordsFound(List<HttpFoundRecord> newRecords)
+    public void UpdateRecordsFound(List<HttpFindingRecord> newRecords)
     {
       if (newRecords == null)
       {
@@ -261,7 +249,6 @@
       }
 
       this.httpFindingRedcords.Clear();
-
       if (newRecords.Count > 0)
       {
         newRecords.ForEach(elem => this.httpFindingRedcords.Add(elem));

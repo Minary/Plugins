@@ -75,7 +75,7 @@
       this.cb_PluginSelection.Name = "cb_PluginSelection";
       this.cb_PluginSelection.Size = new System.Drawing.Size(243, 28);
       this.cb_PluginSelection.TabIndex = 3;
-      this.cb_PluginSelection.SelectedIndexChanged += new System.EventHandler(this.cb_PluginSelection_SelectedIndexChanged);
+      this.cb_PluginSelection.SelectedIndexChanged += new System.EventHandler(this.CB_PluginSelection_SelectedIndexChanged);
       // 
       // bt_PluginPath
       // 
@@ -126,6 +126,7 @@
       // rb_HttpExample
       // 
       this.rb_HttpExample.AutoSize = true;
+      this.rb_HttpExample.Checked = true;
       this.rb_HttpExample.Location = new System.Drawing.Point(652, 45);
       this.rb_HttpExample.Name = "rb_HttpExample";
       this.rb_HttpExample.Size = new System.Drawing.Size(74, 24);
@@ -133,20 +134,18 @@
       this.rb_HttpExample.TabStop = true;
       this.rb_HttpExample.Text = "HTTP";
       this.rb_HttpExample.UseVisualStyleBackColor = true;
-      this.rb_HttpExample.Click += new System.EventHandler(this.rb_Example_Click);
+      this.rb_HttpExample.Click += new System.EventHandler(this.RB_Example_Click);
       // 
       // rb_DnsExample
       // 
       this.rb_DnsExample.AutoSize = true;
-      this.rb_DnsExample.Checked = true;
       this.rb_DnsExample.Location = new System.Drawing.Point(568, 45);
       this.rb_DnsExample.Name = "rb_DnsExample";
       this.rb_DnsExample.Size = new System.Drawing.Size(68, 24);
       this.rb_DnsExample.TabIndex = 7;
-      this.rb_DnsExample.TabStop = true;
       this.rb_DnsExample.Text = "DNS";
       this.rb_DnsExample.UseVisualStyleBackColor = true;
-      this.rb_DnsExample.Click += new System.EventHandler(this.rb_Example_Click);
+      this.rb_DnsExample.Click += new System.EventHandler(this.RB_Example_Click);
       // 
       // tb_NewData
       // 
@@ -157,7 +156,8 @@
       this.tb_NewData.Name = "tb_NewData";
       this.tb_NewData.Size = new System.Drawing.Size(769, 88);
       this.tb_NewData.TabIndex = 6;
-      this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||53||auth.facebook.com";
+      this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTT" +
+    "P/1.1....Host:www.facebook.com....";
       // 
       // button2
       // 
@@ -187,7 +187,7 @@
       this.bt_OnStopAttack.TabIndex = 3;
       this.bt_OnStopAttack.Text = "OnStopAttack";
       this.bt_OnStopAttack.UseVisualStyleBackColor = true;
-      this.bt_OnStopAttack.Click += new System.EventHandler(this.bt_StopAttack_Click);
+      this.bt_OnStopAttack.Click += new System.EventHandler(this.BT_StopAttack_Click);
       // 
       // bt_OnStartAttack
       // 
@@ -197,7 +197,7 @@
       this.bt_OnStartAttack.TabIndex = 2;
       this.bt_OnStartAttack.Text = "OnStartAttack";
       this.bt_OnStartAttack.UseVisualStyleBackColor = true;
-      this.bt_OnStartAttack.Click += new System.EventHandler(this.bt_StartAttack_Click);
+      this.bt_OnStartAttack.Click += new System.EventHandler(this.BT_StartAttack_Click);
       // 
       // bt_OnReset
       // 
@@ -207,7 +207,7 @@
       this.bt_OnReset.TabIndex = 1;
       this.bt_OnReset.Text = "OnReset";
       this.bt_OnReset.UseVisualStyleBackColor = true;
-      this.bt_OnReset.Click += new System.EventHandler(this.bt_Reset_Click);
+      this.bt_OnReset.Click += new System.EventHandler(this.BT_Reset_Click);
       // 
       // bt_OnInit
       // 
@@ -266,7 +266,7 @@
       this.tp_Oper.Padding = new System.Windows.Forms.Padding(3);
       this.tp_Oper.Size = new System.Drawing.Size(1372, 471);
       this.tp_Oper.TabIndex = 0;
-      this.tp_Oper.Text = "Plugin oper";
+      this.tp_Oper.Text = "Plugin operation";
       this.tp_Oper.UseVisualStyleBackColor = true;
       // 
       // PluginTest_MainForm

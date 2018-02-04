@@ -5,7 +5,7 @@
 
 
   [Serializable]
-  public class HttpFoundRecord : INotifyPropertyChanged
+  public class HttpFindingRecord : INotifyPropertyChanged
   {
 
     #region MEMBERS
@@ -104,12 +104,12 @@
 
     #region PUBLIC
 
-    public HttpFoundRecord()
+    public HttpFindingRecord()
     {
     }
 
 
-    public HttpFoundRecord(string method, string type, string host, string path, string finding)
+    public HttpFindingRecord(string method, string type, string host, string path, string finding)
     {
       this.method = method;
       this.host = host;

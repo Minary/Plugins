@@ -11,15 +11,16 @@
   using System.Text.RegularExpressions;
 
 
-  public class HttpSearch : Ifc.IObservableRecordFound, Ifc.IObservableRecordDef
+  public class HttpSearch : Ifc.IObservableRecordFinding, Ifc.IObservableRecordDef
   {
 
     #region MEMBERS
 
     private IPlugin plugin;
-    private List<Ifc.IObserverRecordFound> observersRecFound = new List<Ifc.IObserverRecordFound>();
+    private List<Ifc.IObserverRecordFinding> observersRecFound = new List<Ifc.IObserverRecordFinding>();
     private List<Ifc.IObserverRecordDef> observersRecDef = new List<Ifc.IObserverRecordDef>();
     private List<RecordHttpSearch> httpSearchRecords = new List<RecordHttpSearch>();
+    private List<HttpFindingRecord> httpFindingRecords = new List<HttpFindingRecord>();
 
     #endregion
 
@@ -37,10 +38,78 @@
     }
 
 
-    public void AddRecord(RecordHttpSearch newRecord)
+    public void AddSearchPatternRecord(RecordHttpSearch newRecord)
     {
       this.httpSearchRecords.Add(newRecord);
-      this.NotifyRecordDef(this.httpSearchRecords);
+      this.NotifyRecordDef();
+    }
+
+
+    public void DeleteSearchPatternRecordAt(int index)
+    {
+      this.httpSearchRecords.RemoveAt(index);
+      this.NotifyRecordDef();
+    }
+
+
+    public void ClearSearchPatternRecordList()
+    {
+      if (this.httpSearchRecords.Count <= 0)
+      {
+        return;
+      }
+
+      lock (this)
+      {
+        try
+        {
+          this.httpSearchRecords.Clear();
+        }
+        catch
+        {
+        }
+
+        this.NotifyRecordDef();
+      }
+    }
+
+
+
+
+
+    public void AddFindingRecord(RecordHttpSearch newRecord)
+    {
+      this.httpSearchRecords.Add(newRecord);
+      this.NotifyFindingRecords();
+    }
+    
+
+    public void DeleteFindingRecordAt(int index)
+    {
+      this.httpFindingRecords.RemoveAt(index);
+      this.NotifyFindingRecords();
+    }
+
+
+    public void ClearFindingRecordList()
+    {
+      if (this.httpFindingRecords.Count <= 0)
+      {
+        return;
+      }
+
+      lock (this)
+      {
+        try
+        {
+          this.httpFindingRecords.Clear();
+        }
+        catch
+        {
+        }
+
+        this.NotifyFindingRecords();
+      }
     }
 
 
@@ -49,7 +118,7 @@
     /// </summary>
     public void ProcessEntries(List<string> newData)
     {
-      var newRecords = new List<HttpFoundRecord>();
+      var newRecords = new List<HttpFindingRecord>();
       int dstPortInt;
       string[] splitter;
       string protocol;
@@ -107,7 +176,8 @@
       // findings
       if (newRecords.Count > 0)
       {
-        this.NotifyRecordFound(newRecords);
+        this.httpFindingRecords.AddRange(newRecords);
+        this.NotifyFindingRecords();
       }
     }
 
@@ -183,9 +253,9 @@
 
     #region PRIVATE
 
-    private HttpFoundRecord FindHttpSearchString(string inputHttpData)
+    private HttpFindingRecord FindHttpSearchString(string inputHttpData)
     {
-      var retVal = new HttpFoundRecord();
+      var retVal = new HttpFindingRecord();
       //var retVal = new HttpAccountStruct()
       //{
       //  Username = string.Empty,
@@ -319,11 +389,11 @@
     }
 
 
-    public void NotifyRecordDef(List<RecordHttpSearch> newRecords)
+    public void NotifyRecordDef()
     {
       foreach (var observer in this.observersRecDef)
       {
-        observer.UpdateRecordDef(newRecords);
+        observer.UpdateRecordDef(this.httpSearchRecords);
       }
     }
 
@@ -332,17 +402,17 @@
 
     #region INTERFACE: IObservableRecordFound
 
-    public void AddObserverRecordFound(Ifc.IObserverRecordFound observer)
+    public void AddObserverRecordFound(Ifc.IObserverRecordFinding observer)
     {
       this.observersRecFound.Add(observer);
     }
 
 
-    public void NotifyRecordFound(List<HttpFoundRecord> newRecords)
+    public void NotifyFindingRecords()
     {
       foreach (var observer in this.observersRecFound)
       {
-        observer.UpdateRecordsFound(newRecords);
+        observer.UpdateRecordsFound(this.httpFindingRecords);
       }
     }
 

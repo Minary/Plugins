@@ -4,8 +4,8 @@
   using System.Collections.Generic;
 
 
-  public interface IObserverRecordFound
+  public interface IObserverRecordFinding
   {
-    void UpdateRecordsFound(List<HttpFoundRecord> newRecords);
+    void UpdateRecordsFound(List<HttpFindingRecord> newRecords);
   }
 }

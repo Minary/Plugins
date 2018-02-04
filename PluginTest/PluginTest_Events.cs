@@ -11,7 +11,7 @@
 
     #region EVENTS
 
-    private void cb_PluginSelection_SelectedIndexChanged(object sender, EventArgs e)
+    private void CB_PluginSelection_SelectedIndexChanged(object sender, EventArgs e)
     {
       ComboBox comboBox = (ComboBox)sender;
       string selectedPlugin = (string)comboBox.SelectedItem;
@@ -54,7 +54,7 @@
     }
 
 
-    private void bt_Reset_Click(object sender, EventArgs e)
+    private void BT_Reset_Click(object sender, EventArgs e)
     {
       foreach (var key in this.pluginDict.Keys)
       {
@@ -63,8 +63,10 @@
     }
 
 
-    private void bt_StartAttack_Click(object sender, EventArgs e)
+    private void BT_StartAttack_Click(object sender, EventArgs e)
     {
+      this.AttackStarted = true;
+
       foreach (var key in this.pluginDict.Keys)
       {
         this.pluginDict[key].IPlugin.OnStartAttack();
@@ -72,8 +74,10 @@
     }
 
 
-    private void bt_StopAttack_Click(object sender, EventArgs e)
+    private void BT_StopAttack_Click(object sender, EventArgs e)
     {
+      this.AttackStarted = false;
+
       foreach (var key in this.pluginDict.Keys)
       {
         this.pluginDict[key].IPlugin.OnStopAttack();
@@ -130,7 +134,7 @@
     }
 
 
-    private void rb_Example_Click(object sender, EventArgs e)
+    private void RB_Example_Click(object sender, EventArgs e)
     {
       if (this.rbLastChoice != this.rb_DnsExample.Name &&
           this.rb_DnsExample.Checked)
@@ -146,6 +150,29 @@
       }
     }
 
+
+    protected override bool ProcessDialogKey(Keys keyData)
+    {
+      if (keyData == Keys.Escape)
+      {
+        this.Hide();
+        return false;
+      }
+      else if (keyData == (Keys.Control | Keys.C))
+      {
+        lock (this)
+        {
+          //this.
+          this.tb_Logs.Text = string.Empty;
+        }
+
+        return false;
+      }
+      else
+      {
+        return base.ProcessDialogKey(keyData);
+      }
+    }
     #endregion
   }
 }

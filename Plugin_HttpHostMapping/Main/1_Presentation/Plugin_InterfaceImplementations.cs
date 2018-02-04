@@ -54,7 +54,7 @@
         return;
       }
 
-      if (this.hostMappingRecords?.Count > 0)
+      if (this.hostMappingRecords?.Count > 0 == true)
       {
         try
         {
@@ -188,7 +188,7 @@
       this.hostMappingRecords.Clear();
 
       List<HostMappingRecord> tmpHostMappingRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpHostMappingRecords?.Count > 0)
+      if (tmpHostMappingRecords?.Count > 0 == true)
       {
         tmpHostMappingRecords.ToList().ForEach(elem => this.hostMappingRecords.Add(elem));
       }

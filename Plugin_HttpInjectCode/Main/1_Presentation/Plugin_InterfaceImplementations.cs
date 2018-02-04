@@ -176,7 +176,7 @@
       this.injectCodeRecords.Clear();
 
       List<InjectCodeRecord> tmpInjectPayloadRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (tmpInjectPayloadRecords?.Count > 0)
+      if (tmpInjectPayloadRecords?.Count > 0 == true)
       {
         tmpInjectPayloadRecords.ToList().ForEach(elem => this.injectCodeRecords.Add(elem));
       }

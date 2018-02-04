@@ -47,7 +47,7 @@
         return;
       }
 
-      if (this.injectFileRecords?.Count > 0)
+      if (this.injectFileRecords?.Count > 0 == true)
       {
         try
         {

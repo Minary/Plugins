@@ -187,7 +187,7 @@
       this.firewallRules.Clear();
 
       List<FirewallRuleRecord> poisoningRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (poisoningRecords?.Count > 0)
+      if (poisoningRecords?.Count > 0 == true)
       {
         poisoningRecords.ToList().ForEach(elem => this.firewallRules.Add(elem));
       }

@@ -116,7 +116,7 @@
         return;
       }
 
-      if (this.dnsPoisonRecords?.Count > 0)
+      if (this.dnsPoisonRecords?.Count > 0 == true)
       {
         string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
         string dnsPoisoningHosts = string.Empty;
@@ -211,7 +211,7 @@
       this.dnsPoisonRecords.Clear();
 
       List<RecordDnsPoison> poisoningRecords = this.infrastructureLayer.OnLoadTemplateData(templateData);
-      if (poisoningRecords?.Count > 0)
+      if (poisoningRecords?.Count > 0 == true)
       {
         poisoningRecords.ToList().ForEach(elem => this.dnsPoisonRecords.Add(elem));
       }

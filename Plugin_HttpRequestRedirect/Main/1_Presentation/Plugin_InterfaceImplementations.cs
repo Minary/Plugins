@@ -47,7 +47,7 @@
         return;
       }
 
-      if (this.requestRedirectRecords != null && this.requestRedirectRecords.Count > 0)
+      if (this.requestRedirectRecords?.Count > 0 == true)
       {
         try
         {

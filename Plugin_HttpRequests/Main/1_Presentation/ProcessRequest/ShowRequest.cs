@@ -2,6 +2,7 @@
 {
   using System.Windows.Forms;
 
+
   public partial class ShowRequest : Form
   {
 
@@ -19,7 +20,7 @@
       this.tb_Request.Text = content;
       this.tb_Request.Select(0, 0);
 
-      this.KeyUp += this.PluginHTTPAccountsUC_KeyUp;
+      this.KeyUp += this.ShowRequest_KeyUp;
     }
 
     #endregion
@@ -32,7 +33,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    protected void PluginHTTPAccountsUC_KeyUp(object sender, KeyEventArgs e)
+    protected void ShowRequest_KeyUp(object sender, KeyEventArgs e)
     {
       if (e.KeyCode == Keys.Escape)
       {

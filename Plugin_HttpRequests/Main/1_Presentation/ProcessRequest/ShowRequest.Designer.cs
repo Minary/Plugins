@@ -45,7 +45,7 @@
       this.tb_Request.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.tb_Request.Size = new System.Drawing.Size(484, 312);
       this.tb_Request.TabIndex = 0;
-      this.tb_Request.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PluginHTTPAccountsUC_KeyUp);
+      this.tb_Request.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ShowRequest_KeyUp);
       // 
       // ShowRequest
       // 
@@ -59,7 +59,7 @@
       this.MinimizeBox = false;
       this.Name = "ShowRequest";
       this.Text = "Show HTTP request details";
-      this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PluginHTTPAccountsUC_KeyUp);
+      this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ShowRequest_KeyUp);
       this.ResumeLayout(false);
       this.PerformLayout();
 

@@ -85,14 +85,14 @@
     {
       try
       {
-        BindingList<HttpRequests> tmpHosts = new BindingList<HttpRequests>();
+        var tmpHosts = new BindingList<HttpRequests>();
         int currentIndex = this.dgv_HttpRequests.CurrentCell.RowIndex;
 
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: currentIndex:{currentIndex}");
         string request = this.dgv_HttpRequests.Rows[currentIndex].Cells["Request"].Value.ToString();
 
         request = Regex.Replace(request, @"\.\.", "\r\n");
-        ShowRequest requestDetails = new ShowRequest(request);
+        var requestDetails = new ShowRequest(request);
         requestDetails.ShowDialog();
       }
       catch (Exception ex)

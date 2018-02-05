@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_DnsRequests", "Plugi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Firewall", "Plugin_Firewall\Plugin_Firewall.csproj", "{C8587602-0BE2-4D57-8A1D-1EBCDD5878B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpAccounts", "Plugin_HttpAccounts\Plugin_HttpAccounts.csproj", "{9D94A904-FE28-4616-A371-4D4110BDD3FC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpHostMapping", "Plugin_HttpHostMapping\Plugin_HttpHostMapping.csproj", "{B820AFCE-2B60-4A57-A290-BF7D8A457EDD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpInjectCode", "Plugin_HttpInjectCode\Plugin_HttpInjectCode.csproj", "{C85DD621-0742-4774-80DA-C1912BCFFA8E}"
@@ -22,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpRequestRedirect", "Plugin_HttpRequestRedirect\Plugin_HttpRequestRedirect.csproj", "{8AE47684-3371-4CB3-AA73-A7E5CC6570CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_HttpRequests", "Plugin_HttpRequests\Plugin_HttpRequests.csproj", "{72A87F34-68CE-430A-8047-970E5EEDDD81}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_Sessions", "Plugin_Sessions\Plugin_Sessions.csproj", "{6119FBE1-E922-48F5-AAD2-B2E6B577C227}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin_SslStrip", "Plugin_SslStrip\Plugin_SslStrip.csproj", "{3639690A-4D81-4085-BD25-27EBB4CB33A3}"
 EndProject
@@ -73,14 +69,6 @@ Global
 		{C8587602-0BE2-4D57-8A1D-1EBCDD5878B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8587602-0BE2-4D57-8A1D-1EBCDD5878B6}.Release|x86.ActiveCfg = Release|x86
 		{C8587602-0BE2-4D57-8A1D-1EBCDD5878B6}.Release|x86.Build.0 = Release|x86
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Debug|x86.Build.0 = Debug|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Release|x86.ActiveCfg = Release|Any CPU
-		{9D94A904-FE28-4616-A371-4D4110BDD3FC}.Release|x86.Build.0 = Release|Any CPU
 		{B820AFCE-2B60-4A57-A290-BF7D8A457EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B820AFCE-2B60-4A57-A290-BF7D8A457EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B820AFCE-2B60-4A57-A290-BF7D8A457EDD}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -121,14 +109,6 @@ Global
 		{72A87F34-68CE-430A-8047-970E5EEDDD81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72A87F34-68CE-430A-8047-970E5EEDDD81}.Release|x86.ActiveCfg = Release|Any CPU
 		{72A87F34-68CE-430A-8047-970E5EEDDD81}.Release|x86.Build.0 = Release|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Debug|x86.Build.0 = Debug|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Release|x86.ActiveCfg = Release|Any CPU
-		{6119FBE1-E922-48F5-AAD2-B2E6B577C227}.Release|x86.Build.0 = Release|Any CPU
 		{3639690A-4D81-4085-BD25-27EBB4CB33A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3639690A-4D81-4085-BD25-27EBB4CB33A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3639690A-4D81-4085-BD25-27EBB4CB33A3}.Debug|x86.ActiveCfg = Debug|Any CPU

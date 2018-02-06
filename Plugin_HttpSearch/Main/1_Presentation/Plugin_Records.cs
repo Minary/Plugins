@@ -3,9 +3,7 @@
   using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
   using System.Collections.Generic;
-  using System.ComponentModel;
   using System.Text.RegularExpressions;
-  using System.Windows.Forms;
 
 
   public partial class Plugin_HttpSearch
@@ -13,10 +11,6 @@
 
     #region GUI RECORDS METHODS
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="record"></param>
     private void AddRecords(List<RecordHttpSearch> records)
     {
       var firstVisibleRowTop = -1;
@@ -58,10 +52,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="newRecord"></param>
     private delegate void AddRecordDelegate(RecordHttpSearch newRecord);
     private void AddRecord(RecordHttpSearch newRecord)
     {
@@ -128,87 +118,6 @@
       return isValid;
     }
     
-
-    /// <summary>
-    ///
-    /// </summary>
-    private delegate void DeleteSelectedRecordDelegate<T>(DataGridView dgv, BindingList<T> dataList);
-    private void DeleteSelectedRecord<T>(DataGridView dgv, BindingList<T> dataList)
-    {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new DeleteSelectedRecordDelegate<T>(this.DeleteSelectedRecord), new object[] { dgv, dataList });
-        return;
-      }
-
-      if (dgv.CurrentCell == null)
-      {
-        return;
-      }
-
-     
-
-
-      var isLastLine = false;
-      var firstVisibleRowTopRow = -1;
-      var lastRowIndex = -1;
-      var selectedIndex = dgv.CurrentCell.RowIndex;
-
-
-      lock (this)
-      {
-        if (dgv?.CurrentRow == dgv.Rows[dgv.Rows.Count - 1])
-        {
-          isLastLine = true;
-        }
-
-        firstVisibleRowTopRow = dgv.FirstDisplayedScrollingRowIndex;
-        lastRowIndex = dgv.Rows.Count - 1;
-
-/*
-        dgv.SuspendLayout();
-        dgv.BeginEdit(true);
-        dgv.RefreshEdit();
-
-        try
-        {
-          var currentIndex = dgv.CurrentCell.RowIndex;
-          dataList.RemoveAt(currentIndex);
-        }
-        catch (Exception ex)
-        {
-          this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
-
-        // Selected cell/row
-        try
-        {
-          if (selectedIndex >= 0)
-          {
-            dgv.CurrentCell = dgv.Rows[selectedIndex].Cells[0];
-          }
-        }
-        catch (Exception)
-        {
-        }
-
-        // Reset position
-        try
-        {
-          if (firstVisibleRowTopRow >= 0)
-          {
-            dgv.FirstDisplayedScrollingRowIndex = firstVisibleRowTopRow;
-          }
-        }
-        catch (Exception)
-        {
-        }
-
-        dgv.ResumeLayout();
-*/
-      }
-    }
-
     #endregion
 
   }

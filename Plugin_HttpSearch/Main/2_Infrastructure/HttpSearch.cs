@@ -20,18 +20,13 @@
     private List<Ifc.IObserverRecordFinding> observersRecFound = new List<Ifc.IObserverRecordFinding>();
     private List<Ifc.IObserverRecordDef> observersRecDef = new List<Ifc.IObserverRecordDef>();
     private List<RecordHttpSearch> httpSearchRecords = new List<RecordHttpSearch>();
-    private List<HttpFindingRecord> httpFindingRecords = new List<HttpFindingRecord>();
+    private List<RecordHttpRequestData> httpFindingRecords = new List<RecordHttpRequestData>();
 
     #endregion
 
 
     #region PUBLIC
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HttpAccounts"/> class.
-    ///
-    /// </summary>
-    /// <param name="plugin"></param>
     public HttpSearch(IPlugin plugin)
     {
       this.plugin = plugin;
@@ -74,9 +69,6 @@
     }
 
 
-
-
-
     public void AddFindingRecord(RecordHttpSearch newRecord)
     {
       this.httpSearchRecords.Add(newRecord);
@@ -113,12 +105,9 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public void ProcessEntries(List<string> newData)
     {
-      var newRecords = new List<HttpFindingRecord>();
+      var newRecords = new List<RecordHttpRequestData>();
       int dstPortInt;
       string[] splitter;
       string protocol;
@@ -152,8 +141,7 @@
 
         // HTML GET authentication strings
         var searchData = this.FindHttpSearchString(data);
-
-        if (searchData.Finding?.Length > 0 == false)
+        if (searchData.Data?.Length > 0 == false)
         {
           continue;
         }
@@ -253,31 +241,17 @@
 
     #region PRIVATE
 
-    private HttpFindingRecord FindHttpSearchString(string inputHttpData)
+    private RecordHttpRequestData FindHttpSearchString(string inputHttpData)
     {
-      var retVal = new HttpFindingRecord();
-      //var retVal = new HttpAccountStruct()
-      //{
-      //  Username = string.Empty,
-      //  Password = string.Empty,
-      //  Company = string.Empty,
-      //  CompanyURL = string.Empty
-      //};
-
-      //if (this.accountPatterns?.Count > 0 == false)
-      //{
-      //  return retVal;
-      //}
-
-      Match matchHost;
-      Match matchMethod;
-      Match matchURI;
-//Match matchCreds;
+      var retVal = new RecordHttpRequestData();
       var reqHost = string.Empty;
       var reqMethod = string.Empty;
       var reqUri = string.Empty;
       var username = string.Empty;
       var password = string.Empty;
+      Match matchHost;
+      Match matchMethod;
+      Match matchURI;
 
       foreach (var tmpRecord in this.httpSearchRecords)
       {
@@ -299,8 +273,6 @@
         reqMethod = matchMethod.Groups[1].Value.ToString();
         reqUri = matchURI.Groups[2].Value.ToString();
         reqHost = matchHost.Groups[1].Value.ToString();
-        //username = matchCreds.Groups[1].Value.ToString();
-        //password = matchCreds.Groups[2].Value.ToString();
 
         if (tmpRecord.Method.Trim().ToLower() == reqMethod.Trim().ToLower() &&
             Regex.Match(reqHost, tmpRecord.HostRegex).Success &&
@@ -310,10 +282,7 @@
           retVal.Method = reqMethod;
           retVal.Host = reqHost;
           retVal.Path = reqUri;
-          retVal.Finding = "FINDING";
-          //retVal.CompanyURL = $"{tmpRecord.WebPage}   (http://{reqHost}{reqUri})";
-          //retVal.Username = username;
-          //retVal.Password = password;
+          retVal.Data = inputHttpData;
 
           break;
         }

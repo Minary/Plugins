@@ -5,7 +5,7 @@
 
 
   [Serializable]
-  public class HttpFindingRecord : INotifyPropertyChanged
+  public class RecordHttpRequestData : INotifyPropertyChanged
   {
 
     #region MEMBERS
@@ -14,7 +14,7 @@
     private string type = string.Empty;
     private string host = string.Empty;
     private string path = string.Empty;
-    private string finding = string.Empty;
+    private string data = string.Empty;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -84,18 +84,19 @@
       }
     }
 
+
     [Browsable(true)]
-    public string Finding
+    public string Data
     {
       get
       {
-        return this.finding;
+        return this.data;
       }
 
       set
       {
-        this.finding = value;
-        this.NotifyPropertyChanged("Finding");
+        this.data = value;
+        this.NotifyPropertyChanged("Data");
       }
     }
 
@@ -104,17 +105,8 @@
 
     #region PUBLIC
 
-    public HttpFindingRecord()
+    public RecordHttpRequestData()
     {
-    }
-
-
-    public HttpFindingRecord(string method, string type, string host, string path, string finding)
-    {
-      this.method = method;
-      this.host = host;
-      this.path = path;
-      this.finding = finding;
     }
 
     #endregion

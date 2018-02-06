@@ -6,6 +6,6 @@
 
   public interface IObserverRecordFinding
   {
-    void UpdateRecordsFound(List<HttpFindingRecord> newRecords);
+    void UpdateRecordsFound(List<RecordHttpRequestData> newRecords);
   }
 }

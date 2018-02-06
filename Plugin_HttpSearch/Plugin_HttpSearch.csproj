@@ -63,10 +63,16 @@
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Main\1_Presentation\ShowRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\1_Presentation\ShowRequest.Designer.cs">
+      <DependentUpon>ShowRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\2_Infrastructure\HttpSearch.cs" />
     <Compile Include="Main\DataTypes\Class\General.cs" />
     <Compile Include="Main\DataTypes\Class\RecordHttpSearch.cs" />
-    <Compile Include="Main\DataTypes\Class\HttpFindingRecord.cs" />
+    <Compile Include="Main\DataTypes\Class\RecordHttpRequestData.cs" />
     <Compile Include="Main\DataTypes\Interface\IObservableRecordDef.cs" />
     <Compile Include="Main\DataTypes\Interface\IObserverRecordFinding.cs" />
     <Compile Include="Main\DataTypes\Interface\IObservableRecordFinding.cs" />

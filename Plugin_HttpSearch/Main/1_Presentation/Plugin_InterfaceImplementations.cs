@@ -16,9 +16,6 @@
     public PluginProperties Config { get; set; }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnInitDelegate();
     public void OnInit()
     {
@@ -46,9 +43,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnStartAttackDelegate();
     public void OnStartAttack()
     {
@@ -64,9 +58,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnStopAttackDelegate();
     public void OnStopAttack()
     {
@@ -82,10 +73,6 @@
     }
 
 
-    /// <summary>
-    /// New input data arrived (Not relevant in this plugin)
-    /// </summary>
-    /// <param name="data"></param>
     public delegate void OnNewDataDelegate(string data);
     public void OnNewData(string data)
     {
@@ -107,9 +94,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnShutDownDelegate();
     public void OnShutDown()
     {
@@ -123,19 +107,12 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="targetList"></param>
     public void SetTargets(List<Tuple<string, string, string>> targetList)
     {
       this.targetList = targetList;
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnResetPluginDelegate();
     public void OnResetPlugin()
     {
@@ -241,7 +218,7 @@
 
     #region INTERFACE IObserverRecordFound
 
-    public void UpdateRecordsFound(List<HttpFindingRecord> newRecords)
+    public void UpdateRecordsFound(List<RecordHttpRequestData> newRecords)
     {
       if (newRecords == null)
       {

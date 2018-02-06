@@ -261,6 +261,7 @@
       this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Findings.Size = new System.Drawing.Size(1374, 172);
       this.dgv_Findings.TabIndex = 8;
+      this.dgv_Findings.DoubleClick += new System.EventHandler(this.DGV_HttpFindings_DoubleClick);
       this.dgv_Findings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseDown);
       this.dgv_Findings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseUp);
       // 

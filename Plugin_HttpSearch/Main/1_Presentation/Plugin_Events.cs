@@ -2,6 +2,7 @@
 {
   using Minary.Plugin.Main.HttpSearch.DataTypes.Class;
   using System;
+  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -196,6 +197,27 @@
     }
 
     #endregion
+
+
+    private void DGV_HttpFindings_DoubleClick(object sender, EventArgs e)
+    {
+      try
+      {
+        int currentIndex = this.dgv_Findings.CurrentCell.RowIndex;
+
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: currentIndex:{currentIndex}");
+
+        var requestData = this.dgv_Findings.Rows[currentIndex].Cells["Data"].Value.ToString();
+        requestData = Regex.Replace(requestData, @"\.\.", "\r\n");
+
+        var requestForm = new ShowRequest(requestData);
+        requestForm.ShowDialog();
+      }
+      catch (Exception ex)
+      {
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+    }
 
 
     private void T_GUIUpdate_Tick(object sender, EventArgs e)

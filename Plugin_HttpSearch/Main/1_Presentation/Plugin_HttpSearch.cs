@@ -16,7 +16,7 @@
 
     private readonly int maxRowNum = 256;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
-    private BindingList<HttpFindingRecord> httpFindingRedcords = new BindingList<HttpFindingRecord>();
+    private BindingList<RecordHttpRequestData> httpFindingRedcords = new BindingList<RecordHttpRequestData>();
     private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;
     private List<string> dataBatch = new List<string>();
     private List<Tuple<string, string, string>> targetList;
@@ -125,9 +125,9 @@
       this.dgv_Findings.Columns.Add(columnFindingPath);
 
       DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();
-      columnFindingFinding.DataPropertyName = "Finding";
-      columnFindingFinding.Name = "Finding";
-      columnFindingFinding.HeaderText = "Finding";
+      columnFindingFinding.DataPropertyName = "Data";
+      columnFindingFinding.Name = "Data";
+      columnFindingFinding.HeaderText = "Data";
       columnFindingFinding.ReadOnly = true;
       columnFindingFinding.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_Findings.Columns.Add(columnFindingFinding);
@@ -169,7 +169,6 @@
 
       // Instantiate infrastructure layer
       this.infrastructureLayer = new HttpSearch.Infrastructure.HttpSearch(this);
-
       this.infrastructureLayer.AddObserverRecordDef(this);
       this.infrastructureLayer.AddObserverRecordFound(this);
     }
@@ -231,17 +230,17 @@
 
     private void ProcessEntries()
     {
-      List<string> newData;
+      List<string> newDataPackets;
       
       lock (this)
       {
-        newData = new List<string>(dataBatch);
+        newDataPackets = new List<string>(dataBatch);
         dataBatch.Clear();
       }
 
       try
       {
-        this.infrastructureLayer.ProcessEntries(newData);
+        this.infrastructureLayer.ProcessEntries(newDataPackets);
       }
       catch (Exception ex)
       {

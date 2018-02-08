@@ -92,6 +92,8 @@
 
 
 
+      this.dgv_Findings.AutoGenerateColumns = false;
+
       DataGridViewTextBoxColumn columnFindingMethod = new DataGridViewTextBoxColumn();
       columnFindingMethod.DataPropertyName = "Method";
       columnFindingMethod.Name = "Method";
@@ -121,7 +123,7 @@
       columnFindingPath.Name = "Path";
       columnFindingPath.HeaderText = "Path";
       columnFindingPath.ReadOnly = true;
-      columnFindingType.Width = 200;
+      columnFindingType.Width = 400;
       this.dgv_Findings.Columns.Add(columnFindingPath);
 
       DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();
@@ -133,7 +135,6 @@
       this.dgv_Findings.Columns.Add(columnFindingFinding);
 
       this.dgv_Findings.DataSource = this.httpFindingRedcords;
-      this.dgv_Findings.AutoGenerateColumns = false;
 
 
       this.cb_Method.SelectedIndex = 0;
@@ -234,8 +235,8 @@
       
       lock (this)
       {
-        newDataPackets = new List<string>(dataBatch);
-        dataBatch.Clear();
+        newDataPackets = new List<string>(this.dataBatch);
+        this.dataBatch.Clear();
       }
 
       try

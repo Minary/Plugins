@@ -141,15 +141,7 @@
         return null;
       }
 
-      TemplatePluginData newTemplateData = new TemplatePluginData();
-
-      // Configuration items
-      newTemplateData.PluginConfigurationItems = this.infrastructureLayer.OnGetTemplateData(this.httpSearchRecords);
-
-      // Pattern items
-      //newTemplateData.PluginDataSearchPatternItems = this.manageHttpAccountsPresentationLayer.OnGetTemplateData();
-
-      return newTemplateData;
+      return this.infrastructureLayer.OnGetTemplateData(this.httpSearchRecords); 
     }
 
 

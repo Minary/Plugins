@@ -8,6 +8,7 @@
   using System.ComponentModel;
   using System.Collections.Generic;
   using System.IO;
+  using System.Runtime.Serialization.Formatters.Binary;
   using System.Text.RegularExpressions;
 
 
@@ -283,6 +284,7 @@
           retVal.Host = reqHost;
           retVal.Path = reqUri;
           retVal.Data = inputHttpData;
+          retVal.Type = tmpRecord.Type;
 
           break;
         }
@@ -327,17 +329,48 @@
 
     #region TEMPLATE
 
-    public byte[] OnGetTemplateData(BindingList<RecordHttpSearch> applicationPatternRecords)
+    public TemplatePluginData OnGetTemplateData(BindingList<RecordHttpSearch> httpSearchPatternRecords)
     {
-      return null;
+      var templateData = new TemplatePluginData();
+      var genericObjectList = new List<RecordHttpSearch>();
+
+      // Replace current configuration parameter with placeholder values
+      foreach (RecordHttpSearch tmpRecord in httpSearchPatternRecords)
+      {
+        genericObjectList.Add(new RecordHttpSearch(tmpRecord.Method, tmpRecord.Type, tmpRecord.HostRegex, tmpRecord.PathRegex, tmpRecord.DataRegex));
+      }
+
+      // Serialize the list
+      MemoryStream stream = new MemoryStream();
+      BinaryFormatter formatter = new BinaryFormatter();
+      formatter.Serialize(stream, genericObjectList);
+      stream.Seek(0, SeekOrigin.Begin);
+
+      // Assign plugin data to "Plugin Template DTO"
+      templateData.PluginConfigurationItems = stream.ToArray();
+
+      return templateData;
     }
 
 
     public List<RecordHttpSearch> OnLoadTemplateData(TemplatePluginData pluginData)
     {
-      var applicatoinPatternRecords = new List<RecordHttpSearch>();
+      if (pluginData == null)
+      {
+        return null;
+      }
 
-      return applicatoinPatternRecords;
+      var httpSearchRecords = new List<RecordHttpSearch>();
+
+      // Deserialize plugin data
+      MemoryStream stream = new MemoryStream();
+      stream.Write(pluginData.PluginConfigurationItems, 0, pluginData.PluginConfigurationItems.Length);
+      stream.Seek(0, SeekOrigin.Begin);
+
+      BinaryFormatter formatter = new BinaryFormatter();
+      httpSearchRecords = (List<RecordHttpSearch>)formatter.Deserialize(stream);
+      
+      return httpSearchRecords;
     }
 
 

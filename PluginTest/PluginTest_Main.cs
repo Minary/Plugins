@@ -2,6 +2,7 @@
 {
   using MinaryLib;
   using MinaryLib.Plugin;
+  using PluginTest.DataTypes;
   using System;
   using System.Collections.Generic;
   using System.IO;
@@ -27,7 +28,8 @@
     #region MEMBERS
 
     private IPlugin loadedPlugin;
-    private Dictionary<string, PluginRecord> pluginDict = new Dictionary<string, PluginRecord>();
+    private Dictionary<string, PluginRecord> pluginRecordDict = new Dictionary<string, PluginRecord>();
+    private Dictionary<string, Plugin> pluginsDict { get; set; } = new Dictionary<string, Plugin>();
     private string rbLastChoice;
 
     #endregion
@@ -135,7 +137,9 @@
         tmpPluginRec.IPlugin = (IPlugin)tmpPluginObj;
         tmpPluginRec.UserControl = (UserControl)tmpPluginObj;
         tmpPluginRec.TabPage = new TabPage(tmpPluginRec.IPlugin.Config.PluginName);
-        this.pluginDict.Add(tmpPluginRec.IPlugin.Config.PluginName, tmpPluginRec);
+
+        this.pluginRecordDict.Add(tmpPluginRec.IPlugin.Config.PluginName, tmpPluginRec);
+this.pluginsDict.Add(tmpPluginRec.IPlugin.Config.PluginName, (Plugin)tmpPluginRec.IPlugin);
 
         // Initialize new tab page ...
         tmpPluginRec.TabPage.Controls.Add(tmpPluginRec.IPlugin.PluginControl);

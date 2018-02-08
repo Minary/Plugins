@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypes\AttackConfig.cs" />
+    <Compile Include="DataTypes\Plugin.cs" />
+    <Compile Include="DataTypes\MinaryTemplateData.cs" />
+    <Compile Include="DataTypes\TemplateConfig.cs" />
     <Compile Include="PluginTest_Main.cs">
       <SubType>Form</SubType>
     </Compile>

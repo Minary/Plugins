@@ -1,8 +1,10 @@
 ﻿namespace PluginTest
 {
+  using PluginTest.DataTypes;
   using MinaryLib.DataTypes;
   using System;
   using System.IO;
+  using System.Runtime.Serialization.Formatters.Binary;
   using System.Windows.Forms;
 
 
@@ -19,46 +21,21 @@
       this.LoadModule(this.comboboxPluginMap[selectedPlugin]);
     }
 
-
-    private void BT_PluginPath_Click(object sender, EventArgs e)
-    {
-      this.ofd_PluginPath.Filter = "Minary files (*.dll)|*.dll";
-
-      // Determine initial directory
-      if (Directory.Exists(@"C:\Users\run\code\tmp1\Build\Plugins\") == true)
-      {
-        this.ofd_PluginPath.InitialDirectory = @"C:\Users\run\code\tmp1\Build\Plugins\";
-      }
-      else
-      {
-        this.ofd_PluginPath.InitialDirectory = Path.Combine(Directory.GetCurrentDirectory(), @"..\..\");
-      }
-
-      // Open the "open file dialog"
-      if (this.ofd_PluginPath.ShowDialog() != DialogResult.OK)
-      {
-        return;
-      }
-
-      var templateFileName = this.ofd_PluginPath.FileName;
-      this.LoadModule(templateFileName);
-    }
-
-
+    
     private void BT_OnInit_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnInit();
+        this.pluginRecordDict[key].IPlugin.OnInit();
       }
     }
 
 
     private void BT_Reset_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnResetPlugin();
+        this.pluginRecordDict[key].IPlugin.OnResetPlugin();
       }
     }
 
@@ -67,9 +44,9 @@
     {
       this.AttackStarted = true;
 
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnStartAttack();
+        this.pluginRecordDict[key].IPlugin.OnStartAttack();
       }
     }
 
@@ -78,58 +55,80 @@
     {
       this.AttackStarted = false;
 
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnStopAttack();
+        this.pluginRecordDict[key].IPlugin.OnStopAttack();
       }
     }
 
 
     private void BT_OnShutdown_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnShutDown();
+        this.pluginRecordDict[key].IPlugin.OnShutDown();
       }
     }
 
 
     private void BT_OnNewData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnNewData(this.tb_NewData.Text);
+        this.pluginRecordDict[key].IPlugin.OnNewData(this.tb_NewData.Text);
       }
     }
 
 
     private void BT_OnLoadTemplateData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      this.ofd_LoadTemplate.Filter = "Minary template files (*.mry)|*.mry";
+      
+      // Open the "open file dialog"
+      if (this.ofd_PluginPath.ShowDialog() != DialogResult.OK)
       {
-        TemplatePluginData templData = new TemplatePluginData()
-        {
-        };
+        return;
+      }
 
-        this.pluginDict[key].IPlugin.OnLoadTemplateData(templData);
+      var templateFileName = this.ofd_PluginPath.FileName;
+      MinaryTemplateData templData = this.LoadAttackTemplate(this.ofd_PluginPath.FileName);
+
+      //TemplatePluginData
+      
+      foreach (var key in this.pluginsDict.Keys)
+      {
+TemplatePluginData tmpPluginData = this.pluginRecordDict[key].IPlugin.OnGetTemplateData();        
+        this.pluginRecordDict[key].IPlugin.OnLoadTemplateData(tmpPluginData);
       }
     }
 
 
+    private MinaryTemplateData LoadAttackTemplate(string templateFile)
+    {
+      MinaryTemplateData deserializedObject;
+      var myBinaryFormat = new BinaryFormatter();
+
+      Stream myStream = File.OpenRead(templateFile);
+      deserializedObject = (MinaryTemplateData)myBinaryFormat.Deserialize(myStream);
+      myStream.Close();
+
+      return deserializedObject;
+    }
+
     private void BT_OnGetTemplateData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        TemplatePluginData templData = this.pluginDict[key].IPlugin.OnGetTemplateData();
+        TemplatePluginData templData = this.pluginRecordDict[key].IPlugin.OnGetTemplateData();
       }
     }
 
 
     private void BT_OnUnloadTemplateData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginDict.Keys)
+      foreach (var key in this.pluginRecordDict.Keys)
       {
-        this.pluginDict[key].IPlugin.OnUnloadTemplateData();
+        this.pluginRecordDict[key].IPlugin.OnUnloadTemplateData();
       }
     }
 

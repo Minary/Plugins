@@ -30,15 +30,15 @@
     {
       this.gb_PluginTest = new System.Windows.Forms.GroupBox();
       this.cb_PluginSelection = new System.Windows.Forms.ComboBox();
-      this.bt_PluginPath = new System.Windows.Forms.Button();
       this.tb_PluginPath = new System.Windows.Forms.TextBox();
       this.l_Plugin = new System.Windows.Forms.Label();
       this.ofd_PluginPath = new System.Windows.Forms.OpenFileDialog();
       this.gb_Events = new System.Windows.Forms.GroupBox();
+      this.bt_OnLoadTemplate = new System.Windows.Forms.Button();
       this.rb_HttpExample = new System.Windows.Forms.RadioButton();
       this.rb_DnsExample = new System.Windows.Forms.RadioButton();
       this.tb_NewData = new System.Windows.Forms.TextBox();
-      this.button2 = new System.Windows.Forms.Button();
+      this.bt_OnShutdown = new System.Windows.Forms.Button();
       this.bt_OnNewData = new System.Windows.Forms.Button();
       this.bt_OnStopAttack = new System.Windows.Forms.Button();
       this.bt_OnStartAttack = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
       this.tb_Logs = new System.Windows.Forms.TextBox();
       this.TC_PluginTester = new System.Windows.Forms.TabControl();
       this.tp_Oper = new System.Windows.Forms.TabPage();
+      this.ofd_LoadTemplate = new System.Windows.Forms.OpenFileDialog();
       this.gb_PluginTest.SuspendLayout();
       this.gb_Events.SuspendLayout();
       this.gb_Logs.SuspendLayout();
@@ -58,7 +59,6 @@
       // gb_PluginTest
       // 
       this.gb_PluginTest.Controls.Add(this.cb_PluginSelection);
-      this.gb_PluginTest.Controls.Add(this.bt_PluginPath);
       this.gb_PluginTest.Controls.Add(this.tb_PluginPath);
       this.gb_PluginTest.Controls.Add(this.l_Plugin);
       this.gb_PluginTest.Location = new System.Drawing.Point(13, 13);
@@ -76,16 +76,6 @@
       this.cb_PluginSelection.Size = new System.Drawing.Size(243, 28);
       this.cb_PluginSelection.TabIndex = 3;
       this.cb_PluginSelection.SelectedIndexChanged += new System.EventHandler(this.CB_PluginSelection_SelectedIndexChanged);
-      // 
-      // bt_PluginPath
-      // 
-      this.bt_PluginPath.Location = new System.Drawing.Point(874, 29);
-      this.bt_PluginPath.Name = "bt_PluginPath";
-      this.bt_PluginPath.Size = new System.Drawing.Size(21, 23);
-      this.bt_PluginPath.TabIndex = 2;
-      this.bt_PluginPath.Text = "+";
-      this.bt_PluginPath.UseVisualStyleBackColor = true;
-      this.bt_PluginPath.Click += new System.EventHandler(this.BT_PluginPath_Click);
       // 
       // tb_PluginPath
       // 
@@ -107,10 +97,11 @@
       // 
       this.gb_Events.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_Events.Controls.Add(this.bt_OnLoadTemplate);
       this.gb_Events.Controls.Add(this.rb_HttpExample);
       this.gb_Events.Controls.Add(this.rb_DnsExample);
       this.gb_Events.Controls.Add(this.tb_NewData);
-      this.gb_Events.Controls.Add(this.button2);
+      this.gb_Events.Controls.Add(this.bt_OnShutdown);
       this.gb_Events.Controls.Add(this.bt_OnNewData);
       this.gb_Events.Controls.Add(this.bt_OnStopAttack);
       this.gb_Events.Controls.Add(this.bt_OnStartAttack);
@@ -123,6 +114,16 @@
       this.gb_Events.TabStop = false;
       this.gb_Events.Text = "Events";
       // 
+      // bt_OnLoadTemplate
+      // 
+      this.bt_OnLoadTemplate.Location = new System.Drawing.Point(279, 37);
+      this.bt_OnLoadTemplate.Name = "bt_OnLoadTemplate";
+      this.bt_OnLoadTemplate.Size = new System.Drawing.Size(123, 41);
+      this.bt_OnLoadTemplate.TabIndex = 6;
+      this.bt_OnLoadTemplate.Text = "OnLoadTempl.";
+      this.bt_OnLoadTemplate.UseVisualStyleBackColor = true;
+      this.bt_OnLoadTemplate.Click += new System.EventHandler(this.BT_OnLoadTemplateData_Click);
+      // 
       // rb_HttpExample
       // 
       this.rb_HttpExample.AutoSize = true;
@@ -130,7 +131,7 @@
       this.rb_HttpExample.Location = new System.Drawing.Point(652, 45);
       this.rb_HttpExample.Name = "rb_HttpExample";
       this.rb_HttpExample.Size = new System.Drawing.Size(74, 24);
-      this.rb_HttpExample.TabIndex = 8;
+      this.rb_HttpExample.TabIndex = 0;
       this.rb_HttpExample.TabStop = true;
       this.rb_HttpExample.Text = "HTTP";
       this.rb_HttpExample.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@
       this.rb_DnsExample.Location = new System.Drawing.Point(568, 45);
       this.rb_DnsExample.Name = "rb_DnsExample";
       this.rb_DnsExample.Size = new System.Drawing.Size(68, 24);
-      this.rb_DnsExample.TabIndex = 7;
+      this.rb_DnsExample.TabIndex = 0;
       this.rb_DnsExample.Text = "DNS";
       this.rb_DnsExample.UseVisualStyleBackColor = true;
       this.rb_DnsExample.Click += new System.EventHandler(this.RB_Example_Click);
@@ -155,26 +156,26 @@
       this.tb_NewData.Multiline = true;
       this.tb_NewData.Name = "tb_NewData";
       this.tb_NewData.Size = new System.Drawing.Size(769, 88);
-      this.tb_NewData.TabIndex = 6;
+      this.tb_NewData.TabIndex = 8;
       this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTT" +
     "P/1.1....Host:www.facebook.com....";
       // 
-      // button2
+      // bt_OnShutdown
       // 
-      this.button2.Location = new System.Drawing.Point(16, 131);
-      this.button2.Name = "button2";
-      this.button2.Size = new System.Drawing.Size(118, 41);
-      this.button2.TabIndex = 5;
-      this.button2.Text = "OnShutdown";
-      this.button2.UseVisualStyleBackColor = true;
-      this.button2.Click += new System.EventHandler(this.BT_OnShutdown_Click);
+      this.bt_OnShutdown.Location = new System.Drawing.Point(16, 131);
+      this.bt_OnShutdown.Name = "bt_OnShutdown";
+      this.bt_OnShutdown.Size = new System.Drawing.Size(118, 41);
+      this.bt_OnShutdown.TabIndex = 3;
+      this.bt_OnShutdown.Text = "OnShutdown";
+      this.bt_OnShutdown.UseVisualStyleBackColor = true;
+      this.bt_OnShutdown.Click += new System.EventHandler(this.BT_OnShutdown_Click);
       // 
       // bt_OnNewData
       // 
       this.bt_OnNewData.Location = new System.Drawing.Point(420, 37);
       this.bt_OnNewData.Name = "bt_OnNewData";
       this.bt_OnNewData.Size = new System.Drawing.Size(123, 41);
-      this.bt_OnNewData.TabIndex = 4;
+      this.bt_OnNewData.TabIndex = 7;
       this.bt_OnNewData.Text = "OnNewData";
       this.bt_OnNewData.UseVisualStyleBackColor = true;
       this.bt_OnNewData.Click += new System.EventHandler(this.BT_OnNewData_Click);
@@ -184,7 +185,7 @@
       this.bt_OnStopAttack.Location = new System.Drawing.Point(140, 84);
       this.bt_OnStopAttack.Name = "bt_OnStopAttack";
       this.bt_OnStopAttack.Size = new System.Drawing.Size(123, 41);
-      this.bt_OnStopAttack.TabIndex = 3;
+      this.bt_OnStopAttack.TabIndex = 5;
       this.bt_OnStopAttack.Text = "OnStopAttack";
       this.bt_OnStopAttack.UseVisualStyleBackColor = true;
       this.bt_OnStopAttack.Click += new System.EventHandler(this.BT_StopAttack_Click);
@@ -194,7 +195,7 @@
       this.bt_OnStartAttack.Location = new System.Drawing.Point(140, 37);
       this.bt_OnStartAttack.Name = "bt_OnStartAttack";
       this.bt_OnStartAttack.Size = new System.Drawing.Size(123, 41);
-      this.bt_OnStartAttack.TabIndex = 2;
+      this.bt_OnStartAttack.TabIndex = 4;
       this.bt_OnStartAttack.Text = "OnStartAttack";
       this.bt_OnStartAttack.UseVisualStyleBackColor = true;
       this.bt_OnStartAttack.Click += new System.EventHandler(this.BT_StartAttack_Click);
@@ -204,7 +205,7 @@
       this.bt_OnReset.Location = new System.Drawing.Point(16, 84);
       this.bt_OnReset.Name = "bt_OnReset";
       this.bt_OnReset.Size = new System.Drawing.Size(118, 41);
-      this.bt_OnReset.TabIndex = 1;
+      this.bt_OnReset.TabIndex = 2;
       this.bt_OnReset.Text = "OnReset";
       this.bt_OnReset.UseVisualStyleBackColor = true;
       this.bt_OnReset.Click += new System.EventHandler(this.BT_Reset_Click);
@@ -214,7 +215,7 @@
       this.bt_OnInit.Location = new System.Drawing.Point(16, 37);
       this.bt_OnInit.Name = "bt_OnInit";
       this.bt_OnInit.Size = new System.Drawing.Size(118, 41);
-      this.bt_OnInit.TabIndex = 0;
+      this.bt_OnInit.TabIndex = 1;
       this.bt_OnInit.Text = "OnInit";
       this.bt_OnInit.UseVisualStyleBackColor = true;
       this.bt_OnInit.Click += new System.EventHandler(this.BT_OnInit_Click);
@@ -269,6 +270,10 @@
       this.tp_Oper.Text = "Plugin operation";
       this.tp_Oper.UseVisualStyleBackColor = true;
       // 
+      // ofd_LoadTemplate
+      // 
+      this.ofd_LoadTemplate.FileName = "ofdTemplateName";
+      // 
       // PluginTest_MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -293,7 +298,6 @@
     #endregion
 
     private System.Windows.Forms.GroupBox gb_PluginTest;
-    private System.Windows.Forms.Button bt_PluginPath;
     private System.Windows.Forms.TextBox tb_PluginPath;
     private System.Windows.Forms.Label l_Plugin;
     private System.Windows.Forms.OpenFileDialog ofd_PluginPath;
@@ -305,13 +309,15 @@
     private System.Windows.Forms.Button bt_OnStartAttack;
     private System.Windows.Forms.Button bt_OnStopAttack;
     private System.Windows.Forms.Button bt_OnNewData;
-    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button bt_OnShutdown;
     private System.Windows.Forms.TextBox tb_NewData;
     private System.Windows.Forms.TabControl TC_PluginTester;
     private System.Windows.Forms.TabPage tp_Oper;
     private System.Windows.Forms.RadioButton rb_HttpExample;
     private System.Windows.Forms.RadioButton rb_DnsExample;
     private System.Windows.Forms.ComboBox cb_PluginSelection;
+    private System.Windows.Forms.Button bt_OnLoadTemplate;
+    private System.Windows.Forms.OpenFileDialog ofd_LoadTemplate;
   }
 }
 

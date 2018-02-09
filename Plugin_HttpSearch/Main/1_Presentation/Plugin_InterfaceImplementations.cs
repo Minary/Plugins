@@ -88,7 +88,6 @@
             data?.Length > 0)
         {
           this.dataBatch.Add(data);
-          this.Refresh();
         }
       }
     }

@@ -79,8 +79,8 @@
       this.dgv_DnsRequests.TabIndex = 0;
       this.dgv_DnsRequests.TabStop = false;
       this.dgv_DnsRequests.VirtualMode = true;
-      this.dgv_DnsRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_DNSRequests_CellContentClick);
-      this.dgv_DnsRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_DNSRequests_MouseDown);
+      this.dgv_DnsRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_DnsRequests_CellContentClick);
+      this.dgv_DnsRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_DnsRequests_MouseDown);
       this.dgv_DnsRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_DNSRequests_MouseUp);
       // 
       // bt_Set
@@ -149,7 +149,7 @@
       // t_GuiUpdate
       // 
       this.t_GuiUpdate.Interval = 500;
-      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GuiUpdate_Tick);
       // 
       // Plugin_DnsRequests
       // 

@@ -119,7 +119,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_DNSRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void DGV_DnsRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
       try
       {
@@ -139,7 +139,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_DNSRequests_MouseDown(object sender, MouseEventArgs e)
+    private void DGV_DnsRequests_MouseDown(object sender, MouseEventArgs e)
     {
       try
       {
@@ -165,7 +165,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void T_GUIUpdate_Tick(object sender, EventArgs e)
+    private void T_GuiUpdate_Tick(object sender, EventArgs e)
     {
       this.ProcessEntries();
     }

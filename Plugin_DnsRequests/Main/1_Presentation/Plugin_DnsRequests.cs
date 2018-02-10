@@ -204,11 +204,6 @@ this.pluginProperties?.HostApplication?.LogMessage($"{this.Config.PluginName}: N
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="inputData"></param>
-    /// <returns></returns>
     private bool CompareToFilter(string inputData)
     {
       var retVal = false;
@@ -222,9 +217,6 @@ this.pluginProperties?.HostApplication?.LogMessage($"{this.Config.PluginName}: N
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     private void UseFilter()
     {
       if (this.dgv_DnsRequests.Rows.Count <= 0)

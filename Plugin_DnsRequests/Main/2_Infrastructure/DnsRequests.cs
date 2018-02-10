@@ -1,6 +1,5 @@
 ﻿namespace Minary.Plugin.Main.DnsRequest.Infrastructure
 {
-  using Minary.Plugin.Main.DnsRequest.DataTypes;
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;

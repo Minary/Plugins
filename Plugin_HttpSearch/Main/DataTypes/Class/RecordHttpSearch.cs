@@ -11,7 +11,6 @@
     #region MEMBERS
 
     private string method = string.Empty;
-    private string type = string.Empty;
     private string dataRegex = string.Empty;
     private string hostRegex = string.Empty;
     private string pathRegex = string.Empty;
@@ -37,22 +36,6 @@
       {
         this.method = value;
         this.NotifyPropertyChanged("Method");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string Type
-    {
-      get
-      {
-        return this.type;
-      }
-
-      set
-      {
-        this.type = value;
-        this.NotifyPropertyChanged("Type");
       }
     }
 
@@ -114,10 +97,9 @@
     }
 
 
-    public RecordHttpSearch(string method, string type, string hostRegex, string pathRegex, string dataRegex)
+    public RecordHttpSearch(string method, string hostRegex, string pathRegex, string dataRegex)
     {
       this.method = method;
-      this.type = type;
       this.dataRegex = dataRegex;
       this.hostRegex = hostRegex;
       this.pathRegex = pathRegex;

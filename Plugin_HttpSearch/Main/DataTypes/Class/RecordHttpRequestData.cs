@@ -39,20 +39,6 @@
       }
     }
 
-    [Browsable(true)]
-    public string Type
-    {
-      get
-      {
-        return this.type;
-      }
-
-      set
-      {
-        this.type = value;
-        this.NotifyPropertyChanged("Type");
-      }
-    }
 
     [Browsable(true)]
     public string Host

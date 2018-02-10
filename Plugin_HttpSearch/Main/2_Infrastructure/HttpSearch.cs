@@ -21,7 +21,6 @@
     private List<Ifc.IObserverRecordFinding> observersRecFound = new List<Ifc.IObserverRecordFinding>();
     private List<Ifc.IObserverRecordDef> observersRecDef = new List<Ifc.IObserverRecordDef>();
     private List<RecordHttpSearch> httpSearchRecords = new List<RecordHttpSearch>();
-    private List<RecordHttpRequestData> httpFindingRecords = new List<RecordHttpRequestData>();
 
     #endregion
 
@@ -66,42 +65,6 @@
         }
 
         this.NotifyRecordDef();
-      }
-    }
-
-
-    public void AddFindingRecord(RecordHttpSearch newRecord)
-    {
-      this.httpSearchRecords.Add(newRecord);
-      this.NotifyFindingRecords();
-    }
-    
-
-    public void DeleteFindingRecordAt(int index)
-    {
-      this.httpFindingRecords.RemoveAt(index);
-      this.NotifyFindingRecords();
-    }
-
-
-    public void ClearFindingRecordList()
-    {
-      if (this.httpFindingRecords.Count <= 0)
-      {
-        return;
-      }
-
-      lock (this)
-      {
-        try
-        {
-          this.httpFindingRecords.Clear();
-        }
-        catch
-        {
-        }
-
-        this.NotifyFindingRecords();
       }
     }
 
@@ -165,8 +128,7 @@
       // findings
       if (newRecords.Count > 0)
       {
-        this.httpFindingRecords.AddRange(newRecords);
-        this.NotifyFindingRecords();
+        this.NotifyFindingRecords(newRecords);
       }
     }
 
@@ -284,7 +246,6 @@
           retVal.Host = reqHost;
           retVal.Path = reqUri;
           retVal.Data = inputHttpData;
-          retVal.Type = tmpRecord.Type;
 
           break;
         }
@@ -337,7 +298,7 @@
       // Replace current configuration parameter with placeholder values
       foreach (RecordHttpSearch tmpRecord in httpSearchPatternRecords)
       {
-        genericObjectList.Add(new RecordHttpSearch(tmpRecord.Method, tmpRecord.Type, tmpRecord.HostRegex, tmpRecord.PathRegex, tmpRecord.DataRegex));
+        genericObjectList.Add(new RecordHttpSearch(tmpRecord.Method, tmpRecord.HostRegex, tmpRecord.PathRegex, tmpRecord.DataRegex));
       }
 
       // Serialize the list
@@ -410,11 +371,11 @@
     }
 
 
-    public void NotifyFindingRecords()
+    public void NotifyFindingRecords(List<RecordHttpRequestData> newRecords)
     {
       foreach (var observer in this.observersRecFound)
       {
-        observer.UpdateRecordsFound(this.httpFindingRecords);
+        observer.UpdateRecordsFound(newRecords);
       }
     }
 

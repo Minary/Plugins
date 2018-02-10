@@ -122,8 +122,14 @@
       }
 
       this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-      this.infrastructureLayer.ClearFindingRecordList();
       this.infrastructureLayer.ClearSearchPatternRecordList();
+      try
+      {
+        this.httpFindingRedcords.Clear();
+      }
+      catch
+      {
+      }
 
       this.SetGuiActive();
       this.Refresh();
@@ -211,15 +217,59 @@
 
     public void UpdateRecordsFound(List<RecordHttpRequestData> newRecords)
     {
-      if (newRecords == null)
+      if (newRecords == null ||
+          newRecords?.Count <= 0)
       {
         return;
       }
 
-      this.httpFindingRedcords.Clear();
-      if (newRecords.Count > 0)
+      var firstVisibleRowTop = -1;
+      lock (this)
       {
-        newRecords.ForEach(elem => this.httpFindingRedcords.Add(elem));
+        // Memorize DataGridView position and selection        
+        firstVisibleRowTop = this.dgv_Findings.FirstDisplayedScrollingRowIndex;
+
+        foreach (var tmpReq in newRecords)
+        {
+          this.httpFindingRedcords.Insert(0, tmpReq);
+        }
+
+        try
+        {
+          while (this.dgv_Findings.Rows.Count > this.maxRowNum)
+          {
+            this.httpFindingRedcords.RemoveAt(this.dgv_Findings.Rows.Count - 1);
+          }
+
+          if (firstVisibleRowTop >= 0)
+          {
+            this.dgv_Findings.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
+          }
+        }
+        catch (Exception)
+        {
+        }
+
+        // Set max upper record limit and remove "old" records
+        // Select latest record after update
+        //newRecords.ForEach(elem => this.httpFindingRedcords.Add(elem));
+
+        // Adjust and resume DataGridView
+        //try
+        //{
+        //  while (this.dgv_Findings.Rows.Count > this.maxRowNum)
+        //  {
+        //    this.httpFindingRedcords.RemoveAt(this.dgv_Findings.Rows.Count - 1);
+        //  }
+
+        //  if (firstVisibleRowTop >= 0)
+        //  {
+        //    this.dgv_Findings.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
+        //  }
+        //}
+        //catch (Exception)
+        //{
+        //}
       }
     }
 

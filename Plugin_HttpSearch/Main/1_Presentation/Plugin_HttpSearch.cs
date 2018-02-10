@@ -14,7 +14,8 @@
 
     #region MEMBERS
 
-    private readonly int maxRowNum = 256;
+//private readonly int maxRowNum = 256;
+    private readonly int maxRowNum = 10;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
     private BindingList<RecordHttpRequestData> httpFindingRedcords = new BindingList<RecordHttpRequestData>();
     private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;
@@ -37,14 +38,6 @@
     {
       InitializeComponent();
 
-      DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
-      columnType.DataPropertyName = "Type";
-      columnType.Name = "Type";
-      columnType.HeaderText = "Type";
-      columnType.ReadOnly = true;
-      columnType.Width = 100;
-      this.dgv_HttpSearch.Columns.Add(columnType);
-
       DataGridViewTextBoxColumn columnMethod = new DataGridViewTextBoxColumn();
       columnMethod.DataPropertyName = "Method";
       columnMethod.Name = "Method";
@@ -52,14 +45,6 @@
       columnMethod.ReadOnly = true;
       columnMethod.Width = 100;
       this.dgv_HttpSearch.Columns.Add(columnMethod);
-
-      DataGridViewTextBoxColumn columnDomain = new DataGridViewTextBoxColumn();
-      columnDomain.DataPropertyName = "Domain";
-      columnDomain.Name = "Domain";
-      columnDomain.HeaderText = "Domain";
-      columnDomain.ReadOnly = true;
-      columnDomain.Width = 100;
-      this.dgv_HttpSearch.Columns.Add(columnDomain);
 
       DataGridViewTextBoxColumn columnHostRegex = new DataGridViewTextBoxColumn();
       columnHostRegex.DataPropertyName = "HostRegex";
@@ -102,20 +87,12 @@
       columnFindingMethod.Width = 100;
       this.dgv_Findings.Columns.Add(columnFindingMethod);
 
-      DataGridViewTextBoxColumn columnFindingType = new DataGridViewTextBoxColumn();
-      columnFindingType.DataPropertyName = "Type";
-      columnFindingType.Name = "Type";
-      columnFindingType.HeaderText = "Type";
-      columnFindingType.ReadOnly = true;
-      columnFindingType.Width = 100;
-      this.dgv_Findings.Columns.Add(columnFindingType);
-
       DataGridViewTextBoxColumn columnFindingHost = new DataGridViewTextBoxColumn();
       columnFindingHost.DataPropertyName = "Host";
       columnFindingHost.Name = "Host";
       columnFindingHost.HeaderText = "Host";
       columnFindingHost.ReadOnly = true;
-      columnFindingHost.Width = 200;
+      columnFindingHost.Width = 300;
       this.dgv_Findings.Columns.Add(columnFindingHost);
 
       DataGridViewTextBoxColumn columnFindingPath = new DataGridViewTextBoxColumn();
@@ -123,7 +100,7 @@
       columnFindingPath.Name = "Path";
       columnFindingPath.HeaderText = "Path";
       columnFindingPath.ReadOnly = true;
-      columnFindingType.Width = 400;
+      columnFindingPath.Width = 400;
       this.dgv_Findings.Columns.Add(columnFindingPath);
 
       DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();
@@ -138,7 +115,6 @@
 
 
       this.cb_Method.SelectedIndex = 0;
-      this.cb_Type.SelectedIndex = 0;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -193,7 +169,6 @@
       
       this.bt_Add.Enabled = false;
       this.cb_Method.Enabled = false;
-      this.cb_Type.Enabled = false;
       this.tb_DataRegex.Enabled = false;
       this.tb_HostRegex.Enabled = false;
       this.tb_PathRegex.Enabled = false;
@@ -218,7 +193,6 @@
 
       this.bt_Add.Enabled = true;
       this.cb_Method.Enabled = true;
-      this.cb_Type.Enabled = true;
       this.tb_DataRegex.Enabled = true;
       this.tb_HostRegex.Enabled = true;
       this.tb_PathRegex.Enabled = true;

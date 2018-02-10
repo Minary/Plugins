@@ -40,8 +40,6 @@
       this.bt_Add = new System.Windows.Forms.Button();
       this.L_DataRegex = new System.Windows.Forms.Label();
       this.tb_DataRegex = new System.Windows.Forms.TextBox();
-      this.cb_Type = new System.Windows.Forms.ComboBox();
-      this.L_Type = new System.Windows.Forms.Label();
       this.cms_HttpSearchPatterns = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -151,7 +149,7 @@
             "PUT",
             "DELETE",
             "HEAD"});
-      this.cb_Method.Location = new System.Drawing.Point(84, 33);
+      this.cb_Method.Location = new System.Drawing.Point(87, 33);
       this.cb_Method.Name = "cb_Method";
       this.cb_Method.Size = new System.Drawing.Size(98, 28);
       this.cb_Method.TabIndex = 1;
@@ -184,30 +182,6 @@
       this.tb_DataRegex.Size = new System.Drawing.Size(719, 26);
       this.tb_DataRegex.TabIndex = 5;
       this.tb_DataRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddSearchPatternRecord);
-      // 
-      // cb_Type
-      // 
-      this.cb_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.cb_Type.FormattingEnabled = true;
-      this.cb_Type.Items.AddRange(new object[] {
-            "Account",
-            "Cookie",
-            "Session",
-            "Other"});
-      this.cb_Type.Location = new System.Drawing.Point(84, 73);
-      this.cb_Type.Name = "cb_Type";
-      this.cb_Type.Size = new System.Drawing.Size(98, 28);
-      this.cb_Type.TabIndex = 4;
-      // 
-      // L_Type
-      // 
-      this.L_Type.AutoSize = true;
-      this.L_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Type.Location = new System.Drawing.Point(35, 80);
-      this.L_Type.Name = "L_Type";
-      this.L_Type.Size = new System.Drawing.Size(47, 20);
-      this.L_Type.TabIndex = 8;
-      this.L_Type.Text = "Type";
       // 
       // cms_HttpSearchPatterns
       // 
@@ -259,7 +233,7 @@
       this.dgv_Findings.RowHeadersVisible = false;
       this.dgv_Findings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Findings.Size = new System.Drawing.Size(1374, 172);
+      this.dgv_Findings.Size = new System.Drawing.Size(1374, 189);
       this.dgv_Findings.TabIndex = 8;
       this.dgv_Findings.DoubleClick += new System.EventHandler(this.DGV_HttpFindings_DoubleClick);
       this.dgv_Findings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseDown);
@@ -273,7 +247,7 @@
       this.gb_findings.Controls.Add(this.dgv_Findings);
       this.gb_findings.Location = new System.Drawing.Point(26, 332);
       this.gb_findings.Name = "gb_findings";
-      this.gb_findings.Size = new System.Drawing.Size(1400, 218);
+      this.gb_findings.Size = new System.Drawing.Size(1400, 235);
       this.gb_findings.TabIndex = 0;
       this.gb_findings.TabStop = false;
       this.gb_findings.Text = "Findings";
@@ -285,9 +259,7 @@
       this.gb_Patterns.Controls.Add(this.L_Method);
       this.gb_Patterns.Controls.Add(this.dgv_HttpSearch);
       this.gb_Patterns.Controls.Add(this.tb_HostRegex);
-      this.gb_Patterns.Controls.Add(this.cb_Type);
       this.gb_Patterns.Controls.Add(this.L_Host);
-      this.gb_Patterns.Controls.Add(this.L_Type);
       this.gb_Patterns.Controls.Add(this.L_Path);
       this.gb_Patterns.Controls.Add(this.tb_DataRegex);
       this.gb_Patterns.Controls.Add(this.tb_PathRegex);
@@ -331,10 +303,9 @@
       this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.gb_Patterns);
       this.Controls.Add(this.gb_findings);
-      this.DoubleBuffered = true;
       this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpSearch";
-      this.Size = new System.Drawing.Size(1494, 566);
+      this.Size = new System.Drawing.Size(1494, 583);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).EndInit();
       this.cms_HttpSearchPatterns.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).EndInit();
@@ -358,8 +329,6 @@
     private System.Windows.Forms.Button bt_Add;
     private System.Windows.Forms.Label L_DataRegex;
     private System.Windows.Forms.TextBox tb_DataRegex;
-    private System.Windows.Forms.ComboBox cb_Type;
-    private System.Windows.Forms.Label L_Type;
     private System.Windows.Forms.ContextMenuStrip cms_HttpSearchPatterns;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;

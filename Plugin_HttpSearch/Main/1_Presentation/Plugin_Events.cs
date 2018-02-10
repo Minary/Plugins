@@ -16,14 +16,13 @@
     private void BT_AddSearchPattern_Click(object sender, EventArgs e)
     {
       var method = this.cb_Method?.SelectedItem?.ToString() ?? string.Empty;
-      var type = this.cb_Type?.SelectedItem?.ToString() ?? string.Empty;
       var hostRegex = this.tb_HostRegex?.Text?.Trim() ?? string.Empty;
       var pathRegex = this.tb_PathRegex?.Text?.Trim() ?? string.Empty;
       var dataRegex = this.tb_DataRegex?.Text?.Trim() ?? string.Empty;
 
       try
       {
-        this.AddRecord(new RecordHttpSearch(method, type, hostRegex, pathRegex, dataRegex));
+        this.AddRecord(new RecordHttpSearch(method, hostRegex, pathRegex, dataRegex));
       }
       catch (Exception ex)
       {
@@ -109,11 +108,10 @@
       e.SuppressKeyPress = true;
 
       var method = this.cb_Method?.SelectedItem?.ToString() ?? string.Empty;
-      var type = this.cb_Type?.SelectedItem?.ToString() ?? string.Empty;
       var hostRegex = this.tb_HostRegex?.Text?.Trim() ?? string.Empty;
       var pathRegex = this.tb_PathRegex?.Text?.Trim() ?? string.Empty;
       var dataRegex = this.tb_DataRegex?.Text?.Trim() ?? string.Empty;
-      var newRecord = new RecordHttpSearch(method, type, hostRegex, pathRegex, dataRegex);
+      var newRecord = new RecordHttpSearch(method,  hostRegex, pathRegex, dataRegex);
             
       try
       {
@@ -135,7 +133,7 @@
     {
       try
       {
-        this.infrastructureLayer.ClearFindingRecordList();
+        this.httpFindingRedcords.Clear();
       }
       catch
       {
@@ -147,7 +145,7 @@
     {
       try
       {
-        this.infrastructureLayer.DeleteFindingRecordAt(dgv_Findings.CurrentCell.RowIndex);
+        this.httpFindingRedcords.RemoveAt(dgv_Findings.CurrentCell.RowIndex);
       }
       catch
       {
@@ -222,7 +220,7 @@
 
     private void T_GUIUpdate_Tick(object sender, EventArgs e)
     {
-      if (dataBatch?.Count > 0 == false)
+      if (this.dataBatch?.Count > 0 == false)
       {
         return;
       }

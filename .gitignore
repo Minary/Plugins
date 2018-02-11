@@ -12,7 +12,6 @@
 **/*.txt
 **/*.exe
 **/*.xml
-**/*.manifest
 **/*.res
 **/*.buildstate
 **/*.unsuccessfulbuild

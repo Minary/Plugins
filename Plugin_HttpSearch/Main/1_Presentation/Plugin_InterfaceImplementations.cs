@@ -249,27 +249,6 @@
         catch (Exception)
         {
         }
-
-        // Set max upper record limit and remove "old" records
-        // Select latest record after update
-        //newRecords.ForEach(elem => this.httpFindingRedcords.Add(elem));
-
-        // Adjust and resume DataGridView
-        //try
-        //{
-        //  while (this.dgv_Findings.Rows.Count > this.maxRowNum)
-        //  {
-        //    this.httpFindingRedcords.RemoveAt(this.dgv_Findings.Rows.Count - 1);
-        //  }
-
-        //  if (firstVisibleRowTop >= 0)
-        //  {
-        //    this.dgv_Findings.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
-        //  }
-        //}
-        //catch (Exception)
-        //{
-        //}
       }
     }
 

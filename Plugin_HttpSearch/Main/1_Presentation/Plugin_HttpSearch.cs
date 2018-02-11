@@ -14,8 +14,7 @@
 
     #region MEMBERS
 
-//private readonly int maxRowNum = 256;
-    private readonly int maxRowNum = 10;
+    private readonly int maxRowNum = 256;
     private BindingList<RecordHttpSearch> httpSearchRecords = new BindingList<RecordHttpSearch>();
     private BindingList<RecordHttpRequestData> httpFindingRedcords = new BindingList<RecordHttpRequestData>();
     private HttpSearch.Infrastructure.HttpSearch infrastructureLayer;

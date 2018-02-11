@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_HttpSearch = new System.Windows.Forms.DataGridView();
       this.L_Method = new System.Windows.Forms.Label();
       this.tb_HostRegex = new System.Windows.Forms.TextBox();
@@ -45,17 +45,17 @@
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
       this.dgv_Findings = new System.Windows.Forms.DataGridView();
-      this.gb_findings = new System.Windows.Forms.GroupBox();
       this.gb_Patterns = new System.Windows.Forms.GroupBox();
       this.cms_HttpSearchFindings = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+      this.gb_findings = new System.Windows.Forms.GroupBox();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).BeginInit();
       this.cms_HttpSearchPatterns.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).BeginInit();
-      this.gb_findings.SuspendLayout();
       this.gb_Patterns.SuspendLayout();
       this.cms_HttpSearchFindings.SuspendLayout();
+      this.gb_findings.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_HttpSearch
@@ -69,14 +69,14 @@
       this.dgv_HttpSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HttpSearch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HttpSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_HttpSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_HttpSearch.EnableHeadersVisualStyles = false;
       this.dgv_HttpSearch.Location = new System.Drawing.Point(11, 110);
@@ -217,8 +217,7 @@
       this.dgv_Findings.AllowUserToDeleteRows = false;
       this.dgv_Findings.AllowUserToResizeColumns = false;
       this.dgv_Findings.AllowUserToResizeRows = false;
-      this.dgv_Findings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+      this.dgv_Findings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dgv_Findings.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_Findings.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -233,24 +232,11 @@
       this.dgv_Findings.RowHeadersVisible = false;
       this.dgv_Findings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Findings.Size = new System.Drawing.Size(1374, 189);
+      this.dgv_Findings.Size = new System.Drawing.Size(1374, 215);
       this.dgv_Findings.TabIndex = 8;
       this.dgv_Findings.DoubleClick += new System.EventHandler(this.DGV_HttpFindings_DoubleClick);
       this.dgv_Findings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseDown);
       this.dgv_Findings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseUp);
-      // 
-      // gb_findings
-      // 
-      this.gb_findings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.gb_findings.Controls.Add(this.dgv_Findings);
-      this.gb_findings.Location = new System.Drawing.Point(26, 332);
-      this.gb_findings.Name = "gb_findings";
-      this.gb_findings.Size = new System.Drawing.Size(1400, 235);
-      this.gb_findings.TabIndex = 0;
-      this.gb_findings.TabStop = false;
-      this.gb_findings.Text = "Findings";
       // 
       // gb_Patterns
       // 
@@ -296,6 +282,18 @@
       this.clearListToolStripMenuItem1.Text = "Clear list";
       this.clearListToolStripMenuItem1.Click += new System.EventHandler(this.TSMI_FindingsClear_Click);
       // 
+      // gb_findings
+      // 
+      this.gb_findings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_findings.Controls.Add(this.dgv_Findings);
+      this.gb_findings.Location = new System.Drawing.Point(26, 332);
+      this.gb_findings.Name = "gb_findings";
+      this.gb_findings.Size = new System.Drawing.Size(1400, 248);
+      this.gb_findings.TabIndex = 0;
+      this.gb_findings.TabStop = false;
+      this.gb_findings.Text = "Findings";
+      // 
       // Plugin_HttpSearch
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -309,10 +307,10 @@
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).EndInit();
       this.cms_HttpSearchPatterns.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).EndInit();
-      this.gb_findings.ResumeLayout(false);
       this.gb_Patterns.ResumeLayout(false);
       this.gb_Patterns.PerformLayout();
       this.cms_HttpSearchFindings.ResumeLayout(false);
+      this.gb_findings.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -334,10 +332,10 @@
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
     private System.Windows.Forms.Timer t_GuiUpdate;
     private System.Windows.Forms.DataGridView dgv_Findings;
-    private System.Windows.Forms.GroupBox gb_findings;
     private System.Windows.Forms.GroupBox gb_Patterns;
     private System.Windows.Forms.ContextMenuStrip cms_HttpSearchFindings;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem1;
+    private System.Windows.Forms.GroupBox gb_findings;
   }
 }

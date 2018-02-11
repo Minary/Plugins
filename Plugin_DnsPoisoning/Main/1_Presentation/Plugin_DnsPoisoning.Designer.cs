@@ -149,6 +149,7 @@
       this.dgv_Spoofing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.dgv_Spoofing.MultiSelect = false;
       this.dgv_Spoofing.Name = "dgv_Spoofing";
+      this.dgv_Spoofing.ReadOnly = true;
       this.dgv_Spoofing.RowHeadersVisible = false;
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle2;

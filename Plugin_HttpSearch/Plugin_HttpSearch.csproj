@@ -84,6 +84,9 @@
     <EmbeddedResource Include="Main\1_Presentation\Plugin_HttpSearch.resx">
       <DependentUpon>Plugin_HttpSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\1_Presentation\ShowRequest.resx">
+      <DependentUpon>ShowRequest.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

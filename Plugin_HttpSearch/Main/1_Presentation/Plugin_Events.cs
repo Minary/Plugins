@@ -208,7 +208,7 @@
         var requestData = this.dgv_Findings.Rows[currentIndex].Cells["Data"].Value.ToString();
         requestData = Regex.Replace(requestData, @"\.\.", "\r\n");
 
-        var requestForm = new ShowRequest(requestData);
+        var requestForm = new ShowRequest(requestData, this.tb_HostRegex.Text, this.tb_PathRegex.Text, this.tb_DataRegex.Text);
         requestForm.ShowDialog();
       }
       catch (Exception ex)

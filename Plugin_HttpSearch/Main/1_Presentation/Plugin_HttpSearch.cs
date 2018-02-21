@@ -99,7 +99,7 @@
       columnFindingPath.Name = "Path";
       columnFindingPath.HeaderText = "Path";
       columnFindingPath.ReadOnly = true;
-      columnFindingPath.Width = 400;
+      columnFindingPath.Width = 600;
       this.dgv_Findings.Columns.Add(columnFindingPath);
 
       DataGridViewTextBoxColumn columnFindingFinding = new DataGridViewTextBoxColumn();

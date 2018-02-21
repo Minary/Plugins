@@ -1,10 +1,8 @@
 ﻿namespace PluginTest
 {
-  using PluginTest.DataTypes;
   using MinaryLib.DataTypes;
   using System;
   using System.IO;
-  using System.Runtime.Serialization.Formatters.Binary;
   using System.Windows.Forms;
 
 
@@ -24,18 +22,18 @@
     
     private void BT_OnInit_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnInit();
+        this.pluginDict[key].IPlugin.OnInit();
       }
     }
 
 
     private void BT_Reset_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnResetPlugin();
+        this.pluginDict[key].IPlugin.OnResetPlugin();
       }
     }
 
@@ -44,9 +42,9 @@
     {
       this.AttackStarted = true;
 
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnStartAttack();
+        this.pluginDict[key].IPlugin.OnStartAttack();
       }
     }
 
@@ -55,27 +53,27 @@
     {
       this.AttackStarted = false;
 
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnStopAttack();
+        this.pluginDict[key].IPlugin.OnStopAttack();
       }
     }
 
 
     private void BT_OnShutdown_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnShutDown();
+        this.pluginDict[key].IPlugin.OnShutDown();
       }
     }
 
 
     private void BT_OnNewData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnNewData(this.tb_NewData.Text);
+        this.pluginDict[key].IPlugin.OnNewData(this.tb_NewData.Text);
       }
     }
 
@@ -91,44 +89,33 @@
       }
 
       var templateFileName = this.ofd_PluginPath.FileName;
-      MinaryTemplateData templData = this.LoadAttackTemplate(this.ofd_PluginPath.FileName);
 
-      //TemplatePluginData
-      
-      foreach (var key in this.pluginsDict.Keys)
-      {
-TemplatePluginData tmpPluginData = this.pluginRecordDict[key].IPlugin.OnGetTemplateData();        
-        this.pluginRecordDict[key].IPlugin.OnLoadTemplateData(tmpPluginData);
-      }
+
+      //foreach (var key in this.pluginDict.Keys)
+      //{
+      //  TemplatePluginData templData = new TemplatePluginData()
+      //  {
+      //  };
+
+      //  this.pluginDict[key].IPlugin.OnLoadTemplateData(templData);
+      //}
     }
 
-
-    private MinaryTemplateData LoadAttackTemplate(string templateFile)
-    {
-      MinaryTemplateData deserializedObject;
-      var myBinaryFormat = new BinaryFormatter();
-
-      Stream myStream = File.OpenRead(templateFile);
-      deserializedObject = (MinaryTemplateData)myBinaryFormat.Deserialize(myStream);
-      myStream.Close();
-
-      return deserializedObject;
-    }
 
     private void BT_OnGetTemplateData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        TemplatePluginData templData = this.pluginRecordDict[key].IPlugin.OnGetTemplateData();
+        TemplatePluginData templData = this.pluginDict[key].IPlugin.OnGetTemplateData();
       }
     }
 
 
     private void BT_OnUnloadTemplateData_Click(object sender, EventArgs e)
     {
-      foreach (var key in this.pluginRecordDict.Keys)
+      foreach (var key in this.pluginDict.Keys)
       {
-        this.pluginRecordDict[key].IPlugin.OnUnloadTemplateData();
+        this.pluginDict[key].IPlugin.OnUnloadTemplateData();
       }
     }
 

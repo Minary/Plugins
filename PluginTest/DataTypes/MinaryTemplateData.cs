@@ -5,7 +5,7 @@
 
 
   [Serializable]
-  public class MinaryTemplateData
+  public class RecordMinaryTemplate
   {
 
     #region PROPERTIES
@@ -24,7 +24,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public MinaryTemplateData()
+    public RecordMinaryTemplate()
     {
     }
 
@@ -40,7 +40,7 @@
     /// <param name="scanNetwork"></param>
     /// <param name="numberSelectedTargetSystems"></param>
     /// <param name="startAttacking"></param>
-    public MinaryTemplateData(string name, string description, string author, string reference, string version, int scanNetwork, int numberSelectedTargetSystems, int startAttacking)// : base()
+    public RecordMinaryTemplate(string name, string description, string author, string reference, string version, int scanNetwork, int numberSelectedTargetSystems, int startAttacking)// : base()
     {
       this.TemplateConfig = new TemplateConfig(name, description, author, reference, version);
       this.Plugins = new List<Plugin>();

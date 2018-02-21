@@ -70,6 +70,7 @@
       // 
       // cb_PluginSelection
       // 
+      this.cb_PluginSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_PluginSelection.FormattingEnabled = true;
       this.cb_PluginSelection.Location = new System.Drawing.Point(962, 26);
       this.cb_PluginSelection.Name = "cb_PluginSelection";
@@ -157,8 +158,9 @@
       this.tb_NewData.Name = "tb_NewData";
       this.tb_NewData.Size = new System.Drawing.Size(769, 88);
       this.tb_NewData.TabIndex = 8;
-      this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTT" +
-    "P/1.1....Host:www.facebook.com....";
+      this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||GET /index.htm HTTP/1." +
+    "1..Host:www.facebook.com..User-Agent: Opera....<html>..<body>..it works ... ..</" +
+    "body>..</html>";
       // 
       // bt_OnShutdown
       // 

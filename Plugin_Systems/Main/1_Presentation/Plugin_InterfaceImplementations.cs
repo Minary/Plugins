@@ -35,7 +35,7 @@
       // Plugin initialisation
       this.infrastructureLayer.OnInit();
       this.pluginProperties.HostApplication.Register(this);
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.Refresh();
     }
 
@@ -87,7 +87,7 @@
         return;
       }
 
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.Refresh();
     }
 

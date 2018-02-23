@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.DnsPoison.DataTypes;
+  using Minary.Plugin.Main.DnsPoisoning.DataTypes;
   using System;
   using System.Windows.Forms;
 

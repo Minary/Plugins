@@ -1,4 +1,4 @@
-﻿namespace Minary.Plugin.Main.DnsPoison.DataTypes
+﻿namespace Minary.Plugin.Main.DnsPoisoning.DataTypes
 {
   using System;
   using System.ComponentModel;

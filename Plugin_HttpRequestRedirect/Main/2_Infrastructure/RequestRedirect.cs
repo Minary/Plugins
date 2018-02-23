@@ -52,10 +52,11 @@
       }
     }
 
+    #endregion
 
-    /// <summary>
-    ///
-    /// </summary>
+
+    #region EVENTS
+
     public void OnReset()
     {
       try
@@ -69,9 +70,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public void OnStart(List<RequestRedirectRecord> recordList)
     {
       if (recordList == null || 
@@ -113,9 +111,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public void OnStop()
     {
       // Remove plugin configuration file

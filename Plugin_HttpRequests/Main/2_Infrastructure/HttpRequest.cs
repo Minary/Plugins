@@ -29,32 +29,28 @@
 
 
     #region EVENTS
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pWebServerConfig"></param>
+    
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                                              this.plugin.Config.ApplicationBaseDir,
                                              this.plugin.Config.PluginBaseDir,
                                              this.plugin.Config.PatternSubDir,
-                                             Plugin.Main.HttpRequest.DataTypes.General.PATTERN_DIR_REMOTE));
+                                             General.PATTERN_DIR_REMOTE));
 
       pluginBasedirectories.Add(Path.Combine(
                                              this.plugin.Config.ApplicationBaseDir,
                                              this.plugin.Config.PluginBaseDir,
                                              this.plugin.Config.PatternSubDir,
-                                             Plugin.Main.HttpRequest.DataTypes.General.PATTERN_DIR_LOCAL));
+                                             General.PATTERN_DIR_LOCAL));
 
       pluginBasedirectories.Add(Path.Combine(
                                              this.plugin.Config.ApplicationBaseDir,
                                              this.plugin.Config.PluginBaseDir,
                                              this.plugin.Config.PatternSubDir,
-                                             Plugin.Main.HttpRequest.DataTypes.General.PATTERN_DIR_TEMPLATE));
+                                             General.PATTERN_DIR_TEMPLATE));
 
       pluginBasedirectories.ForEach(elem =>
       {
@@ -75,11 +71,7 @@
       this.CleanUpTemplateDir();
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pWebServerConfig"></param>
+    
     public void OnReset()
     {
       this.CleanUpTemplateDir();

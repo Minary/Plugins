@@ -4,6 +4,7 @@
   using Ifc = Minary.Plugin.Main.HttpSearch.DataTypes.Interface;
   using MinaryLib;
   using MinaryLib.DataTypes;
+  using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
 
@@ -27,7 +28,7 @@
 
       // Plugin initialisation
       this.Config.HostApplication.Register(this);
-      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
 
       this.SetGuiActive();
       this.t_GuiUpdate.Start();
@@ -52,7 +53,7 @@
         return;
       }
       
-      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
+      this.Config.HostApplication.ReportPluginSetStatus(this, Status.Running);
       this.SetGuiInactive();
       this.Refresh();
     }
@@ -67,7 +68,7 @@
         return;
       }
 
-      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.SetGuiActive();
       this.Refresh();
     }
@@ -121,7 +122,7 @@
         return;
       }
 
-      this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.Config.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.infrastructureLayer.ClearSearchPatternRecordList();
       try
       {

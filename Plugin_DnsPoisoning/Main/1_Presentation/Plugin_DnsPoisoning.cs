@@ -1,6 +1,6 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.DnsPoison.DataTypes;
+  using Minary.Plugin.Main.DnsPoisoning.DataTypes;
   using MinaryLib;
   using MinaryLib.Plugin;
   using System;
@@ -20,7 +20,7 @@
 
     private List<Tuple<string, string, string>> targetList;
     private BindingList<RecordDnsPoison> dnsPoisonRecords = new BindingList<RecordDnsPoison>();
-    private DnsPoison.Infrastructure.DnsPoisoning infrastructureLayer;
+    private DnsPoisoning.Infrastructure.DnsPoisoning infrastructureLayer;
 
     #endregion
 
@@ -105,7 +105,7 @@
       this.dnsPoisoningConfigFilePath = Path.Combine(this.Config.HostApplication.HostWorkingDirectory, @"attackservices\ArpPoisoning\.dnshosts");
 
       // Instantiate infrastructure layer
-      this.infrastructureLayer = new DnsPoison.Infrastructure.DnsPoisoning(this);
+      this.infrastructureLayer = new DnsPoisoning.Infrastructure.DnsPoisoning(this);
 
       // Initialize plugin environment
       this.infrastructureLayer.OnInit();

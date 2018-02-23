@@ -51,11 +51,12 @@
         throw new Exception("Plugin.Config.ApplicationBaseDir is invalid");
       }
     }
-    
 
-    /// <summary>
-    ///
-    /// </summary>
+    #endregion
+
+
+    #region EVENTS
+
     public void OnReset()
     {
       try
@@ -68,10 +69,7 @@
       }
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     public void OnStart(List<HostMappingRecord> recordList)
     {
       if (recordList?.Count > 0 == false)
@@ -101,10 +99,7 @@
       }
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     public void OnInit()
     {
       var pluginBasedirectories = new List<string>();
@@ -113,19 +108,19 @@
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.HostMapping.DataTypes.General.PATTERN_DIR_REMOTE));
+                             General.PATTERN_DIR_REMOTE));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.HostMapping.DataTypes.General.PATTERN_DIR_LOCAL));
+                             General.PATTERN_DIR_LOCAL));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.HostMapping.DataTypes.General.PATTERN_DIR_TEMPLATE));
+                             General.PATTERN_DIR_TEMPLATE));
 
       pluginBasedirectories.ForEach(elem =>
       {
@@ -151,12 +146,8 @@
         this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName} : {ex.Message}");
       }
     }
-
-
-
-    /// <summary>
-    ///
-    /// </summary>
+    
+    
     public void OnStop()
     {
       // Remove plugin configuration file

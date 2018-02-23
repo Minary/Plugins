@@ -62,7 +62,7 @@
 
 
     [Browsable(true)]
-    public string SrcIP
+    public string SrcIp
     {
       get
       {
@@ -78,7 +78,7 @@
 
 
     [Browsable(true)]
-    public string DstIP
+    public string DstIp
     {
       get
       {

@@ -52,10 +52,11 @@
       }
     }
 
+    #endregion
 
-    /// <summary>
-    ///
-    /// </summary>
+
+    #region PUBLIC
+
     public void OnReset()
     {
       try
@@ -69,13 +70,10 @@
     }
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="recordList"></param>
     public void OnStart(List<InjectFileRecord> recordList)
     {
-      if (recordList == null || recordList.Count <= 0)
+      if (recordList == null || 
+          recordList.Count <= 0)
       {
         throw new MinaryWarningException("No file injection rules defined");
       }
@@ -116,10 +114,7 @@
       }
     }
  
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     public void OnStop()
     {
       // Remove plugin configuration file

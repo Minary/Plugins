@@ -29,7 +29,7 @@
 
       // Plugin initialisation
       this.pluginProperties.HostApplication.Register(this);
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.SetGuiActive();
       this.Refresh();
     }
@@ -59,7 +59,7 @@
         catch (MinaryWarningException ex)
         {
           this.infrastructureLayer.OnStop();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
           this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         }
         catch (Exception ex)
@@ -72,7 +72,7 @@
       else
       {
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
         this.SetGuiInactive();
       }
 
@@ -146,7 +146,7 @@
       }
       
       this.infrastructureLayer.OnReset();
-      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+      this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.Refresh();
     }
 

@@ -60,7 +60,7 @@
 
       foreach (FirewallRuleRecord tmpFirewallRule in firewallRulesList)
       {
-        firewallRulesString += $"{tmpFirewallRule.Protocol}:{tmpFirewallRule.SrcIP}:{tmpFirewallRule.SrcPortLower}:{tmpFirewallRule.SrcPortUpper}:{tmpFirewallRule.DstIP}:{tmpFirewallRule.DstPortLower}:{tmpFirewallRule.DstPortUpper}\r\n";
+        firewallRulesString += $"{tmpFirewallRule.Protocol}:{tmpFirewallRule.SrcIp}:{tmpFirewallRule.SrcPortLower}:{tmpFirewallRule.SrcPortUpper}:{tmpFirewallRule.DstIp}:{tmpFirewallRule.DstPortLower}:{tmpFirewallRule.DstPortUpper}\r\n";
       }
 
       using (var outfile = new StreamWriter(firewallRulesPath))
@@ -103,19 +103,19 @@
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.Firewall.DataTypes.Config.PATTERN_DIR_REMOTE));
+                             Config.PATTERN_DIR_REMOTE));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.Firewall.DataTypes.Config.PATTERN_DIR_LOCAL));
+                             Config.PATTERN_DIR_LOCAL));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.Firewall.DataTypes.Config.PATTERN_DIR_TEMPLATE));
+                             Config.PATTERN_DIR_TEMPLATE));
 
       pluginBasedirectories.ForEach(elem =>
       {
@@ -199,7 +199,7 @@
       // Replace current configuration parameter with placeholder values
       foreach (FirewallRuleRecord tmpRecord in firewallRules)
       {
-        genericObjectList.Add(new FirewallRuleRecord(tmpRecord.Protocol, tmpRecord.SrcIP, tmpRecord.SrcPortLower, tmpRecord.SrcPortUpper, tmpRecord.DstIP, tmpRecord.DstPortLower, tmpRecord.DstPortUpper));
+        genericObjectList.Add(new FirewallRuleRecord(tmpRecord.Protocol, tmpRecord.SrcIp, tmpRecord.SrcPortLower, tmpRecord.SrcPortUpper, tmpRecord.DstIp, tmpRecord.DstPortLower, tmpRecord.DstPortUpper));
       }
 
       // Serialize the list

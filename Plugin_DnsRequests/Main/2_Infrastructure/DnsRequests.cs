@@ -1,5 +1,6 @@
 ﻿namespace Minary.Plugin.Main.DnsRequest.Infrastructure
 {
+  using Plugin.Main.DnsRequest.DataTypes;
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
@@ -40,19 +41,19 @@
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsRequest.DataTypes.General.PATTERN_DIR_REMOTE));
+                             General.PATTERN_DIR_REMOTE));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsRequest.DataTypes.General.PATTERN_DIR_LOCAL));
+                             General.PATTERN_DIR_LOCAL));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsRequest.DataTypes.General.PATTERN_DIR_TEMPLATE));
+                             General.PATTERN_DIR_TEMPLATE));
 
       pluginBasedirectories.ForEach(elem =>
       {

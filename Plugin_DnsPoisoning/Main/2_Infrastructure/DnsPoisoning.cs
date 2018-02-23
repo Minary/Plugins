@@ -1,6 +1,6 @@
-﻿namespace Minary.Plugin.Main.DnsPoison.Infrastructure
+﻿namespace Minary.Plugin.Main.DnsPoisoning.Infrastructure
 {
-  using Minary.Plugin.Main.DnsPoison.DataTypes;
+  using Minary.Plugin.Main.DnsPoisoning.DataTypes;
   using MinaryLib.DataTypes;
   using MinaryLib.Plugin;
   using System;
@@ -53,25 +53,25 @@
     /// </summary>
     public void OnInit()
     {
-      List<string> pluginBasedirectories = new List<string>();
+      var pluginBasedirectories = new List<string>();
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_DIR_REMOTE));
+                             General.PATTERN_DIR_REMOTE));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_DIR_LOCAL));
+                             General.PATTERN_DIR_LOCAL));
 
       pluginBasedirectories.Add(Path.Combine(
                              this.plugin.Config.ApplicationBaseDir,
                              this.plugin.Config.PluginBaseDir,
                              this.plugin.Config.PatternSubDir,
-                             Plugin.Main.DnsPoisoning.DataTypes.General.PATTERN_DIR_TEMPLATE));
+                             General.PATTERN_DIR_TEMPLATE));
 
       pluginBasedirectories.ForEach(elem =>
       {

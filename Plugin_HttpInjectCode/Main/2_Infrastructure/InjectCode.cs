@@ -52,10 +52,11 @@
       }
     }
 
+    #endregion
 
-    /// <summary>
-    ///
-    /// </summary>
+
+    #region EVENTS
+    
     public void OnReset()
     {
       try
@@ -68,11 +69,7 @@
       }
     }
 
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="recordList"></param>
+    
     public void OnStart(List<InjectCodeRecord> recordList)
     {
       if (recordList == null || 
@@ -117,10 +114,7 @@
       }
     }
  
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     public void OnStop()
     {
       // Remove plugin configuration file

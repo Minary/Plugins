@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Minary.Plugin.Main.DnsPoison.DataTypes
+namespace Minary.Plugin.Main.DnsPoisoning.DataTypes
 {
   public enum DnsResponseType
   {

@@ -210,7 +210,7 @@
       // t_GuiUpdate
       // 
       this.t_GuiUpdate.Interval = 500;
-      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GuiUpdate_Tick);
       // 
       // dgv_Findings
       // 

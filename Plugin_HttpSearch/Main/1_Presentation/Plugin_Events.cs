@@ -218,7 +218,7 @@
     }
 
 
-    private void T_GUIUpdate_Tick(object sender, EventArgs e)
+    private void T_GuiUpdate_Tick(object sender, EventArgs e)
     {
       if (this.dataBatch?.Count > 0 == false)
       {

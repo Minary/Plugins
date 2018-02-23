@@ -233,18 +233,3 @@ this.httpLines = this.httpContentData.Split(new[] { Environment.NewLine }, Strin
 
   }
 }
-/*
-	string dataRegex = @"(it).*(works)";	
-	string httpContentData = "<html>\n<body>\n it works ... \n</body>\n</html>";
-	RegexOptions regOpts = RegexOptions.IgnoreCase|RegexOptions.Multiline|RegexOptions.Singleline;
-	
-	Match match = Regex.Match(httpContentData, dataRegex, regOpts);
-	if (match.Success &&
-	    match.Groups.Count > 1)
-	{	  
-	  for (int ctr = 1; ctr <  match.Groups.Count; ctr++)
-	  {
-	    Console.WriteLine("Group {0}: {1}", ctr, match.Groups[ctr].Value);	
-	  }
-	}
- */

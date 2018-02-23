@@ -171,7 +171,6 @@
       this.tb_DataRegex.Enabled = false;
       this.tb_HostRegex.Enabled = false;
       this.tb_PathRegex.Enabled = false;
-      this.cms_HttpSearchFindings.Enabled = false;
       this.cms_HttpSearchPatterns.Enabled = false;
 
       this.Refresh();
@@ -195,7 +194,6 @@
       this.tb_DataRegex.Enabled = true;
       this.tb_HostRegex.Enabled = true;
       this.tb_PathRegex.Enabled = true;
-      this.cms_HttpSearchFindings.Enabled = true;
       this.cms_HttpSearchPatterns.Enabled = true;
 
       this.Refresh();

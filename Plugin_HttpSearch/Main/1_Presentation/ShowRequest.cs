@@ -11,8 +11,7 @@
   {
 
     #region MEMBERS
-
-private string[] httpLines;
+    
     private Dictionary<string, List<string>> httpHeaders = new Dictionary<string, List<string>>();
     private string httpContentData = string.Empty;
     private string hostRegex = string.Empty;
@@ -64,7 +63,7 @@ private string[] httpLines;
 
     #region PRIVATE
 
-    private string GenerateRtf(string rawRequest, string dataRegex)
+    public string GenerateRtf(string rawRequest, string dataRegex)
     {
       var formatedData = string.Empty;
 
@@ -111,14 +110,7 @@ private string[] httpLines;
       this.headerData = this.headerData.TrimStart(new char[] { '.', ' ', '\t', '\r', '\n' });
       this.httpHeaderLines = this.headerData.Split(new string[] { "..", "\r\n", "\n" }, StringSplitOptions.None);
       
-      //rawRequest = rawRequest.TrimStart(new char[] { '.', ' ', '\t', '\r', '\n' });
-      //rawRequest = Regex.Replace(rawRequest, @"^\.{2,4}", "");
-      //rawRequest = Regex.Replace(rawRequest, @"\.\.", "\r\n");
-      // HEADER.. bla..bla ....DATA
-      //this.httpLines = Regex.Split(rawRequest, "(\r\n|\n\r|\n)");
-this.httpLines = this.httpContentData.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
       this.ParseHttpHeaders();
-//      this.ParseHttpContentData();
     }
 
 
@@ -145,27 +137,6 @@ this.httpLines = this.httpContentData.Split(new[] { Environment.NewLine }, Strin
         this.httpHeaders[name].Add(value);
       }
     }
-
-
-    //private void ParseHttpContentData()
-    //{
-    //  var headerDone = false;
-
-    //  foreach (var line in this.httpLines)
-    //  {
-    //    if (headerDone == false)
-    //    {
-    //      if (line.Trim() == "....")
-    //      {
-    //        headerDone = true;
-    //      }
-
-    //      continue;
-    //    }
-
-    //    this.httpContentData += line;
-    //  }
-    //}
 
 
     private string GetHttpRrequestLine(string rawRequest)

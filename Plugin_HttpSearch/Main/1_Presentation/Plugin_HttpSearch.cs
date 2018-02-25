@@ -28,6 +28,10 @@
 
     public Control PluginControl { get { return this; } }
 
+    public BindingList<RecordHttpSearch> HttpSearchRecords { get { return this.httpSearchRecords; } }
+
+    public BindingList<RecordHttpRequestData> HttpFindingRedcords { get { return this.httpFindingRedcords; } }
+
     #endregion
 
 
@@ -74,10 +78,6 @@
 
 
 
-
-
-      this.dgv_Findings.AutoGenerateColumns = false;
-
       DataGridViewTextBoxColumn columnFindingMethod = new DataGridViewTextBoxColumn();
       columnFindingMethod.DataPropertyName = "Method";
       columnFindingMethod.Name = "Method";
@@ -109,7 +109,8 @@
       columnFindingFinding.ReadOnly = true;
       columnFindingFinding.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_Findings.Columns.Add(columnFindingFinding);
-
+      
+      this.dgv_Findings.AutoGenerateColumns = false;
       this.dgv_Findings.DataSource = this.httpFindingRedcords;
 
 
@@ -148,6 +149,8 @@
       this.infrastructureLayer.AddObserverRecordDef(this);
       this.infrastructureLayer.AddObserverRecordFound(this);
     }
+
+    public List<string> DataBatch { get { return this.dataBatch; } private set { } }
 
     #endregion
 
@@ -200,7 +203,7 @@
     }
 
 
-    private void ProcessEntries()
+    public void ProcessEntries()
     {
       List<string> newDataPackets;
       

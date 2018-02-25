@@ -52,8 +52,8 @@
     }
 
 
-    private delegate void AddRecordDelegate(RecordHttpSearch newRecord);
-    private void AddRecord(RecordHttpSearch newRecord)
+    public delegate void AddRecordDelegate(RecordHttpSearch newRecord);
+    public void AddRecord(RecordHttpSearch newRecord)
     {
       if (this.InvokeRequired)
       {

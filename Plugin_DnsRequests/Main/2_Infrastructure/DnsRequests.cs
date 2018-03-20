@@ -29,10 +29,6 @@
 
     #region EVENTS
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pWebServerConfig"></param>
     public void OnInit()
     {
       var pluginBasedirectories = new List<string>();
@@ -75,10 +71,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="pWebServerConfig"></param>
     public void OnReset()
     {
       this.CleanUpTemplateDir();
@@ -89,9 +81,6 @@
 
     #region PRIVATE
 
-    /// <summary>
-    ///
-    /// </summary>
     private void CleanUpTemplateDir()
     {
       string templateDir = Path.Combine(

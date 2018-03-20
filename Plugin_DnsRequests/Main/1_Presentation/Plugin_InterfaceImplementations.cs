@@ -39,9 +39,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnStartAttackDelegate();
     public void OnStartAttack()
     {
@@ -56,9 +53,6 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnStopAttackDelegate();
     public void OnStopAttack()
     {
@@ -73,19 +67,12 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="targetList"></param>
     public void SetTargets(List<Tuple<string, string, string>> targetList)
     {
       this.targetList = targetList;
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public delegate void OnResetPluginDelegate();
     public void OnResetPlugin()
     {
@@ -105,18 +92,11 @@
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public void OnShutDown()
     {
     }
     
 
-    /// <summary>
-    /// New input selectedHostName arrived
-    /// </summary>
-    /// <param name="selectedHostName"></param>
     public delegate void OnNewDataDelegate(string data);
     public void OnNewData(string data)
     {

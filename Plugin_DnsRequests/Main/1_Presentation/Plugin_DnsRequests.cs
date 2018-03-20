@@ -8,6 +8,7 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
+  using System.Linq;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
@@ -176,10 +177,32 @@
             dstPort = splitter[5];
             hostName = splitter[6];
 
-            if (dstPort != null && 
-                dstPort == "53")
+            if (proto == "DNSREP")
             {
-this.pluginProperties?.HostApplication?.LogMessage($"{this.Config.PluginName}: New Record: {srcMac}/{srcIp}/{hostName}/{proto}");
+              hostName = hostName.TrimEnd(new char[] { ' ', '\t', ',' });
+              var elements = hostName.Split(new char[] { ',' });
+              string requestedHost = elements[0];
+              int noElements = elements.Length;
+              string resolvedIpsString = "??";
+
+              if (noElements > 1)
+              {
+                List<string> resolvedHostIps = new List<string>();
+                for (int i = 1; i < noElements; i++)
+                {
+                  resolvedHostIps.Add(elements[i]);
+                }
+
+                resolvedIpsString = string.Join(", ", resolvedHostIps);
+              }
+              
+              string data = $"{requestedHost}  \u2192  {resolvedIpsString}";
+              newRecords.Add(new DnsRequestRecord(srcMac, srcIp, data, proto));
+            }
+            else if (proto == "DNSREQ" &&
+                     dstPort != null && 
+                     dstPort == "53")
+            {
               newRecords.Add(new DnsRequestRecord(srcMac, srcIp, hostName, proto));
             }
           }

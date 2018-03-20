@@ -30,6 +30,7 @@ namespace Minary.Plugin.Main.Tests
       this.properties.HostApplication = (MinaryLib.Plugin.IPluginHost)this.minaryHost.Object;
       this.properties.ApplicationBaseDir = @"c:\temp\";
       this.properties.PluginBaseDir = @"c:\temp\";
+      this.properties.PatternSubDir = @"patterns\";
 
       this.inst = new Plugin_HttpSearch(properties);      
     }

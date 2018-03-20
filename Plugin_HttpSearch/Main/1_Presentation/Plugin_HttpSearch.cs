@@ -156,10 +156,7 @@
 
 
     #region PRIVATE
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     private delegate void SetGuiInactiveDelegate();
     private void SetGuiInactive()
     {
@@ -179,10 +176,7 @@
       this.Refresh();
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     private delegate void SetGuiActiveDelegate();
     private void SetGuiActive()
     {

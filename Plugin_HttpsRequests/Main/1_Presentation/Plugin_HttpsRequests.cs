@@ -138,7 +138,7 @@
       List<string> newDataRecords;
       string[] splitter;
       var proto = string.Empty;
-      var macAddr = string.Empty;
+      var srcMacAddr = string.Empty;
       var srcIp = string.Empty;
       var srcPort = string.Empty;
       var dstIp = string.Empty;
@@ -172,7 +172,7 @@
           }
 
           proto = splitter[0];
-          macAddr = splitter[1];
+          srcMacAddr = splitter[1];
           srcIp = splitter[2];
           srcPort = splitter[3];
           dstIp = splitter[4];
@@ -212,7 +212,7 @@
               this.dnsReverseCache.TryGetValue(targetIp, out resolvedHost);
               this.ipCache.TryAdd(targetIp, resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(macAddr, srcIp, $"https://{tmpHostName}/..."));
+              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
               continue;
 
             // IPCache record for this IP address already exists
@@ -222,7 +222,7 @@
               var resolvedHost = string.Empty;
               this.ipCache.TryGetValue(dstIp, out resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(macAddr, srcIp, $"https://{tmpHostName}/..."));
+              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
               continue;
             }
 
@@ -243,14 +243,14 @@
               var resolvedHost = string.Empty;
               this.dnsReverseCache.TryGetValue(dstIp, out resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(macAddr, srcIp, $"https://{tmpHostName}/..."));
+              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
               this.ipCache.TryAdd(targetIp, resolvedHost);
             }
             else
             {
               var resolvedHost = string.Empty;
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(macAddr, srcIp, $"https://{tmpHostName}/..."));
+              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
               this.ipCache.TryAdd(targetIp, resolvedHost);
             }
           }

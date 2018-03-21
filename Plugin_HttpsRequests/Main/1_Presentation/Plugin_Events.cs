@@ -23,7 +23,7 @@
     }
 
 
-    private void DGV_HTTPRequests_MouseUp(object sender, MouseEventArgs e)
+    private void DGV_HttpsRequests_MouseUp(object sender, MouseEventArgs e)
     {
       if (e.Button == MouseButtons.Right)
       {
@@ -123,17 +123,15 @@
 
     private void RequestDetailsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      string url = string.Empty;
-      string cookie = string.Empty;
-      string srcIp = string.Empty;
-      string userAgent = string.Empty;
+      var url = string.Empty;
+      var cookie = string.Empty;
+      var srcIp = string.Empty;
+      var userAgent = string.Empty;
 
       try
       {
-        url = this.dgv_HttpsRequests.SelectedRows[0].Cells["URL"].Value.ToString();
-        cookie = this.dgv_HttpsRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
+        url = this.dgv_HttpsRequests.SelectedRows[0].Cells["RemoteHost"].Value.ToString();
         srcIp = this.dgv_HttpsRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
-        userAgent = string.Empty;
       }
       catch (ArgumentOutOfRangeException aoorex)
       {
@@ -156,13 +154,7 @@
         MessageBox.Show($"MiniBrowser unexpectedly crashed : {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
-
-
-    private void deleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-
-    }
-
+    
     #endregion
 
   }

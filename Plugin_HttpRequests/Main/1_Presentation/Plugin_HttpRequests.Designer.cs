@@ -32,7 +32,7 @@
       this.components = new System.ComponentModel.Container();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_HttpRequests = new System.Windows.Forms.DataGridView();
-      this.cms_HTTPRequests = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.cms_HttpRequests = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
       this.requestDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +41,7 @@
       this.bt_Set = new System.Windows.Forms.Button();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpRequests)).BeginInit();
-      this.cms_HTTPRequests.SuspendLayout();
+      this.cms_HttpRequests.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgv_HttpRequests
@@ -78,18 +78,18 @@
       this.dgv_HttpRequests.Size = new System.Drawing.Size(1400, 482);
       this.dgv_HttpRequests.TabIndex = 3;
       this.dgv_HttpRequests.DoubleClick += new System.EventHandler(this.DGV_HttpRequests_DoubleClick);
-      this.dgv_HttpRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseDown);
-      this.dgv_HttpRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HTTPRequests_MouseUp);
+      this.dgv_HttpRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HttpRequests_MouseDown);
+      this.dgv_HttpRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HttpRequests_MouseUp);
       // 
       // cms_HTTPRequests
       // 
-      this.cms_HTTPRequests.ImageScalingSize = new System.Drawing.Size(24, 24);
-      this.cms_HTTPRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.cms_HttpRequests.ImageScalingSize = new System.Drawing.Size(24, 24);
+      this.cms_HttpRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
             this.requestDetailsToolStripMenuItem});
-      this.cms_HTTPRequests.Name = "CMS_Downloads";
-      this.cms_HTTPRequests.Size = new System.Drawing.Size(234, 94);
+      this.cms_HttpRequests.Name = "CMS_Downloads";
+      this.cms_HttpRequests.Size = new System.Drawing.Size(234, 94);
       // 
       // deleteEntryToolStripMenuItem
       // 
@@ -163,7 +163,7 @@
       this.Name = "Plugin_HttpRequests";
       this.Size = new System.Drawing.Size(1494, 566);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpRequests)).EndInit();
-      this.cms_HTTPRequests.ResumeLayout(false);
+      this.cms_HttpRequests.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -172,7 +172,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_HttpRequests;
-        private System.Windows.Forms.ContextMenuStrip cms_HTTPRequests;
+        private System.Windows.Forms.ContextMenuStrip cms_HttpRequests;
         private System.Windows.Forms.ToolStripMenuItem tsmi_Clear;
         private System.Windows.Forms.Label l_UrlFilter;
         private System.Windows.Forms.TextBox tb_Filter;

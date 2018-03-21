@@ -29,7 +29,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_HTTPRequests_MouseUp(object sender, MouseEventArgs e)
+    private void DGV_HttpRequests_MouseUp(object sender, MouseEventArgs e)
     {
       if (e.Button == MouseButtons.Right)
       {
@@ -38,7 +38,7 @@
           DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
           if (hti.RowIndex >= 0)
           {
-            this.cms_HTTPRequests.Show(this.dgv_HttpRequests, e.Location);
+            this.cms_HttpRequests.Show(this.dgv_HttpRequests, e.Location);
           }
         }
         catch (Exception ex)
@@ -137,7 +137,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_HTTPRequests_MouseDown(object sender, MouseEventArgs e)
+    private void DGV_HttpRequests_MouseDown(object sender, MouseEventArgs e)
     {
       try
       {
@@ -164,10 +164,10 @@
     /// <param name="e"></param>
     private void RequestDetailsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      string url = string.Empty;
-      string cookie = string.Empty;
-      string srcIp = string.Empty;
-      string userAgent = string.Empty;
+      var url = string.Empty;
+      var cookie = string.Empty;
+      var srcIp = string.Empty;
+      var userAgent = string.Empty;
 
       try
       {

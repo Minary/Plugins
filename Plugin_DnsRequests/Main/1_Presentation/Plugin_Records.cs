@@ -44,7 +44,7 @@
               {
                 throw new Exception("Something is wrong with the source IP.");
               }
-              else if (string.IsNullOrEmpty(tmpReq.DNSHostname))
+              else if (string.IsNullOrEmpty(tmpReq.DnsRequest))
               {
                 throw new Exception("Something is wrong with the source host name.");
               }

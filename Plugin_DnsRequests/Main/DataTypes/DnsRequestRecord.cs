@@ -13,7 +13,8 @@
     private string srcMac;
     private string srcIp;
     private string timestamp;
-    private string dnsHostname;
+    private string dnsRequest;
+    private string dnsReply;
     private string packetType;
 
     [field: NonSerialized]
@@ -73,19 +74,36 @@
 
 
     [Browsable(true)]
-    public string DNSHostname
+    public string DnsRequest
     {
       get
       {
-        return this.dnsHostname;
+        return this.dnsRequest;
       }
 
       set
       {
-        this.dnsHostname = value;
-        this.NotifyPropertyChanged("DNSHostname");
+        this.dnsRequest = value;
+        this.NotifyPropertyChanged("DnsRequest");
       }
     }
+
+
+    [Browsable(true)]
+    public string DnsReply
+    {
+      get
+      {
+        return this.dnsReply;
+      }
+
+      set
+      {
+        this.dnsReply = value;
+        this.NotifyPropertyChanged("DnsReply");
+      }
+    }
+
 
     [Browsable(true)]
     public string PacketType
@@ -112,17 +130,19 @@
       this.srcMac = string.Empty;
       this.srcIp = string.Empty;
       this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.dnsHostname = string.Empty;
+      this.dnsRequest = string.Empty;
+      this.dnsReply = string.Empty;
       this.packetType = string.Empty;
     }
 
 
-    public DnsRequestRecord(string srcMac, string srcIp, string dnsHostname, string type)
+    public DnsRequestRecord(string srcMac, string srcIp, string dnsRequestHost, string dnsReplyIps, string type)
     {
       this.srcMac = srcMac;
       this.srcIp = srcIp;
       this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
-      this.dnsHostname = dnsHostname;
+      this.dnsRequest = dnsRequestHost;
+      this.dnsReply = dnsReplyIps;
       this.packetType = type;
     }
 

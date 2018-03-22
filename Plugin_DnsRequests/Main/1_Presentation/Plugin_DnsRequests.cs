@@ -71,20 +71,28 @@
       this.dgv_DnsRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
-      columnRemHost.DataPropertyName = "DNSHostname";
-      columnRemHost.Name = "DNSHostname";
+      columnRemHost.DataPropertyName = "DnsRequest";
+      columnRemHost.Name = "DnsRequest";
       columnRemHost.HeaderText = "DNS request";
       columnRemHost.ReadOnly = true;
       columnRemHost.Width = 180;
       columnRemHost.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_DnsRequests.Columns.Add(columnRemHost);
 
+      DataGridViewTextBoxColumn columnDnsReply = new DataGridViewTextBoxColumn();
+      columnDnsReply.DataPropertyName = "DnsReply";
+      columnDnsReply.Name = "DnsReply";
+      columnDnsReply.HeaderText = "DNS reply";
+      columnDnsReply.ReadOnly = true;
+      columnDnsReply.Width = 180;
+      columnDnsReply.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      this.dgv_DnsRequests.Columns.Add(columnDnsReply);
+
       DataGridViewTextBoxColumn columnPacketType = new DataGridViewTextBoxColumn();
       columnPacketType.DataPropertyName = "PacketType";
       columnPacketType.Name = "PacketType";
       columnPacketType.HeaderText = "Packet type";
       columnPacketType.ReadOnly = true;
-      //// columnRemHost.Width = 280;
       columnPacketType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_DnsRequests.Columns.Add(columnPacketType);      
       this.dgv_DnsRequests.DataSource = this.dnsRequests;
@@ -197,13 +205,13 @@
               }
               
               string data = $"{requestedHost}  \u2192  {resolvedIpsString}";
-              newRecords.Add(new DnsRequestRecord(srcMac, srcIp, data, proto));
+              newRecords.Add(new DnsRequestRecord(srcMac, srcIp, requestedHost, resolvedIpsString, proto));
             }
             else if (proto == "DNSREQ" &&
                      dstPort != null && 
                      dstPort == "53")
             {
-              newRecords.Add(new DnsRequestRecord(srcMac, srcIp, hostName, proto));
+              newRecords.Add(new DnsRequestRecord(srcMac, srcIp, hostName, string.Empty, proto));
             }
           }
         }

@@ -6,7 +6,6 @@
   using MinaryLib.Plugin;
   using System;
   using System.Collections.Generic;
-  using System.Threading;
 
 
   public partial class Plugin_Systems
@@ -143,8 +142,11 @@
 
       lock (this)
       {
-        if (this.dataBatch != null && data != null && data.Length > 0)
+        if (this.dataBatch != null &&
+            data != null && 
+            data.Length > 0)
         {
+          this.pluginProperties.HostApplication.LogMessage($"{this.pluginProperties.PluginName}: {data.Trim()}");
           this.dataBatch.Add(data);
           this.Refresh();
         }

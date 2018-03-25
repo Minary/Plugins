@@ -51,11 +51,6 @@
     private PluginProperties pluginProperties;
     private ManageSystems.Presentation.Form_ManageSystems manageSystemsPresentationLayer;
     private ManageSystems.Task.ManageSystems manageSystemsTaskLayer;
-    private Dictionary<string, string> gitHubData = new Dictionary<string, string>()
-                                                         { { "Username", string.Empty },
-                                                           { "Email", string.Empty },
-                                                           { "RepositoryRemote", string.Empty }
-                                                         };
 
     #endregion
 
@@ -64,16 +59,23 @@
 
     public Control PluginControl { get { return (this); } }
 
+    public BindingList<SystemRecord> SystemRecords { get { return this.systemRecords; } }
+
+    //public BindingList<RecordHttpRequestData> HttpFindingRedcords
+    //{
+    //  get { return this.httpFindingRedcords; }
+    //}
+
     #endregion
 
 
-    #region PUBLIC
+      #region PUBLIC
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Plugin_Systems"/> class.
-    /// Constructor.
-    /// Instantiate the UserControl.
-    /// </summary>
+      /// <summary>
+      /// Initializes a new instance of the <see cref="Plugin_Systems"/> class.
+      /// Constructor.
+      /// Instantiate the UserControl.
+      /// </summary>
     public Plugin_Systems(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
@@ -151,14 +153,14 @@
       }
 
       // Plugin configuration
-      this.t_GUIUpdate.Interval = 1000;
+      this.t_GuiUpdate.Interval = 1000;
       this.pluginProperties = pluginProperties;
       this.pluginProperties.PluginName = "Systems";
       this.pluginProperties.PluginType = "Passive";
       this.pluginProperties.PluginDescription = "Determine operating system of detected target systems";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 
-      this.t_GUIUpdate.Start();
+      this.t_GuiUpdate.Start();
 
       // Instantiate infrastructure layer
       this.infrastructureLayer = new Systems.Infrastructure.Systems(this);
@@ -183,7 +185,8 @@
     /// </summary>
     public void ProcessEntries()
     {
-      if (this.dataBatch == null || this.dataBatch.Count <= 0)
+      if (this.dataBatch == null || 
+          this.dataBatch.Count <= 0)
       {
         return;
       }
@@ -223,7 +226,9 @@
 
           // The operating system cant be determined.
         }
-        else if (dataPacket.EntryType == EntryType.Empty && dataPacket.SrcIpAddress.Length > 0 && dataPacket.SrcMacAddress.Length > 0)
+        else if (dataPacket.EntryType == EntryType.Empty && 
+                 dataPacket.SrcIpAddress.Length > 0 && 
+                 dataPacket.SrcMacAddress.Length > 0)
         {
           this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, string.Empty, string.Empty, string.Empty, string.Empty));
         }
@@ -231,7 +236,7 @@
         // Updating LastSeen column.
         using (DataGridViewRow tmpRow = this.ListEntryExists(dataPacket.SrcMacAddress))
         {
-          if (tmpRow != null && tmpRow.Cells["LastSeen"] != null)
+          if (tmpRow?.Cells["LastSeen"] != null)
           {
             tmpRow.Cells["LastSeen"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
           }
@@ -277,7 +282,8 @@
     {
       EntryType retVal = EntryType.Empty;
 
-      if (this.systemRecords == null || this.systemRecords.Count <= 0)
+      if (this.systemRecords == null || 
+          this.systemRecords.Count <= 0)
       {
         return retVal;
       }
@@ -287,12 +293,14 @@
         string srcMacReal = srcMac.Replace('-', ':');
         string systemMacReal = tmpSystem.SrcMac.Replace('-', ':');
 
-        if (systemMacReal == srcMacReal && tmpSystem.SrcIp == srcIp && tmpSystem.OperatingSystem.Length > 0)
+        if (systemMacReal == srcMacReal && 
+            tmpSystem.SrcIp == srcIp && tmpSystem.OperatingSystem.Length > 0)
         {
           retVal = EntryType.Full;
           break;
         }
-        else if (systemMacReal == srcMacReal && tmpSystem.SrcIp == srcIp)
+        else if (systemMacReal == srcMacReal && 
+                 tmpSystem.SrcIp == srcIp)
         {
           retVal = EntryType.Half;
           break;
@@ -314,7 +322,8 @@
     {
       bool retVal = false;
 
-      if (this.systemRecords == null || this.systemRecords.Count <= 0)
+      if (this.systemRecords == null || 
+          this.systemRecords.Count <= 0)
       {
         return retVal;
       }
@@ -324,7 +333,8 @@
         string srcMacReal = srcMac.Replace('-', ':');
         string systemMacReal = tmpSystem.SrcMac.Replace('-', ':');
 
-        if (srcMacReal == systemMacReal && tmpSystem.SrcIp == srcIp)
+        if (srcMacReal == systemMacReal && 
+            tmpSystem.SrcIp == srcIp)
         {
           tmpSystem.OperatingSystem = operatingSystem;
           retVal = true;
@@ -347,7 +357,8 @@
 
       foreach (SystemPattern tmpSystemPattern in this.systemPatterns)
       {
-        if (userAgent != null && Regex.Match(userAgent, tmpSystemPattern.SystemPatternstring, RegexOptions.IgnoreCase).Success)
+        if (userAgent != null && 
+            Regex.Match(userAgent, tmpSystemPattern.SystemPatternstring, RegexOptions.IgnoreCase).Success)
         {
           retVal = tmpSystemPattern.SystemName;
           break;
@@ -449,7 +460,8 @@
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
 
-      if (dataPacket.EntryType != EntryType.Full && operatingSystem.Length > 0)
+      if (dataPacket.EntryType != EntryType.Full && 
+          operatingSystem.Length > 0)
       {
         if (dataPacket.EntryType == EntryType.Empty)
         {
@@ -465,7 +477,8 @@
           tabelRow.Cells["OperatingSystem"].ToolTipText = userAgent;
         }
       }
-      else if (dataPacket.SrcIpAddress.Length > 0 && dataPacket.SrcMacAddress.Length > 0)
+      else if (dataPacket.SrcIpAddress.Length > 0 && 
+               dataPacket.SrcMacAddress.Length > 0)
       {
         this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, userAgent, string.Empty, string.Empty, string.Empty));
       }

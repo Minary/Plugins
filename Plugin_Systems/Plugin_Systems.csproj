@@ -157,7 +157,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Main\1_Presentation\ManageSystems\DataTypes\SystemPattern.cs" />
-    <Compile Include="Main\DataTypes\SystemsRecord.cs" />
+    <Compile Include="Main\DataTypes\SystemRecord.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -39,7 +39,7 @@ namespace Minary.Plugin.Main
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
       this.dgv_Systems = new System.Windows.Forms.DataGridView();
-      this.t_GUIUpdate = new System.Windows.Forms.Timer(this.components);
+      this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
       this.cms_Systems.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Systems)).BeginInit();
       this.SuspendLayout();
@@ -107,8 +107,8 @@ namespace Minary.Plugin.Main
       // 
       // t_GUIUpdate
       // 
-      this.t_GUIUpdate.Interval = 500;
-      this.t_GUIUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      this.t_GuiUpdate.Interval = 500;
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
       // 
       // Plugin_Systems
       // 
@@ -131,7 +131,7 @@ namespace Minary.Plugin.Main
         private ToolStripMenuItem tsmi_Clear;
         private DataGridView dgv_Systems;
         private ToolStripMenuItem deleteEntryToolStripMenuItem;
-        private Timer t_GUIUpdate;
+        private Timer t_GuiUpdate;
 
 
 

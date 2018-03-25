@@ -158,7 +158,7 @@
       this.tb_NewData.Name = "tb_NewData";
       this.tb_NewData.Size = new System.Drawing.Size(769, 88);
       this.tb_NewData.TabIndex = 8;
-      this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||GET /index.htm HTTP/1." +
+      this.tb_NewData.Text = "HTTPREQ||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||GET /index.htm HTTP/1." +
     "1..Host:www.facebook.com..User-Agent: Opera....<html>..<body>..it works ... ..</" +
     "body>..</html>";
       // 

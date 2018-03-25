@@ -126,13 +126,13 @@
           this.rb_DnsExample.Checked)
       {
         this.rbLastChoice = this.rb_DnsExample.Name;
-        this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||53||auth.facebook.com";
+        this.tb_NewData.Text = "DNSREQ||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||53||auth.facebook.com";
       }
       else if (this.rbLastChoice != this.rb_HttpExample.Name &&
                this.rb_HttpExample.Checked)
       {
         this.rbLastChoice = this.rb_HttpExample.Name;
-        this.tb_NewData.Text = "TCP||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTTP/1.1....Host:www.facebook.com....";
+        this.tb_NewData.Text = "DNSREQ||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||....GET /index.htm HTTP/1.1....Host:www.facebook.com....";
       }
     }
 

@@ -19,7 +19,6 @@ namespace Minary.Plugin.Main.Tests
     #endregion
 
 
-    #region TESTS
 
     [TestInitialize()]
     public void Initialize()
@@ -35,6 +34,8 @@ namespace Minary.Plugin.Main.Tests
       this.inst = new Plugin_HttpSearch(properties);      
     }
 
+
+    #region TESTS
 
     [TestMethod()]
     public void AddDataRecord()
@@ -73,7 +74,7 @@ namespace Minary.Plugin.Main.Tests
     {
       RecordHttpSearch pattern = new RecordHttpSearch("GET", @".*", "/.*", ".*");
       this.inst.AddRecord(pattern);
-      this.inst.OnNewData("TCP||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "GET /index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
       this.inst.ProcessEntries();
       
@@ -87,7 +88,7 @@ namespace Minary.Plugin.Main.Tests
     {
       RecordHttpSearch pattern = new RecordHttpSearch("GET", @"intranet\.host\.com", "/.*", ".*");
       this.inst.AddRecord(pattern);
-      this.inst.OnNewData("TCP||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "GET /index.html HTTP/1.1..Host: intranet.host.com....<html><body>hello world</body></html>");
       this.inst.ProcessEntries();
 
@@ -101,7 +102,7 @@ namespace Minary.Plugin.Main.Tests
     {
       RecordHttpSearch pattern = new RecordHttpSearch("GET", ".*", @"/subdir/index\.html", ".*");
       this.inst.AddRecord(pattern);
-      this.inst.OnNewData("TCP||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "GET /subdir/index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
       this.inst.ProcessEntries();
 
@@ -115,7 +116,7 @@ namespace Minary.Plugin.Main.Tests
     {
       RecordHttpSearch pattern = new RecordHttpSearch("GET", ".*", ".*", "world");
       this.inst.AddRecord(pattern);
-      this.inst.OnNewData("TCP||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "GET /subdir/index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
       this.inst.ProcessEntries();
 
@@ -129,7 +130,7 @@ namespace Minary.Plugin.Main.Tests
     {
       RecordHttpSearch pattern = new RecordHttpSearch("POST", ".*", ".*", @"user=(\w+)\b.*&pass=(\w)");
       this.inst.AddRecord(pattern);
-      this.inst.OnNewData("TCP||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "POST /login.php HTTP/1.1..Host: host.com....param1=someValue&user=joos&param2=anotherValue&pass=randomletters&param3=blah");
       this.inst.ProcessEntries();
 

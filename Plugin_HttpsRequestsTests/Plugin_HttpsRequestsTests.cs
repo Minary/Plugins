@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minary.Plugin.Main.HttpsRequest.DataTypes;
 using MinaryLib;
 
 

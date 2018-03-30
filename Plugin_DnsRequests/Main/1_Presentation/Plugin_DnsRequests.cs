@@ -8,6 +8,7 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
+  using System.Reflection;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
@@ -37,10 +38,6 @@
 
     #region PUBLIC
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Plugin_DnsRequests"/> class.
-    ///
-    /// </summary>
     public Plugin_DnsRequests(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
@@ -93,7 +90,12 @@
       columnDnsReply.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_DnsRequests.Columns.Add(columnDnsReply);
 
-      this.dgv_DnsRequests.DataSource = this.dnsRequests;
+      this.dgv_DnsRequests.DataSource = this.dnsRequests;      
+
+      // To reduce DGV flickering use DoubleBuffering
+      Type dgvType = this.dgv_DnsRequests.GetType();
+      PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+      pi.SetValue(this.dgv_DnsRequests, true, null);
 
       // Verify passed parameter(s)
       if (pluginProperties == null)

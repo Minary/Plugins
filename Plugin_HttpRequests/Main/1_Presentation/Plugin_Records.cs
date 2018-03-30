@@ -28,10 +28,7 @@
       {
         // Memorize DataGridView position and selection
         firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
-
-        // Update DataGridView
-        this.dgv_HttpRequests.SuspendLayout();
-
+        
         try
         {
           foreach (HttpRequests tmpRecord in newRecords)
@@ -56,8 +53,6 @@
         }
 
         this.UseFilter();
-        this.dgv_HttpRequests.ResumeLayout();
-        this.dgv_HttpRequests.Refresh();
       }
     }
 

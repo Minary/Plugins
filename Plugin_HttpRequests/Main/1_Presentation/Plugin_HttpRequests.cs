@@ -7,6 +7,7 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
+  using System.Reflection;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
@@ -113,6 +114,11 @@
       this.dgv_HttpRequests.Columns.Add(columnRequest);
       
       this.dgv_HttpRequests.DataSource = this.foundHttpRequests;
+
+      // To reduce DGV flickering use DoubleBuffering
+      Type dgvType = this.dgv_HttpRequests.GetType();
+      PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+      pi.SetValue(this.dgv_HttpRequests, true, null);
 
       // Verify passed parameter(s)
       if (pluginProperties == null)

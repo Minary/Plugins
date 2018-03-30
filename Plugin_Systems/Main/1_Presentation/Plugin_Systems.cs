@@ -7,7 +7,7 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
-  using System.IO;
+  using System.Reflection;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
   using ManageSystems = Minary.Plugin.Main.Systems.ManageSystems;
@@ -69,13 +69,13 @@
     #endregion
 
 
-      #region PUBLIC
+    #region PUBLIC
 
-      /// <summary>
-      /// Initializes a new instance of the <see cref="Plugin_Systems"/> class.
-      /// Constructor.
-      /// Instantiate the UserControl.
-      /// </summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Plugin_Systems"/> class.
+    /// Constructor.
+    /// Instantiate the UserControl.
+    /// </summary>
     public Plugin_Systems(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
@@ -130,6 +130,11 @@
 
       this.systemRecords = new BindingList<SystemRecord>();
       this.dgv_Systems.DataSource = this.systemRecords;
+      
+      // To reduce DGV flickering use DoubleBuffering
+      Type dgvType = this.dgv_Systems.GetType();
+      PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+      pi.SetValue(this.dgv_Systems, true, null);
 
       // Verify passed parameter(s)
       if (pluginProperties == null)

@@ -30,10 +30,7 @@
         {
           // Memorize DataGridView position and selection
           firstVisibleRowTop = this.dgv_DnsRequests.FirstDisplayedScrollingRowIndex;
-
-          // Suspend DataGridView
-          this.dgv_DnsRequests.SuspendLayout();
-
+          
           // Verify and insert selectedHostName rows
           foreach (DnsRequestRecord tmpReq in dnsRequests)
           {
@@ -80,8 +77,6 @@
           }
 
           this.UseFilter();
-          this.dgv_DnsRequests.ResumeLayout();
-          this.dgv_DnsRequests.Refresh();
         }
       }
     }

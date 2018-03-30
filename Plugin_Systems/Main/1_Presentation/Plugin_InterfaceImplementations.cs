@@ -146,7 +146,6 @@
             data != null && 
             data.Length > 0)
         {
-          this.pluginProperties.HostApplication.LogMessage($"{this.pluginProperties.PluginName}: {data.Trim()}");
           this.dataBatch.Add(data);
           this.Refresh();
         }

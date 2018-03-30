@@ -18,7 +18,7 @@
 
     private const int MaxTableRows = 128;
     private List<Tuple<string, string, string>> targetList;
-    private BindingList<HttpRequests> httpRequests = new BindingList<HttpRequests>();
+    private BindingList<HttpRequests> foundHttpRequests = new BindingList<HttpRequests>();
     private List<string> dataBatch = new List<string>();
     private bool isUpToDate = false;
     private HttpRequest.Infrastructure.HttpRequest infrastructureLayer;
@@ -112,7 +112,7 @@
       columnRequest.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnRequest);
       
-      this.dgv_HttpRequests.DataSource = this.httpRequests;
+      this.dgv_HttpRequests.DataSource = this.foundHttpRequests;
 
       // Verify passed parameter(s)
       if (pluginProperties == null)
@@ -158,9 +158,6 @@
 
     #region PRIVATE
 
-    /// <summary>
-    ///
-    /// </summary>
     public void ProcessEntries()
     {
       var newRecords = new List<HttpRequests>();
@@ -174,7 +171,7 @@
       var cookies = string.Empty;
       string[] splitter;
       var proto = string.Empty;
-      var macAddr = string.Empty;
+      var srcMacAddr = string.Empty;
       var srcIp = string.Empty;
       var srcPort = string.Empty;
       var dstIp = string.Empty;
@@ -208,7 +205,7 @@
           }
 
           proto = splitter[0];
-          macAddr = splitter[1];
+          srcMacAddr = splitter[1];
           srcIp = splitter[2];
           srcPort = splitter[3];
           dstIp = splitter[4];
@@ -238,7 +235,7 @@
               cookies = string.Empty;
             }
 
-            newRecords.Add(new HttpRequests(macAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data));
+            newRecords.Add(new HttpRequests(srcMacAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data));
           }
         }
         catch (Exception ex)
@@ -260,31 +257,22 @@
       }
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="inputData"></param>
-    /// <returns></returns>
+    
     private bool CompareToFilter(string inputData)
     {
       bool retVal = false;
 
-      if (inputData != null && inputData.Length > 0)
+      if (inputData != null && 
+          inputData.Length > 0 &&
+          Regex.Match(inputData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
       {
-        if (Regex.Match(inputData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
-        {
           retVal = true;
-        }
       }
 
       return retVal;
     }
     
-
-    /// <summary>
-    ///
-    /// </summary>
+    
     private void UseFilter()
     {
       if (this.dgv_HttpRequests.Rows.Count <= 0)
@@ -335,7 +323,7 @@
 
         try
         {
-          this.httpRequests.RemoveAt(index);
+          this.foundHttpRequests.RemoveAt(index);
         }
         catch (Exception)
         {

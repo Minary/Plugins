@@ -36,12 +36,12 @@
         {
           foreach (HttpRequests tmpRecord in newRecords)
           {
-            this.httpRequests.Insert(0, tmpRecord);
+            this.foundHttpRequests.Insert(0, tmpRecord);
           }
 
-          while (this.httpRequests.Count > MaxTableRows)
+          while (this.foundHttpRequests.Count > MaxTableRows)
           {
-            this.httpRequests.RemoveAt(this.dgv_HttpRequests.Rows.Count - 1);
+            this.foundHttpRequests.RemoveAt(this.dgv_HttpRequests.Rows.Count - 1);
           }
 
           if (firstVisibleRowTop >= 0)
@@ -116,7 +116,7 @@
 
         try
         {
-          this.httpRequests.Clear();
+          this.foundHttpRequests.Clear();
         }
         catch (Exception)
         {

@@ -81,7 +81,7 @@
       this.dgv_HttpRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_HttpRequests_MouseDown);
       this.dgv_HttpRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_HttpRequests_MouseUp);
       // 
-      // cms_HTTPRequests
+      // cms_HttpRequests
       // 
       this.cms_HttpRequests.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_HttpRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {

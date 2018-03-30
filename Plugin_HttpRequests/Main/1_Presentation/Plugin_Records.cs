@@ -39,6 +39,8 @@
             this.foundHttpRequests.Insert(0, tmpRecord);
           }
 
+          // If the table contains more elements than defined by the MAX
+          // remove elements from the bottom until MAX num. of elements is reached
           while (this.foundHttpRequests.Count > MaxTableRows)
           {
             this.foundHttpRequests.RemoveAt(this.dgv_HttpRequests.Rows.Count - 1);

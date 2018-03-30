@@ -44,7 +44,7 @@
     #endregion
 
 
-    #region PLBLIC
+    #region PUBLIC
 
     public Plugin_HttpsRequests(PluginProperties pluginProperties)
     {
@@ -212,7 +212,11 @@
               this.dnsReverseCache.TryGetValue(targetIp, out resolvedHost);
               this.ipCache.TryAdd(targetIp, resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+
+              if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
+              {
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+              }
               continue;
 
             // IPCache record for this IP address already exists
@@ -222,7 +226,12 @@
               var resolvedHost = string.Empty;
               this.ipCache.TryGetValue(dstIp, out resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+
+              if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
+              {
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+              }
+
               continue;
             }
 
@@ -243,15 +252,23 @@
               var resolvedHost = string.Empty;
               this.dnsReverseCache.TryGetValue(dstIp, out resolvedHost);
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
-              this.ipCache.TryAdd(targetIp, resolvedHost);
+
+              if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
+              {
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                this.ipCache.TryAdd(targetIp, resolvedHost);
+              }
             }
             else
             {
               var resolvedHost = string.Empty;
               var tmpHostName = string.IsNullOrEmpty(resolvedHost) ? targetIp : resolvedHost;
-              newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
-              this.ipCache.TryAdd(targetIp, resolvedHost);
+
+              if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
+              {
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                this.ipCache.TryAdd(targetIp, resolvedHost);
+              }
             }
           }
         }
@@ -280,13 +297,11 @@
       bool retVal = false;
 
       if (inputData != null && 
-          inputData.Length > 0)
+          inputData.Length > 0 &&
+          Regex.Match(inputData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
       {
-        if (Regex.Match(inputData, Regex.Escape(this.tb_Filter.Text), RegexOptions.IgnoreCase).Success)
-        {
           retVal = true;
-        }
-      }
+      }      
 
       return retVal;
     }

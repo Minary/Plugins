@@ -8,7 +8,6 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
-  using System.Linq;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
@@ -70,13 +69,20 @@
       columnTimestamp.Width = 200;
       this.dgv_DnsRequests.Columns.Add(columnTimestamp);
 
+      DataGridViewTextBoxColumn columnPacketType = new DataGridViewTextBoxColumn();
+      columnPacketType.DataPropertyName = "PacketType";
+      columnPacketType.Name = "PacketType";
+      columnPacketType.HeaderText = "Packet type";
+      columnPacketType.ReadOnly = true;
+      columnPacketType.Width = 130;
+      this.dgv_DnsRequests.Columns.Add(columnPacketType);
+
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "DnsRequest";
       columnRemHost.Name = "DnsRequest";
       columnRemHost.HeaderText = "DNS request";
       columnRemHost.ReadOnly = true;
-      columnRemHost.Width = 180;
-      columnRemHost.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+      columnRemHost.Width = 350;
       this.dgv_DnsRequests.Columns.Add(columnRemHost);
 
       DataGridViewTextBoxColumn columnDnsReply = new DataGridViewTextBoxColumn();
@@ -84,19 +90,11 @@
       columnDnsReply.Name = "DnsReply";
       columnDnsReply.HeaderText = "DNS reply";
       columnDnsReply.ReadOnly = true;
-      columnDnsReply.Width = 180;
       columnDnsReply.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_DnsRequests.Columns.Add(columnDnsReply);
 
-      DataGridViewTextBoxColumn columnPacketType = new DataGridViewTextBoxColumn();
-      columnPacketType.DataPropertyName = "PacketType";
-      columnPacketType.Name = "PacketType";
-      columnPacketType.HeaderText = "Packet type";
-      columnPacketType.ReadOnly = true;
-      columnPacketType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      this.dgv_DnsRequests.Columns.Add(columnPacketType);      
       this.dgv_DnsRequests.DataSource = this.dnsRequests;
-      
+
       // Verify passed parameter(s)
       if (pluginProperties == null)
       {

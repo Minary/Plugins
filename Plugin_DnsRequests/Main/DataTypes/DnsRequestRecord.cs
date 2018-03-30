@@ -74,6 +74,22 @@
 
 
     [Browsable(true)]
+    public string PacketType
+    {
+      get
+      {
+        return this.packetType;
+      }
+
+      set
+      {
+        this.packetType = value;
+        this.NotifyPropertyChanged("PacketType");
+      }
+    }
+
+
+    [Browsable(true)]
     public string DnsRequest
     {
       get
@@ -101,22 +117,6 @@
       {
         this.dnsReply = value;
         this.NotifyPropertyChanged("DnsReply");
-      }
-    }
-
-
-    [Browsable(true)]
-    public string PacketType
-    {
-      get
-      {
-        return this.packetType;
-      }
-
-      set
-      {
-        this.packetType = value;
-        this.NotifyPropertyChanged("PacketType");
       }
     }
 

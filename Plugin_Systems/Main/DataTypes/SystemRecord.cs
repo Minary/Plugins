@@ -9,7 +9,7 @@
 
     #region MEMBERS
 
-    private string srcMacAddress;
+    private string srcMac;
     private string srcIpAddress;
     private string userAgent;
     private string operatingSystem;
@@ -30,12 +30,12 @@
     {
       get
       {
-        return this.srcMacAddress;
+        return this.srcMac;
       }
 
       set
       {
-        this.srcMacAddress = value;
+        this.srcMac = value;
         this.NotifyPropertyChanged("SrcMac");
       }
     }
@@ -143,7 +143,7 @@
 
     public SystemRecord()
     {
-      this.srcMacAddress = string.Empty;
+      this.srcMac = string.Empty;
       this.srcIpAddress = string.Empty;
       this.userAgent = string.Empty;
       this.operatingSystem = string.Empty;
@@ -154,15 +154,15 @@
 
     public SystemRecord(string srcMacAddress, string srcIpAddress, string userAgentString, string hardwareVendor, string operatingSystem, string lastSeen)
     {
-      this.srcMacAddress = srcMacAddress;
+      this.srcMac = srcMacAddress;
       this.srcIpAddress = srcIpAddress;
       this.userAgent = userAgentString;
       this.operatingSystem = operatingSystem;
       this.hardwareVendor = hardwareVendor;
       this.lastSeen = !string.IsNullOrEmpty(lastSeen) ? lastSeen : DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
       this.id = srcMacAddress;
-      this.srcMacAddress = Regex.Replace(this.srcMacAddress, @"-", ":");
-      this.id = $"{this.srcMacAddress.ToLower()}{this.srcIpAddress}";
+      this.srcMac = Regex.Replace(this.srcMac, @"-", ":");
+      this.id = $"{this.srcMac.ToLower()}{this.srcIpAddress}";
     }
 
     #endregion

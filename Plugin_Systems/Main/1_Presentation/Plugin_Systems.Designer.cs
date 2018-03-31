@@ -108,7 +108,7 @@ namespace Minary.Plugin.Main
       // t_GUIUpdate
       // 
       this.t_GuiUpdate.Interval = 500;
-      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GuiUpdate_Tick);
       // 
       // Plugin_Systems
       // 

@@ -7,6 +7,7 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
+  using System.Linq;
   using System.Reflection;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
@@ -71,11 +72,6 @@
 
     #region PUBLIC
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Plugin_Systems"/> class.
-    /// Constructor.
-    /// Instantiate the UserControl.
-    /// </summary>
     public Plugin_Systems(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
@@ -88,7 +84,7 @@
       columnMac.HeaderText = "MAC address";
       columnMac.ReadOnly = true;
       columnMac.Width = 180;
-      columnMac.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      columnMac.Resizable = DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnMac);
 
       DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();
@@ -97,7 +93,7 @@
       columnSrcIp.HeaderText = "Source IP";
       columnSrcIp.Width = 140;
       columnSrcIp.ReadOnly = true;
-      columnSrcIp.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      columnSrcIp.Resizable = DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnSrcIp);
 
       DataGridViewTextBoxColumn columnAppUrl = new DataGridViewTextBoxColumn();
@@ -105,8 +101,8 @@
       columnAppUrl.Name = "OperatingSystem";
       columnAppUrl.HeaderText = "Operating System";
       columnAppUrl.ReadOnly = true;
-      columnAppUrl.Width = 200; // 373;
-      columnAppUrl.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      columnAppUrl.Width = 200;
+      columnAppUrl.Resizable = DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnAppUrl);
 
       DataGridViewTextBoxColumn columnHardwareVendor = new DataGridViewTextBoxColumn();
@@ -114,8 +110,8 @@
       columnHardwareVendor.Name = "HWVendor";
       columnHardwareVendor.HeaderText = "Hardware vendor";
       columnHardwareVendor.ReadOnly = true;
-      columnHardwareVendor.Width = 200; // 373;
-      columnHardwareVendor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      columnHardwareVendor.Width = 200;
+      columnHardwareVendor.Resizable = DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnHardwareVendor);
 
       DataGridViewTextBoxColumn columnLastSeen = new DataGridViewTextBoxColumn();
@@ -123,9 +119,8 @@
       columnLastSeen.Name = "LastSeen";
       columnLastSeen.HeaderText = "Last seen";
       columnLastSeen.ReadOnly = true;
-      //////columnLastSeen.Width = 120;
       columnLastSeen.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-      columnLastSeen.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      columnLastSeen.Resizable = DataGridViewTriState.False;
       this.dgv_Systems.Columns.Add(columnLastSeen);
 
       this.systemRecords = new BindingList<SystemRecord>();
@@ -239,7 +234,7 @@
         }
 
         // Updating LastSeen column.
-        using (DataGridViewRow tmpRow = this.ListEntryExists(dataPacket.SrcMacAddress))
+        using (DataGridViewRow tmpRow = this.GetListEntryByMac(dataPacket.SrcMacAddress))
         {
           if (tmpRow?.Cells["LastSeen"] != null)
           {
@@ -299,7 +294,8 @@
         string systemMacReal = tmpSystem.SrcMac.Replace('-', ':');
 
         if (systemMacReal == srcMacReal && 
-            tmpSystem.SrcIp == srcIp && tmpSystem.OperatingSystem.Length > 0)
+            tmpSystem.SrcIp == srcIp && 
+            tmpSystem.OperatingSystem.Length > 0)
         {
           retVal = EntryType.Full;
           break;
@@ -379,7 +375,7 @@
     /// </summary>
     /// <param name="macAddress"></param>
     /// <returns></returns>
-    private DataGridViewRow ListEntryExists(string macAddress)
+    private DataGridViewRow GetListEntryByMac(string macAddress)
     {
       DataGridViewRow retVal = null;
 
@@ -411,13 +407,13 @@
         throw new Exception("The record structure is invalid");
       }
 
-      dataPacket.Proto = splitter[0];
-      dataPacket.SrcMacAddress = splitter[1];
-      dataPacket.SrcIpAddress = splitter[2];
-      dataPacket.SrcPort = splitter[3];
-      dataPacket.DstIpAddress = splitter[4];
-      dataPacket.DstPort = splitter[5];
-      dataPacket.Data = splitter[6];
+      dataPacket.Proto = splitter[0].Trim().ToLower();
+      dataPacket.SrcMacAddress = splitter[1].Trim().ToLower();
+      dataPacket.SrcIpAddress = splitter[2].Trim().ToLower();
+      dataPacket.SrcPort = splitter[3].Trim().ToLower();
+      dataPacket.DstIpAddress = splitter[4].Trim().ToLower();
+      dataPacket.DstPort = splitter[5].Trim().ToLower();
+      dataPacket.Data = splitter[6].Trim().ToLower();
       dataPacket.SrcMacAddress = Regex.Replace(dataPacket.SrcMacAddress, @"-", ":");
       dataPacket.EntryType = this.FullEntryExists(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress);
 
@@ -446,8 +442,7 @@
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName} 2: {ex.Message}");
       }
     }
-
-
+    
 
     private void DetermineAndSetOS(DataPacket dataPacket, Match matchUserAgent)
     {

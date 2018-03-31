@@ -14,7 +14,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void T_GUIUpdate_Tick(object sender, EventArgs e)
+    private void T_GuiUpdate_Tick(object sender, EventArgs e)
     {
       this.ProcessEntries();
     }

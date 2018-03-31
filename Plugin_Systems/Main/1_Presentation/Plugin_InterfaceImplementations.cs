@@ -57,7 +57,7 @@
       {
         try
         {
-          this.AddRecord(new SystemRecord(tmpSystem.Item2, tmpSystem.Item1, string.Empty, tmpSystem.Item3, string.Empty, string.Empty));
+          this.AddRecord(new SystemRecord(tmpSystem.Item2.Trim(), tmpSystem.Item1.Trim(), string.Empty, tmpSystem.Item3.Trim(), string.Empty, string.Empty));
         }
         catch (RecordExistsException ex)
         {

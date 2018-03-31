@@ -126,9 +126,6 @@
         if (this.dataBatch != null && !string.IsNullOrEmpty(data))
         {
           this.dataBatch.Add(data);
-
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {data.Trim()}");
-          this.Refresh();
         }
       }
     }

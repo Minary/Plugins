@@ -2,7 +2,8 @@
 {
   using MinaryLib.DataTypes;
   using System;
-  using System.IO;
+  using System.Collections.Generic;
+  using System.Linq;
   using System.Windows.Forms;
 
 
@@ -148,7 +149,6 @@
       {
         lock (this)
         {
-          //this.
           this.tb_Logs.Text = string.Empty;
         }
 
@@ -159,6 +159,44 @@
         return base.ProcessDialogKey(keyData);
       }
     }
+
+
+    private void BT_OnSetTargets_Click(object sender, EventArgs e)
+    {
+      var targetList = new List<Tuple<string, string, string>>();
+
+      // Parse target records from TextBox
+      foreach (var line in this.tb_TargetList.Lines)
+      {
+        // Ignore line if it does not contain 2 commas
+        if (line.Count(f => f == ',') != 2)
+        {
+          continue;
+        }
+
+        // Ignore line if splitting it does not yield 3 elements
+        var splitter = line.Split(new char[] { ',' });
+        if (splitter.Count() != 3)
+        {
+          continue;
+        }
+
+        targetList.Add(new Tuple<string, string, string>(splitter[0].Trim(), splitter[1].Trim(), splitter[2].Trim()));
+      }
+
+      // Do nothing and return if target list is empty
+      if (targetList.Count() <= 0)
+      {
+        return;
+      }
+
+      // Pass the target record list to the plugins
+      foreach (var key in this.pluginDict.Keys)
+      {
+        this.pluginDict[key].IPlugin.SetTargets(targetList);
+      }
+    }
+
     #endregion
   }
 }

@@ -34,6 +34,7 @@
       this.l_Plugin = new System.Windows.Forms.Label();
       this.ofd_PluginPath = new System.Windows.Forms.OpenFileDialog();
       this.gb_Events = new System.Windows.Forms.GroupBox();
+      this.bt_OnSetTargets = new System.Windows.Forms.Button();
       this.bt_OnLoadTemplate = new System.Windows.Forms.Button();
       this.rb_HttpExample = new System.Windows.Forms.RadioButton();
       this.rb_DnsExample = new System.Windows.Forms.RadioButton();
@@ -49,6 +50,7 @@
       this.TC_PluginTester = new System.Windows.Forms.TabControl();
       this.tp_Oper = new System.Windows.Forms.TabPage();
       this.ofd_LoadTemplate = new System.Windows.Forms.OpenFileDialog();
+      this.tb_TargetList = new System.Windows.Forms.TextBox();
       this.gb_PluginTest.SuspendLayout();
       this.gb_Events.SuspendLayout();
       this.gb_Logs.SuspendLayout();
@@ -98,6 +100,8 @@
       // 
       this.gb_Events.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.gb_Events.Controls.Add(this.tb_TargetList);
+      this.gb_Events.Controls.Add(this.bt_OnSetTargets);
       this.gb_Events.Controls.Add(this.bt_OnLoadTemplate);
       this.gb_Events.Controls.Add(this.rb_HttpExample);
       this.gb_Events.Controls.Add(this.rb_DnsExample);
@@ -110,10 +114,20 @@
       this.gb_Events.Controls.Add(this.bt_OnInit);
       this.gb_Events.Location = new System.Drawing.Point(12, 28);
       this.gb_Events.Name = "gb_Events";
-      this.gb_Events.Size = new System.Drawing.Size(1209, 187);
+      this.gb_Events.Size = new System.Drawing.Size(1209, 269);
       this.gb_Events.TabIndex = 1;
       this.gb_Events.TabStop = false;
       this.gb_Events.Text = "Events";
+      // 
+      // bt_OnSetTargets
+      // 
+      this.bt_OnSetTargets.Location = new System.Drawing.Point(279, 187);
+      this.bt_OnSetTargets.Name = "bt_OnSetTargets";
+      this.bt_OnSetTargets.Size = new System.Drawing.Size(123, 41);
+      this.bt_OnSetTargets.TabIndex = 9;
+      this.bt_OnSetTargets.Text = "OnSetTargets";
+      this.bt_OnSetTargets.UseVisualStyleBackColor = true;
+      this.bt_OnSetTargets.Click += new System.EventHandler(this.BT_OnSetTargets_Click);
       // 
       // bt_OnLoadTemplate
       // 
@@ -158,9 +172,9 @@
       this.tb_NewData.Name = "tb_NewData";
       this.tb_NewData.Size = new System.Drawing.Size(769, 88);
       this.tb_NewData.TabIndex = 8;
-      this.tb_NewData.Text = "HTTPREQ||11-22-33-44-55-66||192.168.0.101||12345||8.8.8.8||80||GET /index.htm HTTP/1." +
-    "1..Host:www.facebook.com..User-Agent: Opera....<html>..<body>..it works ... ..</" +
-    "body>..</html>";
+      this.tb_NewData.Text = "HTTPREQ||00-11-22-33-44-55||192.168.0.101||12345||8.8.8.8||80||GET /index.htm HTT" +
+    "P/1.1..Host:www.facebook.com..User-Agent: Opera....<html>..<body>..it works ... " +
+    "..</body>..</html>";
       // 
       // bt_OnShutdown
       // 
@@ -228,9 +242,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.gb_Logs.Controls.Add(this.tb_Logs);
-      this.gb_Logs.Location = new System.Drawing.Point(12, 235);
+      this.gb_Logs.Location = new System.Drawing.Point(12, 317);
       this.gb_Logs.Name = "gb_Logs";
-      this.gb_Logs.Size = new System.Drawing.Size(1209, 216);
+      this.gb_Logs.Size = new System.Drawing.Size(1209, 134);
       this.gb_Logs.TabIndex = 2;
       this.gb_Logs.TabStop = false;
       this.gb_Logs.Text = "Logs";
@@ -245,7 +259,7 @@
       this.tb_Logs.Multiline = true;
       this.tb_Logs.Name = "tb_Logs";
       this.tb_Logs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.tb_Logs.Size = new System.Drawing.Size(1182, 167);
+      this.tb_Logs.Size = new System.Drawing.Size(1182, 85);
       this.tb_Logs.TabIndex = 0;
       // 
       // TC_PluginTester
@@ -275,6 +289,18 @@
       // ofd_LoadTemplate
       // 
       this.ofd_LoadTemplate.FileName = "ofdTemplateName";
+      // 
+      // tb_TargetList
+      // 
+      this.tb_TargetList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tb_TargetList.Location = new System.Drawing.Point(420, 191);
+      this.tb_TargetList.Multiline = true;
+      this.tb_TargetList.Name = "tb_TargetList";
+      this.tb_TargetList.Size = new System.Drawing.Size(769, 59);
+      this.tb_TargetList.TabIndex = 10;
+      this.tb_TargetList.Text = "192.168.0.101, 00:11:22:33:44:55, The NIC vendor one\r\n192.168.0.102, aa:bb:cc:dd:" +
+    "ee:ff, The NIC vendor two";
       // 
       // PluginTest_MainForm
       // 
@@ -320,6 +346,8 @@
     private System.Windows.Forms.ComboBox cb_PluginSelection;
     private System.Windows.Forms.Button bt_OnLoadTemplate;
     private System.Windows.Forms.OpenFileDialog ofd_LoadTemplate;
+    private System.Windows.Forms.Button bt_OnSetTargets;
+    private System.Windows.Forms.TextBox tb_TargetList;
   }
 }
 

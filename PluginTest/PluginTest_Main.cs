@@ -74,20 +74,7 @@
           this.cb_PluginSelection.Items.Add(filename);
           this.comboboxPluginMap.Add(filename, pluginFiles[0]);
         }
-
-//        MessageBox.Show($"plugindir:{pluginDir}");
       }
-/*
-      for (var i = 0; i < tempPluginList.Length; i++)
-      {
-        string[] pluginFiles = Directory.GetFiles(tempPluginList[i], "plugin_*.dll");
-
-        if (pluginFiles.Length > 0)
-        {
-          pluginList.Add(tempPluginList[i]);
-        }
-      }
-*/
     }
 
 
@@ -206,6 +193,6 @@
     }
 
     #endregion
-
+    
   }
 }

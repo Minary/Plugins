@@ -35,23 +35,80 @@ namespace Plugin_SystemsTests
 
 
     #region TESTS
-    /*
-     *  De HTTPS requests worden door de HTTPS||00-11-22...  verfout
-     *  omdat daar de bronpoort uitgewisseld wordt!!!
-     *  Dat gaat bij deze plugin dan mis!
-     * 
-     */
+
     [TestMethod]
     public void Add_System()
     {
-      //SystemRecord record = new SystemRecord("00-11-22-33-44-55", "192.168.1.100", "Firefox", "Intel", "Windows", "24-03-2018 18:08:21");
-      //this.inst.AddRecord(record);
       this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
                           "GET /index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
       this.inst.ProcessEntries();
 
       Assert.IsTrue(this.inst.SystemRecords.Count == 1);
     }
+
+
+    [TestMethod]
+    public void Update_System_HTTPREQ()
+    {
+      // Add initial record
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+                          "GET /index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
+      this.inst.ProcessEntries();
+      Assert.IsTrue(this.inst.SystemRecords.Count == 1);
+
+      // Add secondnd record
+      var timestampOld = this.inst.SystemRecords[0].LastSeen;
+      System.Threading.Thread.Sleep(2000);
+      this.inst.OnNewData("HTTPREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||80||" +
+                                "GET /index.html HTTP/1.1..Host: host.com....<html><body>hello world</body></html>");
+      this.inst.ProcessEntries();
+      var timestampNew = this.inst.SystemRecords[0].LastSeen;
+
+      Assert.IsTrue(timestampOld != timestampNew);
+    }
+
+
+    [TestMethod]
+    public void Update_System_HTTPS()
+    {
+      // Add initial record
+      this.inst.OnNewData("HTTPS||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||443||" +
+                          "CONNECT:8.8.8.8");
+      this.inst.ProcessEntries();
+      Assert.IsTrue(this.inst.SystemRecords.Count == 1);
+
+      // Add secondnd record
+      var timestampOld = this.inst.SystemRecords[0].LastSeen;
+      System.Threading.Thread.Sleep(2000);
+      this.inst.OnNewData("HTTPS||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||443||" +
+                          "CONNECT:8.8.8.8");
+      this.inst.ProcessEntries();
+      var timestampNew = this.inst.SystemRecords[0].LastSeen;
+
+      Assert.IsTrue(timestampOld != timestampNew);
+    }
+
+
+    [TestMethod]
+    public void Update_System_DNSREQ()
+    {
+      // Add initial record
+      this.inst.OnNewData("DNSREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||53||" +
+                          "minary.io");
+      this.inst.ProcessEntries();
+      Assert.IsTrue(this.inst.SystemRecords.Count == 1);
+
+      // Add secondnd record
+      var timestampOld = this.inst.SystemRecords[0].LastSeen;
+      System.Threading.Thread.Sleep(2000);
+      this.inst.OnNewData("DNSREQ||11-22-33-44-55-66||192.168.10.10||1234||8.8.8.8||53||" +
+                          "minary.io");
+      this.inst.ProcessEntries();
+      var timestampNew = this.inst.SystemRecords[0].LastSeen;
+      
+      Assert.IsTrue(timestampOld != timestampNew);
+    }
+
 
     #endregion
 

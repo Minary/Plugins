@@ -7,7 +7,6 @@
   using System;
   using System.Collections.Generic;
   using System.ComponentModel;
-  using System.Linq;
   using System.Reflection;
   using System.Text.RegularExpressions;
   using System.Windows.Forms;
@@ -158,7 +157,7 @@
       this.pluginProperties.PluginName = "Systems";
       this.pluginProperties.PluginType = "Passive";
       this.pluginProperties.PluginDescription = "Determine operating system of detected target systems";
-      this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
+      this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp }, { 53, IpProtocols.Udp } };
 
       this.t_GuiUpdate.Start();
 
@@ -173,16 +172,8 @@
       this.manageSystemsTaskLayer = new ManageSystems.Task.ManageSystems(this.pluginProperties);
       this.systemPatterns = this.manageSystemsPresentationLayer.GetActiveSystemPatterns();
     }
-
-    #endregion
-
-
-    #region PRIVATE
     
 
-    /// <summary>
-    ///
-    /// </summary>
     public void ProcessEntries()
     {
       if (this.dataBatch == null || 
@@ -193,7 +184,7 @@
 
       var newRecords = new List<SystemRecord>();
       List<string> newData;
-      Match matchUserAgent;
+      //Match matchUserAgent;
       DataPacket dataPacket;
 
       lock (this)
@@ -219,37 +210,65 @@
           continue;
         }
 
+        // Process HTTP
+        if (dataPacket.Proto.StartsWith("httpreq") == true)
+        {
+          this.ProcessRecord(dataPacket);
+
+        // Process HTTPS
+        }
+        else if (dataPacket.Proto.StartsWith("https") == true)
+        {
+          this.ProcessRecord(dataPacket);
+
+        // Process DNSREQ
+        }
+        else if (dataPacket.Proto.StartsWith("dnsreq") == true)
+        {
+          this.ProcessRecord(dataPacket);
+        }
+
         // Determine the operating system due to the HTTP User-Agent string.
-        if ((matchUserAgent = Regex.Match(dataPacket.Data, @"\.\.User-Agent\s*:\s*(.+?)\.\.", RegexOptions.IgnoreCase)).Success)
-        {
-          this.DetermineAndSetOS(dataPacket, matchUserAgent);
+        //if ((matchUserAgent = Regex.Match(dataPacket.Data, @"\.\.User-Agent\s*:\s*(.+?)\.\.", RegexOptions.IgnoreCase)).Success)
+        //{
+        //  this.DetermineAndSetOS(dataPacket, matchUserAgent);
 
-          // The operating system cant be determined.
-        }
-        else if (dataPacket.EntryType == EntryType.Empty && 
-                 dataPacket.SrcIpAddress.Length > 0 && 
-                 dataPacket.SrcMacAddress.Length > 0)
-        {
-          this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, string.Empty, string.Empty, string.Empty, string.Empty));
-        }
+        //  // The operating system cant be determined.
+        //}
+        //else if (dataPacket.EntryType == EntryType.Empty && 
+        //         dataPacket.SrcIpAddress.Length > 0 && 
+        //         dataPacket.SrcMacAddress.Length > 0)
+        //{
+        //  this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, string.Empty, string.Empty, string.Empty, string.Empty));
+        //}
+      }
+    }
 
-        // Updating LastSeen column.
-        using (DataGridViewRow tmpRow = this.GetListEntryByMac(dataPacket.SrcMacAddress))
+    #endregion
+
+
+    #region PRIVATE
+
+    private void ProcessRecord(DataPacket dataPacket)
+    {
+      if (dataPacket.EntryType == EntryType.Empty &&
+               dataPacket.SrcIpAddress.Length > 0 &&
+               dataPacket.SrcMacAddress.Length > 0)
+      {
+        this.TryAddRecord(new SystemRecord(dataPacket.SrcMacAddress, dataPacket.SrcIpAddress, string.Empty, string.Empty, string.Empty, string.Empty));
+      }
+
+      // Updating LastSeen column.
+      using (DataGridViewRow tmpRow = this.GetListEntryByMac(dataPacket.SrcMacAddress))
+      {
+        if (tmpRow?.Cells["LastSeen"] != null)
         {
-          if (tmpRow?.Cells["LastSeen"] != null)
-          {
-            tmpRow.Cells["LastSeen"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-          }
+          tmpRow.Cells["LastSeen"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
       }
     }
 
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="macAddress"></param>
-    /// <returns></returns>
+    
     private DataGridViewRow GetRowByMac(string macAddress)
     {
       DataGridViewRow retVal = null;

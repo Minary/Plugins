@@ -104,7 +104,7 @@
       try
       {
         var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
-        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
+        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DnsRequest"].Value.ToString();
         Clipboard.SetText(hostName);
       }
       catch (Exception ex)

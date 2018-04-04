@@ -123,7 +123,7 @@
             this.tsmi_Clear,
             this.copyHostNameToolStripMenuItem});
       this.cms_DnsRequests.Name = "cms_DNSRequests";
-      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 94);
+      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 127);
       // 
       // deleteEntryToolStripMenuItem
       // 

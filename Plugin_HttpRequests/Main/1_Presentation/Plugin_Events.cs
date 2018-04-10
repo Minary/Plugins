@@ -107,7 +107,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void T_GUIUpdate_Tick(object sender, EventArgs e)
+    private void T_GuiUpdate_Tick(object sender, EventArgs e)
     {
       this.ProcessEntries();
     }
@@ -196,6 +196,16 @@
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
         MessageBox.Show($"MiniBrowser unexpectedly crashed : {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
+    }
+
+
+    private void TSMI_ShowData_Click(object sender, EventArgs e)
+    {
+      var host = this.dgv_HttpRequests.CurrentRow.Cells["RemoteHost"].Value.ToString();
+      var path = this.dgv_HttpRequests.CurrentRow.Cells["Path"].Value.ToString(); ;
+
+      ShowData dataForm = new ShowData($"http://{host}{path}");
+      dataForm.ShowDialog();
     }
 
     #endregion

@@ -36,6 +36,7 @@
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
       this.requestDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.showDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.l_UrlFilter = new System.Windows.Forms.Label();
       this.tb_Filter = new System.Windows.Forms.TextBox();
       this.bt_Set = new System.Windows.Forms.Button();
@@ -87,9 +88,10 @@
       this.cms_HttpRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
-            this.requestDetailsToolStripMenuItem});
+            this.requestDetailsToolStripMenuItem,
+            this.showDataToolStripMenuItem});
       this.cms_HttpRequests.Name = "CMS_Downloads";
-      this.cms_HttpRequests.Size = new System.Drawing.Size(234, 94);
+      this.cms_HttpRequests.Size = new System.Drawing.Size(234, 157);
       // 
       // deleteEntryToolStripMenuItem
       // 
@@ -111,6 +113,13 @@
       this.requestDetailsToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
       this.requestDetailsToolStripMenuItem.Text = "Open in browser ...";
       this.requestDetailsToolStripMenuItem.Click += new System.EventHandler(this.RequestDetailsToolStripMenuItem_Click);
+      // 
+      // showDataToolStripMenuItem
+      // 
+      this.showDataToolStripMenuItem.Name = "showDataToolStripMenuItem";
+      this.showDataToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
+      this.showDataToolStripMenuItem.Text = "Show data ...";
+      this.showDataToolStripMenuItem.Click += new System.EventHandler(this.TSMI_ShowData_Click);
       // 
       // l_UrlFilter
       // 
@@ -147,7 +156,7 @@
       // t_GuiUpdate
       // 
       this.t_GuiUpdate.Interval = 500;
-      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GUIUpdate_Tick);
+      this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GuiUpdate_Tick);
       // 
       // Plugin_HttpRequests
       // 
@@ -180,5 +189,6 @@
         private System.Windows.Forms.Timer t_GuiUpdate;
         private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem requestDetailsToolStripMenuItem;
-    }
+    private System.Windows.Forms.ToolStripMenuItem showDataToolStripMenuItem;
+  }
 }

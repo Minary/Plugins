@@ -60,24 +60,9 @@
     }
 
 
-    private void Dgv_HttpsRequest_DoubleClick(object sender, EventArgs e)
+    private void Dgv_HttpsRequests_DoubleClick(object sender, EventArgs e)
     {
-      try
-      {
-        var tmpHosts = new BindingList<RecordHttpsRequest>();
-        int currentIndex = this.dgv_HttpsRequests.CurrentCell.RowIndex;
-
-       // this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: currentIndex:{currentIndex}");
-        //string request = this.dgv_HttpsRequests.Rows[currentIndex].Cells["Request"].Value.ToString();
-
-        //request = Regex.Replace(request, @"\.\.", "\r\n");
-        //var requestDetails = new ShowRequest(request);
-        //requestDetails.ShowDialog();
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      }
+      this.RequestDetailsToolStripMenuItem_Click(null, null);
     }
 
     

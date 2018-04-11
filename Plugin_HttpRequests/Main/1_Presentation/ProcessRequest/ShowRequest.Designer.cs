@@ -54,7 +54,7 @@
       this.ClientSize = new System.Drawing.Size(502, 329);
       this.Controls.Add(this.tb_Request);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+     // this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "ShowRequest";

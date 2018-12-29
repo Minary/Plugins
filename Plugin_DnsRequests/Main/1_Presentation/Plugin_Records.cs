@@ -3,6 +3,7 @@
   using Minary.Plugin.Main.DnsRequest.DataTypes;
   using System;
   using System.Collections.Generic;
+  using System.Windows.Forms;
 
 
   public partial class Plugin_DnsRequests
@@ -23,61 +24,82 @@
         return;
       }
 
-      var firstVisibleRowTop = -1;
-      if (dnsRequests?.Count > 0)
+      if (dnsRequests?.Count > 0 == false)
       {
-        lock (this)
+        return;
+      }
+
+      var firstVisibleRowTop = -1;
+      var selectedRowIndex = -1;
+
+      lock (this)
+      {
+        // Memorize DataGridView position and selection
+        firstVisibleRowTop = this.dgv_DnsRequests.FirstDisplayedScrollingRowIndex;
+        if (this.dgv_DnsRequests.SelectedRows.Count > 0)
         {
-          // Memorize DataGridView position and selection
-          firstVisibleRowTop = this.dgv_DnsRequests.FirstDisplayedScrollingRowIndex;
-          
-          // Verify and insert selectedHostName rows
-          foreach (DnsRequestRecord tmpReq in dnsRequests)
-          {
-            // Verify if Hostname and IPaddress for correctness.
-            try
-            {
-              if (string.IsNullOrEmpty(tmpReq.SrcIP))
-              {
-                throw new Exception("Something is wrong with the source IP.");
-              }
-              else if (string.IsNullOrEmpty(tmpReq.DnsRequest))
-              {
-                throw new Exception("Something is wrong with the source host name.");
-              }
-              else if (string.IsNullOrEmpty(tmpReq.PacketType))
-              {
-                throw new Exception("Something is wrong with the source request type.");
-              }
-            }
-            catch (Exception ex)
-            {
-              this.pluginProperties.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
-              continue;
-            }
+          selectedRowIndex = this.dgv_DnsRequests.SelectedRows[0].Index;
+        }
 
-            this.dnsRequests.Insert(0, tmpReq);
-          }
-
-          // Adjust and resume DataGridView
+        // Verify and insert selectedHostName rows
+        foreach (DnsRequestRecord tmpReq in dnsRequests)
+        {
+          // Verify if Hostname and IPaddress for correctness.
           try
           {
-            while (this.dgv_DnsRequests.Rows.Count > this.maxRowNum)
+            if (string.IsNullOrEmpty(tmpReq.SrcIP))
             {
-              this.dnsRequests.RemoveAt(this.dgv_DnsRequests.Rows.Count - 1);
+              throw new Exception("Something is wrong with the source IP.");
             }
-
-            if (firstVisibleRowTop >= 0)
+            else if (string.IsNullOrEmpty(tmpReq.DnsRequest))
             {
-              this.dgv_DnsRequests.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
+              throw new Exception("Something is wrong with the source host name.");
+            }
+            else if (string.IsNullOrEmpty(tmpReq.PacketType))
+            {
+              throw new Exception("Something is wrong with the source request type.");
             }
           }
-          catch (Exception)
+          catch (Exception ex)
           {
+            this.pluginProperties.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
+            continue;
+          }
+          
+          this.dnsRequests.Insert(0, tmpReq);
+          firstVisibleRowTop++;
+          if (selectedRowIndex > 0)
+          {
+            selectedRowIndex++;
+          }
+        }
+
+        // Adjust and resume DataGridView
+        try
+        {
+          while (this.dgv_DnsRequests.Rows.Count > this.maxRowNum)
+          {
+            this.dnsRequests.RemoveAt(this.dgv_DnsRequests.Rows.Count - 1);
           }
 
-          this.UseFilter();
+          if (firstVisibleRowTop >= 0)
+          {
+            this.dgv_DnsRequests.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
+          }
         }
+        catch (Exception)
+        {
+        }
+
+        this.UseFilter();
+      }
+
+//      this.dgv_DnsRequests.Refresh();
+      if (selectedRowIndex >= 0)
+      {
+        this.dgv_DnsRequests.ClearSelection();
+        this.dgv_DnsRequests.Rows[selectedRowIndex].Selected = true;
+        this.dgv_DnsRequests.CurrentCell = this.dgv_DnsRequests.Rows[selectedRowIndex].Cells[0];
       }
     }
 

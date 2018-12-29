@@ -31,20 +31,22 @@
     /// <param name="e"></param>
     private void DGV_HttpRequests_MouseUp(object sender, MouseEventArgs e)
     {
-      if (e.Button == MouseButtons.Right)
+      if (e.Button != MouseButtons.Right)
       {
-        try
+        return;
+      }
+
+      try
+      {
+        DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
+        if (hti.RowIndex >= 0)
         {
-          DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
-          if (hti.RowIndex >= 0)
-          {
-            this.cms_HttpRequests.Show(this.dgv_HttpRequests, e.Location);
-          }
+          this.cms_HttpRequests.Show(this.dgv_HttpRequests, e.Location);
         }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 
@@ -68,11 +70,13 @@
     /// <param name="e"></param>
     private void TB_Filter_KeyUp(object sender, KeyEventArgs e)
     {
-      if (e.KeyCode == Keys.Enter)
+      if (e.KeyCode != Keys.Enter)
       {
-        this.UseFilter();
-        this.dgv_HttpRequests.Refresh();
+        return;
       }
+      this.UseFilter();
+      this.dgv_HttpRequests.Refresh();
+
     }
 
 

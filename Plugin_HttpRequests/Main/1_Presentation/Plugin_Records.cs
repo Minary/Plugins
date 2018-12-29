@@ -24,16 +24,26 @@
       }
 
       var firstVisibleRowTop = -1;
+      var selectedRowIndex = -1;
       lock (this)
       {
         // Memorize DataGridView position and selection
         firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
-        
+        if (this.dgv_HttpRequests.SelectedRows.Count > 0)
+        {
+          selectedRowIndex = this.dgv_HttpRequests.SelectedRows[0].Index;
+        }
+
         try
         {
           foreach (HttpRequests tmpRecord in newRecords)
           {
             this.foundHttpRequests.Insert(0, tmpRecord);
+            firstVisibleRowTop++;
+            if (selectedRowIndex > 0)
+            {
+              selectedRowIndex++;
+            }
           }
 
           // If the table contains more elements than defined by the MAX
@@ -53,6 +63,14 @@
         }
 
         this.UseFilter();
+      }
+
+      // this.dgv_HttpRequests.Refresh();
+      if (selectedRowIndex >= 0)
+      {
+        this.dgv_HttpRequests.ClearSelection();
+        this.dgv_HttpRequests.Rows[selectedRowIndex].Selected = true;
+        this.dgv_HttpRequests.CurrentCell = this.dgv_HttpRequests.Rows[selectedRowIndex].Cells[0];
       }
     }
 

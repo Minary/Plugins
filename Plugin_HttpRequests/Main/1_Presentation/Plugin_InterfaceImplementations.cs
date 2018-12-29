@@ -123,7 +123,8 @@
 
       lock (this)
       {
-        if (this.dataBatch != null && !string.IsNullOrEmpty(data))
+        if (this.dataBatch != null && 
+            !string.IsNullOrEmpty(data))
         {
           this.dataBatch.Add(data);
         }

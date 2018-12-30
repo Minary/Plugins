@@ -46,7 +46,11 @@
           foreach (HttpRequests tmpRecord in newRecords)
           {
             this.foundHttpRequests.Insert(0, tmpRecord);
-            firstVisibleRowTop++;
+            if (firstVisibleRowTop > 0)
+            {
+              firstVisibleRowTop++;
+            }
+
             if (selectedRowIndex > 0)
             {
               selectedRowIndex++;

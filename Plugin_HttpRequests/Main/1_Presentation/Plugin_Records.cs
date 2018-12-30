@@ -28,10 +28,17 @@
       lock (this)
       {
         // Memorize DataGridView position and selection
-        firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
-        if (this.dgv_HttpRequests.SelectedRows.Count > 0)
+        try
         {
-          selectedRowIndex = this.dgv_HttpRequests.SelectedRows[0].Index;
+          firstVisibleRowTop = this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex;
+          if (this.dgv_HttpRequests.SelectedRows.Count > 0)
+          {
+            selectedRowIndex = this.dgv_HttpRequests.SelectedRows[0].Index;
+          }
+        }
+        catch (Exception ex)
+        {
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}.AddRecords(EXC0): {ex.Message}\r\n{ex.StackTrace}");
         }
 
         try
@@ -57,20 +64,31 @@
           {
             this.dgv_HttpRequests.FirstDisplayedScrollingRowIndex = firstVisibleRowTop;
           }
+          this.UseFilter();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}.AddRecords(EXC1): {ex.Message}\r\n{ex.StackTrace}");
         }
-
-        this.UseFilter();
       }
 
       // this.dgv_HttpRequests.Refresh();
-      if (selectedRowIndex >= 0)
+      try
       {
-        this.dgv_HttpRequests.ClearSelection();
-        this.dgv_HttpRequests.Rows[selectedRowIndex].Selected = true;
-        this.dgv_HttpRequests.CurrentCell = this.dgv_HttpRequests.Rows[selectedRowIndex].Cells[0];
+        if (selectedRowIndex >= 0 &&
+            this.dgv_HttpRequests.Rows.Count >= selectedRowIndex)
+        {
+          if (this.dgv_HttpRequests.SelectedRows.Count > 0)
+          {
+            this.dgv_HttpRequests.ClearSelection();
+          }
+          
+          this.dgv_HttpRequests.Rows[selectedRowIndex].Selected = true;
+        }
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}.AddRecords(EXC2): {ex.Message}\r\n{ex.StackTrace}");
       }
     }
 

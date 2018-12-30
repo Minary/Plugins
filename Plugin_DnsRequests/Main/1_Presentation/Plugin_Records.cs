@@ -3,7 +3,6 @@
   using Minary.Plugin.Main.DnsRequest.DataTypes;
   using System;
   using System.Collections.Generic;
-  using System.Windows.Forms;
 
 
   public partial class Plugin_DnsRequests
@@ -95,14 +94,17 @@
       }
 
 //      this.dgv_DnsRequests.Refresh();
-      if (selectedRowIndex >= 0)
+      if (selectedRowIndex >= 0 &&
+          this.dgv_DnsRequests.Rows.Count >= selectedRowIndex)
       {
-        this.dgv_DnsRequests.ClearSelection();
+        if (this.dgv_DnsRequests.SelectedRows.Count > 0)
+        {
+          this.dgv_DnsRequests.ClearSelection();
+        }
+
         this.dgv_DnsRequests.Rows[selectedRowIndex].Selected = true;
-        this.dgv_DnsRequests.CurrentCell = this.dgv_DnsRequests.Rows[selectedRowIndex].Cells[0];
       }
     }
-
 
 
     /// <summary>

@@ -246,7 +246,7 @@
         }
         catch (Exception ex)
         {
-          MessageBox.Show($"{this.Config.PluginName} : {ex.ToString()}");
+          MessageBox.Show($"{this.Config.PluginName} EXC0 : {ex.ToString()}\r\n{ex.StackTrace}");
         }
       }
 
@@ -258,7 +258,7 @@
         }
         catch (Exception ex)
         {
-          MessageBox.Show($"{this.Config.PluginName} : {ex.ToString()}");
+          MessageBox.Show($"{this.Config.PluginName} EXC1 : {ex.ToString()}\r\n{ex.StackTrace}");
         }
       }
     }

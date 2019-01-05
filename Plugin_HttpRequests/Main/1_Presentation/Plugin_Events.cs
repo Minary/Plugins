@@ -192,7 +192,7 @@
 
       try
       {
-        Browser miniBrowser = new Browser(url, cookie, srcIp, userAgent);
+        var miniBrowser = new Browser(url, cookie, srcIp, userAgent);
         miniBrowser.Show();
       }
       catch (Exception ex)

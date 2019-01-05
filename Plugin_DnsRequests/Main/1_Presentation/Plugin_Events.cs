@@ -1,6 +1,8 @@
 ﻿namespace Minary.Plugin.Main
 {
   using System;
+  using System.ComponentModel;
+  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -8,6 +10,26 @@
   {
 
     #region EVENTS
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void DGV_DnsRequests_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+      try
+      {
+        var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
+        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DnsRequest"].Value.ToString();
+        Clipboard.SetText(hostName);
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+    }
+
 
     /// <summary>
     ///

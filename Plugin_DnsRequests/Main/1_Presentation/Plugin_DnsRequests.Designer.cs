@@ -80,6 +80,7 @@
       this.dgv_DnsRequests.TabStop = false;
       this.dgv_DnsRequests.VirtualMode = true;
       this.dgv_DnsRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_DnsRequests_CellContentClick);
+      this.dgv_DnsRequests.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_DnsRequests_CellDoubleClick);
       this.dgv_DnsRequests.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_DnsRequests_MouseDown);
       this.dgv_DnsRequests.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_DNSRequests_MouseUp);
       // 
@@ -123,7 +124,7 @@
             this.tsmi_Clear,
             this.copyHostNameToolStripMenuItem});
       this.cms_DnsRequests.Name = "cms_DNSRequests";
-      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 127);
+      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 94);
       // 
       // deleteEntryToolStripMenuItem
       // 

@@ -1,8 +1,7 @@
 ﻿namespace Minary.Plugin.Main
 {
+  using Minary.MiniBrowser;
   using System;
-  using System.ComponentModel;
-  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -10,6 +9,51 @@
   {
 
     #region EVENTS
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TSMI_OpenInBrowser_Click(object sender, EventArgs e)
+    {
+      var hostName = string.Empty;
+      var url = string.Empty;
+      var cookie = string.Empty;
+      var srcIp = string.Empty;
+      var userAgent = string.Empty;
+
+      try
+      {
+        var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
+        hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DnsRequest"].Value.ToString();
+        url = $"http://{hostName}/";
+        cookie = string.Empty; // this.dgv_DnsRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
+        srcIp = this.dgv_DnsRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
+        userAgent = string.Empty;
+      }
+      catch (ArgumentOutOfRangeException aoorex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {aoorex.Message}");
+        return;
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+
+      try
+      {
+        var miniBrowser = new Browser(url, cookie, srcIp, userAgent);
+        miniBrowser.Show();
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+        MessageBox.Show($"MiniBrowser unexpectedly crashed : {ex.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
 
     /// <summary>
     /// 

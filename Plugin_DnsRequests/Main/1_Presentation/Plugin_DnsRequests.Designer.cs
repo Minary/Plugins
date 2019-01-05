@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_DnsRequests = new System.Windows.Forms.DataGridView();
       this.bt_Set = new System.Windows.Forms.Button();
       this.tb_Filter = new System.Windows.Forms.TextBox();
@@ -40,6 +40,7 @@
       this.tsmi_Clear = new System.Windows.Forms.ToolStripMenuItem();
       this.copyHostNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.t_GuiUpdate = new System.Windows.Forms.Timer(this.components);
+      this.openInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_DnsRequests)).BeginInit();
       this.cms_DnsRequests.SuspendLayout();
       this.SuspendLayout();
@@ -56,14 +57,14 @@
       this.dgv_DnsRequests.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_DnsRequests.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_DnsRequests.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_DnsRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_DnsRequests.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_DnsRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_DnsRequests.EnableHeadersVisualStyles = false;
       this.dgv_DnsRequests.Location = new System.Drawing.Point(26, 68);
@@ -122,28 +123,29 @@
       this.cms_DnsRequests.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteEntryToolStripMenuItem,
             this.tsmi_Clear,
+            this.openInBrowserToolStripMenuItem,
             this.copyHostNameToolStripMenuItem});
       this.cms_DnsRequests.Name = "cms_DNSRequests";
-      this.cms_DnsRequests.Size = new System.Drawing.Size(216, 94);
+      this.cms_DnsRequests.Size = new System.Drawing.Size(234, 157);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(215, 30);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(216, 30);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
       // 
       // tsmi_Clear
       // 
       this.tsmi_Clear.Name = "tsmi_Clear";
-      this.tsmi_Clear.Size = new System.Drawing.Size(215, 30);
+      this.tsmi_Clear.Size = new System.Drawing.Size(216, 30);
       this.tsmi_Clear.Text = "Clear list";
       this.tsmi_Clear.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
       // copyHostNameToolStripMenuItem
       // 
       this.copyHostNameToolStripMenuItem.Name = "copyHostNameToolStripMenuItem";
-      this.copyHostNameToolStripMenuItem.Size = new System.Drawing.Size(215, 30);
+      this.copyHostNameToolStripMenuItem.Size = new System.Drawing.Size(216, 30);
       this.copyHostNameToolStripMenuItem.Text = "Copy host name";
       this.copyHostNameToolStripMenuItem.Click += new System.EventHandler(this.CopyHostNameToolStripMenuItem_Click);
       // 
@@ -151,6 +153,13 @@
       // 
       this.t_GuiUpdate.Interval = 500;
       this.t_GuiUpdate.Tick += new System.EventHandler(this.T_GuiUpdate_Tick);
+      // 
+      // openInBrowserToolStripMenuItem
+      // 
+      this.openInBrowserToolStripMenuItem.Name = "openInBrowserToolStripMenuItem";
+      this.openInBrowserToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
+      this.openInBrowserToolStripMenuItem.Text = "Open in browser ...";
+      this.openInBrowserToolStripMenuItem.Click += new System.EventHandler(this.TSMI_OpenInBrowser_Click);
       // 
       // Plugin_DnsRequests
       // 
@@ -182,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyHostNameToolStripMenuItem;
         private System.Windows.Forms.Timer t_GuiUpdate;
-    }
+    private System.Windows.Forms.ToolStripMenuItem openInBrowserToolStripMenuItem;
+  }
 }

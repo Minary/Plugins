@@ -28,9 +28,9 @@
         var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
         hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DnsRequest"].Value.ToString();
         url = $"http://{hostName}/";
-        cookie = string.Empty; // this.dgv_DnsRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
+        cookie = this.dgv_DnsRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
         srcIp = this.dgv_DnsRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
-        userAgent = string.Empty;
+        userAgent = this.dgv_DnsRequests.SelectedRows[0].Cells["UserAgent"].Value.ToString();
       }
       catch (ArgumentOutOfRangeException aoorex)
       {

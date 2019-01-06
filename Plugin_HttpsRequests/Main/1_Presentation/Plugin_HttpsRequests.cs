@@ -66,6 +66,14 @@
       columnSrcIp.Width = 150;
       this.dgv_HttpsRequests.Columns.Add(columnSrcIp);
 
+      DataGridViewTextBoxColumn columnDstIp = new DataGridViewTextBoxColumn();
+      columnDstIp.DataPropertyName = "DstIP";
+      columnDstIp.Name = "DstIP";
+      columnDstIp.HeaderText = "Dest. IP";
+      columnDstIp.ReadOnly = true;
+      columnDstIp.Width = 150;
+      this.dgv_HttpsRequests.Columns.Add(columnDstIp);
+
       DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
       columnTimestamp.DataPropertyName = "Timestamp";
       columnTimestamp.Name = "Timestamp";
@@ -222,7 +230,7 @@
 
               if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
               {
-                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, srcIp, dstIp, $"https://{tmpHostName}/"));
               }
               continue;
 
@@ -236,7 +244,7 @@
 
               if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
               {
-                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, srcIp,dstIp, $"https://{tmpHostName}/"));
               }
 
               continue;
@@ -262,7 +270,7 @@
 
               if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
               {
-                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, srcIp, dstIp, $"https://{tmpHostName}/"));
                 this.ipCache.TryAdd(targetIp, resolvedHost);
               }
             }
@@ -273,7 +281,7 @@
 
               if (newRecords.Any(elem => elem.RemoteHost == tmpHostName) == false)
               {
-                newRecords.Add(new RecordHttpsRequest(srcMacAddr, dstIp, $"https://{tmpHostName}/"));
+                newRecords.Add(new RecordHttpsRequest(srcMacAddr, srcIp, dstIp, $"https://{tmpHostName}/"));
                 this.ipCache.TryAdd(targetIp, resolvedHost);
               }
             }

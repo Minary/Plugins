@@ -9,8 +9,9 @@
 
     #region MEMBERS
 
-    private string srcMac = string.Empty;
-    private string srcIp = string.Empty;
+    private string srcMAC = string.Empty;
+    private string srcIP = string.Empty;
+    private string dstIP = string.Empty;
     private string timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
     private string remoteHost = string.Empty;
 
@@ -24,10 +25,10 @@
     [Browsable(true)]
     public string SrcMAC
     {
-      get { return this.srcMac; }
+      get { return this.srcMAC; }
       set
       {
-        this.srcMac = value;
+        this.srcMAC = value;
         this.NotifyPropertyChanged("SrcMAC");
       }
     }
@@ -36,11 +37,23 @@
     [Browsable(true)]
     public string SrcIP
     {
-      get { return this.srcIp; }
+      get { return this.srcIP; }
       set
       {
-        this.srcIp = value;
+        this.srcIP = value;
         this.NotifyPropertyChanged("SrcIP");
+      }
+    }
+
+
+    [Browsable(true)]
+    public string DstIP
+    {
+      get { return this.dstIP; }
+      set
+      {
+        this.dstIP = value;
+        this.NotifyPropertyChanged("DstIP");
       }
     }
 
@@ -78,10 +91,11 @@
     }
 
 
-    public RecordHttpsRequest(string srcMac, string srcIp, string remoteHost)
+    public RecordHttpsRequest(string srcMac, string srcIp, string dstIp, string remoteHost)
     {
-      this.srcMac = srcMac;
-      this.srcIp = srcIp;
+      this.srcMAC = srcMac;
+      this.srcIP = srcIp;
+      this.dstIP = dstIp;
       this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
       this.remoteHost = remoteHost;
     }

@@ -18,6 +18,7 @@
     private string url = string.Empty;
     private string sessionCookies = string.Empty;
     private string request = string.Empty;
+    private string userAgent = string.Empty;
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -133,6 +134,18 @@
       }
     }
 
+
+    [Browsable(true)]
+    public string UserAgent
+    {
+      get { return this.userAgent; }
+      set
+      {
+        this.userAgent = value;
+        this.NotifyPropertyChanged("UserAgent");
+      }
+    }
+
     #endregion
 
 
@@ -143,7 +156,7 @@
     }
 
 
-    public HttpRequests(string srcMac, string srcIp, string requestMethod, string remoteHost, string remoteFile, string cookies, string request)
+    public HttpRequests(string srcMac, string srcIp, string requestMethod, string remoteHost, string remoteFile, string cookies, string request, string userAgent)
     {
       this.srcMac = srcMac;
       this.srcIp = srcIp;
@@ -154,6 +167,7 @@
       this.url = $"{this.remoteHost}{this.path}";
       this.sessionCookies = cookies;
       this.request = request;
+      this.userAgent = userAgent;
     }
 
     #endregion

@@ -166,7 +166,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void RequestDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+    private void TSMI_RequestDetails_Click(object sender, EventArgs e)
     {
       var url = string.Empty;
       var cookie = string.Empty;
@@ -178,7 +178,7 @@
         url = this.dgv_HttpRequests.SelectedRows[0].Cells["URL"].Value.ToString();
         cookie = this.dgv_HttpRequests.SelectedRows[0].Cells["SessionCookies"].Value.ToString();
         srcIp = this.dgv_HttpRequests.SelectedRows[0].Cells["SrcIP"].Value.ToString();
-        userAgent = string.Empty;
+        userAgent = this.dgv_HttpRequests.SelectedRows[0].Cells["UserAgent"].Value.ToString();
       }
       catch (ArgumentOutOfRangeException aoorex)
       {

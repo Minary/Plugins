@@ -112,7 +112,14 @@
       columnRequest.HeaderText = "Request";
       columnRequest.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnRequest);
-      
+
+      DataGridViewTextBoxColumn columnUserAgent = new DataGridViewTextBoxColumn();
+      columnUserAgent.DataPropertyName = "UserAgent";
+      columnUserAgent.Name = "UserAgent";
+      columnUserAgent.HeaderText = "UserAgent";
+      columnUserAgent.Visible = false;
+      this.dgv_HttpRequests.Columns.Add(columnUserAgent);
+
       this.dgv_HttpRequests.DataSource = this.foundHttpRequests;
 
       // To reduce DGV flickering use DoubleBuffering
@@ -171,6 +178,7 @@
       Match matchUri;
       Match matchHost;
       Match matchCookies;
+      Match matchUserAgent;
       var requestMethod = string.Empty;
       var remoteHost = string.Empty;
       var requestString = string.Empty;
@@ -183,6 +191,7 @@
       var dstIp = string.Empty;
       var dstPort = string.Empty;
       var data = string.Empty;
+      var userAgent = string.Empty;
 
       if (this.dataBatch == null || 
           this.dataBatch.Count <= 0)
@@ -241,7 +250,16 @@
               cookies = string.Empty;
             }
 
-            newRecords.Add(new HttpRequests(srcMacAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data));
+            if (((matchUserAgent = Regex.Match(data, @"\.\.User-Agent\s*:\s*([\w\d\-_\.]+?)\.\.", RegexOptions.IgnoreCase))).Success)
+            {
+              userAgent = matchUserAgent.Groups[1].Value.ToString();
+            }
+            else
+            {
+              cookies = string.Empty;
+            }
+
+            newRecords.Add(new HttpRequests(srcMacAddr, srcIp, requestMethod, remoteHost, requestString, cookies, data, userAgent));
           }
         }
         catch (Exception ex)

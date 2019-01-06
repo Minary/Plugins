@@ -112,7 +112,7 @@
       this.requestDetailsToolStripMenuItem.Name = "requestDetailsToolStripMenuItem";
       this.requestDetailsToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
       this.requestDetailsToolStripMenuItem.Text = "Open in browser ...";
-      this.requestDetailsToolStripMenuItem.Click += new System.EventHandler(this.RequestDetailsToolStripMenuItem_Click);
+      this.requestDetailsToolStripMenuItem.Click += new System.EventHandler(this.TSMI_RequestDetails_Click);
       // 
       // showDataToolStripMenuItem
       // 

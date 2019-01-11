@@ -43,17 +43,19 @@
       this.dgv_Spoofing = new System.Windows.Forms.DataGridView();
       this.cb_Cname = new System.Windows.Forms.CheckBox();
       this.tb_Cname = new System.Windows.Forms.TextBox();
+      this.l_ttl = new System.Windows.Forms.Label();
+      this.tb_ttl = new System.Windows.Forms.TextBox();
       this.cms_DnsPoison.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Spoofing)).BeginInit();
       this.SuspendLayout();
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(1065, 24);
+      this.bt_Add.Location = new System.Drawing.Point(1218, 24);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
       this.bt_Add.Size = new System.Drawing.Size(30, 32);
-      this.bt_Add.TabIndex = 5;
+      this.bt_Add.TabIndex = 6;
       this.bt_Add.Text = "+";
       this.bt_Add.UseVisualStyleBackColor = true;
       this.bt_Add.Click += new System.EventHandler(this.BT_Add_Click);
@@ -61,7 +63,7 @@
       // tb_Host
       // 
       this.tb_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Host.Location = new System.Drawing.Point(144, 24);
+      this.tb_Host.Location = new System.Drawing.Point(136, 26);
       this.tb_Host.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Host.Name = "tb_Host";
       this.tb_Host.Size = new System.Drawing.Size(229, 26);
@@ -71,7 +73,7 @@
       // tb_Address
       // 
       this.tb_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Address.Location = new System.Drawing.Point(506, 24);
+      this.tb_Address.Location = new System.Drawing.Point(486, 27);
       this.tb_Address.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Address.Name = "tb_Address";
       this.tb_Address.Size = new System.Drawing.Size(148, 26);
@@ -93,7 +95,7 @@
       // 
       this.l_IpAddress.AutoSize = true;
       this.l_IpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_IpAddress.Location = new System.Drawing.Point(399, 30);
+      this.l_IpAddress.Location = new System.Drawing.Point(383, 30);
       this.l_IpAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_IpAddress.Name = "l_IpAddress";
       this.l_IpAddress.Size = new System.Drawing.Size(100, 20);
@@ -157,7 +159,7 @@
       this.dgv_Spoofing.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Spoofing.Size = new System.Drawing.Size(1400, 482);
-      this.dgv_Spoofing.TabIndex = 4;
+      this.dgv_Spoofing.TabIndex = 7;
       this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       this.dgv_Spoofing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
@@ -165,10 +167,10 @@
       // 
       this.cb_Cname.AutoSize = true;
       this.cb_Cname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cb_Cname.Location = new System.Drawing.Point(726, 29);
+      this.cb_Cname.Location = new System.Drawing.Point(879, 29);
       this.cb_Cname.Name = "cb_Cname";
       this.cb_Cname.Size = new System.Drawing.Size(117, 24);
-      this.cb_Cname.TabIndex = 3;
+      this.cb_Cname.TabIndex = 4;
       this.cb_Cname.Text = "Is CNAME";
       this.cb_Cname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
       this.cb_Cname.UseVisualStyleBackColor = true;
@@ -179,18 +181,41 @@
       // 
       this.tb_Cname.Enabled = false;
       this.tb_Cname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Cname.Location = new System.Drawing.Point(846, 25);
+      this.tb_Cname.Location = new System.Drawing.Point(1003, 27);
       this.tb_Cname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Cname.Name = "tb_Cname";
       this.tb_Cname.Size = new System.Drawing.Size(195, 26);
-      this.tb_Cname.TabIndex = 4;
+      this.tb_Cname.TabIndex = 5;
       this.tb_Cname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
+      // 
+      // l_ttl
+      // 
+      this.l_ttl.AutoSize = true;
+      this.l_ttl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.l_ttl.Location = new System.Drawing.Point(673, 29);
+      this.l_ttl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_ttl.Name = "l_ttl";
+      this.l_ttl.Size = new System.Drawing.Size(42, 20);
+      this.l_ttl.TabIndex = 0;
+      this.l_ttl.Text = "TTL";
+      // 
+      // tb_ttl
+      // 
+      this.tb_ttl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tb_ttl.Location = new System.Drawing.Point(718, 27);
+      this.tb_ttl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_ttl.Name = "tb_ttl";
+      this.tb_ttl.Size = new System.Drawing.Size(107, 26);
+      this.tb_ttl.TabIndex = 3;
+      this.tb_ttl.Text = "86400";
       // 
       // Plugin_DnsPoisoning
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
+      this.Controls.Add(this.tb_ttl);
+      this.Controls.Add(this.l_ttl);
       this.Controls.Add(this.tb_Cname);
       this.Controls.Add(this.cb_Cname);
       this.Controls.Add(this.l_Host);
@@ -223,5 +248,7 @@
     private System.Windows.Forms.DataGridView dgv_Spoofing;
     private System.Windows.Forms.CheckBox cb_Cname;
     private System.Windows.Forms.TextBox tb_Cname;
+    private System.Windows.Forms.Label l_ttl;
+    private System.Windows.Forms.TextBox tb_ttl;
   }
 }

@@ -1,7 +1,5 @@
 ﻿namespace Minary.Plugin.Main.DnsPoisoning.DataTypes
 {
-  using System;
-
 
   public class General
   {

@@ -25,7 +25,7 @@
 
       var firstVisibleRowTop = -1;
 
-      // Verify if Hostname and IPaddress for correctness.
+      // Verify whether Hostname and IPaddress for correctness.
       if (this.VerifyHostNameStructure(newRecord.HostName) == false)
       {
         throw new Exception("Something is wrong with the host name");
@@ -42,7 +42,17 @@
         throw new Exception("Something is wrong with the CName host name");
       }
 
-      // Ensure if host/ip combination does not exist.
+      // Verify whether TTL has a valid value
+      long ttl = 0;
+      if (Regex.Match(this.tb_ttl.Text, @"^\d{1,10}$").Success == false ||
+          long.TryParse(this.tb_ttl.Text, out ttl) == false ||
+          ttl < 1 ||
+          ttl > 4294967296)
+      {
+        throw new Exception("Something is wront with the TTL.\r\nValue must be 1-4'294'967'296");
+      }
+
+      // Ensure that host/ip combination does not exist.
       foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords)
       {
         if (tmpRecord.HostName.ToLower() == newRecord.HostName.ToLower())

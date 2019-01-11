@@ -21,10 +21,11 @@
       var ipAddress = this.tb_Address.Text.Trim();
       var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
       var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var ttl = long.Parse(this.tb_ttl.Text.Trim());
 
       try
       {
-        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname));
+        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname, ttl));
       }
       catch (Exception ex)
       {
@@ -152,10 +153,11 @@
       var ipAddress = this.tb_Address.Text.Trim();
       var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
       var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var ttl = long.Parse(this.tb_ttl.Text.Trim());
 
       try
       {
-        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname));
+        this.AddRecord(new RecordDnsPoison(hostName, ipAddress, responseType, cname, ttl));
       }
       catch (Exception ex)
       {

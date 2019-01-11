@@ -150,7 +150,7 @@
       // with placeholder values
       foreach (RecordDnsPoison tmpRecord in dnsPoisonRecords)
       {
-        var realRecord = new RecordDnsPoison(tmpRecord.HostName, tmpRecord.IpAddress, tmpRecord.ResponseType, tmpRecord.CName);
+        var realRecord = new RecordDnsPoison(tmpRecord.HostName, tmpRecord.IpAddress, tmpRecord.ResponseType, tmpRecord.CName, tmpRecord.TTL);
         if (tmpRecord.IpAddress == this.plugin.Config.HostApplication.CurrentIP)
         {
           realRecord.IpAddress = MinaryLib.DSL.Config.CONSTANT_LOCAL_IP;

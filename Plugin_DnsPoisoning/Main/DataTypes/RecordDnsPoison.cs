@@ -14,6 +14,7 @@
     private string ipAddress = string.Empty;
     private DnsResponseType responseType;
     private string cname = string.Empty;
+    private long ttl = -1;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -86,6 +87,22 @@
       }
     }
 
+
+    [Browsable(true)]
+    public long TTL
+    {
+      get
+      {
+        return this.ttl;
+      }
+
+      set
+      {
+        this.ttl = value;
+        this.NotifyPropertyChanged("TTL");
+      }
+    }
+
     #endregion
 
 
@@ -96,12 +113,13 @@
     }
 
 
-    public RecordDnsPoison(string hostName, string ipAddress, DnsResponseType responseType, string cname)
+    public RecordDnsPoison(string hostName, string ipAddress, DnsResponseType responseType, string cname, long ttl)
     {
       this.hostName = hostName;
       this.ipAddress = ipAddress;
       this.responseType = responseType;
       this.cname = cname;
+      this.ttl = ttl;
     }
 
     #endregion

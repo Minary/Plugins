@@ -62,6 +62,14 @@
       columnCName.Width = 296;
       this.dgv_Spoofing.Columns.Add(columnCName);
 
+      DataGridViewTextBoxColumn columnTtl = new DataGridViewTextBoxColumn();
+      columnTtl.DataPropertyName = "TTL";
+      columnTtl.Name = "TTL";
+      columnTtl.HeaderText = "TTL";
+      columnTtl.ReadOnly = true;
+      columnTtl.Width = 130;
+      this.dgv_Spoofing.Columns.Add(columnTtl);
+
       DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
       columnType.DataPropertyName = "ResponseType";
       columnType.Name = "ResponseType";

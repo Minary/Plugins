@@ -133,11 +133,11 @@
           {
             if (tmpRecord.ResponseType == DnsResponseType.A)
             {
-              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.IpAddress}\r\n";
+              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}\r\n";
             }
             else
             {
-              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
+              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
             }
           }
 

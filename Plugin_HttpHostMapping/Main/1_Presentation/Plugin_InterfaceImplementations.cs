@@ -67,13 +67,13 @@
       }
       catch (MinaryWarningException ex)
       {
-        this.infrastructureLayer.OnStop();
+        this.infrastructureLayer.OnRemoveConfiguration();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
       catch (Exception ex)
       {
-        this.infrastructureLayer.OnStop();
+        this.infrastructureLayer.OnRemoveConfiguration();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
@@ -120,7 +120,7 @@
       this.SetGuiActive();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       
-      this.infrastructureLayer.OnStop();
+      this.infrastructureLayer.OnRemoveConfiguration();
       this.Refresh();
     }
 
@@ -130,7 +130,7 @@
     /// </summary>
     public void OnShutDown()
     {
-      this.infrastructureLayer.OnStop();
+      this.infrastructureLayer.OnRemoveConfiguration();
     }
     
 

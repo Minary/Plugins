@@ -115,7 +115,7 @@
     }
  
     
-    public void OnStop()
+    public void OnRemoveConfiguration()
     {
       // Remove plugin configuration file
       try

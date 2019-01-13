@@ -70,7 +70,7 @@
     }
 
     
-    public void OnStart(List<HostMappingRecord> recordList)
+    public void OnWriteConfiguration(List<HostMappingRecord> recordList)
     {
       if (recordList?.Count > 0 == false)
       {

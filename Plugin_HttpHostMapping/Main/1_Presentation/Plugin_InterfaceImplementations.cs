@@ -45,6 +45,44 @@
     /// <summary>
     /// 
     /// </summary>
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+        return;
+      }
+
+      if (this.hostMappingRecords?.Count <= 0)
+      {
+        return;
+      }
+
+      try
+      {
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+        this.hostMappingConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
+        this.infrastructureLayer.OnWriteConfiguration(this.hostMappingRecords.ToList());
+      }
+      catch (MinaryWarningException ex)
+      {
+        this.infrastructureLayer.OnStop();
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+      catch (Exception ex)
+      {
+        this.infrastructureLayer.OnStop();
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     public delegate void OnStartAttackDelegate();
     public void OnStartAttack()
     {
@@ -54,32 +92,12 @@
         return;
       }
 
-      if (this.hostMappingRecords?.Count > 0 == true)
+      if (this.hostMappingRecords?.Count > 0)
       {
-        try
-        {
-          this.SetGuiInactive();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
-          this.hostMappingConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
-          this.infrastructureLayer.OnStart(this.hostMappingRecords.ToList());
-        }
-        catch (MinaryWarningException ex)
-        {
-          this.infrastructureLayer.OnStop();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-          this.infrastructureLayer.OnStop();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
+        this.SetGuiInactive();
       }
       else
       {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
-        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.SetGuiInactive();
       }
 

@@ -100,7 +100,7 @@
       this.Refresh();
 
       // Delete firewall rules file
-      this.infrastructureLayer.OnStop(this.firewallConfigFilePath);
+      this.infrastructureLayer.OnRemoveConfiguration(this.firewallConfigFilePath);
     }
 
 
@@ -109,7 +109,7 @@
     /// </summary>
     public void OnShutDown()
     {
-      this.infrastructureLayer.OnStop(this.firewallConfigFilePath);
+      this.infrastructureLayer.OnRemoveConfiguration(this.firewallConfigFilePath);
     }
 
 

@@ -74,7 +74,7 @@
     ///
     /// </summary>
     /// <param name="firewallRulesPath"></param>
-    public void OnStop(string firewallRulesFilePath)
+    public void OnRemoveConfiguration(string firewallRulesFilePath)
     {
       try
       {

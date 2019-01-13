@@ -39,15 +39,17 @@
     }
 
 
+
+
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    public delegate void OnStartAttackDelegate();
-    public void OnStartAttack()
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
         return;
       }
 
@@ -67,6 +69,19 @@
         {
           this.pluginProperties.HostApplication.LogMessage($"Plugin_System.OnStartAttack(RecordException): {ex.Message}\r\n{ex.StackTrace}");
         }
+      }
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public delegate void OnStartAttackDelegate();
+    public void OnStartAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
+        return;
       }
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
@@ -143,7 +158,7 @@
       lock (this)
       {
         if (this.dataBatch != null &&
-            data != null && 
+            data != null &&
             data.Length > 0)
         {
           this.dataBatch.Add(data);

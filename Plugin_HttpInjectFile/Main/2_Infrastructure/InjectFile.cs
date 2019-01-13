@@ -70,7 +70,7 @@
     }
 
 
-    public void OnStart(List<InjectFileRecord> recordList)
+    public void OnWriteConfiguration(List<InjectFileRecord> recordList)
     {
       if (recordList == null || 
           recordList.Count <= 0)
@@ -115,7 +115,7 @@
     }
  
     
-    public void OnStop()
+    public void OnRemoveConfiguration()
     {
       // Remove plugin configuration file
       try

@@ -33,6 +33,44 @@
       this.SetGuiActive();
       this.Refresh();
     }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+        return;
+      }
+      
+      if (this.injectFileRecords?.Count <= 0)
+      {
+        return;
+      }
+
+      try
+      {
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
+        this.injectFileConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
+        this.infrastructureLayer.OnWriteConfiguration(this.injectFileRecords.ToList());
+      }
+      catch (MinaryWarningException ex)
+      {
+        this.infrastructureLayer.OnRemoveConfiguration();
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+      catch (Exception ex)
+      {
+        this.infrastructureLayer.OnRemoveConfiguration();
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+    }
  
 
     /// <summary>
@@ -47,27 +85,9 @@
         return;
       }
 
-      if (this.injectFileRecords?.Count > 0 == true)
+      if (this.injectFileRecords?.Count > 0)
       {
-        try
-        {
-          this.SetGuiInactive();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
-          this.injectFileConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
-          this.infrastructureLayer.OnStart(this.injectFileRecords.ToList());
-        }
-        catch (MinaryWarningException ex)
-        {
-          this.infrastructureLayer.OnStop();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-          this.infrastructureLayer.OnStop();
-          this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
+        this.SetGuiInactive();
       }
       else
       {
@@ -94,7 +114,7 @@
 
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.SetGuiActive();
-      this.infrastructureLayer.OnStop();
+      this.infrastructureLayer.OnRemoveConfiguration();
       this.Refresh();
     }
 

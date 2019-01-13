@@ -70,7 +70,7 @@
     }
 
 
-    public void OnStart(List<RequestRedirectRecord> recordList)
+    public void OnWriteConfiguration(List<RequestRedirectRecord> recordList)
     {
       if (recordList == null || 
           recordList.Count <= 0)
@@ -111,7 +111,7 @@
     }
 
 
-    public void OnStop()
+    public void OnRemoveConfiguration()
     {
       // Remove plugin configuration file
       try

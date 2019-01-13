@@ -36,21 +36,24 @@
 
 
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    public delegate void OnStartAttackDelegate();
-    public void OnStartAttack()
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
-        this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
         return;
       }
 
-      // Start SslStrip application.
+      if (this.sslStripRecords.Count <= 0)
+      {
+        return;
+      }
+
       try
       {
-        this.SetGuiInactive();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Running);
         this.sslStripConfig.IsDebuggingOn = this.pluginProperties.HostApplication.IsDebuggingOn;
         this.infrastructureLayer.OnStart(this.sslStripRecords.ToList());
@@ -66,6 +69,31 @@
         this.infrastructureLayer.OnStop();
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+    }
+
+
+    /// <summary>
+    ///
+    /// </summary>
+    public delegate void OnStartAttackDelegate();
+    public void OnStartAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
+        return;
+      }
+      
+      if (this.sslStripRecords?.Count > 0)
+      {
+        this.SetGuiInactive();
+      }
+      else
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: No rule defined. Stopping the pluggin.");
+        this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
+        this.SetGuiInactive();
       }
 
       this.Refresh();

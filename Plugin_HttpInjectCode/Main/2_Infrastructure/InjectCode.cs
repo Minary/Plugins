@@ -70,7 +70,7 @@
     }
 
     
-    public void OnStart(List<InjectCodeRecord> recordList)
+    public void OnWriteConfiguration(List<InjectCodeRecord> recordList)
     {
       if (recordList == null || 
           recordList.Count <= 0)

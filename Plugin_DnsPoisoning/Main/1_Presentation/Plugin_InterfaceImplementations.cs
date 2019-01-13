@@ -105,6 +105,54 @@
 
 
     /// <summary>
+    /// 
+    /// </summary>
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+        return;
+      }
+
+      if (this.dnsPoisonRecords?.Count <= 0)
+      {
+        return;
+      }
+
+      string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
+      string dnsPoisoningHosts = string.Empty;
+
+      // Write DNS poisoning host list to file
+      if (!string.IsNullOrEmpty(poisoningHostsPath))
+      {
+        if (File.Exists(poisoningHostsPath))
+        {
+          File.Delete(poisoningHostsPath);
+        }
+
+        foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
+        {
+          if (tmpRecord.ResponseType == DnsResponseType.A)
+          {
+            dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}\r\n";
+          }
+          else
+          {
+            dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
+          }
+        }
+
+        using (var outfile = new StreamWriter(poisoningHostsPath))
+        {
+          outfile.Write(dnsPoisoningHosts);
+        }
+      }
+    }
+
+
+    /// <summary>
     ///
     /// </summary>
     public delegate void OnStartAttackDelegate();
@@ -115,38 +163,8 @@
         this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
         return;
       }
-
       if (this.dnsPoisonRecords?.Count > 0 == true)
       {
-        string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
-        string dnsPoisoningHosts = string.Empty;
-
-        // Write DNS poisoning host list to file
-        if (!string.IsNullOrEmpty(poisoningHostsPath))
-        {
-          if (File.Exists(poisoningHostsPath))
-          {
-            File.Delete(poisoningHostsPath);
-          }
-
-          foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
-          {
-            if (tmpRecord.ResponseType == DnsResponseType.A)
-            {
-              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}\r\n";
-            }
-            else
-            {
-              dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
-            }
-          }
-
-          using (var outfile = new StreamWriter(poisoningHostsPath))
-          {
-            outfile.Write(dnsPoisoningHosts);
-          }
-        }
-
         this.SetGuiInactive();
         this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.Running);
       }

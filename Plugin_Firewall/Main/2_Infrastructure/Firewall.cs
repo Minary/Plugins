@@ -38,7 +38,7 @@
     /// </summary>
     /// <param name="pFWrules"></param>
     /// <param name="firewallRulesPath"></param>
-    public void OnStart(BindingList<FirewallRuleRecord> firewallRulesList, string firewallRulesPath)
+    public void OnWriteConfigFile(BindingList<FirewallRuleRecord> firewallRulesList, string firewallRulesPath)
     {
       var firewallRulesString = string.Empty;
 

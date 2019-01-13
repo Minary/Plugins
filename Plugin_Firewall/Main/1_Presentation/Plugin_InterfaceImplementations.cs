@@ -39,6 +39,33 @@
 
 
     /// <summary>
+    /// 
+    /// </summary>
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+        return;
+      }
+
+      this.Config.HostApplication.LogMessage($"FIREWALL PATH:{this.firewallConfigFilePath}");
+
+      try
+      {
+        string firewallRulesPath = this.firewallConfigFilePath;
+        this.infrastructureLayer.OnWriteConfigFile(this.firewallRules, firewallRulesPath);
+      }
+      catch (MinaryWarningException ex)
+      {
+        this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
+        this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
+      }
+    }
+
+
+    /// <summary>
     ///
     /// </summary>
     public delegate void OnStartAttackDelegate();
@@ -48,19 +75,6 @@
       {
         this.BeginInvoke(new OnStartAttackDelegate(this.OnStartAttack), new object[] { });
         return;
-      }
-
-      this.Config.HostApplication.LogMessage($"FIREWALL PATH:{this.firewallConfigFilePath}");
-
-      try
-      {
-        string firewallRulesPath = this.firewallConfigFilePath;
-        this.infrastructureLayer.OnStart(this.firewallRules, firewallRulesPath);
-      }
-      catch (MinaryWarningException ex)
-      {
-        this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
-        this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
       }
 
       this.SetGuiInactive();

@@ -33,6 +33,20 @@
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public delegate void OnPrepareAttackDelegate();
+    public void OnPrepareAttack()
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+        return;
+      }
+    }
+
+
     public delegate void OnStartAttackDelegate();
     public void OnStartAttack()
     {

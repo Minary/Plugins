@@ -38,18 +38,18 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate void OnPrepareAttackDelegate();
-    public void OnPrepareAttack()
+    public delegate object OnPrepareAttackDelegate();
+    public object OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return;
+        return null;
       }
 
       if (this.requestRedirectRecords?.Count > 0 == true)
       {
-        return;
+        return null;
       }
 
       try
@@ -70,6 +70,8 @@
         this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.Error);
         this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
+
+      return null;
     }
 
 

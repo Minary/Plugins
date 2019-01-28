@@ -76,8 +76,8 @@
       tmpNewPluginStatus = (status >= 0) ? (int)status : (int)MinaryLib.Plugin.Status.NotRunning;
       this.LogMessage($"{tmpPlugin.Config.PluginName}: Changed to state {tmpNewPluginStatus}/{status}");
     }
-
-    #endregion
-
   }
+
+  #endregion
+
 }

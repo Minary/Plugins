@@ -107,48 +107,42 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate void OnPrepareAttackDelegate();
-    public void OnPrepareAttack()
+    public delegate object OnPrepareAttackDelegate();
+    public object OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return;
+        return null;
       }
 
       if (this.dnsPoisonRecords?.Count <= 0)
       {
-        return;
+        return null;
       }
 
+      var poisoningRecordLines = new List<string>();
       string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
-      string dnsPoisoningHosts = string.Empty;
 
-      // Write DNS poisoning host list to file
-      if (!string.IsNullOrEmpty(poisoningHostsPath))
+      // Create CSV list as an AttackService parameter
+      foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
       {
-        if (File.Exists(poisoningHostsPath))
+        var line = string.Empty;
+        if (tmpRecord.ResponseType == DnsResponseType.A)
         {
-          File.Delete(poisoningHostsPath);
+          line = $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}";
+        }
+        else
+        {
+          line = $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}";
         }
 
-        foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
-        {
-          if (tmpRecord.ResponseType == DnsResponseType.A)
-          {
-            dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}\r\n";
-          }
-          else
-          {
-            dnsPoisoningHosts += $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}\r\n";
-          }
-        }
-
-        using (var outfile = new StreamWriter(poisoningHostsPath))
-        {
-          outfile.Write(dnsPoisoningHosts);
-        }
+        poisoningRecordLines.Add(line);
       }
+
+this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: HONK TOTAL DNS POISON RULES: {poisoningRecordLines.Count}");
+//      return poisoningRecordLines as object;
+      return poisoningRecordLines; // as object;
     }
 
 

@@ -44,13 +44,13 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate void OnPrepareAttackDelegate();
-    public void OnPrepareAttack()
+    public delegate object OnPrepareAttackDelegate();
+    public object OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return;
+        return null;
       }
 
       // Add all system from ARP scan to the list
@@ -70,6 +70,8 @@
           this.pluginProperties.HostApplication.LogMessage($"Plugin_System.OnStartAttack(RecordException): {ex.Message}\r\n{ex.StackTrace}");
         }
       }
+
+      return null;
     }
 
     /// <summary>

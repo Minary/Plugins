@@ -41,13 +41,13 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate void OnPrepareAttackDelegate();
-    public void OnPrepareAttack()
+    public delegate object OnPrepareAttackDelegate();
+    public object OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return;
+        return null;
       }
 
       this.Config.HostApplication.LogMessage($"FIREWALL PATH:{this.firewallConfigFilePath}");
@@ -62,6 +62,8 @@
         this.Config.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
         this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
       }
+
+      return null;
     }
 
 

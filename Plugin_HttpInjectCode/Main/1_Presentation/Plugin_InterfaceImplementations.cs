@@ -38,18 +38,18 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate void OnPrepareAttackDelegate();
-    public void OnPrepareAttack()
+    public delegate object OnPrepareAttackDelegate();
+    public object OnPrepareAttack()
     {
       if (this.InvokeRequired)
       {
         this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return;
+        return null;
       }
 
       if (this.injectCodeRecords?.Count <= 0)
       {
-        return;
+        return null;
       }
 
       try
@@ -72,6 +72,7 @@
       }
 
       this.Refresh();
+      return null;
     }
 
 

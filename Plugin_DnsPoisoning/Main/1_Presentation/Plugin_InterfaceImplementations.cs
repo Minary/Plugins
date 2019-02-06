@@ -107,21 +107,21 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate object OnPrepareAttackDelegate();
-    public object OnPrepareAttack()
+    public delegate List<object> OnPrepareAttackDelegate();
+    public List<object> OnPrepareAttack()
     {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return null;
-      }
+      //if (this.InvokeRequired)
+      //{
+      //  this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
+      //  return null;
+      //}
 
       if (this.dnsPoisonRecords?.Count <= 0)
       {
         return null;
       }
 
-      var poisoningRecordLines = new List<string>();
+      var poisoningRecordLines = new List<object>();
       string poisoningHostsPath = this.dnsPoisoningConfigFilePath;
 
       // Create CSV list as an AttackService parameter

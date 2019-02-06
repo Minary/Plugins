@@ -44,15 +44,9 @@
     /// <summary>
     /// 
     /// </summary>
-    public delegate object OnPrepareAttackDelegate();
-    public object OnPrepareAttack()
+    public delegate List<object> OnPrepareAttackDelegate();
+    public List<object> OnPrepareAttack()
     {
-      if (this.InvokeRequired)
-      {
-        this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-        return null;
-      }
-
       // Add all system from ARP scan to the list
       this.ClearRecordList();
       foreach (Tuple<string, string, string> tmpSystem in this.targetList)

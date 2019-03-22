@@ -110,7 +110,7 @@
       }
       catch (Exception ex)
       {
-        throw new Exception($"Errorr occurred while writing Inject File configuration data: {ex.Message}");
+        throw new Exception($"Error occurred while writing Inject File configuration data: {ex.Message}");
       }
     }
  

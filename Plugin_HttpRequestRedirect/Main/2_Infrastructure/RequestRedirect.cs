@@ -72,6 +72,8 @@
 
     public void OnWriteConfiguration(List<RequestRedirectRecord> recordList)
     {
+this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(0): recordList==NULL {recordList == null}");
+this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(1): recordList==NULL {recordList == null || recordList.Count <= 0}");
       if (recordList == null || 
           recordList.Count <= 0)
       {
@@ -88,7 +90,7 @@
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(3) : {ex.Message}");
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(3) : {ex.Message}");
       }
       
       var requestRedirectConfigurationFileData = string.Empty;
@@ -101,12 +103,12 @@
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnStart(0): Writing to config file {this.requestRedirectConfig.RequestRedirectConfigFilePath}");
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(4): Writing to config file {this.requestRedirectConfig.RequestRedirectConfigFilePath}");
         File.WriteAllText(this.requestRedirectConfig.RequestRedirectConfigFilePath, requestRedirectConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)
       {
-        throw new Exception($"Errorr occurred while writing Redirect Request configuration data: {ex.Message}");
+        throw new Exception($"Error occurred while writing Redirect Request configuration data: {ex.Message}");
       }
     }
 

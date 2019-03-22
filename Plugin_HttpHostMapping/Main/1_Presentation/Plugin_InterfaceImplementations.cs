@@ -48,6 +48,7 @@
     public delegate List<object> OnPrepareAttackDelegate();
     public List<object> OnPrepareAttack()
     {
+
       if (this.hostMappingRecords?.Count <= 0)
       {
         return null;
@@ -152,6 +153,7 @@
       this.infrastructureLayer.OnReset();
       this.Refresh();
     }
+
 
     /// <summary>
     /// New input data arrived

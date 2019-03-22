@@ -140,8 +140,6 @@
         poisoningRecordLines.Add(line);
       }
 
-this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: HONK TOTAL DNS POISON RULES: {poisoningRecordLines.Count}");
-//      return poisoningRecordLines as object;
       return poisoningRecordLines; // as object;
     }
 

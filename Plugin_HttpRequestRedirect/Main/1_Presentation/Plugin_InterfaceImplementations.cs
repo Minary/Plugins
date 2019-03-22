@@ -41,7 +41,7 @@
     public delegate List<object> OnPrepareAttackDelegate();
     public List<object> OnPrepareAttack()
     {
-      if (this.requestRedirectRecords?.Count > 0 == true)
+      if (this.requestRedirectRecords?.Count <= 0)
       {
         return null;
       }

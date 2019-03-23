@@ -30,8 +30,8 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_MappedHost = new System.Windows.Forms.TextBox();
       this.l_MappedHost = new System.Windows.Forms.Label();
       this.dgv_HostMapping = new System.Windows.Forms.DataGridView();
@@ -41,6 +41,7 @@
       this.cms_HostMapping = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.deleteEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.clearListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.l_Https = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HostMapping)).BeginInit();
       this.cms_HostMapping.SuspendLayout();
       this.SuspendLayout();
@@ -48,7 +49,7 @@
       // tb_MappedHost
       // 
       this.tb_MappedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_MappedHost.Location = new System.Drawing.Point(639, 22);
+      this.tb_MappedHost.Location = new System.Drawing.Point(667, 26);
       this.tb_MappedHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_MappedHost.Name = "tb_MappedHost";
       this.tb_MappedHost.Size = new System.Drawing.Size(274, 26);
@@ -59,7 +60,7 @@
       // 
       this.l_MappedHost.AutoSize = true;
       this.l_MappedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_MappedHost.Location = new System.Drawing.Point(504, 26);
+      this.l_MappedHost.Location = new System.Drawing.Point(551, 29);
       this.l_MappedHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_MappedHost.Name = "l_MappedHost";
       this.l_MappedHost.Size = new System.Drawing.Size(116, 20);
@@ -78,14 +79,14 @@
       this.dgv_HostMapping.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HostMapping.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HostMapping.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HostMapping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HostMapping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
       this.dgv_HostMapping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_HostMapping.EnableHeadersVisualStyles = false;
       this.dgv_HostMapping.Location = new System.Drawing.Point(26, 68);
@@ -93,8 +94,8 @@
       this.dgv_HostMapping.MultiSelect = false;
       this.dgv_HostMapping.Name = "dgv_HostMapping";
       this.dgv_HostMapping.RowHeadersVisible = false;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle4;
       this.dgv_HostMapping.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HostMapping.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_HostMapping.Size = new System.Drawing.Size(1400, 482);
@@ -106,7 +107,7 @@
       // tb_RequestedHost
       // 
       this.tb_RequestedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedHost.Location = new System.Drawing.Point(189, 25);
+      this.tb_RequestedHost.Location = new System.Drawing.Point(253, 25);
       this.tb_RequestedHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_RequestedHost.Name = "tb_RequestedHost";
       this.tb_RequestedHost.Size = new System.Drawing.Size(276, 26);
@@ -115,10 +116,10 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(963, 22);
+      this.bt_AddRecord.Location = new System.Drawing.Point(969, 25);
       this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_AddRecord.Name = "bt_AddRecord";
-      this.bt_AddRecord.Size = new System.Drawing.Size(34, 32);
+      this.bt_AddRecord.Size = new System.Drawing.Size(31, 27);
       this.bt_AddRecord.TabIndex = 11;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
@@ -158,11 +159,23 @@
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
+      // l_Https
+      // 
+      this.l_Https.AutoSize = true;
+      this.l_Https.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.l_Https.Location = new System.Drawing.Point(182, 29);
+      this.l_Https.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_Https.Name = "l_Https";
+      this.l_Https.Size = new System.Drawing.Size(73, 20);
+      this.l_Https.TabIndex = 12;
+      this.l_Https.Text = "http(s)://";
+      // 
       // Plugin_HttpHostMapping
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
+      this.Controls.Add(this.l_Https);
       this.Controls.Add(this.tb_MappedHost);
       this.Controls.Add(this.l_MappedHost);
       this.Controls.Add(this.dgv_HostMapping);
@@ -190,5 +203,6 @@
     private System.Windows.Forms.ContextMenuStrip cms_HostMapping;
     private System.Windows.Forms.ToolStripMenuItem deleteEntryToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
+    private System.Windows.Forms.Label l_Https;
   }
 }

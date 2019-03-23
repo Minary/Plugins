@@ -25,13 +25,17 @@
       }
 
       // Verify if requested host is correct
-      if (string.IsNullOrEmpty(requestedHost) || string.IsNullOrWhiteSpace(requestedHost) || !Regex.Match(requestedHost, @"[\d\w\.\-_]+").Success)
+      if (string.IsNullOrEmpty(requestedHost) || 
+          string.IsNullOrWhiteSpace(requestedHost) || 
+          !Regex.Match(requestedHost, @"[\d\w\.\-_]+").Success)
       {
         throw new Exception("Requested host is invalid");
       }
 
       // Verify if mapped host is correct
-      if (string.IsNullOrEmpty(mappedHost) || string.IsNullOrWhiteSpace(mappedHost) || !Regex.Match(requestedHost, @"[\d\w\.\-_]+").Success)
+      if (string.IsNullOrEmpty(mappedHost) || 
+          string.IsNullOrWhiteSpace(mappedHost) || 
+          !Regex.Match(requestedHost, @"\*?[\d\w\.\-_]+\*?").Success)
       {
         throw new Exception("Mapped host is invalid");
       }
@@ -70,19 +74,13 @@
         this.BeginInvoke(new DeleteSelectedRecordDelegate(this.DeleteSelectedRecord), new object[] { });
         return;
       }
-
-      var isLastLine = false;
+      
       var firstVisibleRowTopRow = -1;
       var lastRowIndex = -1;
       var selectedIndex = -1;
 
       lock (this)
       {
-        if (this.dgv_HostMapping?.CurrentRow == this.dgv_HostMapping.Rows[this.dgv_HostMapping.Rows.Count - 1])
-        {
-          isLastLine = true;
-        }
-
         firstVisibleRowTopRow = this.dgv_HostMapping.FirstDisplayedScrollingRowIndex;
         lastRowIndex = this.dgv_HostMapping.Rows.Count - 1;
 

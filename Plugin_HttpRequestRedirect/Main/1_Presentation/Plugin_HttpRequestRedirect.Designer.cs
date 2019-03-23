@@ -33,7 +33,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_RedirectURL = new System.Windows.Forms.TextBox();
       this.dgv_RequestRedirectURLs = new System.Windows.Forms.DataGridView();
-      this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
+      this.tb_RequestedUrlRegex = new System.Windows.Forms.TextBox();
       this.l_RequestedURL = new System.Windows.Forms.Label();
       this.l_RedirectURL = new System.Windows.Forms.Label();
       this.bt_AddRecord = new System.Windows.Forms.Button();
@@ -95,13 +95,13 @@
       // 
       // tb_RequestedURLRegex
       // 
-      this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(304, 25);
-      this.tb_RequestedURLRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(274, 26);
-      this.tb_RequestedURLRegex.TabIndex = 1;
-      this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
+      this.tb_RequestedUrlRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(304, 25);
+      this.tb_RequestedUrlRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_RequestedUrlRegex.Name = "tb_RequestedURLRegex";
+      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(274, 26);
+      this.tb_RequestedUrlRegex.TabIndex = 1;
+      this.tb_RequestedUrlRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
       // l_RequestedURL
       // 
@@ -191,7 +191,7 @@
       this.Controls.Add(this.l_RedirectURL);
       this.Controls.Add(this.tb_RedirectURL);
       this.Controls.Add(this.dgv_RequestRedirectURLs);
-      this.Controls.Add(this.tb_RequestedURLRegex);
+      this.Controls.Add(this.tb_RequestedUrlRegex);
       this.Controls.Add(this.l_RequestedURL);
       this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpRequestRedirect";
@@ -206,7 +206,7 @@
     #endregion
     private System.Windows.Forms.TextBox tb_RedirectURL;
     private System.Windows.Forms.DataGridView dgv_RequestRedirectURLs;
-    private System.Windows.Forms.TextBox tb_RequestedURLRegex;
+    private System.Windows.Forms.TextBox tb_RequestedUrlRegex;
     private System.Windows.Forms.Label l_RequestedURL;
     private System.Windows.Forms.Label l_RedirectURL;
     private System.Windows.Forms.Button bt_AddRecord;

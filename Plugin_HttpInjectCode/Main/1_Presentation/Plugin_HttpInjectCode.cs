@@ -39,6 +39,12 @@
     {
       this.InitializeComponent();
 
+      // Textbox OnFocus/OnFocusLost custom implementations.
+      this.tb_RequestedUrlRegex.GotFocus += this.TextBoxGotFocus;
+      this.tb_RequestedUrlRegex.LostFocus += this.TextBoxLostFocus;
+      this.tb_RequestedUrlRegex.Text = this.watermarkHttpRegex;
+      this.tb_RequestedUrlRegex.ForeColor = System.Drawing.Color.LightGray;
+
       this.dgv_InjectionTriggerURLs.AutoGenerateColumns = false;
 
       DataGridViewTextBoxColumn columnRequestedScheme = new DataGridViewTextBoxColumn();
@@ -156,7 +162,7 @@
     /// </summary>
     private void SetGuiActive()
     {
-      this.tb_RequestedURLRegex.Enabled = true;
+      this.tb_RequestedUrlRegex.Enabled = true;
       this.tb_InjectioinContentFile.Enabled = true;
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
@@ -173,7 +179,7 @@
     /// </summary>
     private void SetGuiInactive()
     {
-      this.tb_RequestedURLRegex.Enabled = false;
+      this.tb_RequestedUrlRegex.Enabled = false;
       this.tb_InjectioinContentFile.Enabled = false;
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;

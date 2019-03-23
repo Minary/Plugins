@@ -9,7 +9,43 @@
   public partial class Plugin_HttpInjectCode
   {
 
+    #region MEMBERS
+
+    private string watermarkHttpRegex = "*.google.com/some/path/file*";
+
+    #endregion
+
+
     #region EVENTS
+
+    private void TextBoxGotFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (tb.Text == this.watermarkHttpRegex)
+      {
+        tb.Text = string.Empty;
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+      else
+      {
+      }
+    }
+
+
+    private void TextBoxLostFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (string.IsNullOrEmpty(tb.Text))
+      {
+        tb.Text = this.watermarkHttpRegex;
+        tb.ForeColor = System.Drawing.Color.LightGray;
+      }
+      else
+      {
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+    }
+
 
     private void BT_Add_Click(object sender, EventArgs e)
     {
@@ -17,7 +53,7 @@
       {
         string selectedTag = (this.cb_injectPosition.SelectedItem as ComboboxItem).Value.ToString();
         string position = this.rb_Before.Checked ? "before" : "after";
-        string url = this.tb_RequestedURLRegex.Text;
+        string url = this.tb_RequestedUrlRegex.Text;
         string path = this.tb_InjectioinContentFile.Text;
 
         this.AddRecord(url, path, selectedTag, position);

@@ -20,7 +20,6 @@
     private BindingList<RequestRedirectRecord> requestRedirectRecords;
     private RequestRedirect.Infrastructure.RequestRedirect infrastructureLayer;
     private RequestRedirectConfig requestRedirectConfig;
-    private bool isUpToDate = false;
     private PluginProperties pluginProperties;
     private string requestRedirectConfigFilePath;
 
@@ -39,6 +38,12 @@
     public Plugin_HttpRequestRedirect(PluginProperties pluginProperties)
     {
       this.InitializeComponent();
+
+      // Textbox OnFocus/OnFocusLost custom implementations.
+      this.tb_RequestedUrlRegex.GotFocus += this.TextBoxGotFocus;
+      this.tb_RequestedUrlRegex.LostFocus += this.TextBoxLostFocus;
+      this.tb_RequestedUrlRegex.Text = this.watermarkHttpRegex;
+      this.tb_RequestedUrlRegex.ForeColor = System.Drawing.Color.LightGray;
 
       this.dgv_RequestRedirectURLs.AutoGenerateColumns = false;
 
@@ -137,7 +142,7 @@
     /// </summary>
     private void SetGuiActive()
     {
-      this.tb_RequestedURLRegex.Enabled = true;
+      this.tb_RequestedUrlRegex.Enabled = true;
       this.tb_RedirectURL.Enabled = true;
       this.bt_AddRecord.Enabled = true;
       this.cb_RedirectType.Enabled = true;
@@ -150,7 +155,7 @@
     /// </summary>
     private void SetGuiInactive()
     {
-      this.tb_RequestedURLRegex.Enabled = false;
+      this.tb_RequestedUrlRegex.Enabled = false;
       this.tb_RedirectURL.Enabled = false;
       this.bt_AddRecord.Enabled = false;
       this.cb_RedirectType.Enabled = false;

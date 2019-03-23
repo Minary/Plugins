@@ -161,6 +161,7 @@
         return;
       }
 
+      this.tb_RequestedUrlRegex.Text = this.watermarkHttpRegex;
       this.infrastructureLayer.OnReset();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, Status.NotRunning);
       this.Refresh();

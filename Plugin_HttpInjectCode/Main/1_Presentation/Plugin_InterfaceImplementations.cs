@@ -162,6 +162,7 @@
         return;
       }
 
+      this.tb_RequestedUrlRegex.Text = this.watermarkHttpRegex;
       this.infrastructureLayer.OnReset();
       this.pluginProperties.HostApplication.ReportPluginSetStatus(this, MinaryLib.Plugin.Status.NotRunning);
       this.Refresh();

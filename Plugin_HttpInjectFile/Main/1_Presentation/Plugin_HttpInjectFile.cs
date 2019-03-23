@@ -44,6 +44,12 @@ private const string Label_URL = "Redirect to URL";
     {
       this.InitializeComponent();
 
+      // Textbox OnFocus/OnFocusLost custom implementations.
+      this.tb_RequestedUrlRegex.GotFocus += this.TextBoxGotFocus;
+      this.tb_RequestedUrlRegex.LostFocus += this.TextBoxLostFocus;
+      this.tb_RequestedUrlRegex.Text = this.watermarkHttpRegex;
+      this.tb_RequestedUrlRegex.ForeColor = System.Drawing.Color.LightGray;
+
       this.dgv_InjectionTriggerURLs.AutoGenerateColumns = false;
 
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();
@@ -126,7 +132,7 @@ private const string Label_URL = "Redirect to URL";
     /// </summary>
     private void SetGuiActive()
     {
-      this.tb_RequestedURLRegex.Enabled = true;
+      this.tb_RequestedUrlRegex.Enabled = true;
       this.tb_ReplacementResource.Enabled = true;
       this.bt_AddFile.Enabled = true;
       this.bt_AddRecord.Enabled = true;
@@ -140,7 +146,7 @@ private const string Label_URL = "Redirect to URL";
     /// </summary>
     private void SetGuiInactive()
     {
-      this.tb_RequestedURLRegex.Enabled = false;
+      this.tb_RequestedUrlRegex.Enabled = false;
       this.tb_ReplacementResource.Enabled = false;
       this.bt_AddFile.Enabled = false;
       this.bt_AddRecord.Enabled = false;

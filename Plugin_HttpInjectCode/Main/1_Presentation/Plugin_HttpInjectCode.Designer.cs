@@ -33,7 +33,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgv_InjectionTriggerURLs = new System.Windows.Forms.DataGridView();
-      this.tb_RequestedURLRegex = new System.Windows.Forms.TextBox();
+      this.tb_RequestedUrlRegex = new System.Windows.Forms.TextBox();
       this.bt_AddRecord = new System.Windows.Forms.Button();
       this.l_RequestedURL = new System.Windows.Forms.Label();
       this.tb_InjectioinContentFile = new System.Windows.Forms.TextBox();
@@ -91,13 +91,13 @@
       // 
       // tb_RequestedURLRegex
       // 
-      this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(265, 26);
-      this.tb_RequestedURLRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(256, 26);
-      this.tb_RequestedURLRegex.TabIndex = 1;
-      this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
+      this.tb_RequestedUrlRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(265, 26);
+      this.tb_RequestedUrlRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_RequestedUrlRegex.Name = "tb_RequestedURLRegex";
+      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(256, 26);
+      this.tb_RequestedUrlRegex.TabIndex = 1;
+      this.tb_RequestedUrlRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
       // bt_AddRecord
       // 
@@ -245,7 +245,7 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
-      this.Controls.Add(this.tb_RequestedURLRegex);
+      this.Controls.Add(this.tb_RequestedUrlRegex);
       this.Controls.Add(this.l_Scheme);
       this.Controls.Add(this.rb_After);
       this.Controls.Add(this.rb_Before);
@@ -270,7 +270,7 @@
 
     #endregion
     private System.Windows.Forms.DataGridView dgv_InjectionTriggerURLs;
-    private System.Windows.Forms.TextBox tb_RequestedURLRegex;
+    private System.Windows.Forms.TextBox tb_RequestedUrlRegex;
     private System.Windows.Forms.Button bt_AddRecord;
     private System.Windows.Forms.Label l_RequestedURL;
     private System.Windows.Forms.TextBox tb_InjectioinContentFile;

@@ -7,7 +7,43 @@
   public partial class Plugin_HttpRequestRedirect : UserControl
   {
 
+    #region MEMBERS
+
+    private string watermarkHttpRegex = "*.google.com/some/path/file*";
+
+    #endregion
+
+
     #region EVENTS
+
+    private void TextBoxGotFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (tb.Text == this.watermarkHttpRegex)
+      {
+        tb.Text = string.Empty;
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+      else
+      {
+      }
+    }
+
+
+    private void TextBoxLostFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (string.IsNullOrEmpty(tb.Text))
+      {
+        tb.Text = this.watermarkHttpRegex;
+        tb.ForeColor = System.Drawing.Color.LightGray;
+      }
+      else
+      {
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+    }
+
 
     private void BT_Add_Click(object sender, EventArgs e)
     {
@@ -17,7 +53,7 @@
         var redirectType = splitter[0];
         var redirectDescription = splitter[1];
 
-        this.AddRecord(redirectType, redirectDescription, this.tb_RequestedURLRegex.Text, this.tb_RedirectURL.Text);
+        this.AddRecord(redirectType, redirectDescription, this.tb_RequestedUrlRegex.Text, this.tb_RedirectURL.Text);
       }
       catch (Exception ex)
       {

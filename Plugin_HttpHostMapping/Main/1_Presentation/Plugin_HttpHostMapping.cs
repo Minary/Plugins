@@ -38,6 +38,12 @@
     {
       this.InitializeComponent();
 
+      // Textbox OnFocus/OnFocusLost custom implementations.
+      this.tb_RequestedHost.GotFocus += this.TextBoxGotFocus;
+      this.tb_RequestedHost.LostFocus += this.TextBoxLostFocus;
+      this.tb_RequestedHost.Text = this.watermarkHttpHost;
+      this.tb_RequestedHost.ForeColor = System.Drawing.Color.LightGray;
+
       this.dgv_HostMapping.AutoGenerateColumns = false;
 
       DataGridViewTextBoxColumn columnRequestedHost = new DataGridViewTextBoxColumn();

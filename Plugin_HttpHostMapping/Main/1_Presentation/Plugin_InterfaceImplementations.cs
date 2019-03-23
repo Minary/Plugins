@@ -142,8 +142,8 @@
         this.BeginInvoke(new OnResetPluginDelegate(this.OnResetPlugin), new object[] { });
         return;
       }
-
-      this.tb_RequestedHost.Text = string.Empty;
+      
+      this.tb_RequestedHost.Text = this.watermarkHttpHost;
       this.tb_MappedHost.Text = string.Empty;
 
       this.ClearRecordList();

@@ -28,7 +28,7 @@
         return;
       }
 
-      RequestURL requestUrl = this.ParseRequestedURLRegex(requestedResource);
+      RequestURL requestUrl = this.ParseRequestedUrlRegex(requestedResource);
       var scheme = "http://";
 
       // Verify if replacement file resource is valid
@@ -46,6 +46,30 @@
         {
           throw new Exception("A record with this host name already exists.");
         }
+      }
+
+      // Verify whether regex contain invalid characters
+      if (Regex.Match(requestUrl.HostRegex, @"[^\d\w\-\._\*]+").Success == true)
+      {
+        throw new Exception($"The request host regex contains invalid characters: {requestUrl.HostRegex}");
+      }
+
+      if (Regex.Match(requestUrl.PathRegex, @"[^\d\w\-\,\._\/\+\&\*]+").Success == true)
+      {
+        throw new Exception($"The request path regex contains invalid characters: {requestUrl.PathRegex}");
+      }
+
+      // Replace * char by regex
+      if (requestUrl.HostRegex.Contains("*"))
+      {
+        requestUrl.HostRegex = Regex.Escape(requestUrl.HostRegex);
+        requestUrl.HostRegex.Replace("ASTERISK", @"[\d\w\-\._]{0,}");
+      }
+
+      if (requestUrl.PathRegex.Contains("*"))
+      {
+        requestUrl.PathRegex = Regex.Escape(requestUrl.PathRegex);
+        requestUrl.PathRegex.Replace("ASTERISK", @"[\d\w\-\,\._\/\+\&]{0,}");
       }
 
       // Verify if host name is correct
@@ -220,7 +244,7 @@
     }
 
 
-    private RequestURL ParseRequestedURLRegex(string url)
+    private RequestURL ParseRequestedUrlRegex(string url)
     {
       RequestURL requestedUrl;
       var pathDelimiter = '/';

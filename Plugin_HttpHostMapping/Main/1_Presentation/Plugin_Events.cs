@@ -9,7 +9,7 @@
 
     #region MEMBERS
 
-    private string watermarkHttpHost = "*.google.com";
+    private string watermarkHttpHost = "*.google.c*";
 
     #endregion
 

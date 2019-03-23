@@ -11,7 +11,7 @@
 
     #region MEMBERS
 
-    private string watermarkHttpRegex = "*.google.com/some/path/file*";
+    private string watermarkHttpRegex = "*.google.c*/some/path/file*";
 
     #endregion
 

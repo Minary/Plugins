@@ -36,14 +36,40 @@
         }
       }
 
-      if (string.IsNullOrEmpty(redirectType))
+      // Verify whether regex contain invalid characters
+      if (Regex.Match(requestUrl.HostRegex, @"[^\d\w\-\._\*]+").Success == true)
       {
-        throw new Exception("The redirect type code is invalid");
+        throw new Exception($"The request host regex contains invalid characters: {requestUrl.HostRegex}");
       }
 
-      if (string.IsNullOrEmpty(redirectDescription))
+      if (Regex.Match(requestUrl.PathRegex, @"[^\d\w\-\,\._\/\+\&\*]+").Success == true)
       {
-        throw new Exception("The redirect description is invalid");
+        throw new Exception($"The request path regex contains invalid characters: {requestUrl.PathRegex}");
+      }
+
+      // Replace * char by regex
+      if (requestUrl.HostRegex.Contains("*"))
+      {
+        requestUrl.HostRegex = Regex.Escape(requestUrl.HostRegex);
+        requestUrl.HostRegex.Replace("ASTERISK", @"[\d\w\-\._]{0,}");
+      }
+
+      if (requestUrl.PathRegex.Contains("*"))
+      {
+        requestUrl.PathRegex = Regex.Escape(requestUrl.PathRegex);
+        requestUrl.PathRegex.Replace("ASTERISK", @"[\d\w\-\,\._\/\+\&]{0,}");
+      }
+
+      // Verify if host name is correct
+      if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: Invalid host name regex: {requestUrl.HostRegex}");
+        throw new Exception("The host name regex is invalid");
+      }
+
+      if (this.IsRegexPatternValid(requestUrl.PathRegex) == false)
+      {
+        throw new Exception("The request path regex is invalid");
       }
 
       // Verify if replacement URL resource is valid

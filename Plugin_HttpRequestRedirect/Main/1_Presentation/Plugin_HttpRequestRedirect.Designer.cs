@@ -49,10 +49,10 @@
       // tb_RedirectURL
       // 
       this.tb_RedirectURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RedirectURL.Location = new System.Drawing.Point(808, 22);
+      this.tb_RedirectURL.Location = new System.Drawing.Point(757, 22);
       this.tb_RedirectURL.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_RedirectURL.Name = "tb_RedirectURL";
-      this.tb_RedirectURL.Size = new System.Drawing.Size(346, 26);
+      this.tb_RedirectURL.Size = new System.Drawing.Size(307, 26);
       this.tb_RedirectURL.TabIndex = 2;
       this.tb_RedirectURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
@@ -99,7 +99,7 @@
       this.tb_RequestedURLRegex.Location = new System.Drawing.Point(304, 25);
       this.tb_RequestedURLRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(325, 26);
+      this.tb_RequestedURLRegex.Size = new System.Drawing.Size(274, 26);
       this.tb_RequestedURLRegex.TabIndex = 1;
       this.tb_RequestedURLRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
@@ -118,7 +118,7 @@
       // 
       this.l_RedirectURL.AutoSize = true;
       this.l_RedirectURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RedirectURL.Location = new System.Drawing.Point(657, 28);
+      this.l_RedirectURL.Location = new System.Drawing.Point(606, 28);
       this.l_RedirectURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_RedirectURL.Name = "l_RedirectURL";
       this.l_RedirectURL.Size = new System.Drawing.Size(145, 20);
@@ -127,7 +127,7 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(1394, 22);
+      this.bt_AddRecord.Location = new System.Drawing.Point(1280, 22);
       this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.bt_AddRecord.Name = "bt_AddRecord";
       this.bt_AddRecord.Size = new System.Drawing.Size(34, 32);
@@ -140,7 +140,7 @@
       // 
       this.cb_RedirectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_RedirectType.FormattingEnabled = true;
-      this.cb_RedirectType.Location = new System.Drawing.Point(1186, 22);
+      this.cb_RedirectType.Location = new System.Drawing.Point(1084, 22);
       this.cb_RedirectType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cb_RedirectType.Name = "cb_RedirectType";
       this.cb_RedirectType.Size = new System.Drawing.Size(180, 28);

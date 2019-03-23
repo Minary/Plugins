@@ -92,7 +92,7 @@
       // tb_RequestedURLRegex
       // 
       this.tb_RequestedURLRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(262, 25);
+      this.tb_RequestedURLRegex.Location = new System.Drawing.Point(265, 26);
       this.tb_RequestedURLRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_RequestedURLRegex.Name = "tb_RequestedURLRegex";
       this.tb_RequestedURLRegex.Size = new System.Drawing.Size(256, 26);
@@ -125,7 +125,7 @@
       // tb_InjectioinContentFile
       // 
       this.tb_InjectioinContentFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_InjectioinContentFile.Location = new System.Drawing.Point(672, 22);
+      this.tb_InjectioinContentFile.Location = new System.Drawing.Point(675, 23);
       this.tb_InjectioinContentFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_InjectioinContentFile.Name = "tb_InjectioinContentFile";
       this.tb_InjectioinContentFile.Size = new System.Drawing.Size(168, 26);
@@ -136,7 +136,7 @@
       // 
       this.l_ReplacementResource.AutoSize = true;
       this.l_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ReplacementResource.Location = new System.Drawing.Point(531, 28);
+      this.l_ReplacementResource.Location = new System.Drawing.Point(534, 29);
       this.l_ReplacementResource.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_ReplacementResource.Name = "l_ReplacementResource";
       this.l_ReplacementResource.Size = new System.Drawing.Size(128, 20);
@@ -185,7 +185,7 @@
       // 
       this.l_Tag.AutoSize = true;
       this.l_Tag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Tag.Location = new System.Drawing.Point(914, 25);
+      this.l_Tag.Location = new System.Drawing.Point(917, 29);
       this.l_Tag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Tag.Name = "l_Tag";
       this.l_Tag.Size = new System.Drawing.Size(40, 20);
@@ -196,7 +196,7 @@
       // 
       this.cb_injectPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_injectPosition.FormattingEnabled = true;
-      this.cb_injectPosition.Location = new System.Drawing.Point(962, 20);
+      this.cb_injectPosition.Location = new System.Drawing.Point(965, 21);
       this.cb_injectPosition.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.cb_injectPosition.Name = "cb_injectPosition";
       this.cb_injectPosition.Size = new System.Drawing.Size(132, 28);
@@ -206,7 +206,7 @@
       // 
       this.rb_Before.AutoSize = true;
       this.rb_Before.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.rb_Before.Location = new System.Drawing.Point(1130, 20);
+      this.rb_Before.Location = new System.Drawing.Point(1133, 28);
       this.rb_Before.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.rb_Before.Name = "rb_Before";
       this.rb_Before.Size = new System.Drawing.Size(90, 24);
@@ -220,7 +220,7 @@
       this.rb_After.AutoSize = true;
       this.rb_After.Checked = true;
       this.rb_After.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.rb_After.Location = new System.Drawing.Point(1212, 20);
+      this.rb_After.Location = new System.Drawing.Point(1215, 28);
       this.rb_After.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.rb_After.Name = "rb_After";
       this.rb_After.Size = new System.Drawing.Size(75, 24);
@@ -233,7 +233,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(194, 31);
+      this.l_Scheme.Location = new System.Drawing.Point(192, 29);
       this.l_Scheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(73, 20);

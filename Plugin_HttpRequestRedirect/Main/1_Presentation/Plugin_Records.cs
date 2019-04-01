@@ -26,7 +26,7 @@
 
       RequestURL requestUrl = this.ParseRequestedURLRegex(requestedResource);
 
-      // Verify if record already exists
+      // Verify whether record already exists
       foreach(RequestRedirectRecord tmpRecord in this.requestRedirectRecords)
       {
         if (tmpRecord.RequestedHostRegex == requestUrl.HostRegex &&
@@ -47,31 +47,6 @@
         throw new Exception($"The request path regex contains invalid characters: {requestUrl.PathRegex}");
       }
 
-      // Replace * char by regex
-      if (requestUrl.HostRegex.Contains("*"))
-      {
-        requestUrl.HostRegex = Regex.Escape(requestUrl.HostRegex);
-        requestUrl.HostRegex.Replace("ASTERISK", @"[\d\w\-\._]{0,}");
-      }
-
-      if (requestUrl.PathRegex.Contains("*"))
-      {
-        requestUrl.PathRegex = Regex.Escape(requestUrl.PathRegex);
-        requestUrl.PathRegex.Replace("ASTERISK", @"[\d\w\-\,\._\/\+\&]{0,}");
-      }
-
-      // Verify if host name is correct
-      if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: Invalid host name regex: {requestUrl.HostRegex}");
-        throw new Exception("The host name regex is invalid");
-      }
-
-      if (this.IsRegexPatternValid(requestUrl.PathRegex) == false)
-      {
-        throw new Exception("The request path regex is invalid");
-      }
-
       // Verify if replacement URL resource is valid
       Uri replacementUri;
       bool isValidReplUri = Uri.TryCreate(replacementResource, UriKind.Absolute, out replacementUri);
@@ -86,25 +61,16 @@
         throw new Exception("The replacement URL scheme is invalid.");
       }
 
-      if (string.IsNullOrEmpty(replacementUri.Host) || string.IsNullOrWhiteSpace((replacementUri.Host)))
+      if (string.IsNullOrEmpty(replacementUri.Host) ||
+          string.IsNullOrWhiteSpace((replacementUri.Host)))
       {
         throw new Exception("The replacement URL host is invalid.");
       }
 
-      if (string.IsNullOrEmpty(replacementUri.PathAndQuery) || string.IsNullOrWhiteSpace((replacementUri.PathAndQuery)))
+      if (string.IsNullOrEmpty(replacementUri.PathAndQuery) ||
+          string.IsNullOrWhiteSpace((replacementUri.PathAndQuery)))
       {
         throw new Exception("The replacement URL path is invalid.");
-      }
-
-      if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: Invalid host name regex: {requestUrl.HostRegex}");
-        throw new Exception("The host name regex is invalid");
-      }
-
-      if (this.IsRegexPatternValid(requestUrl.PathRegex) == false)
-      {
-        throw new Exception("The request path regex is invalid");
       }
 
       lock (this)
@@ -247,23 +213,6 @@
 
         this.dgv_RequestRedirectURLs.ResumeLayout();
       }
-    }
-
-
-    public bool IsRegexPatternValid(string pattern)
-    {
-      var isValid = false;
-
-      try
-      {
-        new Regex(pattern);
-        isValid = true;
-      }
-      catch
-      {
-      }
-
-      return isValid;
     }
 
 

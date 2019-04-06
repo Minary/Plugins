@@ -56,7 +56,8 @@
         throw new Exception("The replacement resource URL is invalid");
       }
 
-      if (replacementUri.Scheme != Uri.UriSchemeHttp && replacementUri.Scheme != Uri.UriSchemeHttps)
+      if (replacementUri.Scheme != Uri.UriSchemeHttp && 
+          replacementUri.Scheme != Uri.UriSchemeHttps)
       {
         throw new Exception("The replacement URL scheme is invalid.");
       }

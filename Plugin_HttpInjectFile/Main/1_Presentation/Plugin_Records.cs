@@ -4,7 +4,6 @@
   using System;
   using System.IO;
   using System.Linq;
-  using System.Text.RegularExpressions;
 
 
   public partial class Plugin_HttpInjectFile
@@ -28,7 +27,7 @@
 
       RequestURL requestUrl = this.ParseRequestedURLRegex(requestedResource);
 
-      // Verify if replacement file resource is valid
+      // Verify whether replacement file resource is valid
       if (!File.Exists(replacementResource))
       {
         throw new Exception("The injection file does not exist.");
@@ -42,42 +41,6 @@
         {
           throw new Exception("A record with this host name already exists.");
         }
-      }
-
-      // Verify whether regex contain invalid characters
-      if (Regex.Match(requestUrl.HostRegex, @"[^\d\w\-\._\*]+").Success == true)
-      {
-        throw new Exception($"The request host regex contains invalid characters: {requestUrl.HostRegex}");
-      }
-
-      if (Regex.Match(requestUrl.PathRegex, @"[^\d\w\-\,\._\/\+\&\*]+").Success == true)
-      {
-        throw new Exception($"The request path regex contains invalid characters: {requestUrl.PathRegex}");
-      }
-
-      // Replace * char by regex
-      if (requestUrl.HostRegex.Contains("*"))
-      {
-        requestUrl.HostRegex = Regex.Escape(requestUrl.HostRegex);
-        requestUrl.HostRegex.Replace("ASTERISK", @"[\d\w\-\._]{0,}");
-      }
-
-      if (requestUrl.PathRegex.Contains("*"))
-      {
-        requestUrl.PathRegex = Regex.Escape(requestUrl.PathRegex);
-        requestUrl.PathRegex.Replace("ASTERISK", @"[\d\w\-\,\._\/\+\&]{0,}");
-      }
-
-      // Verify if host name is correct
-      if (this.IsRegexPatternValid(requestUrl.HostRegex) == false)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: Invalid host name regex: {requestUrl.HostRegex}");
-        throw new Exception("The host name regex is invalid");
-      }
-
-      if (this.IsRegexPatternValid(requestUrl.PathRegex) == false)
-      {
-        throw new Exception("The request path regex is invalid");
       }
 
       lock (this)
@@ -220,23 +183,6 @@
 
         this.dgv_InjectionTriggerURLs.ResumeLayout();
       }
-    }
-
-
-    private bool IsRegexPatternValid(string pattern)
-    {
-      var isValid = false;
-
-      try
-      {
-        new Regex(pattern);
-        isValid = true;
-      }
-      catch
-      {
-      }
-
-      return isValid;
     }
 
 

@@ -205,11 +205,25 @@
 
     private void TSMI_ShowData_Click(object sender, EventArgs e)
     {
-      var host = this.dgv_HttpRequests.CurrentRow.Cells["RemoteHost"].Value.ToString();
-      var path = this.dgv_HttpRequests.CurrentRow.Cells["Path"].Value.ToString(); ;
+      try
+      {
+        var host = this.dgv_HttpRequests.SelectedRows[0].Cells["RemoteHost"].Value.ToString();
+        var path = this.dgv_HttpRequests.SelectedRows[0].Cells["Path"].Value.ToString();
 
-      ShowData dataForm = new ShowData($"http://{host}{path}");
-      dataForm.ShowDialog();
+        ShowData dataForm = new ShowData($"http://{host}{path}");
+        dataForm.ShowDialog();
+      }
+      catch (ArgumentOutOfRangeException aoorex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {aoorex.Message}");
+        return;
+      }
+      catch (Exception ex)
+      {
+        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
+
+
     }
 
     #endregion

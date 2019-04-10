@@ -72,9 +72,7 @@
 
     public void OnWriteConfiguration(List<RequestRedirectRecord> recordList)
     {
-this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(0): recordList==NULL {recordList == null}");
-this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(1): recordList==NULL {recordList == null || recordList.Count <= 0}");
-      if (recordList == null || 
+     if (recordList == null || 
           recordList.Count <= 0)
       {
         throw new MinaryWarningException("No request redirection rules defined");
@@ -90,7 +88,7 @@ this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.
       }
       catch (Exception ex)
       {
-        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(3) : {ex.Message}");
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(EXC) : {ex.Message}");
       }
       
       var requestRedirectConfigurationFileData = string.Empty;
@@ -103,7 +101,6 @@ this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.
 
       try
       {
-        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration(4): Writing to config file {this.requestRedirectConfig.RequestRedirectConfigFilePath}");
         File.WriteAllText(this.requestRedirectConfig.RequestRedirectConfigFilePath, requestRedirectConfigurationFileData, Encoding.ASCII);
       }
       catch (Exception ex)

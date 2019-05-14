@@ -110,12 +110,6 @@
     public delegate List<object> OnPrepareAttackDelegate();
     public List<object> OnPrepareAttack()
     {
-      //if (this.InvokeRequired)
-      //{
-      //  this.BeginInvoke(new OnPrepareAttackDelegate(this.OnPrepareAttack), new object[] { });
-      //  return null;
-      //}
-
       if (this.dnsPoisonRecords?.Count <= 0)
       {
         return null;

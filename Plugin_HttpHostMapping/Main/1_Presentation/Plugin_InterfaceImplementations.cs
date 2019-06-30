@@ -48,7 +48,6 @@
     public delegate List<object> OnPrepareAttackDelegate();
     public List<object> OnPrepareAttack()
     {
-
       if (this.hostMappingRecords?.Count <= 0)
       {
         return null;

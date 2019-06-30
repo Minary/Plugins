@@ -72,7 +72,7 @@
 
     public void OnWriteConfiguration(List<RequestRedirectRecord> recordList)
     {
-     if (recordList == null || 
+      if (recordList == null || 
           recordList.Count <= 0)
       {
         throw new MinaryWarningException("No request redirection rules defined");
@@ -102,6 +102,7 @@
       try
       {
         File.WriteAllText(this.requestRedirectConfig.RequestRedirectConfigFilePath, requestRedirectConfigurationFileData, Encoding.ASCII);
+        this.plugin.Config.HostApplication.LogMessage($"{this.plugin.Config.PluginName}.Infrastructure.OnWriteConfiguration() : Wrote {recordList.Count} records to {this.requestRedirectConfig.RequestRedirectConfigFilePath}");
       }
       catch (Exception ex)
       {

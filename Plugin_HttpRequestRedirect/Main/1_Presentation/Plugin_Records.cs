@@ -104,7 +104,6 @@
 
       lock(this)
       {
-
         if(this.dgv_RequestRedirectURLs.CurrentRow != null &&
             this.dgv_RequestRedirectURLs.CurrentRow == this.dgv_RequestRedirectURLs.Rows[this.dgv_RequestRedirectURLs.Rows.Count - 1])
         {
@@ -136,7 +135,7 @@
         // Selected cell/row
         try
         {
-          if(selectedIndex >= 0)
+          if (selectedIndex >= 0)
           {
             this.dgv_RequestRedirectURLs.CurrentCell = this.dgv_RequestRedirectURLs.Rows[selectedIndex].Cells[0];
           }
@@ -148,7 +147,7 @@
         // Reset position
         try
         {
-          if(firstVisibleRowTopRow >= 0)
+          if (firstVisibleRowTopRow >= 0)
           {
             this.dgv_RequestRedirectURLs.FirstDisplayedScrollingRowIndex = firstVisibleRowTopRow;
           }

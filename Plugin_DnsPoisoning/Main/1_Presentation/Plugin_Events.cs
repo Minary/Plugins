@@ -2,6 +2,7 @@
 {
   using Minary.Plugin.Main.DnsPoisoning.DataTypes;
   using System;
+  using System.Text.RegularExpressions;
   using System.Windows.Forms;
 
 
@@ -9,6 +10,23 @@
   {
 
     #region EVENTS
+
+    private void TSMI_UseHostIP_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        this.ValidateHostName(this.tb_Cname.Text);
+        var hostEntry = System.Net.Dns.GetHostEntry(this.tb_Cname.Text);
+
+        this.tb_Address.Text = hostEntry.AddressList[0].ToString();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Exception occurred: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
+
+
 
     /// <summary>
     ///
@@ -176,6 +194,25 @@
       else
       {
         this.tb_Cname.Enabled = false;
+      }
+    }
+
+    #endregion
+
+
+    #region PRIVATE
+
+    private void ValidateHostName(string hostName)
+    {
+      if (string.IsNullOrEmpty(hostName) == true ||
+          string.IsNullOrWhiteSpace(hostName) == true)
+      {
+        throw new Exception("Hostname is empty");
+      }
+
+      if (Regex.Match(hostName, @"^[\d\w\-_\.]+$").Success == false)
+      {
+        throw new Exception($"Hostname is invalid: {hostName}");
       }
     }
 

@@ -43,10 +43,13 @@
       this.dgv_Spoofing = new System.Windows.Forms.DataGridView();
       this.cb_Cname = new System.Windows.Forms.CheckBox();
       this.tb_Cname = new System.Windows.Forms.TextBox();
+      this.cms_Cname = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.useHostIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.l_ttl = new System.Windows.Forms.Label();
       this.tb_ttl = new System.Windows.Forms.TextBox();
       this.cms_DnsPoison.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Spoofing)).BeginInit();
+      this.cms_Cname.SuspendLayout();
       this.SuspendLayout();
       // 
       // bt_Add
@@ -109,19 +112,19 @@
             this.tsmi_Delete,
             this.tsmi_ClearList});
       this.cms_DnsPoison.Name = "cms_DNSPoison";
-      this.cms_DnsPoison.Size = new System.Drawing.Size(180, 64);
+      this.cms_DnsPoison.Size = new System.Drawing.Size(180, 68);
       // 
       // tsmi_Delete
       // 
       this.tsmi_Delete.Name = "tsmi_Delete";
-      this.tsmi_Delete.Size = new System.Drawing.Size(179, 30);
+      this.tsmi_Delete.Size = new System.Drawing.Size(179, 32);
       this.tsmi_Delete.Text = "Delete entry";
       this.tsmi_Delete.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // tsmi_ClearList
       // 
       this.tsmi_ClearList.Name = "tsmi_ClearList";
-      this.tsmi_ClearList.Size = new System.Drawing.Size(179, 30);
+      this.tsmi_ClearList.Size = new System.Drawing.Size(179, 32);
       this.tsmi_ClearList.Text = "Clear list";
       this.tsmi_ClearList.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -153,6 +156,7 @@
       this.dgv_Spoofing.Name = "dgv_Spoofing";
       this.dgv_Spoofing.ReadOnly = true;
       this.dgv_Spoofing.RowHeadersVisible = false;
+      this.dgv_Spoofing.RowHeadersWidth = 62;
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Spoofing.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,6 +183,7 @@
       // 
       // tb_Cname
       // 
+      this.tb_Cname.ContextMenuStrip = this.cms_Cname;
       this.tb_Cname.Enabled = false;
       this.tb_Cname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_Cname.Location = new System.Drawing.Point(1003, 27);
@@ -187,6 +192,21 @@
       this.tb_Cname.Size = new System.Drawing.Size(195, 26);
       this.tb_Cname.TabIndex = 5;
       this.tb_Cname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
+      // 
+      // cms_Cname
+      // 
+      this.cms_Cname.ImageScalingSize = new System.Drawing.Size(24, 24);
+      this.cms_Cname.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.useHostIPToolStripMenuItem});
+      this.cms_Cname.Name = "cms_Cname";
+      this.cms_Cname.Size = new System.Drawing.Size(260, 69);
+      // 
+      // useHostIPToolStripMenuItem
+      // 
+      this.useHostIPToolStripMenuItem.Name = "useHostIPToolStripMenuItem";
+      this.useHostIPToolStripMenuItem.Size = new System.Drawing.Size(259, 32);
+      this.useHostIPToolStripMenuItem.Text = "CNAME to spoofed IP";
+      this.useHostIPToolStripMenuItem.Click += new System.EventHandler(this.TSMI_UseHostIP_Click);
       // 
       // l_ttl
       // 
@@ -230,6 +250,7 @@
       this.Load += new System.EventHandler(this.PluginDNSPoisonUC_Load);
       this.cms_DnsPoison.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Spoofing)).EndInit();
+      this.cms_Cname.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -250,5 +271,7 @@
     private System.Windows.Forms.TextBox tb_Cname;
     private System.Windows.Forms.Label l_ttl;
     private System.Windows.Forms.TextBox tb_ttl;
+    private System.Windows.Forms.ContextMenuStrip cms_Cname;
+    private System.Windows.Forms.ToolStripMenuItem useHostIPToolStripMenuItem;
   }
 }

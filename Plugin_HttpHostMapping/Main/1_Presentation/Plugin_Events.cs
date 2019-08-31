@@ -60,28 +60,6 @@
     }
 
 
-    private void DGV_Spoofing_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_HostMapping.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          this.cms_HostMapping.Show(this.dgv_HostMapping, e.Location);
-        }
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      }
-    }
-
-
     /// <summary>
     ///
     /// </summary>

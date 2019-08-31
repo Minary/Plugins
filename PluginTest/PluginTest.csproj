@@ -65,7 +65,7 @@
     <Compile Include="PluginTest_Events.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PluginTest_Interfaces.cs">
+    <Compile Include="PluginTest_Interface.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />

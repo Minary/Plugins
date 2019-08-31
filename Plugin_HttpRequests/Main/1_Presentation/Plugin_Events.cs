@@ -29,33 +29,6 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_HttpRequests_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_HttpRequests.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          this.cms_HttpRequests.Show(this.dgv_HttpRequests, e.Location);
-        }
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private void BT_Set_Click(object sender, EventArgs e)
     {
       this.UseFilter();

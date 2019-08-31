@@ -36,45 +36,6 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_Systems_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button == MouseButtons.Right)
-      {
-        cms_Systems.Show(this.dgv_Systems, e.Location);
-      }
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void DGV_Systems_MouseUp_1(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_Systems.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          cms_Systems.Show(this.dgv_Systems, e.Location);
-        }
-      }
-      catch (Exception)
-      {
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private void DeleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
     {
       int currentIndex = this.dgv_Systems.CurrentCell.RowIndex;

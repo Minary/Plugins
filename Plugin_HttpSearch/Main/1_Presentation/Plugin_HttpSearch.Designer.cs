@@ -79,26 +79,26 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_HttpSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HttpSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_HttpSearch.ContextMenuStrip = this.cms_HttpSearchPatterns;
       this.dgv_HttpSearch.EnableHeadersVisualStyles = false;
-      this.dgv_HttpSearch.Location = new System.Drawing.Point(11, 110);
-      this.dgv_HttpSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_HttpSearch.Location = new System.Drawing.Point(7, 71);
       this.dgv_HttpSearch.MultiSelect = false;
       this.dgv_HttpSearch.Name = "dgv_HttpSearch";
       this.dgv_HttpSearch.ReadOnly = true;
       this.dgv_HttpSearch.RowHeadersVisible = false;
+      this.dgv_HttpSearch.RowHeadersWidth = 62;
       this.dgv_HttpSearch.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_HttpSearch.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HttpSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_HttpSearch.Size = new System.Drawing.Size(1374, 181);
+      this.dgv_HttpSearch.Size = new System.Drawing.Size(916, 118);
       this.dgv_HttpSearch.TabIndex = 7;
-      this.dgv_HttpSearch.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_SearchPatterns_MouseDown);
-      this.dgv_HttpSearch.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_SearchPatterns_MouseUp);
       // 
       // L_Method
       // 
       this.L_Method.AutoSize = true;
       this.L_Method.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Method.Location = new System.Drawing.Point(18, 40);
+      this.L_Method.Location = new System.Drawing.Point(12, 26);
+      this.L_Method.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.L_Method.Name = "L_Method";
       this.L_Method.Size = new System.Drawing.Size(69, 20);
       this.L_Method.TabIndex = 0;
@@ -106,9 +106,10 @@
       // 
       // tb_HostRegex
       // 
-      this.tb_HostRegex.Location = new System.Drawing.Point(303, 29);
+      this.tb_HostRegex.Location = new System.Drawing.Point(202, 19);
+      this.tb_HostRegex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.tb_HostRegex.Name = "tb_HostRegex";
-      this.tb_HostRegex.Size = new System.Drawing.Size(272, 26);
+      this.tb_HostRegex.Size = new System.Drawing.Size(183, 20);
       this.tb_HostRegex.TabIndex = 2;
       this.tb_HostRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddSearchPatternRecord);
       // 
@@ -116,7 +117,8 @@
       // 
       this.L_Host.AutoSize = true;
       this.L_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Host.Location = new System.Drawing.Point(207, 36);
+      this.L_Host.Location = new System.Drawing.Point(138, 23);
+      this.L_Host.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.L_Host.Name = "L_Host";
       this.L_Host.Size = new System.Drawing.Size(96, 20);
       this.L_Host.TabIndex = 0;
@@ -126,7 +128,8 @@
       // 
       this.L_Path.AutoSize = true;
       this.L_Path.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_Path.Location = new System.Drawing.Point(589, 36);
+      this.L_Path.Location = new System.Drawing.Point(393, 23);
+      this.L_Path.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.L_Path.Name = "L_Path";
       this.L_Path.Size = new System.Drawing.Size(95, 20);
       this.L_Path.TabIndex = 0;
@@ -134,9 +137,10 @@
       // 
       // tb_PathRegex
       // 
-      this.tb_PathRegex.Location = new System.Drawing.Point(690, 29);
+      this.tb_PathRegex.Location = new System.Drawing.Point(460, 19);
+      this.tb_PathRegex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.tb_PathRegex.Name = "tb_PathRegex";
-      this.tb_PathRegex.Size = new System.Drawing.Size(332, 26);
+      this.tb_PathRegex.Size = new System.Drawing.Size(223, 20);
       this.tb_PathRegex.TabIndex = 3;
       this.tb_PathRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddSearchPatternRecord);
       // 
@@ -150,17 +154,18 @@
             "PUT",
             "DELETE",
             "HEAD"});
-      this.cb_Method.Location = new System.Drawing.Point(87, 33);
+      this.cb_Method.Location = new System.Drawing.Point(58, 21);
+      this.cb_Method.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.cb_Method.Name = "cb_Method";
-      this.cb_Method.Size = new System.Drawing.Size(98, 28);
+      this.cb_Method.Size = new System.Drawing.Size(67, 21);
       this.cb_Method.TabIndex = 1;
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(1041, 69);
+      this.bt_Add.Location = new System.Drawing.Point(694, 45);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
-      this.bt_Add.Size = new System.Drawing.Size(30, 32);
+      this.bt_Add.Size = new System.Drawing.Size(20, 21);
       this.bt_Add.TabIndex = 6;
       this.bt_Add.Text = "+";
       this.bt_Add.UseVisualStyleBackColor = true;
@@ -170,7 +175,8 @@
       // 
       this.L_DataRegex.AutoSize = true;
       this.L_DataRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.L_DataRegex.Location = new System.Drawing.Point(207, 80);
+      this.L_DataRegex.Location = new System.Drawing.Point(138, 52);
+      this.L_DataRegex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
       this.L_DataRegex.Name = "L_DataRegex";
       this.L_DataRegex.Size = new System.Drawing.Size(97, 20);
       this.L_DataRegex.TabIndex = 0;
@@ -178,9 +184,10 @@
       // 
       // tb_DataRegex
       // 
-      this.tb_DataRegex.Location = new System.Drawing.Point(303, 74);
+      this.tb_DataRegex.Location = new System.Drawing.Point(202, 48);
+      this.tb_DataRegex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.tb_DataRegex.Name = "tb_DataRegex";
-      this.tb_DataRegex.Size = new System.Drawing.Size(719, 26);
+      this.tb_DataRegex.Size = new System.Drawing.Size(481, 20);
       this.tb_DataRegex.TabIndex = 5;
       this.tb_DataRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddSearchPatternRecord);
       // 
@@ -191,19 +198,19 @@
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
       this.cms_HttpSearchPatterns.Name = "cms_HttpSearch";
-      this.cms_HttpSearchPatterns.Size = new System.Drawing.Size(180, 64);
+      this.cms_HttpSearchPatterns.Size = new System.Drawing.Size(180, 68);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.TSMI_SearchPatternsDelete_Click);
       // 
       // clearListToolStripMenuItem
       // 
       this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_SearchPatternsClear_Click);
       // 
@@ -232,20 +239,20 @@
       dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_Findings.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Findings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_Findings.ContextMenuStrip = this.cms_HttpSearchFindings;
       this.dgv_Findings.EnableHeadersVisualStyles = false;
-      this.dgv_Findings.Location = new System.Drawing.Point(11, 25);
-      this.dgv_Findings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_Findings.Location = new System.Drawing.Point(7, 16);
       this.dgv_Findings.MultiSelect = false;
       this.dgv_Findings.Name = "dgv_Findings";
       this.dgv_Findings.ReadOnly = true;
       this.dgv_Findings.RowHeadersVisible = false;
+      this.dgv_Findings.RowHeadersWidth = 62;
       this.dgv_Findings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Findings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_Findings.Size = new System.Drawing.Size(1374, 215);
+      this.dgv_Findings.Size = new System.Drawing.Size(916, 140);
       this.dgv_Findings.TabIndex = 8;
       this.dgv_Findings.DoubleClick += new System.EventHandler(this.DGV_HttpFindings_DoubleClick);
       this.dgv_Findings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseDown);
-      this.dgv_Findings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Findings_MouseUp);
       // 
       // gb_Patterns
       // 
@@ -261,9 +268,11 @@
       this.gb_Patterns.Controls.Add(this.L_DataRegex);
       this.gb_Patterns.Controls.Add(this.cb_Method);
       this.gb_Patterns.Controls.Add(this.bt_Add);
-      this.gb_Patterns.Location = new System.Drawing.Point(26, 15);
+      this.gb_Patterns.Location = new System.Drawing.Point(17, 10);
+      this.gb_Patterns.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.gb_Patterns.Name = "gb_Patterns";
-      this.gb_Patterns.Size = new System.Drawing.Size(1400, 304);
+      this.gb_Patterns.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.gb_Patterns.Size = new System.Drawing.Size(933, 198);
       this.gb_Patterns.TabIndex = 9;
       this.gb_Patterns.TabStop = false;
       this.gb_Patterns.Text = "Patterns";
@@ -275,19 +284,19 @@
             this.deleteEntryToolStripMenuItem1,
             this.clearListToolStripMenuItem1});
       this.cms_HttpSearchFindings.Name = "cms_HttpSearchFindings";
-      this.cms_HttpSearchFindings.Size = new System.Drawing.Size(180, 64);
+      this.cms_HttpSearchFindings.Size = new System.Drawing.Size(180, 68);
       // 
       // deleteEntryToolStripMenuItem1
       // 
       this.deleteEntryToolStripMenuItem1.Name = "deleteEntryToolStripMenuItem1";
-      this.deleteEntryToolStripMenuItem1.Size = new System.Drawing.Size(179, 30);
+      this.deleteEntryToolStripMenuItem1.Size = new System.Drawing.Size(179, 32);
       this.deleteEntryToolStripMenuItem1.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem1.Click += new System.EventHandler(this.TSMI_FindingsDelete_Click);
       // 
       // clearListToolStripMenuItem1
       // 
       this.clearListToolStripMenuItem1.Name = "clearListToolStripMenuItem1";
-      this.clearListToolStripMenuItem1.Size = new System.Drawing.Size(179, 30);
+      this.clearListToolStripMenuItem1.Size = new System.Drawing.Size(179, 32);
       this.clearListToolStripMenuItem1.Text = "Clear list";
       this.clearListToolStripMenuItem1.Click += new System.EventHandler(this.TSMI_FindingsClear_Click);
       // 
@@ -296,23 +305,24 @@
       this.gb_findings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.gb_findings.Controls.Add(this.dgv_Findings);
-      this.gb_findings.Location = new System.Drawing.Point(26, 332);
+      this.gb_findings.Location = new System.Drawing.Point(17, 216);
+      this.gb_findings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
       this.gb_findings.Name = "gb_findings";
-      this.gb_findings.Size = new System.Drawing.Size(1400, 248);
+      this.gb_findings.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.gb_findings.Size = new System.Drawing.Size(933, 161);
       this.gb_findings.TabIndex = 0;
       this.gb_findings.TabStop = false;
       this.gb_findings.Text = "Findings";
       // 
       // Plugin_HttpSearch
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.gb_Patterns);
       this.Controls.Add(this.gb_findings);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpSearch";
-      this.Size = new System.Drawing.Size(1494, 583);
+      this.Size = new System.Drawing.Size(996, 379);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HttpSearch)).EndInit();
       this.cms_HttpSearchPatterns.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Findings)).EndInit();

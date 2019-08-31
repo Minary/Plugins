@@ -57,7 +57,7 @@
     <Compile Include="Main\1_Presentation\Plugin_HttpSearch.Designer.cs">
       <DependentUpon>Plugin_HttpSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_InterfaceImplementations.cs">
+    <Compile Include="Main\1_Presentation\Plugin_Interface.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">

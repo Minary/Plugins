@@ -30,8 +30,8 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tb_MappedHost = new System.Windows.Forms.TextBox();
       this.l_MappedHost = new System.Windows.Forms.Label();
       this.dgv_HostMapping = new System.Windows.Forms.DataGridView();
@@ -49,10 +49,9 @@
       // tb_MappedHost
       // 
       this.tb_MappedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_MappedHost.Location = new System.Drawing.Point(667, 26);
-      this.tb_MappedHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_MappedHost.Location = new System.Drawing.Point(445, 17);
       this.tb_MappedHost.Name = "tb_MappedHost";
-      this.tb_MappedHost.Size = new System.Drawing.Size(274, 26);
+      this.tb_MappedHost.Size = new System.Drawing.Size(184, 26);
       this.tb_MappedHost.TabIndex = 10;
       this.tb_MappedHost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
@@ -60,8 +59,7 @@
       // 
       this.l_MappedHost.AutoSize = true;
       this.l_MappedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_MappedHost.Location = new System.Drawing.Point(551, 29);
-      this.l_MappedHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_MappedHost.Location = new System.Drawing.Point(367, 19);
       this.l_MappedHost.Name = "l_MappedHost";
       this.l_MappedHost.Size = new System.Drawing.Size(116, 20);
       this.l_MappedHost.TabIndex = 6;
@@ -79,47 +77,45 @@
       this.dgv_HostMapping.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_HostMapping.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_HostMapping.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_HostMapping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_HostMapping.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_HostMapping.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_HostMapping.ContextMenuStrip = this.cms_HostMapping;
       this.dgv_HostMapping.EnableHeadersVisualStyles = false;
-      this.dgv_HostMapping.Location = new System.Drawing.Point(26, 68);
-      this.dgv_HostMapping.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_HostMapping.Location = new System.Drawing.Point(17, 44);
       this.dgv_HostMapping.MultiSelect = false;
       this.dgv_HostMapping.Name = "dgv_HostMapping";
       this.dgv_HostMapping.RowHeadersVisible = false;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle4;
+      this.dgv_HostMapping.RowHeadersWidth = 62;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+      this.dgv_HostMapping.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_HostMapping.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_HostMapping.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_HostMapping.Size = new System.Drawing.Size(1400, 482);
+      this.dgv_HostMapping.Size = new System.Drawing.Size(933, 313);
       this.dgv_HostMapping.TabIndex = 7;
       this.dgv_HostMapping.TabStop = false;
       this.dgv_HostMapping.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
-      this.dgv_HostMapping.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
       // tb_RequestedHost
       // 
       this.tb_RequestedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedHost.Location = new System.Drawing.Point(253, 25);
-      this.tb_RequestedHost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_RequestedHost.Location = new System.Drawing.Point(169, 16);
       this.tb_RequestedHost.Name = "tb_RequestedHost";
-      this.tb_RequestedHost.Size = new System.Drawing.Size(276, 26);
+      this.tb_RequestedHost.Size = new System.Drawing.Size(185, 26);
       this.tb_RequestedHost.TabIndex = 9;
       this.tb_RequestedHost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(969, 25);
-      this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.bt_AddRecord.Location = new System.Drawing.Point(646, 16);
       this.bt_AddRecord.Name = "bt_AddRecord";
-      this.bt_AddRecord.Size = new System.Drawing.Size(31, 27);
+      this.bt_AddRecord.Size = new System.Drawing.Size(21, 18);
       this.bt_AddRecord.TabIndex = 11;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
@@ -129,8 +125,7 @@
       // 
       this.l_RequestedHost.AutoSize = true;
       this.l_RequestedHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestedHost.Location = new System.Drawing.Point(34, 29);
-      this.l_RequestedHost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_RequestedHost.Location = new System.Drawing.Point(23, 19);
       this.l_RequestedHost.Name = "l_RequestedHost";
       this.l_RequestedHost.Size = new System.Drawing.Size(140, 20);
       this.l_RequestedHost.TabIndex = 8;
@@ -143,19 +138,19 @@
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
       this.cms_HostMapping.Name = "CMS_HostMapping";
-      this.cms_HostMapping.Size = new System.Drawing.Size(180, 64);
+      this.cms_HostMapping.Size = new System.Drawing.Size(180, 68);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteRuleToolStripMenuItem_Click);
       // 
       // clearListToolStripMenuItem
       // 
       this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -163,8 +158,7 @@
       // 
       this.l_Https.AutoSize = true;
       this.l_Https.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Https.Location = new System.Drawing.Point(182, 29);
-      this.l_Https.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_Https.Location = new System.Drawing.Point(121, 19);
       this.l_Https.Name = "l_Https";
       this.l_Https.Size = new System.Drawing.Size(73, 20);
       this.l_Https.TabIndex = 12;
@@ -172,7 +166,7 @@
       // 
       // Plugin_HttpHostMapping
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.l_Https);
@@ -182,9 +176,8 @@
       this.Controls.Add(this.tb_RequestedHost);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedHost);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpHostMapping";
-      this.Size = new System.Drawing.Size(1494, 566);
+      this.Size = new System.Drawing.Size(996, 368);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_HostMapping)).EndInit();
       this.cms_HostMapping.ResumeLayout(false);
       this.ResumeLayout(false);

@@ -56,7 +56,7 @@
     <Compile Include="Main\1_Presentation\Plugin_HttpRequestRedirect.Designer.cs">
       <DependentUpon>Plugin_HttpRequestRedirect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_InterfaceImplementations.cs">
+    <Compile Include="Main\1_Presentation\Plugin_Interface.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">

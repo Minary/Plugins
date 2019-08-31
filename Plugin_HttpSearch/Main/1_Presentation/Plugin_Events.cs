@@ -44,28 +44,6 @@
     }
 
 
-    private void DGV_SearchPatterns_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_HttpSearch.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          this.cms_HttpSearchPatterns.Show(this.dgv_HttpSearch, e.Location);
-        }
-      }
-      catch (Exception ex)
-      {
-        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      }
-    }
-
-
     private void DGV_SearchPatterns_MouseDown(object sender, MouseEventArgs e)
     {
       try
@@ -149,28 +127,6 @@
       }
       catch
       {
-      }
-    }
-
-
-    private void DGV_Findings_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_Findings.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          this.cms_HttpSearchFindings.Show(this.dgv_Findings, e.Location);
-        }
-      }
-      catch (Exception ex)
-      {
-        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
       }
     }
 

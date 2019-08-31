@@ -49,10 +49,9 @@
       // tb_RedirectURL
       // 
       this.tb_RedirectURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RedirectURL.Location = new System.Drawing.Point(757, 22);
-      this.tb_RedirectURL.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_RedirectURL.Location = new System.Drawing.Point(505, 14);
       this.tb_RedirectURL.Name = "tb_RedirectURL";
-      this.tb_RedirectURL.Size = new System.Drawing.Size(307, 26);
+      this.tb_RedirectURL.Size = new System.Drawing.Size(206, 26);
       this.tb_RedirectURL.TabIndex = 2;
       this.tb_RedirectURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
@@ -77,29 +76,28 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgv_RequestRedirectURLs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_RequestRedirectURLs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_RequestRedirectURLs.ContextMenuStrip = this.cms_RequestRedirect;
       this.dgv_RequestRedirectURLs.EnableHeadersVisualStyles = false;
-      this.dgv_RequestRedirectURLs.Location = new System.Drawing.Point(26, 68);
-      this.dgv_RequestRedirectURLs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_RequestRedirectURLs.Location = new System.Drawing.Point(17, 44);
       this.dgv_RequestRedirectURLs.MultiSelect = false;
       this.dgv_RequestRedirectURLs.Name = "dgv_RequestRedirectURLs";
       this.dgv_RequestRedirectURLs.RowHeadersVisible = false;
+      this.dgv_RequestRedirectURLs.RowHeadersWidth = 62;
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
       this.dgv_RequestRedirectURLs.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_RequestRedirectURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_RequestRedirectURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_RequestRedirectURLs.Size = new System.Drawing.Size(1400, 482);
+      this.dgv_RequestRedirectURLs.Size = new System.Drawing.Size(933, 313);
       this.dgv_RequestRedirectURLs.TabIndex = 5;
       this.dgv_RequestRedirectURLs.TabStop = false;
       this.dgv_RequestRedirectURLs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_RequestRedirect_MouseDown);
-      this.dgv_RequestRedirectURLs.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
-      // tb_RequestedURLRegex
+      // tb_RequestedUrlRegex
       // 
       this.tb_RequestedUrlRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(304, 25);
-      this.tb_RequestedUrlRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tb_RequestedUrlRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(274, 26);
+      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(203, 16);
+      this.tb_RequestedUrlRegex.Name = "tb_RequestedUrlRegex";
+      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(184, 26);
       this.tb_RequestedUrlRegex.TabIndex = 1;
       this.tb_RequestedUrlRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_Host_KeyDown);
       // 
@@ -107,8 +105,7 @@
       // 
       this.l_RequestedURL.AutoSize = true;
       this.l_RequestedURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestedURL.Location = new System.Drawing.Point(34, 29);
-      this.l_RequestedURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_RequestedURL.Location = new System.Drawing.Point(23, 19);
       this.l_RequestedURL.Name = "l_RequestedURL";
       this.l_RequestedURL.Size = new System.Drawing.Size(193, 20);
       this.l_RequestedURL.TabIndex = 0;
@@ -118,8 +115,7 @@
       // 
       this.l_RedirectURL.AutoSize = true;
       this.l_RedirectURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RedirectURL.Location = new System.Drawing.Point(606, 28);
-      this.l_RedirectURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_RedirectURL.Location = new System.Drawing.Point(404, 18);
       this.l_RedirectURL.Name = "l_RedirectURL";
       this.l_RedirectURL.Size = new System.Drawing.Size(145, 20);
       this.l_RedirectURL.TabIndex = 0;
@@ -127,10 +123,9 @@
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(1280, 22);
-      this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.bt_AddRecord.Location = new System.Drawing.Point(853, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
-      this.bt_AddRecord.Size = new System.Drawing.Size(34, 32);
+      this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
       this.bt_AddRecord.TabIndex = 4;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
@@ -140,10 +135,9 @@
       // 
       this.cb_RedirectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_RedirectType.FormattingEnabled = true;
-      this.cb_RedirectType.Location = new System.Drawing.Point(1084, 22);
-      this.cb_RedirectType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.cb_RedirectType.Location = new System.Drawing.Point(723, 14);
       this.cb_RedirectType.Name = "cb_RedirectType";
-      this.cb_RedirectType.Size = new System.Drawing.Size(180, 28);
+      this.cb_RedirectType.Size = new System.Drawing.Size(121, 21);
       this.cb_RedirectType.TabIndex = 3;
       // 
       // cms_RequestRedirect
@@ -153,19 +147,19 @@
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
       this.cms_RequestRedirect.Name = "cms_RequestRedirect";
-      this.cms_RequestRedirect.Size = new System.Drawing.Size(180, 64);
+      this.cms_RequestRedirect.Size = new System.Drawing.Size(180, 68);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // clearListToolStripMenuItem
       // 
       this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -173,8 +167,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(238, 29);
-      this.l_Scheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_Scheme.Location = new System.Drawing.Point(159, 19);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(73, 20);
       this.l_Scheme.TabIndex = 6;
@@ -182,7 +175,7 @@
       // 
       // Plugin_HttpRequestRedirect
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.l_Scheme);
@@ -193,9 +186,8 @@
       this.Controls.Add(this.dgv_RequestRedirectURLs);
       this.Controls.Add(this.tb_RequestedUrlRegex);
       this.Controls.Add(this.l_RequestedURL);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpRequestRedirect";
-      this.Size = new System.Drawing.Size(1494, 566);
+      this.Size = new System.Drawing.Size(996, 368);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_RequestRedirectURLs)).EndInit();
       this.cms_RequestRedirect.ResumeLayout(false);
       this.ResumeLayout(false);

@@ -23,26 +23,6 @@
     }
 
 
-    private void DGV_HttpsRequests_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button == MouseButtons.Right)
-      {
-        try
-        {
-          DataGridView.HitTestInfo hti = this.dgv_HttpsRequests.HitTest(e.X, e.Y);
-          if (hti.RowIndex >= 0)
-          {
-            this.cms_HttpsRequests.Show(this.dgv_HttpsRequests, e.Location);
-          }
-        }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
-      }
-    }
-
-
     private void BT_Set_Click(object sender, EventArgs e)
     {
       this.UseFilter();

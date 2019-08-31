@@ -65,29 +65,6 @@
 
 
     /// <summary>
-    /// DGV right mouse button click
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void DGV_FirewallRules_MouseUp(object sender, MouseEventArgs e)
-    {
-      DataGridView.HitTestInfo hitTestInfo;
-
-      if (e.Button == MouseButtons.Right)
-      {
-        hitTestInfo = this.dgv_FWRules.HitTest(e.X, e.Y);
-
-        // If cell selection is valid
-        if (hitTestInfo.ColumnIndex >= 0 && hitTestInfo.RowIndex >= 0)
-        {
-          this.dgv_FWRules.Rows[hitTestInfo.RowIndex].Selected = true;
-          this.cms_DataGrid_RightMouseButton.Show(this.dgv_FWRules, new Point(e.X, e.Y));
-        }
-      }
-    }
-
-
-    /// <summary>
     /// Delete firewall rule
     /// </summary>
     /// <param name="sender"></param>

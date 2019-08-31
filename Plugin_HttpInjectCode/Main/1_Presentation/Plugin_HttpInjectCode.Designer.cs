@@ -65,6 +65,7 @@
       this.dgv_InjectionTriggerURLs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_InjectionTriggerURLs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
       this.dgv_InjectionTriggerURLs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgv_InjectionTriggerURLs.ContextMenuStrip = this.cms_InjectCode;
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,37 +75,34 @@
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
       this.dgv_InjectionTriggerURLs.DefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_InjectionTriggerURLs.EnableHeadersVisualStyles = false;
-      this.dgv_InjectionTriggerURLs.Location = new System.Drawing.Point(26, 68);
-      this.dgv_InjectionTriggerURLs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.dgv_InjectionTriggerURLs.Location = new System.Drawing.Point(17, 44);
       this.dgv_InjectionTriggerURLs.MultiSelect = false;
       this.dgv_InjectionTriggerURLs.Name = "dgv_InjectionTriggerURLs";
       this.dgv_InjectionTriggerURLs.RowHeadersVisible = false;
+      this.dgv_InjectionTriggerURLs.RowHeadersWidth = 62;
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
       this.dgv_InjectionTriggerURLs.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_InjectionTriggerURLs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_InjectionTriggerURLs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(1400, 482);
+      this.dgv_InjectionTriggerURLs.Size = new System.Drawing.Size(933, 313);
       this.dgv_InjectionTriggerURLs.TabIndex = 0;
       this.dgv_InjectionTriggerURLs.TabStop = false;
       this.dgv_InjectionTriggerURLs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
-      this.dgv_InjectionTriggerURLs.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseUp);
       // 
-      // tb_RequestedURLRegex
+      // tb_RequestedUrlRegex
       // 
       this.tb_RequestedUrlRegex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(265, 26);
-      this.tb_RequestedUrlRegex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-      this.tb_RequestedUrlRegex.Name = "tb_RequestedURLRegex";
-      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(256, 26);
+      this.tb_RequestedUrlRegex.Location = new System.Drawing.Point(177, 17);
+      this.tb_RequestedUrlRegex.Name = "tb_RequestedUrlRegex";
+      this.tb_RequestedUrlRegex.Size = new System.Drawing.Size(172, 26);
       this.tb_RequestedUrlRegex.TabIndex = 1;
       this.tb_RequestedUrlRegex.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
       // bt_AddRecord
       // 
-      this.bt_AddRecord.Location = new System.Drawing.Point(1323, 22);
-      this.bt_AddRecord.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.bt_AddRecord.Location = new System.Drawing.Point(882, 14);
       this.bt_AddRecord.Name = "bt_AddRecord";
-      this.bt_AddRecord.Size = new System.Drawing.Size(34, 32);
+      this.bt_AddRecord.Size = new System.Drawing.Size(23, 21);
       this.bt_AddRecord.TabIndex = 7;
       this.bt_AddRecord.Text = "+";
       this.bt_AddRecord.UseVisualStyleBackColor = true;
@@ -115,8 +113,7 @@
       // 
       this.l_RequestedURL.AutoSize = true;
       this.l_RequestedURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_RequestedURL.Location = new System.Drawing.Point(32, 29);
-      this.l_RequestedURL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_RequestedURL.Location = new System.Drawing.Point(21, 19);
       this.l_RequestedURL.Name = "l_RequestedURL";
       this.l_RequestedURL.Size = new System.Drawing.Size(142, 20);
       this.l_RequestedURL.TabIndex = 0;
@@ -125,10 +122,9 @@
       // tb_InjectioinContentFile
       // 
       this.tb_InjectioinContentFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_InjectioinContentFile.Location = new System.Drawing.Point(675, 23);
-      this.tb_InjectioinContentFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.tb_InjectioinContentFile.Location = new System.Drawing.Point(450, 15);
       this.tb_InjectioinContentFile.Name = "tb_InjectioinContentFile";
-      this.tb_InjectioinContentFile.Size = new System.Drawing.Size(168, 26);
+      this.tb_InjectioinContentFile.Size = new System.Drawing.Size(113, 26);
       this.tb_InjectioinContentFile.TabIndex = 2;
       this.tb_InjectioinContentFile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       // 
@@ -136,8 +132,7 @@
       // 
       this.l_ReplacementResource.AutoSize = true;
       this.l_ReplacementResource.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ReplacementResource.Location = new System.Drawing.Point(534, 29);
-      this.l_ReplacementResource.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_ReplacementResource.Location = new System.Drawing.Point(356, 19);
       this.l_ReplacementResource.Name = "l_ReplacementResource";
       this.l_ReplacementResource.Size = new System.Drawing.Size(128, 20);
       this.l_ReplacementResource.TabIndex = 0;
@@ -149,10 +144,9 @@
       // 
       // bt_AddFile
       // 
-      this.bt_AddFile.Location = new System.Drawing.Point(850, 20);
-      this.bt_AddFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.bt_AddFile.Location = new System.Drawing.Point(567, 13);
       this.bt_AddFile.Name = "bt_AddFile";
-      this.bt_AddFile.Size = new System.Drawing.Size(34, 32);
+      this.bt_AddFile.Size = new System.Drawing.Size(23, 21);
       this.bt_AddFile.TabIndex = 3;
       this.bt_AddFile.Text = "...";
       this.bt_AddFile.UseVisualStyleBackColor = true;
@@ -165,19 +159,19 @@
             this.deleteEntryToolStripMenuItem,
             this.clearListToolStripMenuItem});
       this.cms_InjectCode.Name = "cms_InjectCode";
-      this.cms_InjectCode.Size = new System.Drawing.Size(180, 64);
+      this.cms_InjectCode.Size = new System.Drawing.Size(180, 68);
       // 
       // deleteEntryToolStripMenuItem
       // 
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
-      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
       this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // clearListToolStripMenuItem
       // 
       this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 30);
+      this.clearListToolStripMenuItem.Size = new System.Drawing.Size(179, 32);
       this.clearListToolStripMenuItem.Text = "Clear list";
       this.clearListToolStripMenuItem.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -185,8 +179,7 @@
       // 
       this.l_Tag.AutoSize = true;
       this.l_Tag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Tag.Location = new System.Drawing.Point(917, 29);
-      this.l_Tag.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_Tag.Location = new System.Drawing.Point(611, 19);
       this.l_Tag.Name = "l_Tag";
       this.l_Tag.Size = new System.Drawing.Size(40, 20);
       this.l_Tag.TabIndex = 0;
@@ -196,18 +189,16 @@
       // 
       this.cb_injectPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cb_injectPosition.FormattingEnabled = true;
-      this.cb_injectPosition.Location = new System.Drawing.Point(965, 21);
-      this.cb_injectPosition.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.cb_injectPosition.Location = new System.Drawing.Point(643, 14);
       this.cb_injectPosition.Name = "cb_injectPosition";
-      this.cb_injectPosition.Size = new System.Drawing.Size(132, 28);
+      this.cb_injectPosition.Size = new System.Drawing.Size(89, 21);
       this.cb_injectPosition.TabIndex = 4;
       // 
       // rb_Before
       // 
       this.rb_Before.AutoSize = true;
       this.rb_Before.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.rb_Before.Location = new System.Drawing.Point(1133, 28);
-      this.rb_Before.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.rb_Before.Location = new System.Drawing.Point(755, 18);
       this.rb_Before.Name = "rb_Before";
       this.rb_Before.Size = new System.Drawing.Size(90, 24);
       this.rb_Before.TabIndex = 5;
@@ -220,8 +211,7 @@
       this.rb_After.AutoSize = true;
       this.rb_After.Checked = true;
       this.rb_After.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.rb_After.Location = new System.Drawing.Point(1215, 28);
-      this.rb_After.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.rb_After.Location = new System.Drawing.Point(810, 18);
       this.rb_After.Name = "rb_After";
       this.rb_After.Size = new System.Drawing.Size(75, 24);
       this.rb_After.TabIndex = 6;
@@ -233,8 +223,7 @@
       // 
       this.l_Scheme.AutoSize = true;
       this.l_Scheme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Scheme.Location = new System.Drawing.Point(192, 29);
-      this.l_Scheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.l_Scheme.Location = new System.Drawing.Point(128, 19);
       this.l_Scheme.Name = "l_Scheme";
       this.l_Scheme.Size = new System.Drawing.Size(73, 20);
       this.l_Scheme.TabIndex = 0;
@@ -242,7 +231,7 @@
       // 
       // Plugin_HttpInjectCode
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.Controls.Add(this.tb_RequestedUrlRegex);
@@ -257,9 +246,8 @@
       this.Controls.Add(this.dgv_InjectionTriggerURLs);
       this.Controls.Add(this.bt_AddRecord);
       this.Controls.Add(this.l_RequestedURL);
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.Name = "Plugin_HttpInjectCode";
-      this.Size = new System.Drawing.Size(1494, 566);
+      this.Size = new System.Drawing.Size(996, 368);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_AddRecord_KeyDown);
       ((System.ComponentModel.ISupportInitialize)(this.dgv_InjectionTriggerURLs)).EndInit();
       this.cms_InjectCode.ResumeLayout(false);

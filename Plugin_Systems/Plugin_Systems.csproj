@@ -99,7 +99,7 @@
     <Compile Include="Main\1_Presentation\Plugin_Records.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Main\1_Presentation\Plugin_InterfaceImplementations.cs">
+    <Compile Include="Main\1_Presentation\Plugin_Interface.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Main\2_Infrastructure\Systems.cs" />

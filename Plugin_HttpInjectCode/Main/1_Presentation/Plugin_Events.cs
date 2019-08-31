@@ -89,33 +89,6 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_Spoofing_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button != MouseButtons.Right)
-      {
-        return;
-      }
-
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_InjectionTriggerURLs.HitTest(e.X, e.Y);
-        if (hti.RowIndex >= 0)
-        {
-          this.cms_InjectCode.Show(this.dgv_InjectionTriggerURLs, e.Location);
-        }
-      }
-      catch (Exception ex)
-      {
-        this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private void DGV_Spoofing_MouseDown(object sender, MouseEventArgs e)
     {
       try

@@ -76,32 +76,6 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DGV_SslStripRecords_MouseUp(object sender, MouseEventArgs e)
-    {
-      if (e.Button == MouseButtons.Right)
-      {
-        try
-        {
-          DataGridView.HitTestInfo hti = this.dgv_SslStrippingTargets.HitTest(e.X, e.Y);
-          if (hti.RowIndex >= 0)
-          {
-            this.cms_SslStripRecords.Show(this.dgv_SslStrippingTargets, e.Location);
-          }
-        }
-        catch (Exception ex)
-        {
-          this.pluginProperties.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
-        }
-      }
-    }
-
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     private void DeleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
     {
       try

@@ -11,7 +11,7 @@
 
     private string srcMac = string.Empty;
     private string srcIp = string.Empty;
-    private string timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+    private string timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
     private string requestMethod = string.Empty;
     private string remoteHost = string.Empty;
     private string path = string.Empty;
@@ -51,7 +51,7 @@
     }
 
 
-    [Browsable(false)]
+    [Browsable(true)]
     public string Timestamp
     {
       get { return this.timestamp; }
@@ -153,6 +153,16 @@
 
     public HttpRequests()
     {
+      this.srcMac = string.Empty;
+      this.srcIp = string.Empty;
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
+      this.requestMethod = string.Empty;
+      this.remoteHost = string.Empty;
+      this.path = string.Empty;
+      this.url = string.Empty;
+      this.sessionCookies = string.Empty;
+      this.request = string.Empty;
+      this.userAgent = string.Empty;
     }
 
 
@@ -160,7 +170,7 @@
     {
       this.srcMac = srcMac;
       this.srcIp = srcIp;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
       this.requestMethod = requestMethod;
       this.remoteHost = remoteHost;
       this.path = remoteFile;

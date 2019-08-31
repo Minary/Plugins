@@ -237,6 +237,12 @@
       this.Refresh();
     }
 
+
+    public void OnVerbose(bool isVerboseOn)
+    {
+
+    }
+
     #endregion
 
   }

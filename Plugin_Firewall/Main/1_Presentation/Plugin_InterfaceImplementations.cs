@@ -219,6 +219,12 @@ this.Config.HostApplication.LogMessage($"FIREWALL PATH:{this.firewallConfigFileP
       this.Refresh();
     }
 
+
+    public void OnVerbose(bool isVerboseOn)
+    {
+
+    }
+
     #endregion
 
   }

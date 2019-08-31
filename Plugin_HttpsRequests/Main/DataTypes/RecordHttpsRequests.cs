@@ -12,7 +12,7 @@
     private string srcMAC = string.Empty;
     private string srcIP = string.Empty;
     private string dstIP = string.Empty;
-    private string timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+    private string timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
     private string remoteHost = string.Empty;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -58,7 +58,7 @@
     }
 
 
-    [Browsable(false)]
+    [Browsable(true)]
     public string Timestamp
     {
       get { return this.timestamp; }
@@ -88,6 +88,11 @@
 
     public RecordHttpsRequest()
     {
+      this.srcMAC = string.Empty;
+      this.srcIP = string.Empty;
+      this.dstIP = string.Empty;
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
+      this.remoteHost = string.Empty;
     }
 
 
@@ -96,7 +101,7 @@
       this.srcMAC = srcMac;
       this.srcIP = srcIp;
       this.dstIP = dstIp;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
       this.remoteHost = remoteHost;
     }
 

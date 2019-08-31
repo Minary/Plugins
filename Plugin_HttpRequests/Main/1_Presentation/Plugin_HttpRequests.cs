@@ -41,6 +41,15 @@
     {
       this.InitializeComponent();
 
+      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      columnTimeStamp.DataPropertyName = "Timestamp";
+      columnTimeStamp.Name = "Timestamp";
+      columnTimeStamp.HeaderText = "Timestamp";
+      columnTimeStamp.ReadOnly = true;
+      columnTimeStamp.Visible = false;
+      columnTimeStamp.Width = 180;
+      this.dgv_HttpRequests.Columns.Add(columnTimeStamp);
+
       DataGridViewTextBoxColumn columnMacAddr = new DataGridViewTextBoxColumn();
       columnMacAddr.DataPropertyName = "SrcMAC";
       columnMacAddr.Name = "SrcMAC";
@@ -56,15 +65,6 @@
       columnSrcIp.ReadOnly = true;
       columnSrcIp.Width = 150;
       this.dgv_HttpRequests.Columns.Add(columnSrcIp);
-
-      DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
-      columnTimestamp.DataPropertyName = "Timestamp";
-      columnTimestamp.Name = "Timestamp";
-      columnTimestamp.HeaderText = "Timestamp";
-      columnTimestamp.ReadOnly = true;
-      columnTimestamp.Visible = false;
-      columnTimestamp.Width = 120;
-      this.dgv_HttpRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnRequestMethod = new DataGridViewTextBoxColumn();
       columnRequestMethod.DataPropertyName = "Method";

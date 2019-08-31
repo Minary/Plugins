@@ -2,7 +2,6 @@
 {
   using System;
   using System.ComponentModel;
-
   
 
   public class DnsRequestRecord : INotifyPropertyChanged
@@ -129,7 +128,7 @@
     {
       this.srcMac = string.Empty;
       this.srcIp = string.Empty;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
       this.dnsRequest = string.Empty;
       this.dnsReply = string.Empty;
       this.packetType = string.Empty;
@@ -140,7 +139,7 @@
     {
       this.srcMac = srcMac;
       this.srcIp = srcIp;
-      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd hh:mm:ss");
+      this.timestamp = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
       this.dnsRequest = dnsRequestHost;
       this.dnsReply = dnsReplyIps;
       this.packetType = type;

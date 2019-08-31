@@ -42,6 +42,15 @@
     {
       this.InitializeComponent();
 
+      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      columnTimeStamp.DataPropertyName = "Timestamp";
+      columnTimeStamp.Name = "Timestamp";
+      columnTimeStamp.HeaderText = "Timestamp";
+      columnTimeStamp.ReadOnly = true;
+      columnTimeStamp.Visible = false;
+      columnTimeStamp.Width = 180;
+      this.dgv_DnsRequests.Columns.Add(columnTimeStamp);
+
       DataGridViewTextBoxColumn columnSrcMac = new DataGridViewTextBoxColumn();
       columnSrcMac.DataPropertyName = "SrcMAC";
       columnSrcMac.Name = "SrcMAC";
@@ -57,14 +66,6 @@
       columnSrcIp.ReadOnly = true;
       columnSrcIp.Width = 150;
       this.dgv_DnsRequests.Columns.Add(columnSrcIp);
-      
-      DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
-      columnTimestamp.DataPropertyName = "Timestamp";
-      columnTimestamp.Name = "Timestamp";
-      columnTimestamp.HeaderText = "Timestamp";
-      columnTimestamp.ReadOnly = true;
-      columnTimestamp.Width = 200;
-      this.dgv_DnsRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnPacketType = new DataGridViewTextBoxColumn();
       columnPacketType.DataPropertyName = "PacketType";

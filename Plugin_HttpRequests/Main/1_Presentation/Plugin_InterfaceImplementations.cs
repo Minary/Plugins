@@ -192,6 +192,20 @@
       this.Refresh();
     }
 
+
+    public delegate void OnVerboseDelegate(bool isVerboseOn);
+    public void OnVerbose(bool isVerboseOn)
+    {
+      if (this.InvokeRequired)
+      {
+        this.BeginInvoke(new OnVerboseDelegate(this.OnVerbose), new object[] { isVerboseOn });
+        return;
+      }
+
+      this.dgv_HttpRequests.Columns["Timestamp"].Visible = isVerboseOn;
+      this.dgv_HttpRequests.Columns["SrcMAC"].Visible = isVerboseOn;
+    }
+
     #endregion
 
   }

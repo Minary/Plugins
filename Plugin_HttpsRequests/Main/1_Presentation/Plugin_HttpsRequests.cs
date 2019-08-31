@@ -50,6 +50,16 @@
     public Plugin_HttpsRequests(PluginProperties pluginProperties)
     {
       InitializeComponent();
+
+      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      columnTimeStamp.DataPropertyName = "Timestamp";
+      columnTimeStamp.Name = "Timestamp";
+      columnTimeStamp.HeaderText = "Timestamp";
+      columnTimeStamp.ReadOnly = true;
+      columnTimeStamp.Visible = false;
+      columnTimeStamp.Width = 180;
+      this.dgv_HttpsRequests.Columns.Add(columnTimeStamp);
+
       DataGridViewTextBoxColumn columnMacAddr = new DataGridViewTextBoxColumn();
       columnMacAddr.DataPropertyName = "SrcMAC";
       columnMacAddr.Name = "SrcMAC";
@@ -73,15 +83,6 @@
       columnDstIp.ReadOnly = true;
       columnDstIp.Width = 150;
       this.dgv_HttpsRequests.Columns.Add(columnDstIp);
-
-      DataGridViewTextBoxColumn columnTimestamp = new DataGridViewTextBoxColumn();
-      columnTimestamp.DataPropertyName = "Timestamp";
-      columnTimestamp.Name = "Timestamp";
-      columnTimestamp.HeaderText = "Timestamp";
-      columnTimestamp.ReadOnly = true;
-      columnTimestamp.Visible = false;
-      columnTimestamp.Width = 120;
-      this.dgv_HttpsRequests.Columns.Add(columnTimestamp);
 
       DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "RemoteHost";

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Minary.Plugin.Main
 {
@@ -32,6 +30,8 @@ namespace Minary.Plugin.Main
       Task.Run(() => {
         this.FetchData();
       });
+
+      this.KeyUp += this.ShowData_KeyUp;
     }
 
     #endregion

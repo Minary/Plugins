@@ -1,14 +1,8 @@
 ﻿namespace Minary.Plugin.Main
 {
-  using Minary.Plugin.Main.DnsPoisoning.DataTypes;
   using System;
   using System.Collections.Generic;
-  using System.ComponentModel;
-  using System.Data;
-  using System.Drawing;
-  using System.Linq;
   using System.Text.RegularExpressions;
-  using System.Threading.Tasks;
   using System.Windows.Forms;
 
 
@@ -31,6 +25,9 @@
 
       this.parentPlugin = parentPlugin;
       this.dgv_Spoofing = dgv_Spoofing;
+      this.tb_Hostname.Text = this.parentPlugin.TbHostname;
+      this.tb_IpAddress.Text = this.parentPlugin.TbSpoofedIpAddress;
+      this.tb_ttl.Text = this.parentPlugin.TbTtl;
     }
 
     #endregion

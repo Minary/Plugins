@@ -29,6 +29,12 @@
 
     public Control PluginControl { get { return (this); } }
 
+    public string TbHostname { get { return this.tb_Host.Text; } set { } }
+
+    public string TbSpoofedIpAddress { get { return this.tb_Address.Text; } set { } }
+
+    public string TbTtl { get { return this.tb_ttl.Text; } set { } }
+
 
     public BindingList<RecordDnsPoison> DnsPoisonRecords { get { return (dnsPoisonRecords); } }
 

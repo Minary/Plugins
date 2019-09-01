@@ -15,9 +15,8 @@
     {
       try
       {
-        this.ValidateHostName(this.tb_Cname.Text);
-        var hostEntry = System.Net.Dns.GetHostEntry(this.tb_Cname.Text);
-
+        this.ValidateHostName(this.tb_CName.Text);
+        var hostEntry = System.Net.Dns.GetHostEntry(this.tb_CName.Text);
         this.tb_Address.Text = hostEntry.AddressList[0].ToString();
       }
       catch (Exception ex)
@@ -25,7 +24,6 @@
         MessageBox.Show($"Exception occurred: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       }
     }
-
 
 
     /// <summary>
@@ -38,7 +36,7 @@
       var hostName = this.tb_Host.Text.Trim();
       var ipAddress = this.tb_Address.Text.Trim();
       var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var cname = this.cb_Cname.Checked ? this.tb_CName.Text.Trim() : string.Empty;
       var ttl = long.Parse(this.tb_ttl.Text.Trim());
 
       try
@@ -118,7 +116,7 @@
       var hostName = this.tb_Host.Text.Trim();
       var ipAddress = this.tb_Address.Text.Trim();
       var responseType = this.cb_Cname.Checked ? DnsResponseType.CNAME : DnsResponseType.A;
-      var cname = this.cb_Cname.Checked ? this.tb_Cname.Text.Trim() : string.Empty;
+      var cname = this.cb_Cname.Checked ? this.tb_CName.Text.Trim() : string.Empty;
       var ttl = long.Parse(this.tb_ttl.Text.Trim());
 
       try
@@ -142,11 +140,11 @@
     {
       if (this.cb_Cname.Checked)
       {
-        this.tb_Cname.Enabled = true;
+        this.tb_CName.Enabled = true;
       }
       else
       {
-        this.tb_Cname.Enabled = false;
+        this.tb_CName.Enabled = false;
       }
     }
 
@@ -165,9 +163,9 @@
     #endregion
 
 
-    #region PRIVATE
+    #region PUBLIC
 
-    private void ValidateHostName(string hostName)
+    public void ValidateHostName(string hostName)
     {
       if (string.IsNullOrEmpty(hostName) == true ||
           string.IsNullOrWhiteSpace(hostName) == true)

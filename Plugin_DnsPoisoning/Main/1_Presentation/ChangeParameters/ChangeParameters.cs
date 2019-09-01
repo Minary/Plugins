@@ -25,15 +25,43 @@
 
       this.parentPlugin = parentPlugin;
       this.dgv_Spoofing = dgv_Spoofing;
-      this.tb_Hostname.Text = this.parentPlugin.TbHostname;
-      this.tb_IpAddress.Text = this.parentPlugin.TbSpoofedIpAddress;
-      this.tb_ttl.Text = this.parentPlugin.TbTtl;
+
+      if (this.dgv_Spoofing.SelectedRows.Count > 0)
+      {
+        this.tb_IpAddress.Text = this.dgv_Spoofing.SelectedRows[0].Cells["IPAddress"].Value.ToString();
+        this.tb_ttl.Text = this.dgv_Spoofing.SelectedRows[0].Cells["TTL"].Value.ToString();
+        this.tb_CName.Text = this.dgv_Spoofing.SelectedRows[0].Cells["CName"].Value.ToString();
+      }
+      else
+      {
+        this.tb_IpAddress.Text = this.parentPlugin.TbSpoofedIpAddress;
+        this.tb_ttl.Text = this.parentPlugin.TbTtl;
+        this.tb_IpAddress.Text = this.parentPlugin.TbCName;
+      }
+
+
+      this.cb_Type.SelectedIndex = 0;
     }
 
     #endregion
 
 
     #region EVENTS
+
+    private void TSMI_UseHostIP_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        this.parentPlugin.ValidateHostName(this.tb_CName.Text);
+        var hostEntry = System.Net.Dns.GetHostEntry(this.tb_CName.Text);
+        this.tb_IpAddress.Text = hostEntry.AddressList[0].ToString();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Exception occurred: {ex.Message}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      }
+    }
+
 
     private void BT_Cancel_Click(object sender, EventArgs e)
     {
@@ -42,15 +70,15 @@
 
 
     private void BT_Save_Click(object sender, EventArgs e)
-    {      
-      var hostname = string.IsNullOrEmpty(this.tb_Hostname?.Text) ? "" : this.tb_Hostname?.Text.Trim();
+    {
       var ipAddress = string.IsNullOrEmpty(this.tb_IpAddress?.Text) ? "" : this.tb_IpAddress?.Text.Trim();
       var ttl = string.IsNullOrEmpty(this.tb_ttl?.Text) ? 0 : long.Parse(this.tb_ttl.Text.Trim());
+      var cName = string.IsNullOrEmpty(this.tb_CName?.Text) ? "" : this.tb_CName?.Text.Trim();
 
       try
       {
-        this.VerifyInputData(hostname, ipAddress, ttl);
-        this.ReplaceValuesInList(hostname, ipAddress, ttl);
+        this.VerifyInputData(ipAddress, ttl);
+        this.ReplaceValuesInList(ipAddress, ttl, cName);
         this.Close();
       }
       catch (Exception ex)
@@ -79,7 +107,7 @@
 
     #region PRIVATE
 
-    private void ReplaceValuesInList(string hostname, string ipAddress, long ttl)
+    private void ReplaceValuesInList(string ipAddress, long ttl, string cName)
     {
       var indexList = new List<int>();
       foreach (DataGridViewRow row in this.dgv_Spoofing.SelectedRows)
@@ -89,21 +117,16 @@
 
       foreach (int index in indexList)
       {
-        this.dgv_Spoofing.Rows[index].Cells["HostName"].Value = hostname;
         this.dgv_Spoofing.Rows[index].Cells["IPAddress"].Value = ipAddress;
         this.dgv_Spoofing.Rows[index].Cells["TTL"].Value = ttl.ToString();
+        this.dgv_Spoofing.Rows[index].Cells["CName"].Value = cName;
       }
     }
 
 
-    private void VerifyInputData(string hostname, string ipAddress, long ttl)
+    private void VerifyInputData(string ipAddress, long ttl)
     {
-      // Verify whether Hostname and IPaddress for correctness.
-      if (this.parentPlugin.VerifyHostNameStructure(hostname) == false)
-      {
-        throw new Exception("Something is wrong with the host name");
-      }
-
+      // Verify whether IPaddress and TTL for correctness.
       if (this.parentPlugin.VerifyIpAddressStructure(ipAddress) == false)
       {
         throw new Exception("Something is wrong with the IP address");

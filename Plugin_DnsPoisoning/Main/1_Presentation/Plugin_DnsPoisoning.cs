@@ -35,6 +35,9 @@
 
     public string TbTtl { get { return this.tb_ttl.Text; } set { } }
 
+    public string TbCName { get { return this.tb_CName.Text; } set { } }
+
+    
 
     public BindingList<RecordDnsPoison> DnsPoisonRecords { get { return (dnsPoisonRecords); } }
 
@@ -153,7 +156,7 @@
       this.cms_DnsPoison.Enabled = false;
       this.tsmi_Delete.Enabled = false;
       this.tsmi_ClearList.Enabled = false;
-      this.tb_Cname.Enabled = false;
+      this.tb_CName.Enabled = false;
       this.cb_Cname.Enabled = false;
 
       this.Refresh();
@@ -180,7 +183,7 @@
       this.tsmi_ClearList.Enabled = true;
 
       this.cb_Cname.Enabled = true;
-      this.tb_Cname.Enabled = this.cb_Cname.Checked == true ? true : false;
+      this.tb_CName.Enabled = this.cb_Cname.Checked == true ? true : false;
 
       this.Refresh();
     }

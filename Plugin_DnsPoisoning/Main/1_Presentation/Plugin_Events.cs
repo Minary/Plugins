@@ -62,35 +62,10 @@
     {
       try
       {
-        this.DeleteSelectedRecord();
+        this.DeleteSelectedRecords();
       }
       catch (Exception)
       {
-      }
-    }
-
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void DGV_Spoofing_MouseDown(object sender, MouseEventArgs e)
-    {
-      try
-      {
-        DataGridView.HitTestInfo hti = this.dgv_Spoofing.HitTest(e.X, e.Y);
-
-        if (hti.RowIndex >= 0)
-        {
-          this.dgv_Spoofing.ClearSelection();
-          this.dgv_Spoofing.Rows[hti.RowIndex].Selected = true;
-          this.dgv_Spoofing.CurrentCell = this.dgv_Spoofing.Rows[hti.RowIndex].Cells[0];
-        }
-      }
-      catch (Exception)
-      {
-        this.dgv_Spoofing.ClearSelection();
       }
     }
 
@@ -158,6 +133,11 @@
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void CB_Cname_CheckedChanged(object sender, EventArgs e)
     {
       if (this.cb_Cname.Checked)
@@ -168,6 +148,18 @@
       {
         this.tb_Cname.Enabled = false;
       }
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TSMID_ChangeParameters_Click(object sender, EventArgs e)
+    {
+      var changeParams = new ChangeParameters(this, this.dgv_Spoofing);
+      changeParams.ShowDialog(this);
     }
 
     #endregion

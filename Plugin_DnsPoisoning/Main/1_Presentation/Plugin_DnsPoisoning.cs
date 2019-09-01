@@ -29,6 +29,9 @@
 
     public Control PluginControl { get { return (this); } }
 
+
+    public BindingList<RecordDnsPoison> DnsPoisonRecords { get { return (dnsPoisonRecords); } }
+
     #endregion
 
 

@@ -47,6 +47,7 @@
       this.useHostIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.l_ttl = new System.Windows.Forms.Label();
       this.tb_ttl = new System.Windows.Forms.TextBox();
+      this.TSMID_ChangeParameters = new System.Windows.Forms.ToolStripMenuItem();
       this.cms_DnsPoison.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgv_Spoofing)).BeginInit();
       this.cms_Cname.SuspendLayout();
@@ -106,21 +107,22 @@
       this.cms_DnsPoison.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.cms_DnsPoison.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi_Delete,
-            this.tsmi_ClearList});
+            this.tsmi_ClearList,
+            this.TSMID_ChangeParameters});
       this.cms_DnsPoison.Name = "cms_DNSPoison";
-      this.cms_DnsPoison.Size = new System.Drawing.Size(180, 68);
+      this.cms_DnsPoison.Size = new System.Drawing.Size(241, 133);
       // 
       // tsmi_Delete
       // 
       this.tsmi_Delete.Name = "tsmi_Delete";
-      this.tsmi_Delete.Size = new System.Drawing.Size(179, 32);
-      this.tsmi_Delete.Text = "Delete entry";
+      this.tsmi_Delete.Size = new System.Drawing.Size(240, 32);
+      this.tsmi_Delete.Text = "Delete entries";
       this.tsmi_Delete.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // tsmi_ClearList
       // 
       this.tsmi_ClearList.Name = "tsmi_ClearList";
-      this.tsmi_ClearList.Size = new System.Drawing.Size(179, 32);
+      this.tsmi_ClearList.Size = new System.Drawing.Size(240, 32);
       this.tsmi_ClearList.Text = "Clear list";
       this.tsmi_ClearList.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
@@ -148,7 +150,6 @@
       this.dgv_Spoofing.ContextMenuStrip = this.cms_DnsPoison;
       this.dgv_Spoofing.EnableHeadersVisualStyles = false;
       this.dgv_Spoofing.Location = new System.Drawing.Point(17, 45);
-      this.dgv_Spoofing.MultiSelect = false;
       this.dgv_Spoofing.Name = "dgv_Spoofing";
       this.dgv_Spoofing.ReadOnly = true;
       this.dgv_Spoofing.RowHeadersVisible = false;
@@ -160,7 +161,6 @@
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Spoofing.Size = new System.Drawing.Size(933, 313);
       this.dgv_Spoofing.TabIndex = 7;
-      this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       // 
       // cb_Cname
       // 
@@ -222,6 +222,13 @@
       this.tb_ttl.TabIndex = 3;
       this.tb_ttl.Text = "86400";
       // 
+      // TSMID_ChangeParameters
+      // 
+      this.TSMID_ChangeParameters.Name = "TSMID_ChangeParameters";
+      this.TSMID_ChangeParameters.Size = new System.Drawing.Size(240, 32);
+      this.TSMID_ChangeParameters.Text = "Change parameters";
+      this.TSMID_ChangeParameters.Click += new System.EventHandler(this.TSMID_ChangeParameters_Click);
+      // 
       // Plugin_DnsPoisoning
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,5 +273,6 @@
     private System.Windows.Forms.TextBox tb_ttl;
     private System.Windows.Forms.ContextMenuStrip cms_Cname;
     private System.Windows.Forms.ToolStripMenuItem useHostIPToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem TSMID_ChangeParameters;
   }
 }

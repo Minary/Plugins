@@ -49,8 +49,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main\1_Presentation\ChangeParameters\ChangeParameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\1_Presentation\ChangeParameters\ChangeParameters.Designer.cs">
+      <DependentUpon>ChangeParameters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\1_Presentation\Plugin_Events.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +82,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Main\1_Presentation\ChangeParameters\ChangeParameters.resx">
+      <DependentUpon>ChangeParameters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\1_Presentation\Plugin_DnsPoisoning.resx">
       <DependentUpon>Plugin_DnsPoisoning.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -153,6 +153,7 @@
 
       this.pluginProperties.PluginName = "HTTP requests";
       this.pluginProperties.PluginType = "Passive";
+      this.pluginProperties.AttackServiceDependency = "Sniffer";
       this.pluginProperties.PluginDescription = "Eavesdrop client systems HTTP requests.";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 

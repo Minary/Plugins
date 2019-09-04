@@ -118,6 +118,7 @@
 
       this.Config.PluginName = "DNS Poisoning";
       this.Config.PluginType = "Active";
+      this.Config.AttackServiceDependency = "DnsPoisoning";
       this.Config.PluginDescription = "Poison client system DNS request and servers DNS responses.";
       this.Config.Ports = new Dictionary<int, MinaryLib.DataTypes.IpProtocols>();
 

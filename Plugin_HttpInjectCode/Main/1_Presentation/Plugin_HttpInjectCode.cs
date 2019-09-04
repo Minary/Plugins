@@ -126,6 +126,7 @@
 
       this.pluginProperties.PluginName = "HTTP inject code";
       this.pluginProperties.PluginType = "Intrusive";
+      this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "Inject custom code into server response";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 

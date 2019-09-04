@@ -105,6 +105,7 @@ private const string Label_URL = "Redirect to URL";
 
       this.pluginProperties.PluginName = "HTTP inject file";
       this.pluginProperties.PluginType = "Intrusive";
+      this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "Answer an HTTP request by injecting a custom replacement file";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 

@@ -99,6 +99,7 @@
 
       this.pluginProperties.PluginName = "HTTP host mapping";
       this.pluginProperties.PluginType = "Active";
+      this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "Map HTTP request to an other server";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 

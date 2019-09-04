@@ -125,6 +125,7 @@
 
       this.pluginProperties.PluginName = "DNS requests";
       this.pluginProperties.PluginType = "Passive";
+      this.pluginProperties.AttackServiceDependency = "Sniffer";
       this.pluginProperties.PluginDescription = "Eavesdrop client systems DNS requests.";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 53, IpProtocols.Udp } };
 

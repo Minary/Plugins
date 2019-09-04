@@ -108,6 +108,7 @@
 
       this.pluginProperties.PluginName = "HTTP request redirect";
       this.pluginProperties.PluginType = "Intrusive";
+      this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "Redirect an HTTP request to new URL";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
 

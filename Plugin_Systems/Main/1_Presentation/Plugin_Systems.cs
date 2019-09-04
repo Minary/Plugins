@@ -156,6 +156,7 @@
       this.pluginProperties = pluginProperties;
       this.pluginProperties.PluginName = "Systems";
       this.pluginProperties.PluginType = "Passive";
+      this.pluginProperties.AttackServiceDependency = "Sniffer";
       this.pluginProperties.PluginDescription = "Determine operating system of detected target systems";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp }, { 53, IpProtocols.Udp } };
 

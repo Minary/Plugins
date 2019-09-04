@@ -141,6 +141,7 @@
       this.Config = pluginProperties;
       this.Config.PluginName = "HTTP search";
       this.Config.PluginType = "Passive";
+      this.Config.AttackServiceDependency = "HttpsReverseProxy";
       this.Config.PluginDescription = "Search data regex in HTTP header/data packets.";
       this.Config.Ports = new Dictionary<int, IpProtocols>() { { 80, IpProtocols.Tcp }, { 443, IpProtocols.Tcp } };
 

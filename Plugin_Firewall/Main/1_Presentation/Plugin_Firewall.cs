@@ -131,6 +131,7 @@
 
       this.Config.PluginName = "Firewall";
       this.Config.PluginType = "Active";
+      this.Config.AttackServiceDependency = "RouterIPv4";
       this.Config.PluginDescription = "Control data packet flow between client and server systems";
       this.Config.Ports = new Dictionary<int, IpProtocols>();
 

@@ -88,6 +88,7 @@
 
       this.pluginProperties.PluginName = "SslStrip";
       this.pluginProperties.PluginType = "Intrusive";
+      this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "SSL strip tags from HTTP server responses";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>();
       this.dataBatch = new List<string>();

@@ -127,6 +127,7 @@
 
       this.pluginProperties.PluginName = "HTTPS requests";
       this.pluginProperties.PluginType = "Passive";
+      this.pluginProperties.AttackServiceDependency = "Sniffer";
       this.pluginProperties.PluginDescription = "Detect HTTPS  requests.";
       this.pluginProperties.Ports = new Dictionary<int, IpProtocols>() { { 53, IpProtocols.Udp }, { 443, IpProtocols.Tcp } };
 

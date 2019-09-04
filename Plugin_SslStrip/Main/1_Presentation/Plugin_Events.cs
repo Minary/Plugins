@@ -4,10 +4,47 @@
   using System;
   using System.Windows.Forms;
 
+
   public partial class Plugin_SslStrip
   {
 
+    #region MEMBERS
+
+    private string watermarkHttpHost = "*.google.c*";
+
+    #endregion
+
+
     #region EVENTS
+
+    private void TextBoxGotFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (tb.Text == this.watermarkHttpHost)
+      {
+        tb.Text = string.Empty;
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+      else
+      {
+      }
+    }
+
+
+    private void TextBoxLostFocus(object sender, EventArgs e)
+    {
+      var tb = (TextBox)sender;
+      if (string.IsNullOrEmpty(tb.Text))
+      {
+        tb.Text = this.watermarkHttpHost;
+        tb.ForeColor = System.Drawing.Color.LightGray;
+      }
+      else
+      {
+        tb.ForeColor = System.Drawing.Color.Black;
+      }
+    }
+
 
     /// <summary>
     ///

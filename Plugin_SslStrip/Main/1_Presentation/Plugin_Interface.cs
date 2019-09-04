@@ -161,7 +161,7 @@
         return;
       }
 
-      this.tb_HostName.Text = string.Empty;
+      this.tb_HostName.Text = this.watermarkHttpHost;
       //// cb_ContentType.SelectedIndex = 1;
       //// cb_HtmlTag.SelectedIndex = 1;
       this.ClearRecordList();

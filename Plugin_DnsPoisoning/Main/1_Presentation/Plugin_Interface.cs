@@ -94,7 +94,7 @@
       }
 
       this.tb_Address.Text = this.Config.HostApplication.CurrentIP;
-      this.tb_Host.Text = string.Empty;
+      this.tb_Host.Text = this.watermarkHttpHost;
 
       this.SetGuiActive();
       this.ClearRecordList();

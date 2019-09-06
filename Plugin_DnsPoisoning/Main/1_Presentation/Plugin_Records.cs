@@ -59,7 +59,7 @@
     /// <returns></returns>
     public bool VerifyHostNameStructure(string hostName)
     {
-      string validHostNamePattern = @"[\d\w\.-_]+\.[\w]{2,3}$";
+      string validHostNamePattern = @"[\d\w\.-_\*]+\.[\*\w]{1,}$";
 
       if (string.IsNullOrEmpty(hostName))
       {

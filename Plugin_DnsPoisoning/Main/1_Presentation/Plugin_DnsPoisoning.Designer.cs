@@ -30,8 +30,8 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.bt_Add = new System.Windows.Forms.Button();
       this.tb_Host = new System.Windows.Forms.TextBox();
       this.tb_Address = new System.Windows.Forms.TextBox();
@@ -110,26 +110,26 @@
             this.tsmi_ClearList,
             this.TSMID_ChangeParameters});
       this.cms_DnsPoison.Name = "cms_DNSPoison";
-      this.cms_DnsPoison.Size = new System.Drawing.Size(239, 100);
+      this.cms_DnsPoison.Size = new System.Drawing.Size(268, 133);
       // 
       // tsmi_Delete
       // 
       this.tsmi_Delete.Name = "tsmi_Delete";
-      this.tsmi_Delete.Size = new System.Drawing.Size(238, 32);
-      this.tsmi_Delete.Text = "Delete entries";
+      this.tsmi_Delete.Size = new System.Drawing.Size(267, 32);
+      this.tsmi_Delete.Text = "Delete selected records";
       this.tsmi_Delete.Click += new System.EventHandler(this.TSMI_Delete_Click);
       // 
       // tsmi_ClearList
       // 
       this.tsmi_ClearList.Name = "tsmi_ClearList";
-      this.tsmi_ClearList.Size = new System.Drawing.Size(238, 32);
+      this.tsmi_ClearList.Size = new System.Drawing.Size(267, 32);
       this.tsmi_ClearList.Text = "Clear list";
       this.tsmi_ClearList.Click += new System.EventHandler(this.TSMI_Clear_Click);
       // 
       // TSMID_ChangeParameters
       // 
       this.TSMID_ChangeParameters.Name = "TSMID_ChangeParameters";
-      this.TSMID_ChangeParameters.Size = new System.Drawing.Size(238, 32);
+      this.TSMID_ChangeParameters.Size = new System.Drawing.Size(267, 32);
       this.TSMID_ChangeParameters.Text = "Change parameters";
       this.TSMID_ChangeParameters.Click += new System.EventHandler(this.TSMID_ChangeParameters_Click);
       // 
@@ -145,14 +145,14 @@
       this.dgv_Spoofing.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_Spoofing.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_Spoofing.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Spoofing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_Spoofing.ContextMenuStrip = this.cms_DnsPoison;
       this.dgv_Spoofing.EnableHeadersVisualStyles = false;
@@ -161,8 +161,8 @@
       this.dgv_Spoofing.ReadOnly = true;
       this.dgv_Spoofing.RowHeadersVisible = false;
       this.dgv_Spoofing.RowHeadersWidth = 62;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Spoofing.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Spoofing.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -184,13 +184,13 @@
       this.cb_Cname.CheckedChanged += new System.EventHandler(this.CB_Cname_CheckedChanged);
       this.cb_Cname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);
       // 
-      // tb_Cname
+      // tb_CName
       // 
       this.tb_CName.ContextMenuStrip = this.cms_Cname;
       this.tb_CName.Enabled = false;
       this.tb_CName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tb_CName.Location = new System.Drawing.Point(669, 18);
-      this.tb_CName.Name = "tb_Cname";
+      this.tb_CName.Name = "tb_CName";
       this.tb_CName.Size = new System.Drawing.Size(131, 26);
       this.tb_CName.TabIndex = 5;
       this.tb_CName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterAddRecord);

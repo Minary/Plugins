@@ -92,7 +92,7 @@
       // Plugin configuration
       this.pluginProperties = pluginProperties;
 
-      this.pluginProperties.PluginName = "SslStrip";
+      this.pluginProperties.PluginName = "SSL Strip";
       this.pluginProperties.PluginType = "Intrusive";
       this.pluginProperties.AttackServiceDependency = "HttpsReverseProxy";
       this.pluginProperties.PluginDescription = "SSL strip tags from HTTP server responses";

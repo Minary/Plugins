@@ -190,10 +190,41 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void TSMID_ChangeParameters_Click(object sender, EventArgs e)
+    private void TSMI_ChangeParameters_Click(object sender, EventArgs e)
     {
       var changeParams = new ChangeParameters(this, this.dgv_Spoofing);
       changeParams.ShowDialog(this);
+    }
+   
+
+    private void DGV_Spoofing_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+    }
+
+
+    private void DGV_Spoofing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    {
+    }
+
+
+    private void DGV_Spoofing_MouseDown(object sender, MouseEventArgs e)
+    {
+      try
+      {
+        DataGridView.HitTestInfo hti = this.dgv_Spoofing.HitTest(e.X, e.Y);
+
+        if (hti.RowIndex >= 0)
+        {
+          this.dgv_Spoofing.ClearSelection();
+          this.dgv_Spoofing.Rows[hti.RowIndex].Selected = true;
+          this.dgv_Spoofing.CurrentCell = this.dgv_Spoofing.Rows[hti.RowIndex].Cells[0];
+        }
+      }
+      catch (Exception ex)
+      {
+        this.Config.HostApplication.LogMessage($"{Config.PluginName}: {ex.Message}");
+        this.dgv_Spoofing.ClearSelection();
+      }
     }
 
     #endregion

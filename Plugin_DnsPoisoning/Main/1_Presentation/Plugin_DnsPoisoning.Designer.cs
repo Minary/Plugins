@@ -110,7 +110,7 @@
             this.tsmi_ClearList,
             this.TSMID_ChangeParameters});
       this.cms_DnsPoison.Name = "cms_DNSPoison";
-      this.cms_DnsPoison.Size = new System.Drawing.Size(268, 133);
+      this.cms_DnsPoison.Size = new System.Drawing.Size(268, 100);
       // 
       // tsmi_Delete
       // 
@@ -131,7 +131,7 @@
       this.TSMID_ChangeParameters.Name = "TSMID_ChangeParameters";
       this.TSMID_ChangeParameters.Size = new System.Drawing.Size(267, 32);
       this.TSMID_ChangeParameters.Text = "Change parameters";
-      this.TSMID_ChangeParameters.Click += new System.EventHandler(this.TSMID_ChangeParameters_Click);
+      this.TSMID_ChangeParameters.Click += new System.EventHandler(this.TSMI_ChangeParameters_Click);
       // 
       // dgv_Spoofing
       // 
@@ -168,6 +168,7 @@
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Spoofing.Size = new System.Drawing.Size(933, 313);
       this.dgv_Spoofing.TabIndex = 7;
+      this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       // 
       // cb_Cname
       // 

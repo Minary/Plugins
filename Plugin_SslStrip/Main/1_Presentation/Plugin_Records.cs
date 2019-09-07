@@ -42,7 +42,7 @@
         }
 
         // Verify if HostName is correct
-        if (!Regex.Match(record.HostName, @"^[\w\d\-_\.]+\.[a-z]{2,10}$", RegexOptions.IgnoreCase).Success)
+        if (!Regex.Match(record.HostName, @"^[\w\d\-_\.\*]+\.[\w]{2,10}$", RegexOptions.IgnoreCase).Success)
         {
           throw new Exception("Something is wrong with the host name.");
         }

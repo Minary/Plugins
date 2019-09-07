@@ -118,7 +118,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void DeleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
+    private void TSMI_DeleteEntry_Click(object sender, EventArgs e)
     {
       try
       {
@@ -137,7 +137,7 @@
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void CopyHostNameToolStripMenuItem_Click(object sender, EventArgs e)
+    private void TSMI_CopyHostName_Click(object sender, EventArgs e)
     {
       try
       {
@@ -162,7 +162,7 @@
       try
       {
         var currentIndex = this.dgv_DnsRequests.CurrentCell.RowIndex;
-        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DNSHostname"].Value.ToString();
+        var hostName = this.dgv_DnsRequests.Rows[currentIndex].Cells["DnsRequest"].Value.ToString();
         Clipboard.SetText(hostName);
       }
       catch (Exception ex)

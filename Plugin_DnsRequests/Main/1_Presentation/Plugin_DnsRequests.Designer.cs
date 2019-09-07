@@ -130,7 +130,7 @@
       this.deleteEntryToolStripMenuItem.Name = "deleteEntryToolStripMenuItem";
       this.deleteEntryToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
       this.deleteEntryToolStripMenuItem.Text = "Delete entry";
-      this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.DeleteEntryToolStripMenuItem_Click);
+      this.deleteEntryToolStripMenuItem.Click += new System.EventHandler(this.TSMI_DeleteEntry_Click);
       // 
       // tsmi_Clear
       // 
@@ -151,7 +151,7 @@
       this.copyHostNameToolStripMenuItem.Name = "copyHostNameToolStripMenuItem";
       this.copyHostNameToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
       this.copyHostNameToolStripMenuItem.Text = "Copy host name";
-      this.copyHostNameToolStripMenuItem.Click += new System.EventHandler(this.CopyHostNameToolStripMenuItem_Click);
+      this.copyHostNameToolStripMenuItem.Click += new System.EventHandler(this.TSMI_CopyHostName_Click);
       // 
       // t_GuiUpdate
       // 

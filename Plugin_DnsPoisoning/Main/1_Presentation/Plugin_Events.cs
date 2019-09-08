@@ -213,7 +213,7 @@
       {
         DataGridView.HitTestInfo hti = this.dgv_Spoofing.HitTest(e.X, e.Y);
 
-        if (hti.RowIndex >= 0)
+        if (hti.RowIndex >= 0 && this.dgv_Spoofing.SelectedRows.Count == 1)
         {
           this.dgv_Spoofing.ClearSelection();
           this.dgv_Spoofing.Rows[hti.RowIndex].Selected = true;

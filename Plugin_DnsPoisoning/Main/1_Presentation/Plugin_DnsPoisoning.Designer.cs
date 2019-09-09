@@ -168,6 +168,7 @@
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgv_Spoofing.Size = new System.Drawing.Size(933, 313);
       this.dgv_Spoofing.TabIndex = 7;
+      this.dgv_Spoofing.DoubleClick += new System.EventHandler(this.DGV_Spoofing_CellDoubleClick);
       this.dgv_Spoofing.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DGV_Spoofing_MouseDown);
       // 
       // cb_Cname

@@ -196,14 +196,19 @@
       changeParams.ShowDialog(this);
     }
    
-
-    private void DGV_Spoofing_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    
+    private void DGV_Spoofing_CellDoubleClick(object sender, EventArgs e)
     {
-    }
-
-
-    private void DGV_Spoofing_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-    {
+      try
+      {
+        var currentIndex = this.dgv_Spoofing.CurrentCell.RowIndex;
+        var hostName = this.dgv_Spoofing.Rows[currentIndex].Cells["HostName"].Value.ToString();
+        Clipboard.SetText(hostName);
+      }
+      catch (Exception ex)
+      {
+        this.Config.HostApplication.LogMessage($"{this.Config.PluginName}: {ex.Message}");
+      }
     }
 
 

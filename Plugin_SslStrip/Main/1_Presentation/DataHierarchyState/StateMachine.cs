@@ -44,9 +44,9 @@
       // Populate Main_GUI Combobox Content Types
       this.contentTypes = new Dictionary<ContextType, IContentTypeState>()
                                 {
-                                  { ContextType.HTML, new StateHtml(comboBoxContentTypeList, comboBoxDataList) }
+                                  { ContextType.HTML, new StateHtml(comboBoxContentTypeList, comboBoxDataList) },
                                   //// { ContextType.XML, new StateXml(comboBoxContentTypeList, comboBoxDataList) },
-                                  //// { ContextType.JavaScript, new StateJavaScript(comboBoxContentTypeList, comboBoxDataList) },
+                                    { ContextType.JavaScript, new StateJavaScript(comboBoxContentTypeList, comboBoxDataList) },
                                   //// { ContextType.CSS, new StateCss(comboBoxContentTypeList, comboBoxDataList) },
                                   //// { ContextType.PlainText, new StatePlainText(comboBoxContentTypeList, comboBoxDataList) }
                                 };

@@ -56,7 +56,16 @@
       this.tb_Host.Text = this.watermarkHttpHost;
       this.tb_Host.ForeColor = System.Drawing.Color.LightGray;
 
-      DataGridViewTextBoxColumn columnHostName = new DataGridViewTextBoxColumn();
+      var columnMustMatch = new DataGridViewTextBoxColumn();
+      columnMustMatch.DataPropertyName = "MustsMatch";
+      columnMustMatch.Name = "MustsMatch";
+      columnMustMatch.HeaderText = "Must match";
+      columnMustMatch.ReadOnly = true;
+      columnMustMatch.Visible = true;
+      columnMustMatch.Width = 150;
+      this.dgv_Spoofing.Columns.Add(columnMustMatch);
+
+      var columnHostName = new DataGridViewTextBoxColumn();
       columnHostName.DataPropertyName = "HostName";
       columnHostName.Name = "HostName";
       columnHostName.HeaderText = "Host name";
@@ -64,7 +73,7 @@
       columnHostName.Width = 296;
       this.dgv_Spoofing.Columns.Add(columnHostName);
 
-      DataGridViewTextBoxColumn columnIpAddress = new DataGridViewTextBoxColumn();
+      var columnIpAddress = new DataGridViewTextBoxColumn();
       columnIpAddress.DataPropertyName = "IPAddress";
       columnIpAddress.Name = "IPAddress";
       columnIpAddress.HeaderText = "Spoofed IP address";
@@ -72,7 +81,7 @@
       columnIpAddress.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_Spoofing.Columns.Add(columnIpAddress);
 
-      DataGridViewTextBoxColumn columnCName = new DataGridViewTextBoxColumn();
+      var columnCName = new DataGridViewTextBoxColumn();
       columnCName.DataPropertyName = "CName";
       columnCName.Name = "CName";
       columnCName.HeaderText = "Canonical name";
@@ -80,7 +89,7 @@
       columnCName.Width = 296;
       this.dgv_Spoofing.Columns.Add(columnCName);
 
-      DataGridViewTextBoxColumn columnTtl = new DataGridViewTextBoxColumn();
+      var columnTtl = new DataGridViewTextBoxColumn();
       columnTtl.DataPropertyName = "TTL";
       columnTtl.Name = "TTL";
       columnTtl.HeaderText = "TTL";
@@ -88,7 +97,7 @@
       columnTtl.Width = 130;
       this.dgv_Spoofing.Columns.Add(columnTtl);
 
-      DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
+      var columnType = new DataGridViewTextBoxColumn();
       columnType.DataPropertyName = "ResponseType";
       columnType.Name = "ResponseType";
       columnType.HeaderText = "Resp. type";

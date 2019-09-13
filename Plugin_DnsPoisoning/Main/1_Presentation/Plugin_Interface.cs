@@ -122,13 +122,14 @@
       foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords.ToList())
       {
         var line = string.Empty;
+        var mustMatch = this.cb_MustMatch.Checked ? "y" : "n";
         if (tmpRecord.ResponseType == DnsResponseType.A)
         {
-          line = $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}";
+          line = $"{mustMatch},{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.IpAddress}";
         }
         else
         {
-          line = $"{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}";
+          line = $"{mustMatch},{tmpRecord.HostName},{tmpRecord.ResponseType.ToString()},{tmpRecord.TTL.ToString()},{tmpRecord.CName},{tmpRecord.IpAddress}";
         }
 
         poisoningRecordLines.Add(line);

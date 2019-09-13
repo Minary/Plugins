@@ -15,6 +15,7 @@
     private DnsResponseType responseType;
     private string cname = string.Empty;
     private long ttl = -1;
+    private bool mustMatch = true;
 
     [field: NonSerialized]
     public event PropertyChangedEventHandler PropertyChanged;
@@ -103,6 +104,22 @@
       }
     }
 
+
+    [Browsable(true)]
+    public bool MustMatch
+    {
+      get
+      {
+        return this.mustMatch;
+      }
+
+      set
+      {
+        this.mustMatch = value;
+        this.NotifyPropertyChanged("MustMatch");
+      }
+    }
+
     #endregion
 
 
@@ -113,13 +130,14 @@
     }
 
 
-    public RecordDnsPoison(string hostName, string ipAddress, DnsResponseType responseType, string cname, long ttl)
+    public RecordDnsPoison(string hostName, string ipAddress, DnsResponseType responseType, string cname, long ttl, bool mustMatch)
     {
       this.hostName = hostName;
       this.ipAddress = ipAddress;
       this.responseType = responseType;
       this.cname = cname;
       this.ttl = ttl;
+      this.mustMatch = mustMatch;
     }
 
     #endregion

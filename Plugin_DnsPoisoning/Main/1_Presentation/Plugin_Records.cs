@@ -41,6 +41,13 @@
         throw new Exception("Something is wront with the TTL.\r\nValue must be 1-4'294'967'296");
       }
 
+      // Verify whether only "mustMatch" or "doesntMatch" records are in list
+      if (this.dnsPoisonRecords.Count > 0 &&
+          this.dnsPoisonRecords[0].MustMatch != newRecord.MustMatch)
+      {
+        throw new Exception("All records must either use \"does match\" or dont use it. You can't mix it.");
+      }
+
       // Ensure that host/ip combination does not exist.
       foreach (RecordDnsPoison tmpRecord in this.dnsPoisonRecords)
       {

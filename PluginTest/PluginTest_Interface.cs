@@ -56,6 +56,7 @@
       this.LogMessage($"{this.loadedPlugin.Config.PluginName} : Plugin is calling back for registration");
     }
 
+
     public delegate void PluginSetStatusDelegate(object callingPluginObj, MinaryLib.Plugin.Status status);
     public void ReportPluginSetStatus(object callingPluginObj, Status status)
     {

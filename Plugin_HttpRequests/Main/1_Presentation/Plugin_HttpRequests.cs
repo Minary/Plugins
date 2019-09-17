@@ -41,7 +41,7 @@
     {
       this.InitializeComponent();
 
-      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      var columnTimeStamp = new DataGridViewTextBoxColumn();
       columnTimeStamp.DataPropertyName = "Timestamp";
       columnTimeStamp.Name = "Timestamp";
       columnTimeStamp.HeaderText = "Timestamp";
@@ -50,15 +50,16 @@
       columnTimeStamp.Width = 180;
       this.dgv_HttpRequests.Columns.Add(columnTimeStamp);
 
-      DataGridViewTextBoxColumn columnMacAddr = new DataGridViewTextBoxColumn();
+      var columnMacAddr = new DataGridViewTextBoxColumn();
       columnMacAddr.DataPropertyName = "SrcMAC";
       columnMacAddr.Name = "SrcMAC";
       columnMacAddr.HeaderText = "MAC address";
       columnMacAddr.ReadOnly = true;
+      columnMacAddr.Visible = false;
       columnMacAddr.Width = 180;
       this.dgv_HttpRequests.Columns.Add(columnMacAddr);
 
-      DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();
+      var columnSrcIp = new DataGridViewTextBoxColumn();
       columnSrcIp.DataPropertyName = "SrcIP";
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
@@ -66,7 +67,7 @@
       columnSrcIp.Width = 150;
       this.dgv_HttpRequests.Columns.Add(columnSrcIp);
 
-      DataGridViewTextBoxColumn columnRequestMethod = new DataGridViewTextBoxColumn();
+      var columnRequestMethod = new DataGridViewTextBoxColumn();
       columnRequestMethod.DataPropertyName = "Method";
       columnRequestMethod.Name = "Method";
       columnRequestMethod.HeaderText = "Method";
@@ -75,7 +76,7 @@
       columnRequestMethod.Width = 100;
       this.dgv_HttpRequests.Columns.Add(columnRequestMethod);
 
-      DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
+      var columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "RemoteHost";
       columnRemHost.Name = "RemoteHost";
       columnRemHost.HeaderText = "Server";
@@ -83,7 +84,7 @@
       columnRemHost.Width = 250;
       this.dgv_HttpRequests.Columns.Add(columnRemHost);
 
-      DataGridViewTextBoxColumn columnRemFileName = new DataGridViewTextBoxColumn();
+      var columnRemFileName = new DataGridViewTextBoxColumn();
       columnRemFileName.DataPropertyName = "Path";
       columnRemFileName.Name = "Path";
       columnRemFileName.HeaderText = "Path";
@@ -92,28 +93,28 @@
       columnRemFileName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
       this.dgv_HttpRequests.Columns.Add(columnRemFileName);
 
-      DataGridViewTextBoxColumn columnUrl = new DataGridViewTextBoxColumn();
+      var columnUrl = new DataGridViewTextBoxColumn();
       columnUrl.DataPropertyName = "URL";
       columnUrl.Name = "URL";
       columnUrl.HeaderText = "URL";
       columnUrl.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnUrl);
 
-      DataGridViewTextBoxColumn columnCookies = new DataGridViewTextBoxColumn();
+      var columnCookies = new DataGridViewTextBoxColumn();
       columnCookies.DataPropertyName = "SessionCookies";
       columnCookies.Name = "SessionCookies";
       columnCookies.HeaderText = "Cookies";
       columnCookies.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnCookies);
 
-      DataGridViewTextBoxColumn columnRequest = new DataGridViewTextBoxColumn();
+      var columnRequest = new DataGridViewTextBoxColumn();
       columnRequest.DataPropertyName = "Request";
       columnRequest.Name = "Request";
       columnRequest.HeaderText = "Request";
       columnRequest.Visible = false;
       this.dgv_HttpRequests.Columns.Add(columnRequest);
 
-      DataGridViewTextBoxColumn columnUserAgent = new DataGridViewTextBoxColumn();
+      var columnUserAgent = new DataGridViewTextBoxColumn();
       columnUserAgent.DataPropertyName = "UserAgent";
       columnUserAgent.Name = "UserAgent";
       columnUserAgent.HeaderText = "UserAgent";

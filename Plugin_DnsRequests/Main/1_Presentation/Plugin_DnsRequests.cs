@@ -42,7 +42,7 @@
     {
       this.InitializeComponent();
 
-      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      var columnTimeStamp = new DataGridViewTextBoxColumn();
       columnTimeStamp.DataPropertyName = "Timestamp";
       columnTimeStamp.Name = "Timestamp";
       columnTimeStamp.HeaderText = "Timestamp";
@@ -51,15 +51,16 @@
       columnTimeStamp.Width = 180;
       this.dgv_DnsRequests.Columns.Add(columnTimeStamp);
 
-      DataGridViewTextBoxColumn columnSrcMac = new DataGridViewTextBoxColumn();
+      var columnSrcMac = new DataGridViewTextBoxColumn();
       columnSrcMac.DataPropertyName = "SrcMAC";
       columnSrcMac.Name = "SrcMAC";
       columnSrcMac.HeaderText = "MAC address";
       columnSrcMac.ReadOnly = true;
+      columnSrcMac.Visible = false;
       columnSrcMac.Width = 180;
       this.dgv_DnsRequests.Columns.Add(columnSrcMac);
-      
-      DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();
+
+      var columnSrcIp = new DataGridViewTextBoxColumn();
       columnSrcIp.DataPropertyName = "SrcIP";
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
@@ -67,7 +68,7 @@
       columnSrcIp.Width = 150;
       this.dgv_DnsRequests.Columns.Add(columnSrcIp);
 
-      DataGridViewTextBoxColumn columnPacketType = new DataGridViewTextBoxColumn();
+      var columnPacketType = new DataGridViewTextBoxColumn();
       columnPacketType.DataPropertyName = "PacketType";
       columnPacketType.Name = "PacketType";
       columnPacketType.HeaderText = "Packet type";
@@ -75,7 +76,7 @@
       columnPacketType.Width = 130;
       this.dgv_DnsRequests.Columns.Add(columnPacketType);
 
-      DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
+      var columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "DnsRequest";
       columnRemHost.Name = "DnsRequest";
       columnRemHost.HeaderText = "DNS request";
@@ -83,7 +84,7 @@
       columnRemHost.Width = 350;
       this.dgv_DnsRequests.Columns.Add(columnRemHost);
 
-      DataGridViewTextBoxColumn columnDnsReply = new DataGridViewTextBoxColumn();
+      var columnDnsReply = new DataGridViewTextBoxColumn();
       columnDnsReply.DataPropertyName = "DnsReply";
       columnDnsReply.Name = "DnsReply";
       columnDnsReply.HeaderText = "DNS reply";

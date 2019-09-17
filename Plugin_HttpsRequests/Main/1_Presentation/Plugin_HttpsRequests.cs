@@ -51,7 +51,7 @@
     {
       InitializeComponent();
 
-      DataGridViewTextBoxColumn columnTimeStamp = new DataGridViewTextBoxColumn();
+      var columnTimeStamp = new DataGridViewTextBoxColumn();
       columnTimeStamp.DataPropertyName = "Timestamp";
       columnTimeStamp.Name = "Timestamp";
       columnTimeStamp.HeaderText = "Timestamp";
@@ -60,15 +60,16 @@
       columnTimeStamp.Width = 180;
       this.dgv_HttpsRequests.Columns.Add(columnTimeStamp);
 
-      DataGridViewTextBoxColumn columnMacAddr = new DataGridViewTextBoxColumn();
+      var columnMacAddr = new DataGridViewTextBoxColumn();
       columnMacAddr.DataPropertyName = "SrcMAC";
       columnMacAddr.Name = "SrcMAC";
       columnMacAddr.HeaderText = "MAC address";
       columnMacAddr.ReadOnly = true;
+      columnMacAddr.Visible = false;
       columnMacAddr.Width = 180;
       this.dgv_HttpsRequests.Columns.Add(columnMacAddr);
 
-      DataGridViewTextBoxColumn columnSrcIp = new DataGridViewTextBoxColumn();
+      var columnSrcIp = new DataGridViewTextBoxColumn();
       columnSrcIp.DataPropertyName = "SrcIP";
       columnSrcIp.Name = "SrcIP";
       columnSrcIp.HeaderText = "Source IP";
@@ -76,7 +77,7 @@
       columnSrcIp.Width = 150;
       this.dgv_HttpsRequests.Columns.Add(columnSrcIp);
 
-      DataGridViewTextBoxColumn columnDstIp = new DataGridViewTextBoxColumn();
+      var columnDstIp = new DataGridViewTextBoxColumn();
       columnDstIp.DataPropertyName = "DstIP";
       columnDstIp.Name = "DstIP";
       columnDstIp.HeaderText = "Dest. IP";
@@ -84,7 +85,7 @@
       columnDstIp.Width = 150;
       this.dgv_HttpsRequests.Columns.Add(columnDstIp);
 
-      DataGridViewTextBoxColumn columnRemHost = new DataGridViewTextBoxColumn();
+      var columnRemHost = new DataGridViewTextBoxColumn();
       columnRemHost.DataPropertyName = "RemoteHost";
       columnRemHost.Name = "RemoteHost";
       columnRemHost.HeaderText = "Server";

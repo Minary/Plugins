@@ -57,8 +57,8 @@
       this.tb_Host.ForeColor = System.Drawing.Color.LightGray;
 
       var columnMustMatch = new DataGridViewTextBoxColumn();
-      columnMustMatch.DataPropertyName = "MustsMatch";
-      columnMustMatch.Name = "MustsMatch";
+      columnMustMatch.DataPropertyName = "MustMatch";
+      columnMustMatch.Name = "MustMatch";
       columnMustMatch.HeaderText = "Must match";
       columnMustMatch.ReadOnly = true;
       columnMustMatch.Visible = true;

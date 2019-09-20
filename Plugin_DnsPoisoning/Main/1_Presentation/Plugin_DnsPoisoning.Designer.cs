@@ -30,8 +30,8 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       this.bt_Add = new System.Windows.Forms.Button();
       this.tb_Host = new System.Windows.Forms.TextBox();
       this.tb_Address = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@
       // 
       // bt_Add
       // 
-      this.bt_Add.Location = new System.Drawing.Point(1260, 27);
+      this.bt_Add.Location = new System.Drawing.Point(1214, 27);
       this.bt_Add.Margin = new System.Windows.Forms.Padding(0);
       this.bt_Add.Name = "bt_Add";
       this.bt_Add.Size = new System.Drawing.Size(30, 32);
@@ -68,7 +68,7 @@
       // tb_Host
       // 
       this.tb_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Host.Location = new System.Drawing.Point(263, 28);
+      this.tb_Host.Location = new System.Drawing.Point(258, 28);
       this.tb_Host.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Host.Name = "tb_Host";
       this.tb_Host.Size = new System.Drawing.Size(188, 26);
@@ -78,7 +78,7 @@
       // tb_Address
       // 
       this.tb_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_Address.Location = new System.Drawing.Point(568, 30);
+      this.tb_Address.Location = new System.Drawing.Point(551, 30);
       this.tb_Address.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_Address.Name = "tb_Address";
       this.tb_Address.Size = new System.Drawing.Size(148, 26);
@@ -89,7 +89,7 @@
       // 
       this.l_Host.AutoSize = true;
       this.l_Host.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_Host.Location = new System.Drawing.Point(161, 31);
+      this.l_Host.Location = new System.Drawing.Point(156, 31);
       this.l_Host.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_Host.Name = "l_Host";
       this.l_Host.Size = new System.Drawing.Size(100, 20);
@@ -100,7 +100,7 @@
       // 
       this.l_IpAddress.AutoSize = true;
       this.l_IpAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_IpAddress.Location = new System.Drawing.Point(471, 31);
+      this.l_IpAddress.Location = new System.Drawing.Point(459, 31);
       this.l_IpAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_IpAddress.Name = "l_IpAddress";
       this.l_IpAddress.Size = new System.Drawing.Size(100, 20);
@@ -150,14 +150,14 @@
       this.dgv_Spoofing.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.dgv_Spoofing.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
       this.dgv_Spoofing.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgv_Spoofing.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
       this.dgv_Spoofing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgv_Spoofing.ContextMenuStrip = this.cms_DnsPoison;
       this.dgv_Spoofing.EnableHeadersVisualStyles = false;
@@ -167,8 +167,8 @@
       this.dgv_Spoofing.ReadOnly = true;
       this.dgv_Spoofing.RowHeadersVisible = false;
       this.dgv_Spoofing.RowHeadersWidth = 62;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dgv_Spoofing.RowsDefaultCellStyle = dataGridViewCellStyle2;
       this.dgv_Spoofing.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dgv_Spoofing.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgv_Spoofing.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -181,7 +181,7 @@
       // 
       this.cb_Cname.AutoSize = true;
       this.cb_Cname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cb_Cname.Location = new System.Drawing.Point(913, 31);
+      this.cb_Cname.Location = new System.Drawing.Point(879, 31);
       this.cb_Cname.Name = "cb_Cname";
       this.cb_Cname.Size = new System.Drawing.Size(117, 24);
       this.cb_Cname.TabIndex = 4;
@@ -196,7 +196,7 @@
       this.tb_CName.ContextMenuStrip = this.cms_Cname;
       this.tb_CName.Enabled = false;
       this.tb_CName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_CName.Location = new System.Drawing.Point(1027, 30);
+      this.tb_CName.Location = new System.Drawing.Point(990, 30);
       this.tb_CName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_CName.Name = "tb_CName";
       this.tb_CName.Size = new System.Drawing.Size(194, 26);
@@ -222,7 +222,7 @@
       // 
       this.l_ttl.AutoSize = true;
       this.l_ttl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.l_ttl.Location = new System.Drawing.Point(731, 31);
+      this.l_ttl.Location = new System.Drawing.Point(710, 31);
       this.l_ttl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
       this.l_ttl.Name = "l_ttl";
       this.l_ttl.Size = new System.Drawing.Size(42, 20);
@@ -232,7 +232,7 @@
       // tb_ttl
       // 
       this.tb_ttl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tb_ttl.Location = new System.Drawing.Point(776, 30);
+      this.tb_ttl.Location = new System.Drawing.Point(750, 30);
       this.tb_ttl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
       this.tb_ttl.Name = "tb_ttl";
       this.tb_ttl.Size = new System.Drawing.Size(108, 26);
@@ -248,7 +248,7 @@
       this.cb_MustMatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cb_MustMatch.Location = new System.Drawing.Point(26, 30);
       this.cb_MustMatch.Name = "cb_MustMatch";
-      this.cb_MustMatch.Size = new System.Drawing.Size(131, 24);
+      this.cb_MustMatch.Size = new System.Drawing.Size(128, 24);
       this.cb_MustMatch.TabIndex = 8;
       this.cb_MustMatch.Text = "Must match";
       this.cb_MustMatch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
